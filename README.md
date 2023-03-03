@@ -21,11 +21,7 @@ Team Members:
 Christian Wilsea
 George Liu
 Rachel Quirbach
-Sarah Kay is awesome
+Sarah Kay
 
 License:
 None
-
-
-Christian's test comment
->>>>>>> c077d934d2872d70f9a17a7126f20ea935e93475
