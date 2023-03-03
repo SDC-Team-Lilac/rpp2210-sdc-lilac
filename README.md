@@ -21,7 +21,7 @@ Team Members:
 Christian Wilsea
 George Liu
 Rachel Quirbach
-Sarah Kay
+Sarah Kay is awesome
 
 License:
 None
