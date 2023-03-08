@@ -4,6 +4,11 @@ require('dotenv').config();
 const APIHostURL = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp";
 const APIKey = process.env.FEC_API_KEY;
 
+// Advice from Leslie -- Do not touch this until instructed with a "surprise" later in this project
+
+// Resource:
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*
+
 // INTERACTIONS
 // /interactions <-- POST to add an interaction to the db
   // body params:
