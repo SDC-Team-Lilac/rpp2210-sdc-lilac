@@ -11,6 +11,19 @@ const APIKey = process.env.FEC_API_KEY;
     // count (INT) -- specifies how many results per page to return, defaulted to 5
     // sort (TEXT) -- change sort order of views (newest, helpful, relevant)
     // product_id (INT)  -- required id of product to retrieve reviews for
+
+const getReviews = (req, res) => {
+  var queryParams = req.query;
+  return axios.get(`${APIHostURL}/reviews`, {
+    //optional key/values of page/pageNumber and count/countNumber
+    headers: {
+      Authorization: APIKey
+    },
+    params: {
+      page: queryParams.page
+    }
+  });
+}
 // /reviews/meta <-- GET meta data for a given product
   // query params:
     // product_id (INT)  -- required id of product to retrieve reviews for
