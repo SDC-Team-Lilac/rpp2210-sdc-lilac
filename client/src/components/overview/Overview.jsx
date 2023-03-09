@@ -1,9 +1,17 @@
 import React from 'react';
+import ProductGallery from './ProductGallery.jsx';
+import ProductSelected from './ProductSelected.jsx';
+import ProductDetails from './ProductDetails.jsx';
 
 const Overview = () => {
 
   return (
-    <div> Overview! </div>
+    <div>
+      <h1>This is the Overview Component!</h1>
+      <ProductGallery />
+      <ProductSelected />
+      <ProductDetails />
+    </div>
   )
 }
 
