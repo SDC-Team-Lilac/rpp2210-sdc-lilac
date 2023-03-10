@@ -5,8 +5,8 @@ import ProductFeatures from './ProductFeatures.jsx';
 const ProductDetails = () => {
 
   return (
-    <div>
-      <h2>This is the Product Details Component!</h2>
+    <div className="overview_product_details">
+      {/* <h2>This is the Product Details Component!</h2> */}
       <ProductInformation />
       <ProductFeatures />
     </div>

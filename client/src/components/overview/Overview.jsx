@@ -6,10 +6,12 @@ import ProductDetails from './ProductDetails.jsx';
 const Overview = () => {
 
   return (
-    <div>
+    <div id="overview">
       <h1>This is the Overview Component!</h1>
-      <ProductGallery />
-      <ProductSelected />
+      <div id="overview_top">
+        <ProductGallery />
+        <ProductSelected />
+      </div>
       <ProductDetails />
     </div>
   )

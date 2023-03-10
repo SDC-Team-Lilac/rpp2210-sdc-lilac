@@ -6,7 +6,7 @@ import AddToCart from './AddToCart.jsx';
 const ProductSelected = () => {
 
   return (
-    <div>
+    <div className="overview_product_selected">
       <h2>This is the Product Selected Component!</h2>
       <ProductSummary />
       <StyleSelector />
