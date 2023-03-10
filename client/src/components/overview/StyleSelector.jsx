@@ -1,16 +1,29 @@
 import React from 'react';
 
-const StyleSelector = () => {
+const StyleSelector = ( { testProductStyle } ) => {
+
+  // Refactor Need: Need to limit to 4 thumbnails in a row ***
+  // Hard-coding this with the test product thumbnails for now, will have to re-factor when connected to live API ***
+  let count = -1;
+  const styleThumbnails = testProductStyle.photos.map(thumbnail => {
+    count++;
+    let thumbnailDescription = testProductStyle.name.concat(' Image #', count);
+    return (
+      <div key={count} className="style_thumbnail_cropper">
+        <img className="style_thumbnail" src={thumbnail.thumbnail_url} alt={thumbnailDescription}></img>
+      </div>
+    )
+  })
 
   return (
     <div className="overview_style_selector">
-      <h3>This is the Style Selector Component!</h3>
+      {/* <h3>This is the Style Selector Component!</h3> */}
       <div>
-        <span><b>Selected Style Title in Full > </b></span>
-        <span>Selected Style</span>
+        <span><b>{testProductStyle.name.toUpperCase()} > </b></span>
+        <span>SELECTED STYLE</span>
       </div>
-      <div>
-        <span>Style Thumbnails will go here in rows of 4</span>
+      <div className="style_selector_thumbnails">
+        {styleThumbnails}
       </div>
     </div>
   )

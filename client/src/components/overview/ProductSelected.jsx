@@ -9,7 +9,7 @@ const ProductSelected = ( { product, testProductStyle } ) => {
     <div className="overview_product_selected">
       <h2>This is the Product Selected Component!</h2>
       <ProductSummary product={product} />
-      <StyleSelector />
+      <StyleSelector testProductStyle={testProductStyle} />
       <AddToCart />
     </div>
   )

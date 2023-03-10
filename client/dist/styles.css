@@ -50,6 +50,23 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
+  padding: 10px 10px 10px 10px;
+  font-size: large;
+}
+
+.style_selector_thumbnails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px 10px;
+  padding-top: 10px;
+}
+
+.style_thumbnail {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
 }
 
 .overview_addToCart {
