@@ -15,7 +15,7 @@ const ProductFeatures = ( { features } ) => {
 
   return (
     <div className="overview_product_features">
-      <h3>This is the Product Features Component!</h3>
+      {/* <h3>This is the Product Features Component!</h3> */}
       <ul>
         {featuresList}
       </ul>

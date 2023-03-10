@@ -92,7 +92,7 @@ const Overview = () => {
       <h1>This is the Overview Component!</h1>
       <div id="overview_top">
         <ProductGallery productPhotos={testSelectedStyle.photos} productName={testProduct.name} styleName={testSelectedStyle.name}/>
-        <ProductSelected />
+        <ProductSelected product={testProduct} testProductStyle={testSelectedStyle}/>
       </div>
       <ProductDetails slogan={testProduct.slogan} description={testProduct.description} features={testProduct.features}/>
     </div>
