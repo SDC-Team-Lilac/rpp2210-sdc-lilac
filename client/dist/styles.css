@@ -1,0 +1,51 @@
+#overview {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid aqua;
+}
+
+#overview_top {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid aqua;
+}
+
+.gallery {
+  border: 2px solid greenyellow;
+  flex-grow: 3;
+}
+
+.overview_product_selected {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  border: 2px solid greenyellow;
+}
+
+.overview_product_summary {
+  border: 2px solid fuchsia;
+}
+
+.overview_style_selector {
+  border: 2px solid fuchsia;
+}
+
+.overview_addToCart {
+  border: 2px solid fuchsia;
+}
+
+.overview_product_details {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid greenyellow;
+}
+
+.overview_product_information {
+  border: 2px solid fuchsia;
+  flex-grow: 3;
+}
+
+.overview_product_features {
+  border: 2px solid fuchsia;
+  flex-grow: 2;
+}
