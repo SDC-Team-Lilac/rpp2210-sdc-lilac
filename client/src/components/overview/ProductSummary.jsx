@@ -1,17 +1,20 @@
 import React from 'react';
 
-const ProductSummary = () => {
+const ProductSummary = ( { product } ) => {
+
+  // To-Do: Sync with Christian regarding star rating implementation
+  // To-Do: Sync with Christian regarding integration of # reviews, and component linking
 
   return (
     <div className="overview_product_summary">
-      <h3>This is the Product Summary Component!</h3>
+      {/* <h3>This is the Product Summary Component!</h3> */}
       <div>
-        <span>Star Rating ***** </span>
+        <span>&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50; &emsp;</span>
         <span>Read all [#] reviews </span>
-      </div>
-      <span>Product Category</span><br></br>
-      <span><b>Product Title</b></span><br></br>
-      <span>Price</span>
+      </div><br></br>
+      <span>{product.category.toUpperCase()}</span><br></br>
+      <span className="product_summary_title"><b>{product.name}</b></span><br></br>
+      <span>${product.default_price}</span>
     </div>
   )
 }
