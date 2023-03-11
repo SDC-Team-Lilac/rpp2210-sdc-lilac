@@ -36,6 +36,64 @@ app.get('/products/:product_id', (req, res) => {
     })
 })
 
+//REVIEW ROUTES:
+
+app.get('/reviews', (req, res) => {
+  reviews_api.getReviews(req, res)
+    .then(reviews => {
+      res.status(200).send(reviews.data);
+    })
+    .catch(error => {
+      console.error('Error in getting reviews: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.get('/reviews/meta', (req, res) => {
+  reviews_api.getReviewsMeta(req, res)
+    .then(reviewsMeta => {
+      res.status(200).send(reviewsMeta.data);
+    })
+    .catch(error => {
+      console.error('Error in getting reviews meta: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.post('/reviews', (req, res) => {
+  reviews_api.postReview(req, res)
+    .then(success => {
+      res.status(201);
+    })
+    .catch(error => {
+      console.error('Error posting Review: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.put('/reviews/helpful', (req, res) => {
+  reviews_api.putHelpful(req, res)
+    .then(success => {
+      res.status(204);
+    })
+    .catch(error => {
+      console.error('Error marking Review helpful: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.put('/reviews/report', (req, res) => {
+  reviews_api.putReportReview(req, res)
+    .then(success => {
+      res.status(204);
+    })
+    .catch(error => {
+      console.error('Error reporting Review: ', error);
+      res.status(404).send(error);
+    });
+});
+
+//END REVIEWS ROUTES
 
 
 app.listen(3000, function(){
