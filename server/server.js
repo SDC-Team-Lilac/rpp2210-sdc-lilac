@@ -23,6 +23,21 @@ app.get('/products', (req, res) => {
     });
 });
 
+app.get('/products/:product_id', (req, res) => {
+  var product_id = req.params.product_id;
+  console.log('THIS IS PRODUCT_ID: ', product_id);
+  products_api.getOneProduct(product_id)
+    .then((productDetails) => {
+      res.status(200).send(productDetails.data)
+    })
+    .catch((error) => {
+      console.error('Error in getOneProduct: ', error);
+      res.status(404).send(error);
+    })
+})
+
+
+
 app.listen(3000, function(){
   console.log('connected to server!')
 });
