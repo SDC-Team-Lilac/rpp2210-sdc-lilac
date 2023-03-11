@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const Answer = () => {
+const Answer = (props) => {
 
   return (
     <div> Answer! </div>
