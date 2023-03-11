@@ -44,7 +44,7 @@ app.get('/reviews', (req, res) => {
       res.status(200).send(reviews.data);
     })
     .catch(error => {
-      console.error('Error in getAllProducts: ', error);
+      console.error('Error in getting reviews: ', error);
       res.status(404).send(error);
     });
 });
