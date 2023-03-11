@@ -22,8 +22,8 @@ const getAllProducts = () => {
   // params:
     // product_id (INT) -- required id of product requested
 const getOneProduct = (product_id) => {
-  return axios.get(`${APIHostURL}/products/:product_id`, {
-    'product_id': product_id,
+  console.log('INSIDE HERE: ', product_id);
+  return axios.get(`${APIHostURL}/products/${product_id}`, {
     headers: {
       Authorization: APIKey
     }
