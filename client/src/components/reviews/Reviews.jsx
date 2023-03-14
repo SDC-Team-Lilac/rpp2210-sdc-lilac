@@ -68,9 +68,9 @@ const Reviews = ({ productId }) => {
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
-      <RatingBreakdown />
+      <RatingBreakdown reviewsMeta={reviewsMeta}/>
       <ReviewList reviews = {reviews}/>
-      <NewReview/>
+      <NewReview productId={productId}/>
     </div>
   )
 }

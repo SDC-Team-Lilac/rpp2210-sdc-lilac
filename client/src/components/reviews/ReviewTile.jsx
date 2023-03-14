@@ -1,11 +1,28 @@
 import React from 'react';
+import axios from 'axios';
 
 const ReviewTile = ({ review }) => {
 
   /* This component:
     1) needs an individual review
     2) Will render data for: star rating, date of review, review summary, review body, recommend, reviewer name, response to review, rating helpfulness
-   */
+    3) Needs to have an option for them to click if this rating was helpful then send put request
+    4) Needs to have an option for them to click and report this then send put request
+    */
+
+  // const handleHelpful = (e) => {
+  //   e.preventDefault();
+  //   axios.put('/reviews/helpful', {data: {review.review_id}})
+  //   .then((success) => {console.log('Marked Review as Helpful!')})
+  //   .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
+  // }
+
+  // const handleReport = (e) => {
+  //   e.preventDefault();
+  //   axios.put('/reviews/report', {data: {review.review_id}})
+  //   .then((success) => {console.log('Reported Review!!')})
+  //   .catch((err) => {console.log('ERROR reporting review!', err)})
+  // }
 
   return (
     <div style={{border: '2px solid purple'}}>

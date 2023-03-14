@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const NewReview = () => {
+const NewReview = ({ productId }) => {
 
   /* This component will:
     1) Need to control the inputs of each field in their own state
@@ -9,6 +10,8 @@ const NewReview = () => {
       - product name
       - product characteristics
    */
+
+
 
   const [overall, setOverall] = useState('')
   const [recommend, setRecommend] = useState(false)
@@ -20,6 +23,27 @@ const NewReview = () => {
   const [email, setEmail] = useState('')
 
 
+  var fullReview = {
+    product_id: productId,
+    rating: overall,
+    summary: summary,
+    recommend: recommend,
+    name: nickname,
+    email: email,
+    photos: photos,
+    characteristics: characteristics
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('/reviews', fullReview)
+    .then((success) => {console.log('Succesfully added new review')})
+    .catch((err) => {console.log('ERROR adding new review', err)})
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    var input = e.target.value
+  }
   return (
     <div style={{border: '5px solid orange'}} > NewReview!
       <form>
