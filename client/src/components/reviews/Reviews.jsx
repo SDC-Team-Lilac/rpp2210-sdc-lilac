@@ -30,8 +30,6 @@ const Reviews = ({ productId }) => {
 
   const countAllReviews = (ratings) => {
     var total = Number(ratings[1]) + Number(ratings[2]) + Number(ratings[3]) + Number(ratings[4]) + Number(ratings[5])
-    console.log('total', total)
-
   }
   const getReviews = (count) => {
     return axios.get('/reviews', {
@@ -66,23 +64,6 @@ const Reviews = ({ productId }) => {
   //   countAllReviews(reviewsMeta)
   // }, [reviewsMeta])
 
-  useEffect(() => {
-    axios.get('/reviews', {
-      params: {
-        product_id: productId
-      }
-    })
-    .then((result) => {setReviews(result.data.results)})
-    .catch((err) => {console.log('Trouble getting reviews from client', err)});
-
-    axios.get('/reviews/meta', {
-      params: {
-        product_id: productId
-      }
-    })
-    .then((result) => {setReviewsMeta(result.data)})
-    .catch((err) => {console.log('Trouble getting reviews meta from client', err)})
-  }, [])
 
   return (
     <div style={{border: '2px solid red'}}>

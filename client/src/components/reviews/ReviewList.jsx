@@ -18,7 +18,7 @@ const ReviewsList = ( { reviews }) => {
       <KeywordSearch />
       {reviews.map((review) => {
         return (
-          <ReviewTile review={review}/>
+          <ReviewTile key={review.review_id} review={review}/>
         )
       })}
       <button>More Reviews</button>
