@@ -4,7 +4,7 @@ import { LeftArrow, RightArrow } from './CardButtons.jsx';
 
 const RelatedProductsList = (props) => {
   var currentProduct = props.currentProduct;
-  var list = props.products.map((product) => {
+  var list = props.relatedProducts.map((product) => {
     return <CardStructure product={product} listName={'product'} currentProduct={currentProduct}/>;
   })
   return (

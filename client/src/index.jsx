@@ -17,9 +17,9 @@ const App = () => {
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
-  const [myOutfit, setMyOutfit] = useState({});
+  const [myOutfit, setMyOutfit] = useState({outfits: []});
   const [productFeatures, setProductFeatures] = useState([]);
-  const [realtedProducts, setRelatedProducts] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
 
   // To-Do: Add function to start initial rendering of app in real-time ***
@@ -39,7 +39,7 @@ const App = () => {
         })
       })
       .then(realtedProductsData => {
-        setRelatedProducts(realtedProductsData.data);
+        setRelatedProducts(relatedProductsData.data);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -50,7 +50,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} productFeatures={productFeatures} outfit={myOutfit} />
+      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
       <QA productId={productId}/>
       <Reviews productId={productId}/>
     </div>
