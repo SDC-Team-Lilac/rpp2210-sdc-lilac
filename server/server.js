@@ -40,6 +40,7 @@ app.get('/products/:product_id/related', (req, res) => {
   var product_id = req.params.product_id;
   products_api.getRelated(product_id)
     .then((relatedProducts) => {
+      //console.log('Related Products Request: ', relatedProducts.data);
       res.status(200).send(relatedProducts.data)
     })
     .catch((error) => {

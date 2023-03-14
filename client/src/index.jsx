@@ -4,6 +4,7 @@ import Overview from './components/overview/Overview.jsx'
 import QA from './components/qa/QA.jsx'
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx'
 import Reviews from './components/reviews/Reviews.jsx'
+import { ProductListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
 
 const axios = require('axios');
 
@@ -19,8 +20,14 @@ const App = () => {
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
   const [myOutfit, setMyOutfit] = useState({outfits: []});
   const [productFeatures, setProductFeatures] = useState([]);
-  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([71698, 71699, 71704, 71703]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
+  const [productCards, setProductCards] = useState([]);
+
+
+  useEffect(() => {
+    updateSelectedProduct(71697);
+  }, [])
 
   // To-Do: Add function to start initial rendering of app in real-time ***
   const updateSelectedProduct = (product_id) => {
@@ -32,14 +39,20 @@ const App = () => {
       .then(productData => {
         setProductId(productData.data.id);
         setProductFeatures(productData.data.features);
-        axios.get(`/products/${product_id}/related`, {
+        return axios.get(`/products/${product_id}/related`, {
           params: {
             product_id: product_id
           }
         })
       })
-      .then(realtedProductsData => {
+      .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
+        return ProductListInfo(relatedProducts, setProductCards);
+      })
+      .then((cards) => {
+        console.log('Yay');
+        // setProductCards(cards);
+        // console.log('results? : ', cards);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -50,7 +63,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
+      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards}/>
       <QA productId={productId}/>
       <Reviews productId={productId}/>
     </div>

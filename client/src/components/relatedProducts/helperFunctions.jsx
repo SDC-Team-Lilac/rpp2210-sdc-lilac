@@ -7,7 +7,7 @@ const RatingCalculator = (ratings) => {
   var count = 0;
   var total = 0;
   for (var key in ratings) {
-    count += ratings[key];
+    count += ratings[key] * 1;
     total += ratings[key] * key;
   }
   return total / count;
