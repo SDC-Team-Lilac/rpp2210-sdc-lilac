@@ -50,7 +50,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId}/>
+      <RelatedProducts productId={productId} productFeatures={productFeatures} outfit={myOutfit} />
       <QA productId={productId}/>
       <Reviews productId={productId}/>
     </div>

@@ -3,8 +3,9 @@ import CardStructure from './CardStructure.jsx';
 import { LeftArrow, RightArrow } from './CardButtons.jsx';
 
 const RelatedProductsList = (props) => {
+  var currentProduct = props.currentProduct;
   var list = props.products.map((product) => {
-    return <CardStructure product={product} listName={'product'} />;
+    return <CardStructure product={product} listName={'product'} currentProduct={currentProduct}/>;
   })
   return (
     <div className='sarah-products-list'>

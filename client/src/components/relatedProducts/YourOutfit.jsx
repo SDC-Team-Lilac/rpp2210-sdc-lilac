@@ -3,7 +3,7 @@ import CardStructure from './CardStructure.jsx';
 import { LeftArrow, RightArrow, PlusButton } from './CardButtons.jsx';
 
 const YourOutfit = (props) => {
-  var list = props.outfits.map((outfit) => {
+  var list = props.outfit.map((outfit) => {
     return <CardStructure product={outfit} listName={'outfit'} />;
   })
   return (
