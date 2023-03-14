@@ -9,7 +9,7 @@ const CardStructure = (props) => {
     if (props.listName === 'outfit') {
       return XButton();
     } else {
-      return StarButton(props.currentProduct, props.product.productId);
+      return StarButton(props.currentProductFeatures, props.product.productId, props.setRelatedProductFeatures);
     }
   }
   if (props.product !== undefined) {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import { RatingCalculator } from './helperFunctions.jsx';
 import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
+import ComparisonModalList from './ComparisonModalList.jsx';
 
 const server = 'http://localhost:3000'
 
@@ -48,7 +49,7 @@ var count = 0;
       })
   }))
     .then((results) => {
-      console.log('THESE ARE RESULTS: ', results);
+      return;
     })
     .catch((err) => {
       console.log('ERROR IN MAP: ', err);
@@ -57,14 +58,23 @@ var count = 0;
   return list;
 }
 
-const ComparisonDetails = (product_id) => {
-  axios.get(`${server}/products/product_id`, {
+const ComparisonDetails = (currentProductFeatures, product_id, setRelatedProductFeatures) => {
+  if (product_id === null) {
+    return;
+  }
+  axios.get(`/products/${product_id}`, {
     params: {
       'product_id': product_id
     }
   })
     .then((results) => {
-      return results.features;
+      setRelatedProductFeatures(results.data.features)
+      var modalElement = document.getElementById('sarah-modal');
+      var overlayElement = document.getElementById('sarah-overlay');
+      var body = document.querySelector("body")
+      modalElement.classList.add('active');
+      overlayElement.classList.add('active');
+      body.classList.add('active');
     })
     .catch((err) => {
       console.log('Error in ComparisonDetails: ', err);

@@ -20,7 +20,7 @@ const App = () => {
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
   const [myOutfit, setMyOutfit] = useState({outfits: []});
   const [productFeatures, setProductFeatures] = useState([]);
-  const [relatedProducts, setRelatedProducts] = useState([71698, 71699, 71704, 71703]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
   const [productCards, setProductCards] = useState([]);
 
@@ -47,7 +47,7 @@ const App = () => {
       })
       .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
-        return ProductListInfo(relatedProducts, setProductCards);
+        return ProductListInfo(relatedProductsData.data, setProductCards);
       })
       .then((cards) => {
         console.log('Yay');
