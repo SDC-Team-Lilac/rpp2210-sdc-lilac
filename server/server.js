@@ -11,10 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'../client/dist')));
 
+// PRODUCT ROUTES:
+
 app.get('/products', (req, res) => {
   products_api.getAllProducts()
     .then(allProducts => {
-      // console.log('All Products: ', allProducts.data);
       res.status(200).send(allProducts.data);
     })
     .catch(error => {
@@ -25,7 +26,6 @@ app.get('/products', (req, res) => {
 
 app.get('/products/:product_id', (req, res) => {
   var product_id = req.params.product_id;
-  console.log('THIS IS PRODUCT_ID: ', product_id);
   products_api.getOneProduct(product_id)
     .then((productDetails) => {
       res.status(200).send(productDetails.data)
@@ -34,7 +34,32 @@ app.get('/products/:product_id', (req, res) => {
       console.error('Error in getOneProduct: ', error);
       res.status(404).send(error);
     })
-})
+});
+
+app.get('/products/:product_id/related', (req, res) => {
+  var product_id = req.params.product_id;
+  products_api.getRelated(product_id)
+    .then((relatedProducts) => {
+      res.status(200).send(relatedProducts.data)
+    })
+    .catch((error) => {
+      console.error('Error in getRelated: ', error);
+      res.status(404).send(error);
+    })
+});
+
+app.get('/products/:product_id/styles', (req, res) => {
+  var product_id = req.params.product_id;
+  // console.log('THIS IS PRODUCT_ID: ', product_id);
+  products_api.getStyles(product_id)
+    .then((productStyles) => {
+      res.status(200).send(productStyles.data)
+    })
+    .catch((error) => {
+      console.error('Error in getStyles: ', error);
+      res.status(404).send(error);
+    })
+});
 
 //REVIEW ROUTES:
 

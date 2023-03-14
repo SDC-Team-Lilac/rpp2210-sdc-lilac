@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductSummary = ( { product } ) => {
+const ProductSummary = ( { product, productId } ) => {
 
   // To-Do: Sync with Christian regarding star rating implementation
   // To-Do: Sync with Christian regarding integration of # reviews, and component linking
@@ -13,7 +13,7 @@ const ProductSummary = ( { product } ) => {
         <span>Read all [#] reviews </span>
       </div><br></br>
       <span>{product.category.toUpperCase()}</span><br></br>
-      <span className="product_summary_title"><b>{product.name}</b></span><br></br>
+      <span className="product_summary_title"><b>{productId}</b></span><br></br>
       <span>${product.default_price}</span>
     </div>
   )
