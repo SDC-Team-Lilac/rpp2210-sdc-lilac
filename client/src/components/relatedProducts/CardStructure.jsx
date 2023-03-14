@@ -1,6 +1,6 @@
 import React from 'react';
 import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
-import { ProductsListInfo } from './RelatedProductRequests.jsx';
+import { ProductListInfo } from './RelatedProductRequests.jsx';
 
 const CardStructure = (props) => {
   var determine = () => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComparisonDetails } from './RelatedProductRequests.jsx';
+import { RelatedProductsList } from './RelatedProductRequests.jsx';
 
 //rating calculator
 const RatingCalculator = (ratings) => {
@@ -30,8 +31,8 @@ const Compare = (product1, product2) => {
       features[index]['comparedProduct'] = product2[i].value;
     } else {
       features.push({
-        'comparedProduct': product[i].value;
-        'feature': product[i].feature;
+        'comparedProduct': product[i].value,
+        'feature': product[i].feature
       })
     }
   }
