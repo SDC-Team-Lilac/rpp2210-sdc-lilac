@@ -121,6 +121,104 @@ app.put('/reviews/report', (req, res) => {
 
 //END REVIEWS ROUTES
 
+//QA ROUTES
+
+app.get('/qa/questions', (req, res) => {
+  qa_api.getProductQuestions(req.query.product_id)
+    .then(questions => {
+      res.status(200).send(questions.data);
+    })
+    .catch(error => {
+      console.error('Error in getProductQuestions: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  qa_api.getProductAnswers(req.params.question_id)
+    .then(answers => {
+      res.status(200).send(answers.data);
+    })
+    .catch(error => {
+      console.error('Error in getProductAnswers: ', error);
+      res.status(404).send(error);
+    });
+});
+
+
+app.post('/qa/questions', (req, res) => {
+  qa_api.AddProductQuestion(req.body)
+    .then(() => {
+      res.status(201).send('Your question has been submitted!');
+    })
+    .catch(error => {
+      console.error('Error in AddProductQuestion: ', error);
+      res.status(404).send(error);
+    });
+});
+
+
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  qa_api.AddProductAnswer(req.params.question_id, req.body)
+    .then(() => {
+      res.status(201).send('Your answer has been submitted!');
+    })
+    .catch(error => {
+      console.error('Error in AddProductQuestion: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  qa_api.updateQuestionHelpful(req.params.question_id)
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(error => {
+      console.error('Error marking question helpful: ', error);
+      res.status(404).send(error);
+    });
+});
+
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  console.log('req.params.question_id', req.params.question_id)
+  qa_api.updateQuestionReport(req.params.question_id)
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(error => {
+      console.error('Error reporting question:', error);
+      res.status(404).send(error);
+    });
+});
+
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  qa_api.updateAnswerHelpful(req.params.answer_id)
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(error => {
+      console.error('Error marking answer helpful: ', error);
+      res.status(404).send(error);
+    });
+});
+
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  console.log('req.params.question_id', req.params.answer_id)
+  qa_api.updateAnswerReport(req.params.answer_id)
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(error => {
+      console.error('Error reporting answer:', error);
+      res.status(404).send(error);
+    });
+});
+
+
+// END QA ROUTES
+
 
 app.listen(3000, function(){
   console.log('connected to server!')
