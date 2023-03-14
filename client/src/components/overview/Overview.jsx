@@ -3,7 +3,7 @@ import ProductGallery from './ProductGallery.jsx';
 import ProductSelected from './ProductSelected.jsx';
 import ProductDetails from './ProductDetails.jsx';
 
-const Overview = () => {
+const Overview = ( { productId, updateSelectedProduct } ) => {
 
   const testProduct = {
     "id": 71697,
@@ -87,12 +87,103 @@ const Overview = () => {
     }
   };
 
+  const testProductStyleOptions = [
+    {
+      "style_id": 444218,
+      "name": "Forest Green & Black",
+      "skus": {
+        "2580526": {
+            "quantity": 8,
+            "size": "XS"
+        },
+        "2580527": {
+            "quantity": 16,
+            "size": "S"
+        },
+        "2580528": {
+            "quantity": 17,
+            "size": "M"
+        },
+        "2580529": {
+            "quantity": 10,
+            "size": "L"
+        },
+        "2580530": {
+            "quantity": 15,
+            "size": "XL"
+        },
+        "2580531": {
+            "quantity": 4,
+            "size": "XL"
+        }
+      }
+    }, {
+      "style_id": 444219,
+      "name": "Desert Brown & Tan",
+      "skus": {
+        "2580532": {
+            "quantity": 8,
+            "size": "XS"
+        },
+        "2580533": {
+            "quantity": 16,
+            "size": "S"
+        },
+        "2580534": {
+            "quantity": 17,
+            "size": "M"
+        },
+        "2580535": {
+            "quantity": 10,
+            "size": "L"
+        },
+        "2580536": {
+            "quantity": 15,
+            "size": "XL"
+        },
+        "2580537": {
+            "quantity": 6,
+            "size": "XXL"
+        }
+      }
+    }, {
+      "style_id": 444220,
+      "name": "Ocean Blue & Grey",
+      "skus": {
+        "2580538": {
+            "quantity": 8,
+            "size": "XS"
+        },
+        "2580539": {
+            "quantity": 16,
+            "size": "S"
+        },
+        "2580540": {
+            "quantity": 17,
+            "size": "M"
+        },
+        "2580541": {
+            "quantity": 10,
+            "size": "L"
+        },
+        "2580542": {
+            "quantity": 15,
+            "size": "XL"
+        },
+        "2580543": {
+            "quantity": 6,
+            "size": "XXL"
+        }
+      }
+    }
+  ]
+
   return (
     <div id="overview">
       <h1>This is the Overview Component!</h1>
       <div id="overview_top">
         <ProductGallery productPhotos={testSelectedStyle.photos} productName={testProduct.name} styleName={testSelectedStyle.name}/>
-        <ProductSelected product={testProduct} testProductStyle={testSelectedStyle}/>
+        <ProductSelected product={testProduct} testProductStyle={testSelectedStyle} testProductStyleOptions={testProductStyleOptions} updateSelectedProduct={updateSelectedProduct} productId={productId}/>
       </div>
       <ProductDetails slogan={testProduct.slogan} description={testProduct.description} features={testProduct.features}/>
     </div>
