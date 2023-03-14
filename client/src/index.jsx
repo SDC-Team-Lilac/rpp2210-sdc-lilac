@@ -49,10 +49,15 @@ const App = () => {
         setRelatedProducts(relatedProductsData.data);
         return ProductListInfo(relatedProductsData.data, setProductCards);
       })
-      .then((cards) => {
-        console.log('Yay');
-        // setProductCards(cards);
-        // console.log('results? : ', cards);
+      .then(() => {
+        return axios.get(`/products/${product_id}/styles`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(productStyles => {
+        setStyleId(productStyles.data.results[0].style_id);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
