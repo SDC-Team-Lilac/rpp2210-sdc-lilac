@@ -1,12 +1,20 @@
 import React from 'react';
 
-const ComparisonModal = (features) => {
+const ComparisonModal = (product1, product_id) => {
+  var features = CompareFeatures(product1, product_id);
   var table = features.map((feature) => {
+    var currentProduct = '';
+    var copmaredProduct = '';
+    if (feature.currentProduct !== undefined) {
+      currentProduct = feature.currentProduct
+    } else if (feature.comparedProduct !== undefined) {
+      comparedProduct = feature.comparedProduct;
+    }
     return (
       <div className='sarah-modal-feature'>
-        <h4 className='sarah-modal-product1-feature'>Product 1</h4>
-        <h4 className='sarah-modal-feature'>Feature</h4>
-        <h4 className='sarah-modal-product2-feature'>Product 2</h4>
+        <h4 className='sarah-modal-product1-feature'>{currentProduct}</h4>
+        <h4 className='sarah-modal-feature'>{feature.feature}</h4>
+        <h4 className='sarah-modal-product2-feature'>{comparedProduct}</h4>
       </div>
     )
   })
