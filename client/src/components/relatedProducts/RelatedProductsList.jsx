@@ -6,6 +6,7 @@ import { LeftArrow, RightArrow, OnCardClick, StarButton, XButton } from './CardB
 import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedProductsList = (props) => {
+  console.log('relatedProducts: ', props.relatedProducts);
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   return (
     <div className='sarah-products-list' id='sarah-products-list'>
