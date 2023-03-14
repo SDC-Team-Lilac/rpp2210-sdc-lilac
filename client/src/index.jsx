@@ -17,17 +17,40 @@ const App = () => {
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
-  const [myOutfit, setMyOutfit] = useState({});
-  const [productFeatures, setproductFeatures] = useState([]);
+  const [myOutfit, setMyOutfit] = useState({outfits: []});
+  const [productFeatures, setProductFeatures] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
 
   // To-Do: Add function to start initial rendering of app in real-time ***
+  const updateSelectedProduct = (product_id) => {
+    axios.get(`/products/${product_id}`, {
+      params: {
+        product_id: product_id
+      }
+    })
+      .then(productData => {
+        setProductId(productData.data.id);
+        setProductFeatures(productData.data.features);
+        axios.get(`/products/${product_id}/related`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(realtedProductsData => {
+        setRelatedProducts(relatedProductsData.data);
+      })
+      .catch(error => {
+        console.error('Error in updateSelectedProduct: ', error);
+      })
+  }
 
   return (
     <div>
       Hello World!
-      <Overview productId={productId}/>
-      <RelatedProducts productId={productId}/>
+      <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
+      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
       <QA productId={productId}/>
       <Reviews productId={productId}/>
     </div>

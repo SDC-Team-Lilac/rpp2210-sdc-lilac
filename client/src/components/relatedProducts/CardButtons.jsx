@@ -14,9 +14,8 @@ const OnCardClick = () => {
   console.log('The product card was clicked!')
 }
 
-const StarButton = (clickedProduct) => {
+const StarButton = (currentProduct, clickedProduct) => {
   //currentProduct will be current product id passed by state
-  var currentProduct = ['Fake Comparison'];
   var onClick = () => {
     ComparisonModal(currentProduct, clickedProduct);
     var modalElement = document.getElementById('sarah-modal');

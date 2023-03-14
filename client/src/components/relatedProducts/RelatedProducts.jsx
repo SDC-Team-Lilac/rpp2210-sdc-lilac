@@ -6,13 +6,12 @@ import { StarButton, XButton, OnCardClick, LeftArrow, RightArrow, PlusButton } f
 import ComparisonModal from './ComparisonModal.jsx';
 import RelatedProductsList from './RelatedProductsList.jsx';
 
-const RelatedProducts = () => {
-  var products = ['Fake-Product'];
+const RelatedProducts = (props) => {
   var outfits = ['Fake-Outfit'];
   return (
     <div>
-      <RelatedProductsList products={products}/>
-      <YourOutfit outfits={outfits}/>
+      <RelatedProductsList productId={props.productId} currentProduct={props.productFeatures} relatedProducts={props.relatedProducts}/>
+      <YourOutfit myOutfit={props.myOutfit}/>
     </div>
   )
 }
