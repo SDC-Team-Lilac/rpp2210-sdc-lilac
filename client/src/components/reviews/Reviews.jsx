@@ -26,15 +26,25 @@ const Reviews = ({ productId }) => {
   */
      // //array of review objects
   const [reviews, setReviews] = useState([])
-  const [reviewsMeta, setReviewsMeta] = useState([])
+  const [reviewsMeta, setReviewsMeta] = useState({})
 
-  useEffect(() => {
-    axios.get('/reviews', {
+  const countAllReviews = (ratings) => {
+    var total = Number(ratings[1]) + Number(ratings[2]) + Number(ratings[3]) + Number(ratings[4]) + Number(ratings[5])
+  }
+  const getReviews = (count) => {
+    return axios.get('/reviews', {
       params: {
-        product_id: productId
+        product_id: productId,
+        count: count
       }
     })
-    .then((result) => {setReviews(result.data.results)})
+  }
+
+  useEffect(() => {
+    getReviews(2)
+    .then((result) => {
+      setReviews(result.data.results);
+    })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
 
     axios.get('/reviews/meta', {
@@ -42,16 +52,25 @@ const Reviews = ({ productId }) => {
         product_id: productId
       }
     })
-    .then((result) => {setReviewsMeta(result.data)})
-    .catch((err) => {console.log('Trouble getting reviews meta from client', err)})
+    .then((result) => {
+      setReviewsMeta(result.data);
+      console.log(result.data.ratings)
+      countAllReviews(result.data.ratings)
+    })
+    .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
   }, [])
+
+  // useEffect(() => {
+  //   countAllReviews(reviewsMeta)
+  // }, [reviewsMeta])
+
 
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
-      <RatingBreakdown />
-      <ReviewList reviews = {reviews}/>
-      <NewReview/>
+      <RatingBreakdown reviewsMeta={reviewsMeta}/>
+      <ReviewList reviews={reviews}/>
+      <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )
 }

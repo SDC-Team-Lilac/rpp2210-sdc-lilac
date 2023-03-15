@@ -5,6 +5,7 @@ const APIHostURL = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp";
 const APIKey = process.env.FEC_API_KEY;
 
 const getReviews = (req, res) => {
+  console.log(req.query)
   var queryParams = req.query;
   return axios.get(`${APIHostURL}/reviews`, {
     headers: {
@@ -53,33 +54,33 @@ const getReviewsMeta = (req, res) => {
 
 const postReview = (req, res) => {
   var requestBody = req.body;
-  return axios.post(`${APIHostURL}/reviews`,exampleData,{
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: APIKey
-    }
-
-    //THIS WILL BE USED LATER FOR REAL DATA FROM CLIENT
-    // data: {
-    //   product_id: requestBody.product_id,
-    //   rating: requestBody.rating,
-    //   summary: summary,
-    //   body: requestBody.body,
-    //   recommend: requestBody.recommend,
-    //   name: requestBody.name,
-    //   email: requestBody.email,
-    //   photos: requestBody.photos,
-    //   characteristics: requestBody.characteristics,
-    // }
+  console.log('We posted review', requestBody)
+  return axios.post(`${APIHostURL}/reviews`,
+    {
+      product_id: requestBody.product_id,
+      rating: requestBody.rating,
+      summary: requestBody.summary,
+      body: requestBody.body,
+      recommend: requestBody.recommend,
+      name: requestBody.name,
+      email: requestBody.email,
+      photos: requestBody.photos,
+      characteristics: requestBody.characteristics,
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: APIKey
+      }
 
 });
 }
 
 const putHelpful = (req, res) => {
   //TODO Reimplement with actual reviewID
-  var exampleReviewID = 1279172
-  return axios.put(`${APIHostURL}/reviews/${exampleReviewID}/helpful`, null, {
+  console.log('Got request in helpful review:', req.body)
+  var reviewID = req.body.id
+  return axios.put(`${APIHostURL}/reviews/${reviewID}/helpful`, null, {
     headers: {
       Authorization: APIKey
     }
@@ -88,8 +89,9 @@ const putHelpful = (req, res) => {
 
 const putReportReview = (req, res) => {
   //TODO Reimplement with actual reviewID
-  var exampleReviewID = 1279172
-  return axios.put(`${APIHostURL}/reviews/${exampleReviewID}/report`, null, {
+  var reviewID = req.body.id
+  console.log('Got request in report review:', req.body.id)
+  return axios.put(`${APIHostURL}/reviews/${reviewID}/report`, null, {
     headers: {
       Authorization: APIKey
     }
