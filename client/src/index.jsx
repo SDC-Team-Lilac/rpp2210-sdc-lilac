@@ -46,13 +46,17 @@ const App = () => {
       })
   }
 
+  const updateAverageRating = (averageRating) => {
+    setAverageStarRating(averageRating)
+  }
+
   return (
     <div>
       Hello World!
       <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
       <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
       <QA productId={productId}/>
-      <Reviews productId={productId}/>
+      <Reviews productId={productId} updateAverageRating={updateAverageRating}/>
     </div>
   );
 };
