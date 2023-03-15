@@ -22,7 +22,7 @@ const App = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
 
-  // To-Do: Add function to start initial rendering of app in real-time ***
+  // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
   const updateSelectedProduct = (product_id) => {
     axios.get(`/products/${product_id}`, {
       params: {
@@ -38,8 +38,16 @@ const App = () => {
           }
         })
       })
-      .then(realtedProductsData => {
+      .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
+        axios.get(`/products/${product_id}/styles`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(productStyles => {
+        setStyleId(productStyles.data.results[0].style_id);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -49,7 +57,7 @@ const App = () => {
   return (
     <div>
       Hello World!
-      <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
+      <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
       <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
       <QA productId={productId}/>
       <Reviews productId={productId}/>

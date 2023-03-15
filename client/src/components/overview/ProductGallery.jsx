@@ -2,6 +2,7 @@ import React from 'react';
 
 const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
+  console.log('Product Gallery: ', productPhotos, productName, styleName);
   const imageDescription = productName.concat(', ', styleName);
   // console.log('Image description: ', imageDescription);
 
