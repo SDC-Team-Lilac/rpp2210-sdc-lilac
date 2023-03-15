@@ -54,25 +54,24 @@ const getReviewsMeta = (req, res) => {
 
 const postReview = (req, res) => {
   var requestBody = req.body;
-  return axios.post(`${APIHostURL}/reviews`,exampleData,{
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: APIKey
-    }
-
-    //THIS WILL BE USED LATER FOR REAL DATA FROM CLIENT
-    // data: {
-    //   product_id: requestBody.product_id,
-    //   rating: requestBody.rating,
-    //   summary: summary,
-    //   body: requestBody.body,
-    //   recommend: requestBody.recommend,
-    //   name: requestBody.name,
-    //   email: requestBody.email,
-    //   photos: requestBody.photos,
-    //   characteristics: requestBody.characteristics,
-    // }
+  console.log('We posted review', requestBody)
+  return axios.post(`${APIHostURL}/reviews`,
+    {
+      product_id: requestBody.product_id,
+      rating: requestBody.rating,
+      summary: requestBody.summary,
+      body: requestBody.body,
+      recommend: requestBody.recommend,
+      name: requestBody.name,
+      email: requestBody.email,
+      photos: requestBody.photos,
+      characteristics: requestBody.characteristics,
+    },{
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: APIKey
+      }
 
 });
 }

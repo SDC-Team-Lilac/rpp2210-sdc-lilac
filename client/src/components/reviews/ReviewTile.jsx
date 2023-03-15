@@ -28,6 +28,7 @@ const ReviewTile = ({ review }) => {
 
   return (
     <div style={{border: '2px solid purple'}}>
+    <div>Rating: {review.rating}</div>
     <div>Summary: {review.summary}</div>
     <div>Body: {review.body}</div>
     <div>Reviewer Name: {review.reviewer_name}</div>

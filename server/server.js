@@ -88,7 +88,7 @@ app.get('/reviews/meta', (req, res) => {
 app.post('/reviews', (req, res) => {
   reviews_api.postReview(req, res)
     .then(success => {
-      res.status(201);
+      res.status(201).send('Success posting review');
     })
     .catch(error => {
       console.error('Error posting Review: ', error);
