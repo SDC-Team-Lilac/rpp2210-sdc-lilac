@@ -10,19 +10,21 @@ const ReviewTile = ({ review }) => {
     4) Needs to have an option for them to click and report this then send put request
     */
 
-  // const handleHelpful = (e) => {
-  //   e.preventDefault();
-  //   axios.put('/reviews/helpful', {data: {review.review_id}})
-  //   .then((success) => {console.log('Marked Review as Helpful!')})
-  //   .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
-  // }
+  const handleHelpful = (e) => {
+    e.preventDefault();
+    console.log('Marked Helpful')
+    axios.put('/reviews/helpful', {id: review.review_id})
+    .then((success) => {console.log('Marked Review as Helpful!')})
+    .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
+  }
 
-  // const handleReport = (e) => {
-  //   e.preventDefault();
-  //   axios.put('/reviews/report', {data: {review.review_id}})
-  //   .then((success) => {console.log('Reported Review!!')})
-  //   .catch((err) => {console.log('ERROR reporting review!', err)})
-  // }
+  const handleReport = (e) => {
+    e.preventDefault();
+    console.log('Reported Review')
+    axios.put('/reviews/report', {id: review.review_id})
+    .then((success) => {console.log('Reported Review!!')})
+    .catch((err) => {console.log('ERROR reporting review!', err)})
+  }
 
   return (
     <div style={{border: '2px solid purple'}}>
@@ -32,6 +34,8 @@ const ReviewTile = ({ review }) => {
     <div>Date Reviewed: {review.date}</div>
     <div>Helpfulness Rating: {review.helpfulness}</div>
     {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
+    <button onClick={handleHelpful}>Mark as Helpful</button>
+    <button onClick={handleReport}>Report Review</button>
     </div>
   )
 }

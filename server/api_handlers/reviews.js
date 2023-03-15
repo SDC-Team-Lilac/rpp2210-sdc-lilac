@@ -79,8 +79,9 @@ const postReview = (req, res) => {
 
 const putHelpful = (req, res) => {
   //TODO Reimplement with actual reviewID
-  var exampleReviewID = 1279172
-  return axios.put(`${APIHostURL}/reviews/${exampleReviewID}/helpful`, null, {
+  console.log('Got request in helpful review:', req.body)
+  var reviewID = req.body.id
+  return axios.put(`${APIHostURL}/reviews/${reviewID}/helpful`, null, {
     headers: {
       Authorization: APIKey
     }
@@ -89,8 +90,9 @@ const putHelpful = (req, res) => {
 
 const putReportReview = (req, res) => {
   //TODO Reimplement with actual reviewID
-  var exampleReviewID = 1279172
-  return axios.put(`${APIHostURL}/reviews/${exampleReviewID}/report`, null, {
+  var reviewID = req.body.id
+  console.log('Got request in report review:', req.body.id)
+  return axios.put(`${APIHostURL}/reviews/${reviewID}/report`, null, {
     headers: {
       Authorization: APIKey
     }
