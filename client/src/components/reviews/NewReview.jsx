@@ -11,7 +11,7 @@ const NewReview = ({ productId, reviewsMeta }) => {
       - product name
       - product characteristics
    */
-  console.log('reviewsMeta', reviewsMeta)
+  // console.log('reviewsMeta', reviewsMeta)
 
   const [overall, setOverall] = useState('1')
   const [recommend, setRecommend] = useState(false)

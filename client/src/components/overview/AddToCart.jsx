@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AddToCart = ( { testProductStyle, testProductStyleOptions, updateSelectedProduct } ) => {
+const AddToCart = ( { selectedStyle, productStyles, updateSelectedStyle } ) => {
 
   // const styleOptions = testProductStyleOptions.map(style => {
   //   return (
@@ -12,9 +12,9 @@ const AddToCart = ( { testProductStyle, testProductStyleOptions, updateSelectedP
 
   let sizeOptions = [];
   let styleSkuData = [];
-  if (testProductStyle) {
-    for (var sku in testProductStyle.skus) {
-      styleSkuData.push([sku, testProductStyle.skus[sku].quantity, testProductStyle.skus[sku].size]);
+  if (selectedStyle) {
+    for (var sku in selectedStyle.skus) {
+      styleSkuData.push([sku, selectedStyle.skus[sku].quantity, selectedStyle.skus[sku].size]);
     }
     sizeOptions = styleSkuData.map(item => {
       if (item[1] > 0) {

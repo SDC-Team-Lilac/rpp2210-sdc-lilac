@@ -8,15 +8,15 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
 
   console.log('Product ID in Overview: ', productId);
 
-  const [productDetails, setProductDetails] = useState({});
-  const [productStyles, setProductStyles] = useState([]);
-  const [selectedStyle, setSelectedStyle] = useState({});
+  const [productDetails, setProductDetails] = useState({id: null, name: '', slogan: '', description: '', category: '', default_price: '', features: []});
+  const [productStyles, setProductStyles] = useState([{name: '', photos: [{thumbnail_url: '', url: ''}]}]);
+  const [selectedStyle, setSelectedStyle] = useState({name: '', photos: [{thumbnail_url: '', url: ''}]});
 
   useEffect(() => {
     console.log('!!!!!!!');
     getProductDetails(productId);
     setProductStylesDetails(productId);
-  }, []);
+  }, [productId]);
 
   const getProductDetails = (product_id) => {
     axios.get(`/products/${product_id}`)
