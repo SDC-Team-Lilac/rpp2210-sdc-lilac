@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import RatingBreakdown from './RatingBreakdown.jsx'
 import ReviewList from './ReviewList.jsx'
 import NewReview from './NewReview.jsx'
+import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId }) => {
+const Reviews = ({ productId, updateAverageRating }) => {
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)
@@ -25,12 +26,12 @@ const Reviews = ({ productId }) => {
     Note: Will need to make functions for subsequent calls to getReviews API to filter & sort the results
   */
      // //array of review objects
+
+
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
 
-  const countAllReviews = (ratings) => {
-    var total = Number(ratings[1]) + Number(ratings[2]) + Number(ratings[3]) + Number(ratings[4]) + Number(ratings[5])
-  }
+
   const getReviews = (count) => {
     return axios.get('/reviews', {
       params: {
@@ -54,7 +55,9 @@ const Reviews = ({ productId }) => {
     })
     .then((result) => {
       setReviewsMeta(result.data);
-      console.log(result.data.ratings)
+      var averageRating = RatingCalculator(result.data.ratings)
+      console.log('averageRating',averageRating)
+      updateAverageRating(averageRating)
       countAllReviews(result.data.ratings)
     })
     .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
