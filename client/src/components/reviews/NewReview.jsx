@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Characteristics from './Characteristics.jsx'
 
-const NewReview = ({ productId }) => {
+const NewReview = ({ productId, reviewsMeta }) => {
 
   /* This component will:
     1) Need to control the inputs of each field in their own state
@@ -10,8 +11,7 @@ const NewReview = ({ productId }) => {
       - product name
       - product characteristics
    */
-
-
+  console.log('reviewsMeta', reviewsMeta)
 
   const [overall, setOverall] = useState('1')
   const [recommend, setRecommend] = useState(false)
@@ -65,8 +65,7 @@ const NewReview = ({ productId }) => {
           <input type="text"></input>
         </div>
         <div>
-          <label>Characteristics</label>
-          <input type="text"></input>
+          <Characteristics characteristics={reviewsMeta.characteristics}/>
         </div>
         <div>
           <label>Review Summary</label>

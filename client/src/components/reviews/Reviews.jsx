@@ -70,7 +70,7 @@ const Reviews = ({ productId }) => {
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
       <ReviewList reviews={reviews}/>
-      <NewReview productId={productId}/>
+      <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )
 }
