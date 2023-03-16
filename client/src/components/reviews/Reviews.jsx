@@ -73,7 +73,6 @@ const Reviews = ({ productId, updateAverageRating }) => {
     e.preventDefault()
     getReviews(nextPage)
     .then((result) => {
-      console.log('Checking & Adding reviews', [...reviews, ...result.data.results])
       if (result.data.results.length !== 0) {
         setShowMoreButton(true);
         var additionalReviews = [...reviews, ...result.data.results]
