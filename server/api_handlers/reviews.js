@@ -5,7 +5,6 @@ const APIHostURL = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp";
 const APIKey = process.env.FEC_API_KEY;
 
 const getReviews = (req, res) => {
-  console.log(req.query)
   var queryParams = req.query;
   return axios.get(`${APIHostURL}/reviews`, {
     headers: {
