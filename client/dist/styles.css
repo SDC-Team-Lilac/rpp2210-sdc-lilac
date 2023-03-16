@@ -20,6 +20,8 @@
 .mainImage {
   position: relative;
   object-fit: cover;
+  max-width: 700px;
+  max-height: 950px;
 }
 
 .thumbnailGallery {

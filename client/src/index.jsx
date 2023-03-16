@@ -12,7 +12,7 @@ const root = createRoot(domNode);
 
 const App = () => {
 
-  // Change this later to no longer hard-code starting productId
+  // Change this later to no longer hard-code starting productId 71701
   const [productId, setProductId] = useState(71697);
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
