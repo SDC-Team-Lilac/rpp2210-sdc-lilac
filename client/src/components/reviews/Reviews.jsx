@@ -54,7 +54,7 @@ const Reviews = ({ productId }) => {
     })
     .then((result) => {
       setReviewsMeta(result.data);
-      console.log(result.data.ratings)
+      // console.log(result.data.ratings)
       countAllReviews(result.data.ratings)
     })
     .catch((err) => {console.log('Trouble getting reviews meta from client', err)});

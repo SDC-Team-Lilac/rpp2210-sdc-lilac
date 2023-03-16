@@ -50,6 +50,11 @@
   letter-spacing: 1px;
 }
 
+.product_sale_price {
+  color: red;
+  font-weight: 700;
+}
+
 .overview_style_selector {
   border: 2px solid fuchsia;
   padding: 10px 10px 10px 10px;

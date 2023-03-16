@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductFeatures = ( { features } ) => {
 
-  console.log('Features: ', features);
+  // console.log('Features: ', features);
 
   let count = 0;
   const featuresList = features.map((feature => {
