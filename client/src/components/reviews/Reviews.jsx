@@ -30,23 +30,29 @@ const Reviews = ({ productId, updateAverageRating }) => {
 
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
+  const [nextPage, setNextPage] = useState(2)
+  const [showMoreButton, setShowMoreButton] = useState(false)
 
-
-  const getReviews = (count) => {
+  const getReviews = (page) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
-        count: count
+        count: 2,
+        page: page
       }
     })
   }
 
   useEffect(() => {
-    getReviews(2)
+    getReviews(1)
     .then((result) => {
-      setReviews(result.data.results);
+      if (result.data.results.length !== 0) {
+        setShowMoreButton(true)
+        setReviews(result.data.results);
+      }
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
+
 
     axios.get('/reviews/meta', {
       params: {
@@ -56,23 +62,33 @@ const Reviews = ({ productId, updateAverageRating }) => {
     .then((result) => {
       setReviewsMeta(result.data);
       var averageRating = RatingCalculator(result.data.ratings)
-      console.log('averageRating',averageRating)
       updateAverageRating(averageRating)
-      countAllReviews(result.data.ratings)
     })
     .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
   }, [])
 
-  // useEffect(() => {
-  //   countAllReviews(reviewsMeta)
-  // }, [reviewsMeta])
 
+
+  const checkAddReviews = (e) => {
+    e.preventDefault()
+    getReviews(nextPage)
+    .then((result) => {
+      if (result.data.results.length !== 0) {
+        setShowMoreButton(true);
+        var additionalReviews = [...reviews, ...result.data.results]
+        setReviews(additionalReviews)
+      }
+    })
+    .catch((err) => {console.log('Error adding reviews:', err)})
+    var updatePage = nextPage + 1;
+    setNextPage(updatePage);
+  }
 
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      <ReviewList reviews={reviews}/>
+      <ReviewList reviews={reviews} showMoreButton={showMoreButton} checkAddReviews={checkAddReviews} />
       <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )
