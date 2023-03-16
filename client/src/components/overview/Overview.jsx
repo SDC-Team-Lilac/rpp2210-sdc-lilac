@@ -39,13 +39,10 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
       });
   };
 
-  const updateSelectedStyle = (style_id) => {
-    // let styleIndex;
-    // for (var )
-    // setSelectedStyle(productStyles)
+  const updateSelectedStyle = (e) => {
+    e.preventDefault();
+    setSelectedStyle(productStyles[e.target.id]);
   }
-
-
 
   // Becomes productDetails
   const testProduct = {
@@ -222,20 +219,17 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
     }
   ]
 
-  // How to get around this???? Ask in HelpDesk/OH
-  // if (productDetails.name !== undefined) {
-    console.log('Product Details: ', productDetails);
-    return (
-      <div id="overview">
-        <h1>This is the Overview Component!</h1>
-        <div id="overview_top">
-          <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
-          <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
-        </div>
-        <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/>
+  // console.log('Product Details: ', productDetails);
+  return (
+    <div id="overview">
+      <h1>This is the Overview Component!</h1>
+      <div id="overview_top">
+        <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
+        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
       </div>
-    );
-  // }
+      <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/>
+    </div>
+  );
 }
 
 export default Overview;
