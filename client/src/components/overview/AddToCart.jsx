@@ -80,20 +80,20 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   return (
     <div className="overview_addToCart">
       <h3>This is the Add to Cart Component!</h3>
-      <div>
+      <div data-testid="sizeSelector">
         <select defaultValue="Select Size" onChange={handleSizeChange}>
           <option value="Select Size" disabled>Select Size</option>
           {sizeOptions}
         </select>
       </div>
-      <div>
+      <div data-testid="quantitySelector">
         <select defaultValue="Starting Quantity" onChange={handleQuantityChange}>
           {quantityDefaultValue}
           {quantityOptions}
         </select>
       </div>
-      <button>Add to Cart</button>
-      <button>Add to My Outfit</button>
+      <button data-testid="addToCartButton">Add to Cart</button>
+      <button data-testid="addToOutfitButton">Add to My Outfit</button>
     </div>
   )
 }

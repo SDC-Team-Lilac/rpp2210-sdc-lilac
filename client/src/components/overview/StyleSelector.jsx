@@ -10,7 +10,7 @@ const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) 
     let styleDescription = style.name;
     return (
       <div key={count} className="style_thumbnail_cropper">
-        <img className="style_thumbnail" id={count} src={style.photos[0].thumbnail_url} alt={style.name} onClick={updateSelectedStyle}></img>
+        <img className="style_thumbnail" data-testid={`styleThumbnailImage${count}`} id={count} src={style.photos[0].thumbnail_url} alt={style.name} onClick={updateSelectedStyle}></img>
       </div>
     )
   })
@@ -19,7 +19,7 @@ const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) 
     <div className="overview_style_selector">
       {/* <h3>This is the Style Selector Component!</h3> */}
       <div>
-        <span><b>{selectedStyle.name.toUpperCase()} > </b></span>
+        <span data-testid="selectedStyleTitle"><b>{selectedStyle.name.toUpperCase()} > </b></span>
         <span>SELECTED STYLE</span>
       </div>
       <div className="style_selector_thumbnails">

@@ -9,7 +9,7 @@ const ProductFeatures = ( { features } ) => {
     count++;
     return (
       // <li key={count}><b>{feature.feature}: </b>{feature.value}</li>
-      <li key={count}>{feature.value} {feature.feature}</li>
+      <li key={count} data-testid={`feature-${count}`}>{feature.value} {feature.feature}</li>
     );
   }))
 

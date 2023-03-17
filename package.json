@@ -6,7 +6,8 @@
   "scripts": {
     "client-dev": "webpack --watch",
     "server-dev": "nodemon server/server.js",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
