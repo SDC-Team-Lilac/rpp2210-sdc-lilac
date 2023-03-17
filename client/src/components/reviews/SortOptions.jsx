@@ -9,7 +9,14 @@ const SortOptions = () => {
   */
 
   return (
-    <div className="reviews sortOptions" style={{border: '2px solid black'}}> SortOptions! </div>
+    <div className="reviews sortOptions" style={{border: '2px solid black'}}>
+      <label>Sort By:</label>
+      <select>
+        <option>Helpful</option>
+        <option>Newest</option>
+        <option>Relevant</option>
+      </select>
+       </div>
   )
 }
 
