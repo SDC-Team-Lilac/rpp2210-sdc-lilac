@@ -2,8 +2,6 @@ import React from 'react';
 
 const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) => {
 
-  // Refactor Need: Need to limit to 4 thumbnails in a row ***
-  // Hard-coding this with the test product thumbnails for now, will have to re-factor when connected to live API ***
   let count = -1;
   const styleThumbnails = productStyles.map(style => {
     count++;
