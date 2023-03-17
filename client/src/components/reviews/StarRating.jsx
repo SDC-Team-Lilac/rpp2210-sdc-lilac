@@ -4,7 +4,7 @@ const StarRating = ({ rating }) => {
 
 
   return (
-    <div class="stars"> &#11088; &#11088; &#11088; &#11088; &#11088; </div>
+    <div class="reviews stars"> &#11088;&#11088;&#11088;&#11088;&#11088; </div>
   )
 }
 
