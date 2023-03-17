@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductSummary from './ProductSummary.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
-const ProductSelected = ( { product, testProductStyle, testProductStyleOptions, updateSelectedProduct, productId } ) => {
+const ProductSelected = ( { productDetails, selectedStyle, productStyles, updateSelectedStyle } ) => {
 
-  // console.log('Product in ProductSelected: ', product);
-  // console.log('Test Product Style in ProductSelected: ', testProductStyle);
-  // console.log('Test style options in ProductSelected: ', testProductStyleOptions);
+  // console.log('Product Details in ProductSelected: ', productDetails);
+  // console.log('Product SelectedStyle in ProductSelected: ', selectedStyle);
+  // console.log('Product Styles in ProductSelected: ', productStyles);
 
   return (
     <div className="overview_product_selected">
       <h2>This is the Product Selected Component!</h2>
-      <ProductSummary product={product} productId={productId}/>
-      <StyleSelector testProductStyle={testProductStyle} />
-      <AddToCart testProductStyle={testProductStyle} testProductStyleOptions={testProductStyleOptions} updateSelectedProduct={updateSelectedProduct}/>
+      <ProductSummary productDetails={productDetails} selectedStyle={selectedStyle}/>
+      <StyleSelector selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle} />
+      <AddToCart selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
     </div>
   )
 }

@@ -1,10 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductGallery from './ProductGallery.jsx';
 import ProductSelected from './ProductSelected.jsx';
 import ProductDetails from './ProductDetails.jsx';
+const axios = require('axios');
 
-const Overview = ( { productId, updateSelectedProduct } ) => {
+const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, updateSelectedProduct } ) => {
 
+  console.log('Product ID in Overview: ', productId);
+
+  const [productDetails, setProductDetails] = useState({id: null, name: '', slogan: '', description: '', category: '', default_price: '', features: []});
+  const [productStyles, setProductStyles] = useState([{name: '', photos: [{thumbnail_url: '', url: ''}]}]);
+  const [selectedStyle, setSelectedStyle] = useState({name: '', photos: [{thumbnail_url: '', url: ''}], skus: {null: {quantity: null, size: null}} });
+
+  useEffect(() => {
+    console.log('Overview Rendering!!!!!!!');
+    getProductDetails(productId);
+    setProductStylesDetails(productId);
+  }, [productId]);
+
+  const getProductDetails = (product_id) => {
+    axios.get(`/products/${product_id}`)
+      .then(productDetailsData => {
+        setProductDetails(productDetailsData.data);
+      })
+      .catch(error => {
+        console.error('Error getting product details in Overview component');
+      });
+  };
+
+  const setProductStylesDetails = (product_id) => {
+    axios.get(`/products/${product_id}/styles`)
+      .then(productStylesData => {
+        setProductStyles(productStylesData.data.results);
+        setSelectedStyle(productStylesData.data.results[0]);
+      })
+      .catch(error => {
+        console.error('Error getting product styles in Overview component');
+      });
+  };
+
+  const updateSelectedStyle = (e) => {
+    e.preventDefault();
+    setSelectedStyle(productStyles[e.target.id]);
+  }
+
+  // Becomes productDetails
   const testProduct = {
     "id": 71697,
     "campus": "hr-rpp",
@@ -27,6 +67,7 @@ const Overview = ( { productId, updateSelectedProduct } ) => {
     ]
   };
 
+  // Becomes productStyles
   const testSelectedStyle = {
     "style_id": 444218,
     "name": "Forest Green & Black",
@@ -178,14 +219,15 @@ const Overview = ( { productId, updateSelectedProduct } ) => {
     }
   ]
 
+  // console.log('Product Details: ', productDetails);
   return (
     <div id="overview">
       <h1>This is the Overview Component!</h1>
       <div id="overview_top">
-        <ProductGallery productPhotos={testSelectedStyle.photos} productName={testProduct.name} styleName={testSelectedStyle.name}/>
-        <ProductSelected product={testProduct} testProductStyle={testSelectedStyle} testProductStyleOptions={testProductStyleOptions} updateSelectedProduct={updateSelectedProduct} productId={productId}/>
+        <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
+        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
       </div>
-      <ProductDetails slogan={testProduct.slogan} description={testProduct.description} features={testProduct.features}/>
+      <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/>
     </div>
   );
 }

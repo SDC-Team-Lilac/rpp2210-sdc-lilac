@@ -13,7 +13,7 @@ const root = createRoot(domNode);
 
 const App = () => {
 
-  // Change this later to no longer hard-code starting productId
+  // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697 || HORIZONTAL, PROBLEMATIC: 71701
   const [productId, setProductId] = useState(71697);
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -29,7 +29,7 @@ const App = () => {
     updateSelectedProduct(71697);
   }, [])
 
-  // To-Do: Add function to start initial rendering of app in real-time ***
+  // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
   const updateSelectedProduct = (product_id) => {
     axios.get(`/products/${product_id}`, {
       params: {
@@ -47,7 +47,16 @@ const App = () => {
       })
       .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
-        return ProductListInfo(relatedProductsData.data, setProductCards);
+
+        axios.get(`/products/${product_id}/styles`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(productStyles => {
+        setStyleId(productStyles.data.results[0].style_id);
+        return ProductListInfo(relatedProducts, setProductCards);
       })
       .then(() => {
         return axios.get(`/products/${product_id}/styles`, {
@@ -71,8 +80,8 @@ const App = () => {
   return (
     <div>
       Hello World!
-      <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards}/>
+      <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
+      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
       <QA productId={productId}/>
       <Reviews productId={productId} updateAverageRating={updateAverageRating}/>
     </div>
