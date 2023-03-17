@@ -1,3 +1,4 @@
+// import * as React from 'react';
 import React, { useState, useEffect } from 'react';
 import ProductGallery from './ProductGallery.jsx';
 import ProductSelected from './ProductSelected.jsx';

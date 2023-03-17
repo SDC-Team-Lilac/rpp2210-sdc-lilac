@@ -49,18 +49,7 @@ const App = () => {
         setRelatedProducts(relatedProductsData.data);
         return ProductListInfo(relatedProductsData.data, setProductCards);
       })
-      .then(() => {
-        return axios.get(`/products/${product_id}/styles`, {
-          params: {
-            product_id: product_id
-          }
-        })
-      })
-      .then(productStyles => {
-        setStyleId(productStyles.data.results[0].style_id);
-        return ProductListInfo(relatedProducts, setProductCards);
-      })
-      .then(() => {
+      .then(success => {
         return axios.get(`/products/${product_id}/styles`, {
           params: {
             product_id: product_id
