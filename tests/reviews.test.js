@@ -1,7 +1,9 @@
-// Test Suite
-describe('my function or component', () => {
-  // Test Case
-  it('does the following', () => {
-    expect(true).toBe(true);
-  });
-});
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import Reviews from '../client/src/components/reviews/Reviews.jsx';
+
+xdescribe('Reviews Component', () => {
+  it('Renders Reviews component', () => {
+    render(<Reviews />)
+  })
+})
