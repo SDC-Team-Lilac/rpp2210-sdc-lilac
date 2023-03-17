@@ -8,8 +8,8 @@ const ProductInformation = ( { slogan, description } ) => {
     return (
       <div className="overview_product_information">
         {/* <h3>This is the Product Information Component!</h3> */}
-        <span><b>{slogan}</b></span><br></br>
-        <span>{description}</span>
+        <span data-testid="slogan"><b>{slogan}</b></span><br></br>
+        <span data-testid="description">{description}</span>
       </div>
     );
   }
