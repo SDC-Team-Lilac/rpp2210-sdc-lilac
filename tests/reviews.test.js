@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 // import App from '../client/src/index.jsx'
 import Reviews from '../client/src/components/reviews/Reviews.jsx';
 
-<<<<<<< HEAD
 // jest.mock('react-dom', () => ({ render: jest.fn() }))
 
 describe('Reviews Component', () => {
