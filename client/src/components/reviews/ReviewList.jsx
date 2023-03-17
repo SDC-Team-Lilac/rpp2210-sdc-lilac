@@ -20,15 +20,17 @@ const ReviewsList = ( { reviews, showMoreButton, checkAddReviews }) => {
       //hide the button
 
   return (
-    <div style={{border: '5px solid blue'}}>
+    <div style={{border: '5px solid blue',}}>
       ReviewsList!
       <SortOptions />
       <KeywordSearch />
-      {reviews.map((review) => {
-        return (
-          <ReviewTile key={review.review_id} review={review}/>
-        )
-      })}
+      <div style={{maxHeight: '450px', overflowY: 'auto'}}>
+        {reviews.map((review) => {
+          return (
+            <ReviewTile key={review.review_id} review={review}/>
+          )
+        })}
+      </div>
       {showMoreButton ? <button onClick={checkAddReviews}>More Reviews</button>  : null}
       <button>Add Review</button>
     </div>
