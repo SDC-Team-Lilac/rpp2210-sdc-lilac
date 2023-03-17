@@ -20,6 +20,8 @@
 .mainImage {
   position: relative;
   object-fit: cover;
+  max-width: 700px;
+  max-height: 950px;
 }
 
 .thumbnailGallery {
@@ -46,6 +48,11 @@
 .product_summary_title {
   font-size: xx-large;
   letter-spacing: 1px;
+}
+
+.product_sale_price {
+  color: red;
+  font-weight: 700;
 }
 
 .overview_style_selector {
