@@ -11,7 +11,6 @@ const NewReview = ({ productId, reviewsMeta }) => {
       - product name
       - product characteristics
    */
-  console.log('reviewsMeta', reviewsMeta)
 
   const [overall, setOverall] = useState('1')
   const [recommend, setRecommend] = useState(false)
@@ -40,8 +39,6 @@ const NewReview = ({ productId, reviewsMeta }) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Sumitted Review')
-    console.log('fullReview', fullReview)
     axios.post('/reviews', fullReview)
     .then((success) => {console.log('Succesfully added new review')})
     .catch((err) => {console.log('ERROR adding new review', err)})
