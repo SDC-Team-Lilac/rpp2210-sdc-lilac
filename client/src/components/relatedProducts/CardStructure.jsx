@@ -1,33 +1,35 @@
 import React from 'react';
 import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
-import { ProductListInfo } from './RelatedProductRequests.jsx';
 
 const CardStructure = (props) => {
+  if (props.product.image === null) {
+    props.product.image = 'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-16.jpg';
+  }
   var determine = () => {
     if (props.listName === 'outfit') {
       return XButton();
     } else {
-      return StarButton(props.currentProduct, props.product);
+      return StarButton(props.currentProductFeatures, props.product.productId, props.setRelatedProductFeatures);
     }
   }
-  ProductsListInfo(props.product)
-    .then ((results) => {
-      return (
-        <div className='sarah-product-card' onClick={() => {
-          OnCardClick();
-        }}>
+  if (props.product !== undefined) {
+    return (
+      <div className='sarah-product-card' onClick={() => {
+        OnCardClick();
+      }}>
+        <div className='sarah-product-button-div'>
           {determine()}
-          <img className='sarah-product-image' src={results.image} width='100px' height='125px'></img>
-          <h4 className='sarah-product-category'>{results.category}</h4>
-          <h4 className='sarah-product-name'>{results.name}</h4>
-          <h4 className='sarah-product-price'>{results.price}</h4>
-          <h4 className='sarah-product-ratings'>{results.rating}</h4>
         </div>
-      )
-    })
-    .catch((err) => {
-      console.log('Error in CaardStructure: ', err);
-    })
+        <div className='sarah-product-image-div'>
+          <img className='sarah-product-image' src={props.product.image} width='100px' height='125px'></img>
+        </div>
+        <h4 className='sarah-product-category'>{props.product.category}</h4>
+        <h4 className='sarah-product-name'>{props.product.name}</h4>
+        <h4 className='sarah-product-price'>{props.product.price}</h4>
+        <h4 className='sarah-product-ratings'>{props.product.rating}</h4>
+      </div>
+    );
+  }
 }
 
 export default CardStructure;

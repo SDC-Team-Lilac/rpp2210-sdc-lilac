@@ -1,5 +1,7 @@
 import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
+import $ from 'jquery';
+import { ComparisonDetails } from './RelatedProductRequests.jsx'
 
 const XButton = () => {
   var onClick = () => {
@@ -14,14 +16,10 @@ const OnCardClick = () => {
   console.log('The product card was clicked!')
 }
 
-const StarButton = (currentProduct, clickedProduct) => {
-  //currentProduct will be current product id passed by state
+const StarButton = (currentProduct, clickedProduct, setRelatedProductId) => {
+  //currentProduct will be current product features passed by state
   var onClick = () => {
-    ComparisonModal(currentProduct, clickedProduct);
-    var modalElement = document.getElementById('sarah-modal');
-    var overlayElement = document.getElementById('sarah-overlay');
-    modalElement.classList.add('active');
-    overlayElement.classList.add('active');
+    ComparisonDetails(currentProduct, clickedProduct, setRelatedProductId);
   }
   return (
     <button className='sarah-star-button' onClick={() => {onClick()}}>&#11088;</button>
