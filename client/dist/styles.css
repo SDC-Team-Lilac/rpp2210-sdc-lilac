@@ -61,12 +61,18 @@
   font-size: large;
 }
 
+
 .style_selector_thumbnails {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px 10px;
   padding-top: 10px;
+  width: 516px;
+}
+
+.style_thumbnail_cropper {
+  flex-basis: 21%;
 }
 
 .style_thumbnail {
