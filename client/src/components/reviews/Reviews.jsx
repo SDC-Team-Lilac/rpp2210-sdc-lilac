@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import RatingBreakdown from './RatingBreakdown.jsx'
 import ReviewList from './ReviewList.jsx'
 import NewReview from './NewReview.jsx'
+import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId }) => {
+const Reviews = ({ productId, updateAverageRating }) => {
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)
@@ -25,27 +26,33 @@ const Reviews = ({ productId }) => {
     Note: Will need to make functions for subsequent calls to getReviews API to filter & sort the results
   */
      // //array of review objects
+
+
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
+  const [nextPage, setNextPage] = useState(2)
+  const [showMoreButton, setShowMoreButton] = useState(false)
 
-  const countAllReviews = (ratings) => {
-    var total = Number(ratings[1]) + Number(ratings[2]) + Number(ratings[3]) + Number(ratings[4]) + Number(ratings[5])
-  }
-  const getReviews = (count) => {
+  const getReviews = (page) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
-        count: count
+        count: 2,
+        page: page
       }
     })
   }
 
   useEffect(() => {
-    getReviews(2)
+    getReviews(1)
     .then((result) => {
-      setReviews(result.data.results);
+      if (result.data.results.length !== 0) {
+        setShowMoreButton(true)
+        setReviews(result.data.results);
+      }
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
+
 
     axios.get('/reviews/meta', {
       params: {
@@ -54,22 +61,34 @@ const Reviews = ({ productId }) => {
     })
     .then((result) => {
       setReviewsMeta(result.data);
-      console.log(result.data.ratings)
-      countAllReviews(result.data.ratings)
+      var averageRating = RatingCalculator(result.data.ratings)
+      updateAverageRating(averageRating)
     })
     .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
   }, [])
 
-  // useEffect(() => {
-  //   countAllReviews(reviewsMeta)
-  // }, [reviewsMeta])
 
+
+  const checkAddReviews = (e) => {
+    e.preventDefault()
+    getReviews(nextPage)
+    .then((result) => {
+      if (result.data.results.length !== 0) {
+        setShowMoreButton(true);
+        var additionalReviews = [...reviews, ...result.data.results]
+        setReviews(additionalReviews)
+      }
+    })
+    .catch((err) => {console.log('Error adding reviews:', err)})
+    var updatePage = nextPage + 1;
+    setNextPage(updatePage);
+  }
 
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      <ReviewList reviews={reviews}/>
+      <ReviewList reviews={reviews} showMoreButton={showMoreButton} checkAddReviews={checkAddReviews} />
       <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )

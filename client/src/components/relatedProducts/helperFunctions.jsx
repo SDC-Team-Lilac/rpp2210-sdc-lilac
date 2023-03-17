@@ -7,10 +7,10 @@ const RatingCalculator = (ratings) => {
   var count = 0;
   var total = 0;
   for (var key in ratings) {
-    count += ratings[key] * 1;
+    count += Number(ratings[key]);
     total += ratings[key] * key;
   }
-  return total / count;
+  return Math.round((total / count) * 100) / 100;
 }
 //move on card click?
 
