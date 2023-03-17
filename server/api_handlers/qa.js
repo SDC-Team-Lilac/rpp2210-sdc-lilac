@@ -14,7 +14,7 @@ const APIKey = process.env.FEC_API_KEY;
 const getProductQuestions = (product_id, page=1, count=5) => {
   return axios.get(`${APIHostURL}/qa/questions`, {
     params: {
-      product_id: product_id,
+        product_id: product_id,
         page,
         count
     },
@@ -29,8 +29,8 @@ const getProductQuestions = (product_id, page=1, count=5) => {
   // query params:
     // page (INT) -- select page of results to return, defaults to 1
     // count (INT) -- specifies how many results per page to return, defaults to 5
-const getProductAnswers = (product_id, page=1, count=5) => {
-  return axios.get(`${APIHostURL}/qa/questions/${product_id}/answers`, {
+const getProductAnswers = (question_id, page=1, count=5) => {
+  return axios.get(`${APIHostURL}/qa/questions/${question_id}/answers`, {
     params: {
         page,
         count
@@ -59,7 +59,7 @@ const AddProductQuestion = (questionData) => {
     },
     {
       headers: {
-      Authorization: APIKey
+      Authorization: APIKey,
     }
   });
 };
@@ -82,9 +82,6 @@ const AddProductAnswer = (question_id, answerData) => {
       photos: answerData.photos
     },
     {
-      params:{
-        question_id: question_id
-      },
       headers: {
       Authorization: APIKey
     }
@@ -96,7 +93,7 @@ const AddProductAnswer = (question_id, answerData) => {
   // params:
     // question_id (INT) -- required id of question to update
     const updateQuestionHelpful = (question_id) => {
-      return axios.put(`${APIHostURL}/qa/questions/${question_id}/helpful`, {
+      return axios.put(`${APIHostURL}/qa/questions/${question_id}/helpful`, null, {
         headers: {
           Authorization: APIKey
         }
@@ -107,7 +104,7 @@ const AddProductAnswer = (question_id, answerData) => {
   // params:
     // question_id (INT) -- required id of question to update
     const updateQuestionReport = (question_id) => {
-      return axios.put(`${APIHostURL}/qa/questions/${question_id}/report`, {
+      return axios.put(`${APIHostURL}/qa/questions/${question_id}/report`, null, {
         headers: {
           Authorization: APIKey
         }
@@ -118,7 +115,7 @@ const AddProductAnswer = (question_id, answerData) => {
   // params:
     // answer_id (INT) -- required id of answer to update
     const updateAnswerHelpful = (answer_id) => {
-      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/helpful`, {
+      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/helpful`, null, {
         headers: {
           Authorization: APIKey
         }
@@ -130,7 +127,7 @@ const AddProductAnswer = (question_id, answerData) => {
     // answer_id (INT) -- required id of answer to update
 
     const updateAnswerReport = (answer_id) => {
-      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/report`, {
+      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/report`, null, {
         headers: {
           Authorization: APIKey
         }
@@ -141,3 +138,7 @@ module.exports.getProductQuestions = getProductQuestions;
 module.exports.getProductAnswers = getProductAnswers;
 module.exports.AddProductQuestion = AddProductQuestion;
 module.exports.AddProductAnswer = AddProductAnswer;
+module.exports.updateQuestionHelpful = updateQuestionHelpful;
+module.exports.updateQuestionReport = updateQuestionReport;
+module.exports.updateAnswerHelpful = updateAnswerHelpful;
+module.exports.updateAnswerReport = updateAnswerReport;
