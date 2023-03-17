@@ -32,19 +32,21 @@ const Reviews = ({ productId, updateAverageRating }) => {
   const [reviewsMeta, setReviewsMeta] = useState({})
   const [nextPage, setNextPage] = useState(2)
   const [showMoreButton, setShowMoreButton] = useState(false)
+  const [sort, setSort] = useState('helpful')
 
-  const getReviews = (page) => {
+  const getReviews = (page, currentSort) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
         count: 2,
-        page: page
+        page: page,
+        sort: currentSort
       }
     })
   }
 
   useEffect(() => {
-    getReviews(1)
+    getReviews(1, sort)
     .then((result) => {
       if (result.data.results.length !== 0) {
         setShowMoreButton(true)
@@ -71,7 +73,7 @@ const Reviews = ({ productId, updateAverageRating }) => {
 
   const checkAddReviews = (e) => {
     e.preventDefault()
-    getReviews(nextPage)
+    getReviews(nextPage, sort)
     .then((result) => {
       if (result.data.results.length !== 0) {
         setShowMoreButton(true);
@@ -84,6 +86,11 @@ const Reviews = ({ productId, updateAverageRating }) => {
     setNextPage(updatePage);
   }
 
+
+  // const sortReviews = (e, option) => {
+  //   e.preventDefault();
+
+  // }
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>

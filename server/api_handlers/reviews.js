@@ -6,6 +6,7 @@ const APIKey = process.env.FEC_API_KEY;
 
 const getReviews = (req, res) => {
   var queryParams = req.query;
+  console.log('queryParams', queryParams)
   return axios.get(`${APIHostURL}/reviews`, {
     headers: {
       Authorization: APIKey
