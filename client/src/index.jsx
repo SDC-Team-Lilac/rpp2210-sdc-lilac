@@ -4,6 +4,7 @@ import Overview from './components/overview/Overview.jsx'
 import QA from './components/qa/QA.jsx'
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx'
 import Reviews from './components/reviews/Reviews.jsx'
+import { ProductListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
 
 const axios = require('axios');
 
@@ -12,7 +13,7 @@ const root = createRoot(domNode);
 
 const App = () => {
 
-  // Change this later to no longer hard-code starting productId
+  // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697 || HORIZONTAL, PROBLEMATIC: 71701
   const [productId, setProductId] = useState(71697);
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -21,8 +22,14 @@ const App = () => {
   const [productFeatures, setProductFeatures] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
+  const [productCards, setProductCards] = useState([]);
 
-  // To-Do: Add function to start initial rendering of app in real-time ***
+
+  useEffect(() => {
+    updateSelectedProduct(71697);
+  }, [])
+
+  // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
   const updateSelectedProduct = (product_id) => {
     axios.get(`/products/${product_id}`, {
       params: {
@@ -32,14 +39,36 @@ const App = () => {
       .then(productData => {
         setProductId(productData.data.id);
         setProductFeatures(productData.data.features);
-        axios.get(`/products/${product_id}/related`, {
+        return axios.get(`/products/${product_id}/related`, {
           params: {
             product_id: product_id
           }
         })
       })
-      .then(realtedProductsData => {
+      .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
+        return ProductListInfo(relatedProductsData.data, setProductCards);
+      })
+      .then(() => {
+        return axios.get(`/products/${product_id}/styles`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(productStyles => {
+        setStyleId(productStyles.data.results[0].style_id);
+        return ProductListInfo(relatedProducts, setProductCards);
+      })
+      .then(() => {
+        return axios.get(`/products/${product_id}/styles`, {
+          params: {
+            product_id: product_id
+          }
+        })
+      })
+      .then(productStyles => {
+        setStyleId(productStyles.data.results[0].style_id);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -53,8 +82,8 @@ const App = () => {
   return (
     <div>
       Hello World!
-      <Overview productId={productId} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts}/>
+      <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
+      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
       <QA productId={productId}/>
       <Reviews productId={productId} updateAverageRating={updateAverageRating}/>
     </div>

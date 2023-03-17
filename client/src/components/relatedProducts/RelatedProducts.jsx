@@ -10,7 +10,7 @@ const RelatedProducts = (props) => {
   var outfits = ['Fake-Outfit'];
   return (
     <div>
-      <RelatedProductsList productId={props.productId} currentProduct={props.productFeatures} relatedProducts={props.relatedProducts}/>
+      <RelatedProductsList productId={props.productId} productCards={props.productCards} currentProductFeatures={props.productFeatures} />
       <YourOutfit myOutfit={props.myOutfit}/>
     </div>
   )
