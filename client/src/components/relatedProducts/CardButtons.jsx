@@ -8,7 +8,7 @@ const XButton = () => {
     console.log('The X button was clicked!')
   }
   return (
-    <button className='sarah-x-button' onClick={() => {onClick()}}>&#10006;</button>
+    <button className='sarah-x-button' data-testid='x-button' onClick={() => {onClick()}}>&#10006;</button>
   )
 }
 
@@ -27,7 +27,7 @@ const StarButton = (currentProduct, clickedProduct, setRelatedProductId) => {
     'fontSize': '20px'
   }
   return (
-    <button style={styleSettings} className='sarah-star-button' onClick={() => {onClick()}}>&#11088;</button>
+    <button style={styleSettings} className='sarah-star-button' data-testid='star-button' onClick={() => {onClick()}}>&#11088;</button>
   )
 }
 
@@ -36,7 +36,7 @@ const PlusButton = () => {
     console.log('The plus button was clicked!')
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#10133;</button>
+    <button className='sarah-plus-button' data-testid='plus-button' onClick={() => {onClick()}}>&#10133;</button>
   )
 }
 
@@ -63,7 +63,7 @@ const LeftArrow = (props) => {
     }
   }
   return (
-    <button style={determineStyle()} className='sarah-left-arrow' onClick={() => {onClick()}}>&#60;</button>
+    <button style={determineStyle()} className='sarah-left-arrow' data-testid='left-arrow' onClick={() => {onClick()}}>&#60;</button>
   )
 }
 
@@ -90,7 +90,7 @@ const RightArrow = (props) => {
     }
   }
   return (
-    <button style={determineStyle()} className='sarah-right-arrow' onClick={() => {onClick()}}>&#62;</button>
+    <button style={determineStyle()} className='sarah-right-arrow' data-testid='right-arrow' onClick={() => {onClick()}}>&#62;</button>
   )
 }
 

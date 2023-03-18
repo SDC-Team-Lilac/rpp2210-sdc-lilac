@@ -9,11 +9,11 @@ const RelatedProductsList = (props) => {
   const [startingIndex, setStartingIndex] = useState(0);
 
   return (
-    <div className='sarah-products-list' id='sarah-products-list'>
-      <h2 className='sarah-products-list-title'>Related Products</h2>
+    <div className='sarah-products-list' id='sarah-products-list' data-testid='product-list-container'>
+      <h2 className='sarah-products-list-title'  data-testid='product-list-title'>Related Products</h2>
       <div className='sarah-list-with-arrows'>
         <LeftArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
-        <div className='sarah-product-cards-container'>
+        <div className='sarah-product-cards-container'  data-testid='product-cards-container'>
           {props.productCards[startingIndex]}
           {props.productCards[startingIndex + 1]}
           {props.productCards[startingIndex + 2]}
@@ -21,7 +21,7 @@ const RelatedProductsList = (props) => {
         </div>
         <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
       </div>
-      <div className='sarah-overlay' id='sarah-overlay' onClick={() => {
+      <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
         var modalElement = document.getElementById('sarah-modal');
         var overlayElement = document.getElementById('sarah-overlay');
         var body = document.querySelector("body");
