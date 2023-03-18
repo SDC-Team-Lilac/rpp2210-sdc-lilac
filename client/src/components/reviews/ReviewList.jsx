@@ -72,7 +72,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta }) => {
 
 
   return (
-    <div style={{border: '5px solid blue',}}>
+    <div className="reviews reviewList">
       ReviewsList!
       <SortOptions sortReviews={sortReviews}/>
       <KeywordSearch />

@@ -262,6 +262,18 @@ body.active {
 }
 
 /* Begin Reviews CSS*/
+.reviewsMain{
+  display: flex;
+  justify-content: center;
+}
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid rgb(132, 132, 132);
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
 .newReview {
   display: flex;
   justify-content: center;
@@ -272,10 +284,10 @@ body.active {
   border-radius: 12px;
   position:  absolute;
   left: 50%;
-  top: 350%;
+  top: 250%;
   width: 450px;
   height: 400px;
-  margin-left: -150px;
+  margin-left: -200px;
   margin-top: -150px;
 }
 
