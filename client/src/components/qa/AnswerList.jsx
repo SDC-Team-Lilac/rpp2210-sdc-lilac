@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import Answer from './Answer.jsx'
 
-const AnswerList = () => {
+const AnswerList = (props) => {
 
   return (
     <div style={{border: '2px solid yellow'}}>
       <div> AnswerList! </div>
-      <Answer />
+      {props.answerList.map(answer=>
+      <Answer key={answer.answer_id} answer={answer}/>)}
+      <button>See more answers</button>
     </div>
   )
 }
