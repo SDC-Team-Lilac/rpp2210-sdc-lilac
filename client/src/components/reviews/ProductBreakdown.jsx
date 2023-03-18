@@ -8,7 +8,7 @@ const ProductBreakdown = () => {
    */
 
   return (
-    <div> ProductBreakdown! </div>
+    <div className="reviews productBreakdown"> ProductBreakdown! </div>
   )
 }
 

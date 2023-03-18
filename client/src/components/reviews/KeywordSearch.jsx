@@ -3,7 +3,7 @@ import React from 'react';
 const KeywordSearch = () => {
 
   return (
-    <div style={{border: '2px solid yellow'}}> KeywordSearch! </div>
+    <div className="reviews keyWordSearch" style={{border: '2px solid yellow'}}> KeywordSearch! </div>
   )
 }
 
