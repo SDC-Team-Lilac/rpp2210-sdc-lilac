@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import StarRating from './StarRating.jsx'
 const ReviewTile = ({ review }) => {
 
   /* This component:
@@ -28,7 +28,7 @@ const ReviewTile = ({ review }) => {
 
   return (
     <div style={{border: '2px solid purple'}}>
-    <div>Rating: {review.rating}</div>
+    <StarRating rating={review.rating}/>
     <div>Summary: {review.summary}</div>
     <div>Body: {review.body}</div>
     <div>Reviewer Name: {review.reviewer_name}</div>
