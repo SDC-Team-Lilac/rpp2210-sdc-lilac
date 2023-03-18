@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx'
-const ReviewTile = ({ review }) => {
+const ReviewTile = ({ review, updateReviews }) => {
 
   /* This component:
     1) needs an individual review
@@ -14,7 +14,7 @@ const ReviewTile = ({ review }) => {
     e.preventDefault();
     console.log('Marked Helpful')
     axios.put('/reviews/helpful', {id: review.review_id})
-    .then((success) => {console.log('Marked Review as Helpful!')})
+    .then((success) => {console.log('Marked Review as Helpful!'); updateReviews()})
     .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
   }
 
@@ -22,7 +22,7 @@ const ReviewTile = ({ review }) => {
     e.preventDefault();
     console.log('Reported Review')
     axios.put('/reviews/report', {id: review.review_id})
-    .then((success) => {console.log('Reported Review!!')})
+    .then((success) => {console.log('Reported Review!!'); updateReviews()})
     .catch((err) => {console.log('ERROR reporting review!', err)})
   }
 

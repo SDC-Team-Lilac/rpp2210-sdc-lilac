@@ -3,7 +3,7 @@ import ReviewTile from './ReviewTile.jsx'
 import KeywordSearch from './KeywordSearch.jsx'
 import SortOptions from './SortOptions.jsx'
 
-const ReviewsList = ( { reviews, showMoreButton, checkAddReviews }) => {
+const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
 
   /*  This Component will:
       1) Render each reviewTile from reviews state
@@ -18,20 +18,60 @@ const ReviewsList = ( { reviews, showMoreButton, checkAddReviews }) => {
       //then add more reviews to the state in Reviews
     //if it is empty
       //hide the button
+  const [currentReviews, setCurrentReviews] = useState([]);
+  const [maxReviews, setMaxReviews] = useState(2);
+  const [showMoreButton, setShowMoreButton] = useState(false)
+
+  const updateCurrentReviews = (reviews) => {
+    var reviewsHolder = []
+    for (let i = 0; i < maxReviews; i ++) {
+      if (reviews[i]) {
+        reviewsHolder.push(reviews[i]);
+      }
+    }
+    setCurrentReviews(reviewsHolder);
+  }
+  const updateShowMoreButton = () => {
+    if (reviews.length !== 0) {
+      setShowMoreButton(true);
+    }
+  }
+  const addReviews = (e) => {
+    e.preventDefault();
+    setMaxReviews(maxReviews + 2)
+
+  }
+
+  useEffect(() => {
+    updateCurrentReviews(reviews);
+    updateShowMoreButton()
+  }, [])
+
+  useEffect(() => {
+    updateCurrentReviews(reviews)
+    if (maxReviews >= reviews.length) {
+      setShowMoreButton(false);
+    }
+  }, [maxReviews])
+
+  useEffect(() => {
+    updateCurrentReviews(reviews)
+  }, [reviews])
+
 
   return (
     <div style={{border: '5px solid blue',}}>
       ReviewsList!
-      <SortOptions />
+      <SortOptions sortReviews={sortReviews}/>
       <KeywordSearch />
       <div style={{maxHeight: '450px', overflowY: 'auto'}}>
-        {reviews.map((review) => {
+        {currentReviews.map((review) => {
           return (
-            <ReviewTile key={review.review_id} review={review}/>
+            <ReviewTile key={review.review_id} review={review} updateReviews={updateReviews}/>
           )
         })}
       </div>
-      {showMoreButton ? <button onClick={checkAddReviews}>More Reviews</button>  : null}
+      {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
       <button>Add Review</button>
     </div>
   )

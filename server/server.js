@@ -100,7 +100,7 @@ app.post('/reviews', (req, res) => {
 app.put('/reviews/helpful', (req, res) => {
   reviews_api.putHelpful(req, res)
     .then(success => {
-      res.status(204);
+      res.status(204).send('Marked review helpful');
     })
     .catch(error => {
       console.error('Error marking Review helpful: ', error);
@@ -111,7 +111,7 @@ app.put('/reviews/helpful', (req, res) => {
 app.put('/reviews/report', (req, res) => {
   reviews_api.putReportReview(req, res)
     .then(success => {
-      res.status(204);
+      res.status(204).send('Reported review')
     })
     .catch(error => {
       console.error('Error reporting Review: ', error);

@@ -30,29 +30,39 @@ const Reviews = ({ productId, updateAverageRating }) => {
 
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
-  const [nextPage, setNextPage] = useState(2)
-  const [showMoreButton, setShowMoreButton] = useState(false)
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState('relevant')
+  const [count, setCount] = useState(1000000)
 
-  const getReviews = (page) => {
+  const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
-        count: 2,
-        page: page
+        count: currentCount,
+        page: currentPage,
+        sort: currentSort
       }
     })
   }
 
-  useEffect(() => {
-    getReviews(1)
+  const updateReviews = () => {
+    getReviews(count, page, sort)
     .then((result) => {
-      if (result.data.results.length !== 0) {
-        setShowMoreButton(true)
-        setReviews(result.data.results);
-      }
+      setReviews(result.data.results);
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
+  }
 
+
+  const sortReviews = (e, option) => {
+    e.preventDefault();
+    var newSort = e.target.value.toLowerCase()
+    setSort(newSort)
+
+  }
+
+  useEffect(() => {
+    updateReviews()
 
     axios.get('/reviews/meta', {
       params: {
@@ -68,27 +78,15 @@ const Reviews = ({ productId, updateAverageRating }) => {
   }, [])
 
 
-
-  const checkAddReviews = (e) => {
-    e.preventDefault()
-    getReviews(nextPage)
-    .then((result) => {
-      if (result.data.results.length !== 0) {
-        setShowMoreButton(true);
-        var additionalReviews = [...reviews, ...result.data.results]
-        setReviews(additionalReviews)
-      }
-    })
-    .catch((err) => {console.log('Error adding reviews:', err)})
-    var updatePage = nextPage + 1;
-    setNextPage(updatePage);
-  }
+  useEffect(() => {
+    updateReviews()
+  }, [sort])
 
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      <ReviewList reviews={reviews} showMoreButton={showMoreButton} checkAddReviews={checkAddReviews} />
+      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews}/> : null}
       <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )
