@@ -111,7 +111,7 @@ var mockReviews = {
 afterEach(() => {
   cleanup();
 })
-xdescribe('Characteristics Component', () => {
+describe('Characteristics Component', () => {
   it('Renders Characteristics component',  () => {
     render(<Characteristics />)
     const element = screen.getByTestId('characteristics-1');
@@ -125,9 +125,9 @@ describe('KeyWordSearch Component', () => {
     expect(element).toBeInTheDocument();
   })
 })
-xdescribe('NewReview Component', () => {
+describe('NewReview Component', () => {
   it('Renders NewReview component',  () => {
-    render(<NewReview />)
+    render(<NewReview reviewsMeta={mockReviews}/>)
     const element = screen.getByTestId('newReview-1');
     expect(element).toBeInTheDocument();
   })
@@ -167,7 +167,8 @@ xdescribe('Reviews Component', () => {
 
 describe('ReviewTile Component', () => {
   it('Renders ReviewTile component',  () => {
-    render(<ReviewTile review={mockReviews.results[0]}/>)
+    render(<ReviewTile review={mockReviews.results[0]}
+    />)
     const element = screen.getByTestId('reviewTile-1');
     expect(element).toBeInTheDocument();
   })
