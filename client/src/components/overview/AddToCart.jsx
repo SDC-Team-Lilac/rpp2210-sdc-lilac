@@ -94,10 +94,22 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
           </select>
         </div>
       </div>
-      <button data-testid="addToCartButton">Add to Cart</button>
-      <button data-testid="addToOutfitButton">Add to My Outfit</button>
+      <div className="addToCart_bottom">
+        <button data-testid="addToCartButton" className="addToCartButton">Add to Bag</button>
+        <button data-testid="addToOutfitButton" className="addToOutfitButton">
+          <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
+        </button>
+      </div>
     </div>
   )
 }
 
 export default AddToCart;
+
+// BUTTON SOURCES
+// Unfilled Star: https://icons8.com/icon/2549/christmas-star
+// Filled Star: https://icons8.com/icon/10159/christmas-star
+
+// BUTTON SRCs TO USE
+// Unfilled Star: https://img.icons8.com/ios/256/christmas-star.png
+// Filled Star: https://img.icons8.com/ios-filled/256/christmas-star.png

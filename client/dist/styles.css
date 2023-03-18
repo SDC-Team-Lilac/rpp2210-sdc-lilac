@@ -149,6 +149,36 @@
   min-width: 164px;
 }
 
+.addToCart_bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 516px;
+  padding-top: 10px;
+}
+
+.addToCartButton {
+  flex-grow: 4;
+  position: relative;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  text-align: left;
+  padding: 15px 10px;
+}
+
+.addToOutfitButton {
+  flex-grow: 1;
+  position: relative;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  text-align: center;
+  padding: 10px 5px 5px 5px;
+
+}
 
 .overview_product_details {
   display: flex;
