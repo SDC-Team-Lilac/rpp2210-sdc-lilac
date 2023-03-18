@@ -25,6 +25,7 @@ const App = () => {
   const [productDefaultImg, setProductDefaultImg] = useState('');
   const [productCards, setProductCards] = useState([]);
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
+  const [reviewCount, setReviewCount] = useState(0)
 
 
   useEffect(() => {
@@ -71,13 +72,17 @@ const App = () => {
     setAverageStarRating(averageRating)
   }
 
+  const updateReviewCount = (count) => {
+    setReviewCount(count);
+  }
+
   return (
     <div>
       Hello World!
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
       <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
       <QA productId={productId}/>
-      <Reviews productId={productId} productName={productName} updateAverageRating={updateAverageRating}/>
+      <Reviews productId={productId} productName={productName} reviewCount={reviewCount} updateReviewCount={updateReviewCount} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
     </div>
   );
 };

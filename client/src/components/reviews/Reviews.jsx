@@ -5,7 +5,7 @@ import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId, productName, updateAverageRating }) => {
+const Reviews = ({ productId, productName, updateAverageRating, averageStarRating, updateReviewCount, reviewCount }) => {
 
   console.log('PRODUCT NAME: ', productName);
 
@@ -31,7 +31,7 @@ const Reviews = ({ productId, productName, updateAverageRating }) => {
 
 
   const [reviews, setReviews] = useState([])
-  const [reviewsMeta, setReviewsMeta] = useState({})
+  const [reviewsMeta, setReviewsMeta] = useState(null)
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
   const [count, setCount] = useState(1000000)
@@ -88,8 +88,8 @@ const Reviews = ({ productId, productName, updateAverageRating }) => {
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <div className="reviews reviewsMain">
-        <RatingBreakdown reviewsMeta={reviewsMeta}/>
-        { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} reviewCount={reviewCount} updateReviewCount={updateReviewCount} averageStarRating={averageStarRating}/> : null }
+        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
       </div>
     </div>
   )

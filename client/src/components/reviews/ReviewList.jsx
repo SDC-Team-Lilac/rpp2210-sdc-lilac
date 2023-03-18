@@ -6,21 +6,8 @@ import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
 
 
-const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta }) => {
+const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, updateReviewCount }) => {
 
-  /*  This Component will:
-      1) Render each reviewTile from reviews state
-      2) Figure out what to do when More Reviews is clicked
-      3) Render a popup overlay when  Add Review is clicked and render NewReview
-   */
-
-      //onclick of more reviews, needs to send a new axios request to request the next page of reviews, when the result returns an empty aray, hide the reviews
-
-  //on component mount, make a get request for more reviews
-    //if it does not return empty
-      //then add more reviews to the state in Reviews
-    //if it is empty
-      //hide the button
   const [currentReviews, setCurrentReviews] = useState([]);
   const [maxReviews, setMaxReviews] = useState(2);
   const [showMoreButton, setShowMoreButton] = useState(false)
