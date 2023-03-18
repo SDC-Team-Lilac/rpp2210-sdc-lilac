@@ -15,22 +15,37 @@
   border: 2px solid greenyellow;
   flex-grow: 3;
   position: relative;
+  max-width: 750px;
 }
 
 .mainImage {
-  position: relative;
   object-fit: cover;
-  max-width: 700px;
-  max-height: 950px;
+  height: 750px;
+  width: 750px;
 }
 
 .thumbnailGallery {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 10px;
-  left: 10px;
-  bottom: 10px;
+  gap: 10px;
+  top: 20px;
+  left: 17px;
+}
+
+.gallery_thumbnail {
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+  border: 3px solid rgba(255, 255, 255, 0);
+}
+
+.selected_gallery_thumbnail {
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+  opacity: .7;
+  border: 3px solid rgba(255, 255, 255, 0.762);
 }
 
 .overview_product_selected {
@@ -38,6 +53,7 @@
   flex-direction: column;
   flex-grow: 2;
   border: 2px solid greenyellow;
+  padding: 30px 20px 30px 20px;
 }
 
 .overview_product_summary {
@@ -57,10 +73,9 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 10px 20px 10px;
   font-size: large;
 }
-
 
 .style_selector_thumbnails {
   display: flex;
@@ -84,6 +99,85 @@
 
 .overview_addToCart {
   border: 2px solid fuchsia;
+  padding: 10px 10px 10px 10px;
+}
+
+/* #overview_top {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid aqua;
+}
+
+.gallery {
+  border: 2px solid greenyellow;
+  flex-grow: 3;
+  position: relative;
+  max-width: 750px;
+} */
+
+.addToCart_top {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 516px;
+}
+
+.size_selector {
+  flex-grow: 2;
+  position: relative;
+}
+.size_selector_dropdown {
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  padding: 15px 10px;
+  min-width: 330px;
+}
+
+.quantity_selector {
+  flex-grow: 1;
+  position: relative;
+}
+
+.quantity_selector_dropdown {
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  padding: 15px 10px;
+  min-width: 164px;
+}
+
+.addToCart_bottom {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 516px;
+  padding-top: 10px;
+}
+
+.addToCartButton {
+  flex-grow: 4;
+  position: relative;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  text-align: left;
+  padding: 15px 10px;
+}
+
+.addToOutfitButton {
+  flex-grow: 1;
+  position: relative;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid rgb(62, 62, 62);
+  display: inline-block;
+  font: inherit;
+  text-align: center;
+  padding: 10px 5px 5px 5px;
+
 }
 
 .overview_product_details {

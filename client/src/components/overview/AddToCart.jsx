@@ -79,23 +79,37 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   return (
     <div className="overview_addToCart">
-      <h3>This is the Add to Cart Component!</h3>
-      <div data-testid="sizeSelector">
-        <select defaultValue="Select Size" onChange={handleSizeChange}>
-          <option value="Select Size" disabled>Select Size</option>
-          {sizeOptions}
-        </select>
+      {/* <h3>This is the Add to Cart Component!</h3> */}
+      <div className="addToCart_top">
+        <div data-testid="sizeSelector" className="size_selector">
+          <select className="size_selector_dropdown" defaultValue="Select Size" onChange={handleSizeChange}>
+            <option value="Select Size" disabled>Select Size</option>
+            {sizeOptions}
+          </select>
+        </div>
+        <div data-testid="quantitySelector" className="quantity_selector">
+          <select defaultValue="Starting Quantity" className="quantity_selector_dropdown" onChange={handleQuantityChange}>
+            {quantityDefaultValue}
+            {quantityOptions}
+          </select>
+        </div>
       </div>
-      <div data-testid="quantitySelector">
-        <select defaultValue="Starting Quantity" onChange={handleQuantityChange}>
-          {quantityDefaultValue}
-          {quantityOptions}
-        </select>
+      <div className="addToCart_bottom">
+        <button data-testid="addToCartButton" className="addToCartButton">Add to Bag</button>
+        <button data-testid="addToOutfitButton" className="addToOutfitButton">
+          <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
+        </button>
       </div>
-      <button data-testid="addToCartButton">Add to Cart</button>
-      <button data-testid="addToOutfitButton">Add to My Outfit</button>
     </div>
   )
 }
 
 export default AddToCart;
+
+// BUTTON SOURCES
+// Unfilled Star: https://icons8.com/icon/2549/christmas-star
+// Filled Star: https://icons8.com/icon/10159/christmas-star
+
+// BUTTON SRCs TO USE
+// Unfilled Star: https://img.icons8.com/ios/256/christmas-star.png
+// Filled Star: https://img.icons8.com/ios-filled/256/christmas-star.png

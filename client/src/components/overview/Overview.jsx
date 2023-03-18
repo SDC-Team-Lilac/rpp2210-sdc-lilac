@@ -223,7 +223,7 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
   // console.log('Product Details: ', productDetails);
   return (
     <div id="overview">
-      <h1>This is the Overview Component!</h1>
+      {/* <h1>This is the Overview Component!</h1> */}
       <div id="overview_top">
         <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
         <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
