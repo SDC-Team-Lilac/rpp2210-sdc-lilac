@@ -31,14 +31,14 @@ const Reviews = ({ productId, updateAverageRating }) => {
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
   const [nextPage, setNextPage] = useState(2)
-  const [showMoreButton, setShowMoreButton] = useState(false)
   const [sort, setSort] = useState('helpful')
+  const [count, setCount] = useState(5000)
 
   const getReviews = (page, currentSort) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
-        count: 2,
+        count: count,
         page: page,
         sort: currentSort
       }
@@ -48,10 +48,7 @@ const Reviews = ({ productId, updateAverageRating }) => {
   useEffect(() => {
     getReviews(1, sort)
     .then((result) => {
-      if (result.data.results.length !== 0) {
-        setShowMoreButton(true)
-        setReviews(result.data.results);
-      }
+      setReviews(result.data.results);
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
 
@@ -71,22 +68,6 @@ const Reviews = ({ productId, updateAverageRating }) => {
 
 
 
-  const checkAddReviews = (e) => {
-    e.preventDefault()
-    getReviews(nextPage, sort)
-    .then((result) => {
-      if (result.data.results.length !== 0) {
-        setShowMoreButton(true);
-        var additionalReviews = [...reviews, ...result.data.results]
-        setReviews(additionalReviews)
-      }
-    })
-    .catch((err) => {console.log('Error adding reviews:', err)})
-    var updatePage = nextPage + 1;
-    setNextPage(updatePage);
-  }
-
-
   // const sortReviews = (e, option) => {
   //   e.preventDefault();
 
@@ -95,7 +76,7 @@ const Reviews = ({ productId, updateAverageRating }) => {
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      <ReviewList reviews={reviews} showMoreButton={showMoreButton} checkAddReviews={checkAddReviews} />
+      { reviews.length !== 0 ? <ReviewList reviews={reviews} /> : null}
       <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )

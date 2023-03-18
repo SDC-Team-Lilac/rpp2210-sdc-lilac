@@ -6,7 +6,6 @@ const APIKey = process.env.FEC_API_KEY;
 
 const getReviews = (req, res) => {
   var queryParams = req.query;
-  console.log('queryParams', queryParams)
   return axios.get(`${APIHostURL}/reviews`, {
     headers: {
       Authorization: APIKey
@@ -54,7 +53,6 @@ const getReviewsMeta = (req, res) => {
 
 const postReview = (req, res) => {
   var requestBody = req.body;
-  console.log('We posted review', requestBody)
   return axios.post(`${APIHostURL}/reviews`,
     {
       product_id: requestBody.product_id,
@@ -77,8 +75,6 @@ const postReview = (req, res) => {
 }
 
 const putHelpful = (req, res) => {
-  //TODO Reimplement with actual reviewID
-  console.log('Got request in helpful review:', req.body)
   var reviewID = req.body.id
   return axios.put(`${APIHostURL}/reviews/${reviewID}/helpful`, null, {
     headers: {
