@@ -80,17 +80,19 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   return (
     <div className="overview_addToCart">
       {/* <h3>This is the Add to Cart Component!</h3> */}
-      <div data-testid="sizeSelector">
-        <select defaultValue="Select Size" onChange={handleSizeChange}>
-          <option value="Select Size" disabled>Select Size</option>
-          {sizeOptions}
-        </select>
-      </div>
-      <div data-testid="quantitySelector">
-        <select defaultValue="Starting Quantity" onChange={handleQuantityChange}>
-          {quantityDefaultValue}
-          {quantityOptions}
-        </select>
+      <div className="addToCart_top">
+        <div data-testid="sizeSelector" className="size_selector">
+          <select className="size_selector_dropdown" defaultValue="Select Size" onChange={handleSizeChange}>
+            <option value="Select Size" disabled>Select Size</option>
+            {sizeOptions}
+          </select>
+        </div>
+        <div data-testid="quantitySelector" className="quantity_selector">
+          <select defaultValue="Starting Quantity" className="quantity_selector_dropdown" onChange={handleQuantityChange}>
+            {quantityDefaultValue}
+            {quantityOptions}
+          </select>
+        </div>
       </div>
       <button data-testid="addToCartButton">Add to Cart</button>
       <button data-testid="addToOutfitButton">Add to My Outfit</button>
