@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SortOptions = () => {
+const SortOptions = ({sortReviews}) => {
 
   /* This component will:
     1) Include a dropdown that will have helful, newest, relevant
@@ -11,10 +11,10 @@ const SortOptions = () => {
   return (
     <div className="reviews sortOptions" style={{border: '2px solid black'}}>
       <label>Sort By:</label>
-      <select>
+      <select onClick={sortReviews}>
+        <option>Relevant</option>
         <option>Helpful</option>
         <option>Newest</option>
-        <option>Relevant</option>
       </select>
        </div>
   )

@@ -30,28 +30,39 @@ const Reviews = ({ productId, updateAverageRating }) => {
 
   const [reviews, setReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState({})
-  const [nextPage, setNextPage] = useState(2)
-  const [sort, setSort] = useState('helpful')
-  const [count, setCount] = useState(5000)
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState('relevant')
+  const [count, setCount] = useState(1000000)
 
-  const getReviews = (page, currentSort) => {
+  const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
       params: {
         product_id: productId,
-        count: count,
-        page: page,
+        count: currentCount,
+        page: currentPage,
         sort: currentSort
       }
     })
   }
 
-  useEffect(() => {
-    getReviews(1, sort)
+  const updateReviews = () => {
+    getReviews(count, page, sort)
     .then((result) => {
       setReviews(result.data.results);
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
+  }
 
+
+  const sortReviews = (e, option) => {
+    e.preventDefault();
+    var newSort = e.target.value.toLowerCase()
+    setSort(newSort)
+
+  }
+
+  useEffect(() => {
+    updateReviews()
 
     axios.get('/reviews/meta', {
       params: {
@@ -67,16 +78,15 @@ const Reviews = ({ productId, updateAverageRating }) => {
   }, [])
 
 
+  useEffect(() => {
+    updateReviews()
+  }, [sort])
 
-  // const sortReviews = (e, option) => {
-  //   e.preventDefault();
-
-  // }
   return (
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      { reviews.length !== 0 ? <ReviewList reviews={reviews} /> : null}
+      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews}/> : null}
       <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
     </div>
   )

@@ -3,7 +3,7 @@ import ReviewTile from './ReviewTile.jsx'
 import KeywordSearch from './KeywordSearch.jsx'
 import SortOptions from './SortOptions.jsx'
 
-const ReviewsList = ( { reviews }) => {
+const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
 
   /*  This Component will:
       1) Render each reviewTile from reviews state
@@ -24,7 +24,6 @@ const ReviewsList = ( { reviews }) => {
 
   const updateCurrentReviews = (reviews) => {
     var reviewsHolder = []
-    console.log('reviews', reviews)
     for (let i = 0; i < maxReviews; i ++) {
       if (reviews[i]) {
         reviewsHolder.push(reviews[i]);
@@ -55,15 +54,20 @@ const ReviewsList = ( { reviews }) => {
     }
   }, [maxReviews])
 
+  useEffect(() => {
+    updateCurrentReviews(reviews)
+  }, [reviews])
+
+
   return (
     <div style={{border: '5px solid blue',}}>
       ReviewsList!
-      <SortOptions />
+      <SortOptions sortReviews={sortReviews}/>
       <KeywordSearch />
       <div style={{maxHeight: '450px', overflowY: 'auto'}}>
         {currentReviews.map((review) => {
           return (
-            <ReviewTile key={review.review_id} review={review}/>
+            <ReviewTile key={review.review_id} review={review} updateReviews={updateReviews}/>
           )
         })}
       </div>
