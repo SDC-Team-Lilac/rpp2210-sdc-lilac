@@ -86,8 +86,7 @@ const Reviews = ({ productId, updateAverageRating }) => {
     <div style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews}/> : null}
-      <NewReview productId={productId} reviewsMeta={reviewsMeta}/>
+      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
     </div>
   )
 }

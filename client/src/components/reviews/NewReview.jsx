@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
 
-const NewReview = ({ productId, reviewsMeta }) => {
+const NewReview = ({reviewsMeta, onClose }) => {
 
   /* This component will:
     1) Need to control the inputs of each field in their own state
@@ -27,7 +27,7 @@ const NewReview = ({ productId, reviewsMeta }) => {
 
 
   var fullReview = {
-    product_id: productId,
+    product_id: Number(reviewsMeta.product_id),
     rating: overall,
     summary: summary,
     body: body,
@@ -42,6 +42,7 @@ const NewReview = ({ productId, reviewsMeta }) => {
     axios.post('/reviews', fullReview)
     .then((success) => {console.log('Succesfully added new review')})
     .catch((err) => {console.log('ERROR adding new review', err)})
+    onClose();
   }
 
 
@@ -50,7 +51,7 @@ const NewReview = ({ productId, reviewsMeta }) => {
     var input = e.target.value
   }
   return (
-    <div style={{border: '5px solid orange'}} > NewReview!
+    <div className="reviews newReview">
       <form onSubmit={handleSubmit}>
         Write your review about PRODUCT_NAME
         <div>
@@ -88,6 +89,7 @@ const NewReview = ({ productId, reviewsMeta }) => {
           <label>Submit Review</label>
           <input type="submit"></input>
         </div>
+        <button onClick={onClose}>Close</button>
       </form>
     </div>
   )
