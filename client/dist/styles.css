@@ -61,12 +61,18 @@
   font-size: large;
 }
 
+
 .style_selector_thumbnails {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px 10px;
   padding-top: 10px;
+  width: 516px;
+}
+
+.style_thumbnail_cropper {
+  flex-basis: 21%;
 }
 
 .style_thumbnail {
@@ -254,3 +260,23 @@ body.active {
   font-size: large;
   font-weight: bolder;
 }
+
+/* Begin Reviews CSS*/
+.newReview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  background-color: white;
+  border: 2px solid rgb(132, 132, 132);
+  border-radius: 12px;
+  position:  absolute;
+  left: 50%;
+  top: 350%;
+  width: 450px;
+  height: 400px;
+  margin-left: -150px;
+  margin-top: -150px;
+}
+
+/* End Reviews CSS */

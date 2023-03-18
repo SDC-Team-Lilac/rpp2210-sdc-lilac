@@ -23,14 +23,14 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
     count++;
     let thumbnailDescription = imageDescription.concat(' Image #', count);
     return (
-      <img key={count} id={count} src={photo.thumbnail_url} alt={thumbnailDescription} width="100px" onClick={handleThumbnailClick}></img>
+      <img key={count} id={count} data-testid={`galleryThumbnailImage${count}`} src={photo.thumbnail_url} alt={thumbnailDescription} width="100px" onClick={handleThumbnailClick}></img>
     );
   });
 
   return (
     <div className="gallery">
       {/* <h2>This is the Product Gallery Component!</h2> */}
-      <img className="mainImage" src={mainImage} alt={imageDescription}></img>
+      <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription}></img>
       <div className="thumbnailGallery">
         {thunbnailList}
       </div>
