@@ -23,8 +23,8 @@ const ProductSummary = ( { productDetails, selectedStyle } ) => {
         <span>&#x2B50; &#x2B50; &#x2B50; &#x2B50; &#x2B50; &emsp;</span>
         <span>Read all [#] reviews </span>
       </div><br></br>
-      <span>{productDetails.category.toUpperCase()}</span><br></br>
-      <span className="product_summary_title"><b>{productDetails.name}</b></span><br></br>
+      <span >{productDetails.category.toUpperCase()}</span><br></br>
+      <span className="product_summary_title" data-testid="productTitle"><b>{productDetails.name}</b></span><br></br>
       {productPrice}
     </div>
   )

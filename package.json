@@ -6,7 +6,8 @@
   "scripts": {
     "client-dev": "webpack --watch",
     "server-dev": "nodemon server/server.js",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "babel-jest": "^29.5.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
