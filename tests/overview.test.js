@@ -329,12 +329,13 @@ describe('Product Selected', () => {
 
     const addToCartButton = screen.getByTestId("addToCartButton");
     expect(addToCartButton).toBeInTheDocument();
-    expect(addToCartButton).toHaveTextContent("Add to Cart");
+    expect(addToCartButton).toHaveTextContent("Add to Bag");
 
-    // Will need to be changed to a star icon later ***
+    // Will need to be changed to a star icon later, currently under construction ***
     const addToOutfitButton = screen.getByTestId("addToOutfitButton");
     expect(addToOutfitButton).toBeInTheDocument();
-    expect(addToOutfitButton).toHaveTextContent("Add to My Outfit");
+    // expect(addToOutfitButton).toHaveAttribute('src', "https://img.icons8.com/ios/256/christmas-star.png");
+    // expect(addToOutfitButton).toHaveAttribute('alt', "Add to My Outfit");
   });
 });
 
