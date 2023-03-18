@@ -23,6 +23,7 @@ const App = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
   const [productCards, setProductCards] = useState([]);
+  const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
 
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const App = () => {
       })
       .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
-        return ProductListInfo(relatedProductsData.data, setProductCards);
+        return ProductListInfo(relatedProductsData.data, setProductCards, setRelatedProductFeatures, productFeatures);
       })
       .then(() => {
         return axios.get(`/products/${product_id}/styles`, {
@@ -58,7 +59,6 @@ const App = () => {
       })
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
-        return ProductListInfo(relatedProducts, setProductCards);
       })
       .then(() => {
         return axios.get(`/products/${product_id}/styles`, {
@@ -83,7 +83,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
+      <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
       <QA productId={productId}/>
       <Reviews productId={productId} updateAverageRating={updateAverageRating}/>
     </div>

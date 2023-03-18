@@ -4,13 +4,15 @@ import $ from 'jquery';
 import { RatingCalculator } from './helperFunctions.jsx';
 import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
 import ComparisonModalList from './ComparisonModalList.jsx';
+import CardStructure from './CardStructure.jsx';
 
 const server = 'http://localhost:3000'
 
-var ProductListInfo = async(relatedProducts, setProductCards) => {
-var details = [];
-var count = 0;
-
+var ProductListInfo = async(relatedProducts, setProductCards, setRelatedProductFeatures, productFeatures) => {
+  var details = [];
+  var cardList = [];
+  var count = 0;
+  console.log('INSIDE');
   const list =  await Promise.all(relatedProducts.map(async function(product) {
     var products = {productId: product};
     await axios.get(`/products/${product}`, {
@@ -38,11 +40,12 @@ var count = 0;
       .then((rating) => {
         products.rating = rating;
         details.push(products);
+        cardList.push(<CardStructure product={products} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures}/>)
         count += 1;
         if (count === relatedProducts.length) {
-          setProductCards(details);
+          setProductCards(cardList);
         }
-        return products;
+        return cardList;
       })
       .catch((err) => {
         console.log('Error in ProductListInfo: ', err);

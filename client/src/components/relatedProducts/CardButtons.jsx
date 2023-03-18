@@ -21,8 +21,13 @@ const StarButton = (currentProduct, clickedProduct, setRelatedProductId) => {
   var onClick = () => {
     ComparisonDetails(currentProduct, clickedProduct, setRelatedProductId);
   }
+  var styleSettings ={
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '20px'
+  }
   return (
-    <button className='sarah-star-button' onClick={() => {onClick()}}>&#11088;</button>
+    <button style={styleSettings} className='sarah-star-button' onClick={() => {onClick()}}>&#11088;</button>
   )
 }
 
@@ -35,21 +40,57 @@ const PlusButton = () => {
   )
 }
 
-const LeftArrow = () => {
+const LeftArrow = (props) => {
   var onClick = () => {
-    console.log('The left arrow button was clicked!')
+    props.setStartingIndex(startingIndex + 1);
+  }
+  var styleHidden = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px',
+    'display': 'none'
+  }
+  var styleView = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px'
+  }
+  var determineStyle = () => {
+    if (props.startingIndex === 0) {
+      return styleHidden;
+    } else {
+      return styleView;
+    }
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#11013;</button>
+    <button style={determineStyle()} className='sarah-left-arrow' onClick={() => {onClick()}}>&#60;</button>
   )
 }
 
-const RightArrow = () => {
+const RightArrow = (props) => {
   var onClick = () => {
-    console.log('The right arrow button was clicked!')
+    props.setStartingIndex(startingIndex - 1);
+  }
+  var styleHidden = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px',
+    'display': 'none'
+  }
+  var styleView = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px'
+  }
+  var determineStyle = () => {
+    if (props.startingIndex === 0) {
+      return styleHidden;
+    } else {
+      return styleView;
+    }
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#10145;</button>
+    <button style={determineStyle()} className='sarah-right-arrow' onClick={() => {onClick()}}>&#62;</button>
   )
 }
 
