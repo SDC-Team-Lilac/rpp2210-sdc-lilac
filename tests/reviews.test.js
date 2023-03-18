@@ -184,8 +184,8 @@ describe('SortOptions Component', () => {
 
 describe('StarRating Component', () => {
   it('Renders StarRating component',  () => {
-    render(<StarRating />)
-    const element = screen.getByTestId('starRating-1');
-    expect(element).toBeInTheDocument();
+    //render returns an object that are already bound to the base element
+    const {getByTestId} = render(<StarRating />)
+    expect(getByTestId('starRating-1')).toBeInTheDocument();
   })
 })
