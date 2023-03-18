@@ -53,6 +53,7 @@
   flex-direction: column;
   flex-grow: 2;
   border: 2px solid greenyellow;
+  padding: 30px 20px 30px 20px;
 }
 
 .overview_product_summary {
@@ -72,7 +73,7 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 10px 20px 10px;
   font-size: large;
 }
 
@@ -98,6 +99,7 @@
 
 .overview_addToCart {
   border: 2px solid fuchsia;
+  padding: 10px 10px 10px 10px;
 }
 
 .overview_product_details {

@@ -79,7 +79,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   return (
     <div className="overview_addToCart">
-      <h3>This is the Add to Cart Component!</h3>
+      {/* <h3>This is the Add to Cart Component!</h3> */}
       <div data-testid="sizeSelector">
         <select defaultValue="Select Size" onChange={handleSizeChange}>
           <option value="Select Size" disabled>Select Size</option>
