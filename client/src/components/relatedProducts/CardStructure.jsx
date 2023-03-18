@@ -1,5 +1,5 @@
 import React from 'react';
-import { XButton, StarButton, OnCardClick } from './CardButtons.jsx'
+import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
 
 const CardStructure = (props) => {
   if (props.product.image === null) {
