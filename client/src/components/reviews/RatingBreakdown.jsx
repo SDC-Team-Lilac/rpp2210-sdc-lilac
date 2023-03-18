@@ -8,7 +8,7 @@ const RatingBreakdown = () => {
    */
 
   return (
-    <div className="reviews ratingBreakdown" style={{border: '5px solid green'}}> RatingBreakdown!
+    <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> RatingBreakdown!
       <div style={{border: '2px solid blue'}}> Rating Summary </div>
       <div style={{border: '2px solid blue'}}> Recommendations </div>
       <div style={{border: '2px solid blue'}}> Breakdown </div>

@@ -85,7 +85,7 @@ const Reviews = ({ productId, productName, updateAverageRating }) => {
   }, [sort])
 
   return (
-    <div>
+    <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <div className="reviews reviewsMain">
         <RatingBreakdown reviewsMeta={reviewsMeta}/>

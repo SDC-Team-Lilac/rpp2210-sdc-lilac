@@ -27,7 +27,7 @@ const ReviewTile = ({ review, updateReviews }) => {
   }
 
   return (
-    <div className="reviews reviewTile" style={{border: '2px solid purple'}}>
+    <div data-testid='reviewTile-1' style={{border: '2px solid purple'}}>
       <StarRating rating={review.rating}/>
       <div>Summary: {review.summary}</div>
       <div>Body: {review.body}</div>
