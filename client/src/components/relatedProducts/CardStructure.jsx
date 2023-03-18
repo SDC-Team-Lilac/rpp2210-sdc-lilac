@@ -21,7 +21,7 @@ const CardStructure = (props) => {
           {determine()}
         </div>
         <div className='sarah-product-image-div'>
-          <img className='sarah-product-image' src={props.product.image} width='100px' height='125px'></img>
+          <img className='sarah-product-image' src={props.product.image} width='200px' height='225px'></img>
         </div>
         <h4 className='sarah-product-category'>{props.product.category}</h4>
         <h4 className='sarah-product-name'>{props.product.name}</h4>

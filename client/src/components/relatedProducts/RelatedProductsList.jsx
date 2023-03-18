@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CardStructure from './CardStructure.jsx';
 import { ProductListInfo } from './RelatedProductRequests.jsx';
 import $ from 'jquery';
 import { LeftArrow, RightArrow, OnCardClick, StarButton, XButton } from './CardButtons.jsx';
@@ -7,18 +6,20 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedProductsList = (props) => {
   console.log('relatedProducts: ', props.relatedProducts);
-  const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
+  const [startingIndex, setStartingIndex] = useState(0);
+
   return (
     <div className='sarah-products-list' id='sarah-products-list'>
       <h2 className='sarah-products-list-title'>Related Products</h2>
-      <div>
-        {LeftArrow()}
-        <div>
-          {props.productCards.map((product) => {
-            return <CardStructure setRelatedProductFeatures={setRelatedProductFeatures} product={product} listName={'product'} currentProductFeatures={props.currentProductFeatures}/>
-          })}
+      <div className='sarah-list-with-arrows'>
+        <LeftArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
+        <div className='sarah-product-cards-container'>
+          {props.productCards[startingIndex]}
+          {props.productCards[startingIndex + 1]}
+          {props.productCards[startingIndex + 2]}
+          {props.productCards[startingIndex + 3]}
         </div>
-        {RightArrow()}
+        <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
       </div>
       <div className='sarah-overlay' id='sarah-overlay' onClick={() => {
         var modalElement = document.getElementById('sarah-modal');
@@ -28,7 +29,7 @@ const RelatedProductsList = (props) => {
         overlayElement.classList.remove('active');
         body.classList.remove('active');
       }}></div>
-      <ComparisonModal relatedProductFeatures={relatedProductFeatures} currentProductFeatures={props.currentProductFeatures}/>
+      <ComparisonModal relatedProductFeatures={props.relatedProductFeatures} currentProductFeatures={props.currentProductFeatures}/>
     </div>
   )
 }
