@@ -27,16 +27,16 @@ const ReviewTile = ({ review, updateReviews }) => {
   }
 
   return (
-    <div style={{border: '2px solid purple'}}>
-    <StarRating rating={review.rating}/>
-    <div>Summary: {review.summary}</div>
-    <div>Body: {review.body}</div>
-    <div>Reviewer Name: {review.reviewer_name}</div>
-    <div>Date Reviewed: {review.date}</div>
-    <div>Helpfulness Rating: {review.helpfulness}</div>
-    {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
-    <button onClick={handleHelpful}>Mark as Helpful</button>
-    <button onClick={handleReport}>Report Review</button>
+    <div data-testid='reviewTile-1' style={{border: '2px solid purple'}}>
+      <StarRating rating={review.rating}/>
+      <div>Summary: {review.summary}</div>
+      <div>Body: {review.body}</div>
+      <div>Reviewer Name: {review.reviewer_name}</div>
+      <div>Date Reviewed: {review.date}</div>
+      <div>Helpfulness Rating: {review.helpfulness}</div>
+      {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
+      <button onClick={handleHelpful}>Mark as Helpful</button>
+      <button onClick={handleReport}>Report Review</button>
     </div>
   )
 }
