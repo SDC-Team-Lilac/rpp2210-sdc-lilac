@@ -10,7 +10,7 @@ const AddQuestion = () => {
 
   return (
     <div>
-    <div> AddQuestion! </div>
+    <div data-testid='AddQuestion'> AddQuestion! </div>
     <form>
       <button>Add Question</button>
     </form>

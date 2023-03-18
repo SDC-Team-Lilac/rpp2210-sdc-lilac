@@ -87,8 +87,10 @@ const Reviews = ({ productId, productName, updateAverageRating }) => {
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
-      <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+      <div className="reviews reviewsMain">
+        <RatingBreakdown reviewsMeta={reviewsMeta}/>
+        { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+      </div>
     </div>
   )
 }

@@ -72,7 +72,8 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta }) => {
 
 
   return (
-    <div data-testid='reviewList-1' style={{border: '5px solid blue',}}>
+
+    <div data-testid='reviewList-1' style={{border: '5px solid blue'}}>
       ReviewsList!
       <SortOptions sortReviews={sortReviews}/>
       <KeywordSearch />

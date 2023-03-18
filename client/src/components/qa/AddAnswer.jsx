@@ -76,7 +76,7 @@ const AddAnswer = (props) => {
   return (
     <div>
       <div>
-        <button onClick={onClickHandler}>Add Ansewer</button>
+        <button data-testid="addButton" onClick={onClickHandler}>Add Ansewer</button>
         {warning && (<div>{warning}</div>)}
       </div>
       {showAddAnswerForm && (<div>
