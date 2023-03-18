@@ -5,7 +5,9 @@ import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId, updateAverageRating }) => {
+const Reviews = ({ productId, productName, updateAverageRating }) => {
+
+  console.log('PRODUCT NAME: ', productName);
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)

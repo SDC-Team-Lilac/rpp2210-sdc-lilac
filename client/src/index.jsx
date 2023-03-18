@@ -15,6 +15,7 @@ const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697 || HORIZONTAL, PROBLEMATIC: 71701
   const [productId, setProductId] = useState(71697);
+  const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
@@ -39,6 +40,7 @@ const App = () => {
     })
       .then(productData => {
         setProductId(productData.data.id);
+        setProductName(productData.data.name);
         setProductFeatures(productData.data.features);
         return axios.get(`/products/${product_id}/related`, {
           params: {
@@ -75,7 +77,7 @@ const App = () => {
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
       <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
       <QA productId={productId}/>
-      <Reviews productId={productId} updateAverageRating={updateAverageRating}/>
+      <Reviews productId={productId} productName={productName} updateAverageRating={updateAverageRating}/>
     </div>
   );
 };

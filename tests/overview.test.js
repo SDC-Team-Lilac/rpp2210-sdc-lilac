@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {render, screen, cleanup} from '@testing-library/react'
-import '@testing-library/jest-dom'
+import {render, screen, cleanup} from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 import Overview from '../client/src/components/Overview/Overview.jsx';
 import ProductGallery from '../client/src/components/Overview/ProductGallery.jsx';
