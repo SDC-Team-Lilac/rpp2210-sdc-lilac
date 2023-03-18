@@ -206,15 +206,19 @@ body.active {
 /* Begin Reviews CSS*/
 .newReview {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   background-color: white;
   border: 2px solid rgb(132, 132, 132);
   border-radius: 12px;
   position:  absolute;
-  width: 500px;
-  left: calc(50% - 125px);
-  bottom: 70px;
+  left: 50%;
+  top: 350%;
+  width: 450px;
+  height: 400px;
+  margin-left: -150px;
+  margin-top: -150px;
 }
+
 /* End Reviews CSS */
