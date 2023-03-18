@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ReviewTile from './ReviewTile.jsx'
-import KeywordSearch from './KeywordSearch.jsx'
-import SortOptions from './SortOptions.jsx'
+import { createPortal } from 'react-dom';
+import ReviewTile from './ReviewTile.jsx';
+import KeywordSearch from './KeywordSearch.jsx';
+import SortOptions from './SortOptions.jsx';
+import NewReview from './NewReview.jsx';
 
-const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
+
+const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta }) => {
 
   /*  This Component will:
       1) Render each reviewTile from reviews state
@@ -21,6 +24,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
   const [currentReviews, setCurrentReviews] = useState([]);
   const [maxReviews, setMaxReviews] = useState(2);
   const [showMoreButton, setShowMoreButton] = useState(false)
+  const [showNewReview, setShowNewReview] = useState(false)
 
   const updateCurrentReviews = (reviews) => {
     var reviewsHolder = []
@@ -39,7 +43,15 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
   const addReviews = (e) => {
     e.preventDefault();
     setMaxReviews(maxReviews + 2)
+  }
+  const showModal = (e) => {
+    e.preventDefault();
+    setShowNewReview(true);
+  }
 
+  const hideModal = (e) => {
+    e.preventDefault();
+    setShowNewReview(false);
   }
 
   useEffect(() => {
@@ -72,7 +84,13 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews }) => {
         })}
       </div>
       {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
-      <button>Add Review</button>
+      <button onClick={showModal}>Add Review</button>
+
+      {showNewReview && createPortal(
+        <NewReview reviewsMeta={reviewsMeta} onClose={hideModal}/>,
+        document.body
+      )}
+
     </div>
   )
 }
