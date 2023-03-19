@@ -51,7 +51,7 @@ const NewReview = ({reviewsMeta, onClose }) => {
     var input = e.target.value
   }
   return (
-    <div className="reviews newReview">
+    <div data-testid='newReview-1' className="reviews newReview">
       <form onSubmit={handleSubmit}>
         Write your review about PRODUCT_NAME
         <div>

@@ -22,9 +22,15 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   const thunbnailList = productPhotos.map(photo => {
     count++;
     let thumbnailDescription = imageDescription.concat(' Image #', count);
-    return (
-      <img key={count} id={count} data-testid={`galleryThumbnailImage${count}`} src={photo.thumbnail_url} alt={thumbnailDescription} width="100px" onClick={handleThumbnailClick}></img>
-    );
+    if (photo.url === mainImage) {
+      return (
+        <img className="selected_gallery_thumbnail" key={count} id={count} data-testid={`galleryThumbnailImage${count}`} src={photo.thumbnail_url} alt={thumbnailDescription} width="100px" onClick={handleThumbnailClick}></img>
+      );
+    } else {
+      return (
+        <img className="gallery_thumbnail" key={count} id={count} data-testid={`galleryThumbnailImage${count}`} src={photo.thumbnail_url} alt={thumbnailDescription} width="100px" onClick={handleThumbnailClick}></img>
+      );
+    }
   });
 
   return (

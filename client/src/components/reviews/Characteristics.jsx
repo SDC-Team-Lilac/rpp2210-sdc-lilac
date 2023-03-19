@@ -7,7 +7,7 @@ const Characteristics = ({ characteristics }) => {
     2) Generate the 5 radio buttons
   */
   return (
-    <div style={{border: '2px solid gray'}}> Please rate the following Characteristics! </div>
+    <div data-testid='characteristics-1' style={{border: '2px solid gray'}}> Please rate the following Characteristics! </div>
   )
 }
 

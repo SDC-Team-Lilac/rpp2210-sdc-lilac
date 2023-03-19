@@ -35,10 +35,10 @@ const ComparisonModalList = (props) => {
         relatedProduct = '';
       }
       return (
-        <tr className='sarah-modal-feature-container'>
-          <td className='sarah-modal-product1-feature'>{currentProduct}</td>
-          <td className='sarah-modal-feature'>{feature.feature}</td>
-          <td className='sarah-modal-product2-feature'>{relatedProduct}</td>
+        <tr className='sarah-modal-feature-container' data-testid='modal-container' >
+          <td className='sarah-modal-product1-feature' data-testid='modal-product1' >{currentProduct}</td>
+          <td className='sarah-modal-feature' data-testid='modal-feature' >{feature.feature}</td>
+          <td className='sarah-modal-product2-feature' data-testid='modal-product2' >{relatedProduct}</td>
         </tr>
         // <div className='sarah-modal-feature-container'>
         //   <div className='sarah-modal-product1-feature'>{currentProduct}</div>
