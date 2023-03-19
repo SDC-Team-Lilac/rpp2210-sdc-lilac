@@ -29,7 +29,7 @@ const SearchQuestion = (props) => {
   return (
     <div>
     <form >
-      <label>Seach Questions</label><input type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
+      <label data-testid="qaSearchQuestion">Seach Questions</label><input type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
       {/* <button type='submit'>Submit</button> */}
     </form>
     </div>

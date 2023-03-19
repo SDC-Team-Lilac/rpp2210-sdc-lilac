@@ -29,7 +29,7 @@ const QA = (props) => {
 
   return (
     <div style={{border: '2px solid black'}}>
-      <div> QA! </div>
+      <div data-testid='qaQa'> QA! </div>
       <SearchQuestion getQuestionsForOneProduct={getQuestionsForOneProduct} productId={props.productId} questionList={questionList}/>
       <QuestionList questionList={questionList} />
       <AddQuestion />

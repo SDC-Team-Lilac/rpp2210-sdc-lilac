@@ -30,7 +30,7 @@ const Answer = (props) => {
   };
 
   return (
-    <div>
+    <div >
       <div>
         {'A: ' + props.answer.body}
       </div>
@@ -38,7 +38,7 @@ const Answer = (props) => {
       <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{props.answer.date.split('T')[0]}</span>
     </div>
     <div>
-      <span>Helpful? </span><span onClick={helpfulCountHandler}>Yes({helpfulCount})</span><span onClick={reportHandler}>{'  ' + report}</span>
+      <span data-testid='answer'>Helpful? </span><span onClick={helpfulCountHandler}>Yes({helpfulCount})</span><span onClick={reportHandler}>{'  ' + report}</span>
     </div>
   </div>
   )
