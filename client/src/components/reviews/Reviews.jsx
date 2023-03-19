@@ -5,7 +5,9 @@ import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId, updateAverageRating }) => {
+const Reviews = ({ productId, productName, updateAverageRating }) => {
+
+  console.log('PRODUCT NAME: ', productName);
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)
@@ -83,10 +85,12 @@ const Reviews = ({ productId, updateAverageRating }) => {
   }, [sort])
 
   return (
-    <div style={{border: '2px solid red'}}>
+    <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
-      <RatingBreakdown reviewsMeta={reviewsMeta}/>
-      { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+      <div className="reviews reviewsMain">
+        <RatingBreakdown reviewsMeta={reviewsMeta}/>
+        { reviews.length !== 0 ? <ReviewList reviews={reviews} sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+      </div>
     </div>
   )
 }

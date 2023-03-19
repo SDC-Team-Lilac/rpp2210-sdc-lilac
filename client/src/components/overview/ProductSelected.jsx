@@ -11,7 +11,7 @@ const ProductSelected = ( { productDetails, selectedStyle, productStyles, update
 
   return (
     <div className="overview_product_selected">
-      <h2>This is the Product Selected Component!</h2>
+      {/* <h2>This is the Product Selected Component!</h2> */}
       <ProductSummary productDetails={productDetails} selectedStyle={selectedStyle}/>
       <StyleSelector selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle} />
       <AddToCart selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>

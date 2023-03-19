@@ -3,7 +3,7 @@ import ComparisonModalList from './ComparisonModalList.jsx';
 
 const ComparisonModal = (props) => {
   return (
-    <table className='sarah-modal' id='sarah-modal'>
+    <table className='sarah-modal' id='sarah-modal'  data-testid='comparison-modal'>
       <thead>
         <tr>
           <th colSpan="3" className="sarah-modal-header">Comparison</th>

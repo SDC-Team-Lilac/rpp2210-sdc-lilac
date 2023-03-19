@@ -8,7 +8,7 @@ const XButton = () => {
     console.log('The X button was clicked!')
   }
   return (
-    <button className='sarah-x-button' onClick={() => {onClick()}}>&#10006;</button>
+    <button className='sarah-x-button' data-testid='x-button' onClick={() => {onClick()}}>&#10006;</button>
   )
 }
 
@@ -21,8 +21,13 @@ const StarButton = (currentProduct, clickedProduct, setRelatedProductId) => {
   var onClick = () => {
     ComparisonDetails(currentProduct, clickedProduct, setRelatedProductId);
   }
+  var styleSettings ={
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '20px'
+  }
   return (
-    <button className='sarah-star-button' onClick={() => {onClick()}}>&#11088;</button>
+    <button style={styleSettings} className='sarah-star-button' data-testid='star-button' onClick={() => {onClick()}}>&#11088;</button>
   )
 }
 
@@ -31,25 +36,61 @@ const PlusButton = () => {
     console.log('The plus button was clicked!')
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#10133;</button>
+    <button className='sarah-plus-button' data-testid='plus-button' onClick={() => {onClick()}}>&#10133;</button>
   )
 }
 
-const LeftArrow = () => {
+const LeftArrow = (props) => {
   var onClick = () => {
-    console.log('The left arrow button was clicked!')
+    props.setStartingIndex(startingIndex + 1);
+  }
+  var styleHidden = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px',
+    'display': 'none'
+  }
+  var styleView = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px'
+  }
+  var determineStyle = () => {
+    if (props.startingIndex === 0) {
+      return styleHidden;
+    } else {
+      return styleView;
+    }
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#11013;</button>
+    <button style={determineStyle()} className='sarah-left-arrow' data-testid='left-arrow' onClick={() => {onClick()}}>&#60;</button>
   )
 }
 
-const RightArrow = () => {
+const RightArrow = (props) => {
   var onClick = () => {
-    console.log('The right arrow button was clicked!')
+    props.setStartingIndex(startingIndex - 1);
+  }
+  var styleHidden = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px',
+    'display': 'none'
+  }
+  var styleView = {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'fontSize': '35px'
+  }
+  var determineStyle = () => {
+    if (props.startingIndex === 0) {
+      return styleHidden;
+    } else {
+      return styleView;
+    }
   }
   return (
-    <button className='sarah-plus-button' onClick={() => {onClick()}}>&#10145;</button>
+    <button style={determineStyle()} className='sarah-right-arrow' data-testid='right-arrow' onClick={() => {onClick()}}>&#62;</button>
   )
 }
 
