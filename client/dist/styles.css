@@ -385,4 +385,52 @@ body.active {
   margin-top: -150px;
 }
 
+.reviews.allStars {
+  display: flex;
+}
+
+.reviews.star {
+  resize: both;
+  margin: 50px 0;
+  position: relative;
+  display: flex;
+  color: yellow;
+  width: 100%;
+  height: auto;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid yellow;
+  border-left: 100px solid transparent;
+  transform: rotate(35deg);
+}
+.reviews.star:before {
+  resize: both;
+
+  border-bottom: 80px solid yellow;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: -45px;
+  left: -65px;
+  display: flex;
+  content: '';
+  transform: rotate(-35deg);
+}
+.reviews.star:after {
+  resize: both;
+
+  position: absolute;
+  display: flex;
+  color: yellow;
+  top: 3px;
+  left: -105px;
+  width: 100%;
+  height: auto;
+  border-right: 100px solid transparent;
+  border-bottom: 70px solid yellow;
+  border-left: 100px solid transparent;
+  transform: rotate(-70deg);
+  content: '';
+}
 /* End Reviews CSS */
