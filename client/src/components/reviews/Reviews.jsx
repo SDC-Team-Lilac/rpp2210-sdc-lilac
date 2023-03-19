@@ -5,7 +5,7 @@ import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId, productName, updateAverageRating, averageStarRating, updateReviewCount, reviewCount }) => {
+const Reviews = ({ productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
   console.log('PRODUCT NAME: ', productName);
 
@@ -88,7 +88,7 @@ const Reviews = ({ productId, productName, updateAverageRating, averageStarRatin
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} reviewCount={reviewCount} updateReviewCount={updateReviewCount} averageStarRating={averageStarRating}/> : null }
+        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
         { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
       </div>
     </div>

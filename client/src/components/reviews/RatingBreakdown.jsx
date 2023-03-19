@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductBreakdown from './ProductBreakdown.jsx'
 import StarRating from './StarRating.jsx'
 
-const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateReviewCount, reviewCount }) => {
+const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
   /*  This Component will:
       1)
@@ -22,7 +22,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateReviewCount, re
       count += Number(reviewsMeta.ratings[key]);
     }
     console.log('wahts the count then', count)
-    updateReviewCount(count);
+    updateTotalNumberReviews(count);
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateReviewCount, re
         <div> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
         <StarRating />
       </div>
-      <div>There are {reviewCount} reviews!</div>
+      <div>There are {totalNumberReviews} reviews!</div>
       <div style={{border: '2px solid blue'}}>
       <div>5 stars: {reviewsMeta.ratings[5]}</div>
       <div>4 stars: {reviewsMeta.ratings[4]}</div>
