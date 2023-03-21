@@ -4,6 +4,8 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const [mainImage, setMainImage] = useState('');
   const [mainImageIndex, setMainImageIndex] = useState(0);
+  const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
+  const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(6);
 
   // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
   useEffect(() => {
@@ -47,6 +49,20 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
     setMainImageIndex(mainImageIndex + 1);
   }
 
+  const handleThumbnailPreviousClick = (e) => {
+    e.preventDefault();
+    console.log('Thumbnail previous clicked!!!');
+    setTopThumbnailIndex(topThumbnailIndex - 1);
+    setBottomThumbnailIndex(bottomThumbnailIndex - 1);
+  }
+
+  const handleThumbnailNextClick = (e) => {
+    e.preventDefault();
+    console.log('Thumbnail next clicked!!!');
+    setTopThumbnailIndex(topThumbnailIndex + 1);
+    setBottomThumbnailIndex(bottomThumbnailIndex + 1);
+  }
+
   return (
     <div className="gallery">
       {/* <h2>This is the Product Gallery Component!</h2> */}
@@ -54,9 +70,9 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       {mainImageIndex < thunbnailList.length - 1 ? <button className="main_image_next" onClick={handleMainNextClick}>Next!!!</button> : null}
       <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription}></img>
       <div className="thumbnailGallery">
-        <button className="thumbnail_gallery_previous">Up!!!</button>
-        <div className="thumbnailCarousel">{thunbnailList}</div>
-        <button className="thumbnail_gallery_next">Down!!!</button>
+        {topThumbnailIndex > 0 ? <button className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick}>Up!!!</button> : null}
+        <div className="thumbnailCarousel">{thunbnailList.slice(topThumbnailIndex, bottomThumbnailIndex)}</div>
+        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length - 1 ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
       </div>
     </div>
   )

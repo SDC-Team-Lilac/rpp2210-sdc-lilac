@@ -28,7 +28,7 @@ const App = () => {
 
 
   useEffect(() => {
-    updateSelectedProduct(71697);
+    updateSelectedProduct(71702);
   }, []);
 
   // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
