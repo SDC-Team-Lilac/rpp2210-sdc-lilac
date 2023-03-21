@@ -35,7 +35,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> RatingBreakdown!
       <div className="ratingSummary" style={{border: '2px solid blue'}}>
         <div> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
-        <StarRating />
+        <StarRating rating={averageStarRating}/>
       </div>
       <div>There are {totalNumberReviews} reviews!</div>
       <div style={{border: '2px solid blue'}}>
