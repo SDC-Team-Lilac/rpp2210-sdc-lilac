@@ -22,7 +22,7 @@ const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, tot
     <div className="overview_product_summary">
       {/* <h3>This is the Product Summary Component!</h3> */}
       <div>
-        <StarRating rating={averageStarRating}/>
+      { averageStarRating!== null ? <StarRating rating={averageStarRating}/> : null }
         <span>Read all {totalNumberReviews} reviews</span>
       </div><br></br>
       <span >{productDetails.category.toUpperCase()}</span><br></br>
