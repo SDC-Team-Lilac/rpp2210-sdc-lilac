@@ -385,4 +385,17 @@ body.active {
   margin-top: -150px;
 }
 
+.starRatings {
+  display: inline-block;
+  position: relative;
+  color: rgb(144, 144, 7);
+  font-size: 30px;
+}
+
+.fullStars {
+  position: absolute;
+  color: yellow;
+  overflow: hidden;
+  font-size: 30px;
+}
 /* End Reviews CSS */
