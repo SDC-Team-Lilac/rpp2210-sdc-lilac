@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Reviews = ({ productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
-  console.log('PRODUCT NAME: ', productName);
+  // console.log('PRODUCT NAME: ', productName);
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)

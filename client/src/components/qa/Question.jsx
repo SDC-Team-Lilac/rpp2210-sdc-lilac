@@ -15,7 +15,7 @@ const Question = (props) => {
   useEffect(()=>{
     getAnswersForOneQuestion(props.question.question_id)
     .then((result)=> {
-      console.log('ansewer result --->>', result)
+      // console.log('ansewer result --->>', result)
       setAnswerList(result.data.results);
     })
     .catch(err=>{

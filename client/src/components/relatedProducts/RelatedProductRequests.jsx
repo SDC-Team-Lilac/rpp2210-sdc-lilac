@@ -12,7 +12,7 @@ var ProductListInfo = async(relatedProducts, setProductCards, setRelatedProductF
   var details = [];
   var cardList = [];
   var count = 0;
-  console.log('INSIDE');
+  // console.log('INSIDE');
   const list =  await Promise.all(relatedProducts.map(async function(product) {
     var products = {productId: product};
     await axios.get(`/products/${product}`, {

@@ -5,7 +5,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   // Known refactor need: On style change, reset this component so size and qty need to be reselected ***
   // Known refactor need: Out of Stock conditional rendering for size ***
 
-  console.log('Selected Style in AddToCart: ', selectedStyle);
+  // console.log('Selected Style in AddToCart: ', selectedStyle);
 
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState('');
@@ -29,7 +29,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     }
   })
 
-  console.log('Style SKU Data: ', styleSkuData);
+  // console.log('Style SKU Data: ', styleSkuData);
 
   // const handleStyleChange = () => {
   //   let itemSkuData = [];

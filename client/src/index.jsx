@@ -13,8 +13,8 @@ const root = createRoot(domNode);
 
 const App = () => {
 
-  // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71697);
+  // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71702 || HORIZONTAL, PROBLEMATIC: 71701
+  const [productId, setProductId] = useState(71699);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -28,7 +28,7 @@ const App = () => {
 
 
   useEffect(() => {
-    updateSelectedProduct(71697);
+    updateSelectedProduct(71702);
   }, []);
 
   // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***

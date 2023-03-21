@@ -5,7 +5,7 @@ import { LeftArrow, RightArrow, OnCardClick, StarButton, XButton } from './CardB
 import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedProductsList = (props) => {
-  console.log('relatedProducts: ', props.relatedProducts);
+  // console.log('relatedProducts: ', props.relatedProducts);
   const [startingIndex, setStartingIndex] = useState(0);
 
   return (

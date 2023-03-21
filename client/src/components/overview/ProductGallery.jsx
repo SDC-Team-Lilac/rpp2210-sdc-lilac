@@ -36,9 +36,13 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   return (
     <div className="gallery">
       {/* <h2>This is the Product Gallery Component!</h2> */}
+      <button className="main_image_previous">Previous!!!</button>
+      <button className="main_image_next">Next!!!</button>
       <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription}></img>
       <div className="thumbnailGallery">
-        {thunbnailList}
+        <button className="thumbnail_gallery_previous">Up!!!</button>
+        <div className="thumbnailCarousel">{thunbnailList}</div>
+        <button className="thumbnail_gallery_next">Down!!!</button>
       </div>
     </div>
   )

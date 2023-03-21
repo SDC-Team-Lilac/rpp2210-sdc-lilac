@@ -21,12 +21,12 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     for (var key in reviewsMeta.ratings) {
       count += Number(reviewsMeta.ratings[key]);
     }
-    console.log('wahts the count then', count)
+    // console.log('wahts the count then', count)
     updateTotalNumberReviews(count);
   }
 
   useEffect(() => {
-    console.log('Ran useEffect in ratingbreakdown')
+    // console.log('Ran useEffect in ratingbreakdown')
     countReviews()
     percentRecommend()
   }, [])
