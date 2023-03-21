@@ -29,20 +29,29 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     percentRecommend()
   }, [])
 
+  useEffect(() => {
+    countReviews()
+    percentRecommend()
+  }, [reviewsMeta])
+
+
   return (
-    <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> RatingBreakdown!
-      <div className="ratingSummary" style={{border: '2px solid blue'}}>
+    <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> Ratings & Reviews
+      <div className="reviews ratingSummary">
         <div> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
         <StarRating rating={averageStarRating}/>
       </div>
       <div>There are {totalNumberReviews} reviews!</div>
-      <div style={{border: '2px solid blue'}}>
-      <div>5 stars: {reviewsMeta.ratings[5]}</div>
-      <div>4 stars: {reviewsMeta.ratings[4]}</div>
-      <div>3 stars: {reviewsMeta.ratings[3]}</div>
-      <div>2 stars: {reviewsMeta.ratings[2]}</div>
-      <div>1 stars: {reviewsMeta.ratings[1]} </div>
-      <div>{recommended}% recommend this product!</div>
+      <div className="reviews ratingBreakdown" style={{border: '2px solid blue'}}>
+        Rating Breakdown!
+        <div className="reviews allRatingBars">
+          <div className="reviews outerRatingBar"><div>5 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[5]}</div></div>
+          <div className="reviews outerRatingBar"><div>4 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[4]}</div></div>
+          <div className="reviews outerRatingBar"><div>3 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[3]}</div></div>
+          <div className="reviews outerRatingBar"><div>2 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[2]}</div></div>
+          <div className="reviews outerRatingBar"><div>1 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[1]}</div></div>
+        </div>
+        <div>{recommended}% recommend this product!</div>
       </div>
       <ProductBreakdown />
     </div>

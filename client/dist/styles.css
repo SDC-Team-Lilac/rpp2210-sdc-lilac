@@ -384,7 +384,36 @@ body.active {
   margin-left: -200px;
   margin-top: -150px;
 }
+.reviews.ratingSummary {
+  display: flex;
+  align-items: center;
+}
 
+.reviews.ratingBreakdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews.allRatingBars {
+  display: flex;
+  flex-direction: column;
+}
+.reviews.ratingBar {
+  /* test */
+  width: 50px;
+  height: 12px;
+  background:gray;
+  /* flex-grow: 1; */
+  /* flex-basis: 0; */
+  /* align-self: stretch */
+}
+
+.reviews.outerRatingBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
 .starRatings {
   display: inline-block;
   position: relative;
