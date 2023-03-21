@@ -394,7 +394,7 @@ body.active {
 
 .fullStars {
   position: absolute;
-  color: yellow;
+  color: red;
   overflow: hidden;
   font-size: 30px;
 }
