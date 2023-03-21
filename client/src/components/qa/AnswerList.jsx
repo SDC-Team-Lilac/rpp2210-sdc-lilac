@@ -8,7 +8,7 @@ const AnswerList = (props) => {
       <div> AnswerList! </div>
       {props.answerList.map(answer=>
       <Answer key={answer.answer_id} answer={answer}/>)}
-      <button>See more answers</button>
+      <button data-testid='answerList1'>See more answers</button>
     </div>
   )
 }

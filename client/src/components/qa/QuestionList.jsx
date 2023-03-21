@@ -5,7 +5,7 @@ const QuestionList = (props) => {
 
   return (
     <div>
-      <div> QuestionList! </div>
+      <div data-testid="qaQuestionList"> QuestionList! </div>
       {props.questionList.map(question=>
       <Question key={question.question_id} question={question}/>)}
        <button>More Answered Questions</button>

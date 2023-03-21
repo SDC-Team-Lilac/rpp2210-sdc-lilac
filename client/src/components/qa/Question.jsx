@@ -26,11 +26,11 @@ const Question = (props) => {
 
   return (
     <div style={{border: '2px solid red'}}>
-      <div> {'Q: ' + props.question.question_body} </div>
+      <div data-testid="qaQuestion"> {'Q: ' + props.question.question_body} </div>
       <AnswerList answerList={answerList}/>
       <AddAnswer question={props.question}/>
     </div>
   )
-}
+};
 
 export default Question;
