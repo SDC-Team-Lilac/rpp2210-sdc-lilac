@@ -226,7 +226,7 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
       {/* <h1>This is the Overview Component!</h1> */}
       <div id="overview_top">
         <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
-        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
+        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} updateSelectedStyle={updateSelectedStyle}/>
       </div>
       <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/>
     </div>
