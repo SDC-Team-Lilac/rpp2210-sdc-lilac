@@ -24,6 +24,21 @@
   width: 750px;
 }
 
+.main_image_previous {
+  background-color: greenyellow;
+  align-self: center;
+  position: absolute;
+  top: 375px;
+  left: 120px;
+}
+
+.main_image_next {
+  background-color: greenyellow;
+  position: absolute;
+  top: 375px;
+  left: 675px;
+}
+
 .thumbnailGallery {
   display: flex;
   flex-direction: column;
@@ -31,6 +46,34 @@
   gap: 10px;
   top: 20px;
   left: 17px;
+  bottom: 20px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.thumbnailCarousel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 40px;
+  gap: 10px;
+  overflow: hidden;
+  /* top: 20px;
+  left: 17px; */
+  /* transform: translateY(0);
+  transition: transform 0.5s; */
+}
+
+.thumbnail_gallery_previous {
+  position: absolute;
+  background-color: aquamarine;
+  top: 10px;
+}
+
+.thumbnail_gallery_next {
+  position: absolute;
+  background-color: aquamarine;
+  top: 620px;
 }
 
 .gallery_thumbnail {
