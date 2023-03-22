@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
+  // Current Bug -- when switching style, next click to "next" on mainImage results in undefined URL, but if you click previous and THEN next it's fine (?)
+    // Also seems to be happening on any "next" mainImage click if you jump click to another thumbnail
+
   const [mainImage, setMainImage] = useState('');
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
