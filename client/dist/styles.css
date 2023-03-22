@@ -246,8 +246,9 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   z-index: 10;
   background-color: white;
   width: 500px;
@@ -260,10 +261,20 @@
 }
 
 .sarah-modal-header {
+  font-weight: bolder;
+  font-size: larger;
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  z-index: 10;
+  background-color: white;
+}
+
+.sarah-modal-column-header {
   padding: 10px 15px;
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -288,6 +299,14 @@
   pointer-events: all;
   opacity: 1;
   min-width: 300px;
+}
+
+tr:nth-child(even) {
+ background-color:#ECECEC;
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.762);
 }
 
 body {
@@ -327,7 +346,7 @@ body.active {
   border: 0.5px solid black;
   width: fit-content;
   margin: 10px;
-  height:307px;
+  height:319px;
 }
 
 .sarah-product-button-div {
@@ -338,7 +357,7 @@ body.active {
 
 .sarah-product-image-div {
   position: relative;
-  top: -29px;
+  top: -28px;
 }
 
 .sarah-product-category {
@@ -371,6 +390,7 @@ body.active {
 .sarah-list-with-arrows {
   display: flex;
   justify-content: center;
+  transition: 200ms ease-out;
 }
 
 .sarah-add-to-outfit-card {
@@ -396,6 +416,14 @@ body.active {
   left: 50px;
   font-size: large;
   font-weight: bolder;
+}
+
+.sarah-left-arrow:hover, .sarah-left-arrow:focus {
+  color: blue;
+}
+
+.sarah-right-arrow:hover, .sarah-right-arrow:focus {
+  color: blue;
 }
 
 /* Begin Reviews CSS*/

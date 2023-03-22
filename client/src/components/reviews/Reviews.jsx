@@ -5,9 +5,7 @@ import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
-
-  // console.log('PRODUCT NAME: ', productName);
+const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
   /*  This Component will need the below from it's parent:
         -) product_id, product name, product characteristics (latter two needed for NewReview)
@@ -47,6 +45,20 @@ const Reviews = ({ productId, productName, updateAverageRating, averageStarRatin
     })
   }
 
+  const getReviewsMeta = () => {
+    axios.get('/reviews/meta', {
+      params: {
+        product_id: productId
+      }
+    })
+    .then((result) => {
+      setReviewsMeta(result.data);
+      var averageRating = RatingCalculator(result.data.ratings)
+      updateAverageRating(averageRating)
+    })
+    .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
+  }
+
   const updateReviews = () => {
     getReviews(count, page, sort)
     .then((result) => {
@@ -65,29 +77,25 @@ const Reviews = ({ productId, productName, updateAverageRating, averageStarRatin
 
   useEffect(() => {
     updateReviews()
-
-    axios.get('/reviews/meta', {
-      params: {
-        product_id: productId
-      }
-    })
-    .then((result) => {
-      setReviewsMeta(result.data);
-      var averageRating = RatingCalculator(result.data.ratings)
-      updateAverageRating(averageRating)
-    })
-    .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
+    getReviewsMeta()
   }, [])
+
+  useEffect(() => {
+    updateReviews()
+    getReviewsMeta()
+  }, [productId])
 
 
   useEffect(() => {
     updateReviews()
   }, [sort])
 
+
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <h1>Reviews!</h1>
       <div className="reviews reviewsMain">
+        {/* <button onClick = {() => {updateSelectedProduct(71700)}}>TEST BUTTON</button> */}
         { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
         { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
       </div>

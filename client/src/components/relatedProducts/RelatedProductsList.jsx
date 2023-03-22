@@ -5,9 +5,7 @@ import { LeftArrow, RightArrow, OnCardClick, StarButton, XButton } from './CardB
 import ComparisonModal from './ComparisonModal.jsx';
 
 const RelatedProductsList = (props) => {
-  // console.log('relatedProducts: ', props.relatedProducts);
   const [startingIndex, setStartingIndex] = useState(0);
-
   return (
     <div className='sarah-products-list' id='sarah-products-list' data-testid='product-list-container'>
       <h2 className='sarah-products-list-title'  data-testid='product-list-title'>Related Products</h2>
@@ -19,7 +17,7 @@ const RelatedProductsList = (props) => {
           {props.productCards[startingIndex + 2]}
           {props.productCards[startingIndex + 3]}
         </div>
-        <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
+        <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} relatedProductsCount={props.productCards.length}/>
       </div>
       <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
         var modalElement = document.getElementById('sarah-modal');
@@ -29,7 +27,7 @@ const RelatedProductsList = (props) => {
         overlayElement.classList.remove('active');
         body.classList.remove('active');
       }}></div>
-      <ComparisonModal relatedProductFeatures={props.relatedProductFeatures} currentProductFeatures={props.currentProductFeatures}/>
+      <ComparisonModal relatedProductName={props.relatedProductName} currentProductName={props.productName} relatedProductFeatures={props.relatedProductFeatures} currentProductFeatures={props.currentProductFeatures}/>
     </div>
   )
 }
