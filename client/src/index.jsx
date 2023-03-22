@@ -14,21 +14,27 @@ const root = createRoot(domNode);
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71697);
+  const [productId, setProductId] = useState(71699);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
-  const [myOutfit, setMyOutfit] = useState({outfits: []});
+  const [myOutfit, setMyOutfit] = useState([]);
   const [productFeatures, setProductFeatures] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
   const [productCards, setProductCards] = useState([]);
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
+  const [relatedProductName, setRelatedProductName] = useState('');
 
 
   useEffect(() => {
-    updateSelectedProduct(71697);
+    if (localStorage.getItem("outfitList") === undefined) {
+      localStorage.setItem("outfitList", []);
+    } else {
+      setMyOutfit(localStorage.getItem("outfitList"));
+    }
+    updateSelectedProduct(71699);
   }, []);
 
   // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
@@ -50,7 +56,7 @@ const App = () => {
       })
       .then(relatedProductsData => {
         setRelatedProducts(relatedProductsData.data);
-        return ProductListInfo(relatedProductsData.data, setProductCards, setRelatedProductFeatures, productFeatures);
+        return ProductListInfo(relatedProductsData.data, setProductCards, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId);
       })
       .then(success => {
         return axios.get(`/products/${product_id}/styles`, {
@@ -79,7 +85,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards}/>
+      <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards} setMyOutfit={setMyOutfit} productName={productName} relatedProductName={relatedProductName}/>
       <QA productId={productId}/>
       <Reviews productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
     </div>
