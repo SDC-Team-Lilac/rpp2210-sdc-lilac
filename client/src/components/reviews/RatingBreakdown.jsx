@@ -43,16 +43,30 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
       </div>
       <div>There are {totalNumberReviews} reviews!</div>
       <div className="reviews ratingBreakdown" style={{border: '2px solid blue'}}>
-        Rating Breakdown!
-        <div className="reviews allRatingBars">
-          <div className="reviews outerRatingBar"><div>5 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[5]}</div></div>
-          <div className="reviews outerRatingBar"><div>4 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[4]}</div></div>
-          <div className="reviews outerRatingBar"><div>3 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[3]}</div></div>
-          <div className="reviews outerRatingBar"><div>2 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[2]}</div></div>
-          <div className="reviews outerRatingBar"><div>1 Stars: </div><div className="reviews ratingBar"></div><div>{reviewsMeta.ratings[1]}</div></div>
+        {/* Rating Breakdown! */}
+        <div className="reviews allLeftRatingBars">
+          <div className="reviews leftRatingBar">5 Stars:</div>
+          <div className="reviews leftRatingBar">4 Stars:</div>
+          <div className="reviews leftRatingBar">3 Stars:</div>
+          <div className="reviews leftRatingBar">2 Stars:</div>
+          <div className="reviews leftRatingBar">1 Stars:</div>
         </div>
-        <div>{recommended}% recommend this product!</div>
+        <div className="reviews allRatingBars">
+          <div className="reviews ratingBar"></div>
+          <div className="reviews ratingBar"></div>
+          <div className="reviews ratingBar"></div>
+          <div className="reviews ratingBar"></div>
+          <div className="reviews ratingBar"></div>
+        </div>
+        <div className="reviews allRatingBars">
+          <div>{reviewsMeta.ratings[5]}</div>
+          <div>{reviewsMeta.ratings[4]}</div>
+          <div>{reviewsMeta.ratings[3]}</div>
+          <div>{reviewsMeta.ratings[2]}</div>
+          <div>{reviewsMeta.ratings[1]}</div>
+        </div>
       </div>
+      <div>{recommended}% recommend this product!</div>
       <ProductBreakdown />
     </div>
   )

@@ -355,11 +355,109 @@ body.active {
   font-weight: bolder;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Begin Reviews CSS*/
+
+
+/* MAIN COMPONENT */
 .reviewsMain{
   display: flex;
   justify-content: center;
 }
+/* ---- */
+
+
+/* REVIEW LIST (RIGHT HAND SIDE} */
 .reviewList {
   display: flex;
   flex-direction: column;
@@ -368,6 +466,7 @@ body.active {
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
 }
+/* ADD NEW REVIEW */
 .newReview {
   display: flex;
   justify-content: center;
@@ -384,6 +483,10 @@ body.active {
   margin-left: -200px;
   margin-top: -150px;
 }
+/* ---- */
+
+
+/* RATINGS & REVIEWS (LEFT HAND SIDE) */
 .reviews.ratingSummary {
   display: flex;
   align-items: center;
@@ -391,13 +494,9 @@ body.active {
 
 .reviews.ratingBreakdown {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.reviews.allRatingBars {
-  display: flex;
-  flex-direction: column;
-}
 .reviews.ratingBar {
   /* test */
   width: 50px;
@@ -407,13 +506,15 @@ body.active {
   /* flex-basis: 0; */
   /* align-self: stretch */
 }
-
-.reviews.outerRatingBar {
+.reviews.allRatingBars {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+  flex-direction: column;
+  justify-content: space-around;
 }
+/* ----- */
+
+
+/* STARS */
 .starRatings {
   display: inline-block;
   position: relative;
@@ -427,4 +528,5 @@ body.active {
   overflow: hidden;
   font-size: 30px;
 }
+/* ----- */
 /* End Reviews CSS */
