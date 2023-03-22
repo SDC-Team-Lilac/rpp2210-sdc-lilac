@@ -11,6 +11,7 @@ const ComparisonModalList = (props) => {
           'relatedProduct': ''
         };
         features.push(featureObject);
+        usedFeatures.push(props.currentProductFeatures[i].feature);
       }
     }
     for (var i = 0; i < props.relatedProductFeatures.length; i++) {
@@ -40,11 +41,6 @@ const ComparisonModalList = (props) => {
           <td className='sarah-modal-feature' data-testid='modal-feature' >{feature.feature}</td>
           <td className='sarah-modal-product2-feature' data-testid='modal-product2' >{relatedProduct}</td>
         </tr>
-        // <div className='sarah-modal-feature-container'>
-        //   <div className='sarah-modal-product1-feature'>{currentProduct}</div>
-        //   <div className='sarah-modal-feature'>{feature.feature}</div>
-        //   <div className='sarah-modal-product2-feature'>{relatedProduct}</div>
-        // </div>
       )
     })
 }
