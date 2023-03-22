@@ -5,12 +5,15 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   // Known refactor need: On style change, reset this component so size and qty need to be reselected ***
   // Known refactor need: Out of Stock conditional rendering for size ***
 
-  console.log('Selected Style in AddToCart: ', selectedStyle);
+  // console.log('Selected Style in AddToCart: ', selectedStyle);
 
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState('');
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
+
+  // const [styleSkuData, setStyleSkuData] = useState([]);
+  // const [sizeOptions, setSizeOptions] = useState([]);
 
   let styleSkuData = [];
   let sizesUsed = [];
@@ -29,25 +32,27 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     }
   })
 
-  console.log('Style SKU Data: ', styleSkuData);
+  // console.log('Style SKU Data: ', styleSkuData);
 
-  // const handleStyleChange = () => {
-  //   let itemSkuData = [];
-  //   let itemSizesUsed = [];
-  //   let itemSizeOptions = [];
+
+  // const handleStyleChange = (selectedStyle) => {
+  //   let productSizeOptions = [];
+  //   let productStyleSkuData = [];
+  //   let sizesUsed = [];
+  //   let possibleQuantities = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   //   for (var sku in selectedStyle.skus) {
-  //     itemSkuData.push([sku, selectedStyle.skus[sku].quantity, selectedStyle.skus[sku].size]);
+  //     productStyleSkuData.push([sku, selectedStyle.skus[sku].quantity, selectedStyle.skus[sku].size]);
   //   }
-  //   styleSkuData = itemSkuData;
-  //   itemSizeOptions = styleSkuData.map(item => {
-  //     if (item[1] > 0 && itemSizesUsed.indexOf(item[2]) === -1) {
-  //       itemSizesUsed.push(item[2]);
+  //   productSizeOptions = productStyleSkuData.map(item => {
+  //     if (item[1] > 0 && sizesUsed.indexOf(item[2]) === -1) {
+  //       sizesUsed.push(item[2]);
   //       return (
-  //         <option key={item[0]} value={itemSkuData.indexOf(item)}>{item[2]}</option>
+  //         <option key={item[0]} value={productStyleSkuData.indexOf(item)}>{item[2]}</option>
   //       )
   //     }
   //   })
-  //   sizeOptions = itemSizeOptions;
+  //   setSizeOptions(productSizeOptions);
+  //   setStyleSkuData(productStyleSkuData);
   // }
 
   const handleSizeChange = (e) => {
@@ -63,7 +68,12 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   }
 
   useEffect(() => {
-    // console.log('!!!!');
+    console.log('Selected Style!!!! ', selectedStyle.style_id);
+    // If we're changing to a different style (this is new, in progress *)
+    // if (selectedStyle.style_id === 444248) {
+    //   handleStyleChange();
+    // // If we're on the same style, but haven't selected a size yet
+    // } else
     if (selectedSize !== '') {
       setQuantityDefaultValue(<option value="Starting Quantity" selected>1</option>);
       let sizeStock = styleSkuData[selectedSize][1];
@@ -75,7 +85,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         }
       }))
     }
-  }, [selectedSize]);
+  }, [selectedStyle, selectedSize]);
 
   return (
     <div className="overview_addToCart">
@@ -83,7 +93,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
           <select className="size_selector_dropdown" defaultValue="Select Size" onChange={handleSizeChange}>
-            <option value="Select Size" disabled>Select Size</option>
+            {sizeOptions.length > 0 ? <option value="Select Size" disabled>Select Size</option> : <option value="Select Size" disabled>OUT OF STOCK</option>}
             {sizeOptions}
           </select>
         </div>
