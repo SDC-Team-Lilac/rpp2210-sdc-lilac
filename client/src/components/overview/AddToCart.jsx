@@ -83,7 +83,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
           <select className="size_selector_dropdown" defaultValue="Select Size" onChange={handleSizeChange}>
-            <option value="Select Size" disabled>Select Size</option>
+            {sizeOptions.length > 0 ? <option value="Select Size" disabled>Select Size</option> : <option value="Select Size" disabled>OUT OF STOCK</option>}
             {sizeOptions}
           </select>
         </div>
