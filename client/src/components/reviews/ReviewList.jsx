@@ -13,6 +13,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
   const [showMoreButton, setShowMoreButton] = useState(false)
   const [showNewReview, setShowNewReview] = useState(false)
 
+  //SET STATE FOR ADDITIVE FILTER IF NO FILTER THEN RENDER NORMAL, IF FILTER THEN ONLY PUSH REVIEWS IF THEY HAVE THE REQUIRED RATING[s]
   const updateCurrentReviews = (reviews) => {
     var reviewsHolder = []
     for (let i = 0; i < maxReviews; i ++) {
