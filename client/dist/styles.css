@@ -477,14 +477,18 @@ body.active {
   justify-content: space-between;
 }
 
-.reviews.ratingBar {
-  /* test */
+.reviews.bar {
   width: 50px;
   height: 12px;
-  background-color: gray;
-  /* flex-grow: 1; */
-  /* flex-basis: 0; */
-  /* align-self: stretch */
+  display:flex
+}
+
+.reviews.bar.green {
+  background-color: green
+}
+
+.reviews.bar.gray {
+  background-color: gray
 }
 .reviews.allRatingBars {
   display: flex;

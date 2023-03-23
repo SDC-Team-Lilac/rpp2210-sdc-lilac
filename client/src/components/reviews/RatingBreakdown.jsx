@@ -24,6 +24,16 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     updateTotalNumberReviews(count);
   }
 
+  const getBarWidths = (ratingNumber) => {
+    let greenBar = ((reviewsMeta.ratings[ratingNumber]/totalNumberReviews) * 100).toFixed(2)
+    let grayBar = 100 - greenBar;
+    return {greenWidth: `${greenBar}%`, grayWidth: `${grayBar}%`}
+  }
+
+  const fiveStar = getBarWidths
+
+  console.log('THE THING', getBarWidths(5).greenWidth)
+
   useEffect(() => {
     countReviews()
     percentRecommend()
@@ -35,6 +45,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
   }, [reviewsMeta])
 
 
+
   return (
     <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> Ratings & Reviews
       <div className="reviews ratingSummary">
@@ -42,8 +53,8 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
         <StarRating rating={averageStarRating}/>
       </div>
       <div>There are {totalNumberReviews} reviews!</div>
-      <div className="reviews ratingBreakdown" style={{border: '2px solid blue'}}>
-        {/* Rating Breakdown! */}
+      Rating Breakdown!
+      <div className="reviews ratingBreakdown" >
         <div className="reviews allLeftRatingBars">
           <div className="reviews leftRatingBar">5 Stars:</div>
           <div className="reviews leftRatingBar">4 Stars:</div>
@@ -52,13 +63,13 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
           <div className="reviews leftRatingBar">1 Stars:</div>
         </div>
         <div className="reviews allRatingBars">
-          <div className="reviews ratingBar"></div>
-          <div className="reviews ratingBar"></div>
-          <div className="reviews ratingBar"></div>
-          <div className="reviews ratingBar"></div>
-          <div className="reviews ratingBar"></div>
+          <div className="reviews bar rating5Bar"><div className="reviews bar rating5Bar green" style={{width: `${getBarWidths(5).greenWidth}`}}></div> <div className="reviews bar rating5Bar gray" style={{width:`${getBarWidths(5).grayWidth}`}}></div> </div>
+          <div className="reviews bar rating4Bar"><div className="reviews bar rating4Bar green" style={{width: `${getBarWidths(4).greenWidth}`}}></div> <div className="reviews bar rating4Bar gray" style={{width: `${getBarWidths(4).grayWidth}`}}></div> </div>
+          <div className="reviews bar rating3Bar"><div className="reviews bar rating3Bar green" style={{width: `${getBarWidths(3).greenWidth}`}}></div> <div className="reviews bar rating3Bar gray" style={{width: `${getBarWidths(3).grayWidth}`}}></div> </div>
+          <div className="reviews bar rating2Bar"><div className="reviews bar rating2Bar green" style={{width: `${getBarWidths(2).greenWidth}`}}></div> <div className="reviews bar rating2Bar gray" style={{width: `${getBarWidths(2).grayWidth}`}}></div> </div>
+          <div className="reviews bar rating1Bar"><div className="reviews bar rating1Bar green" style={{width: `${getBarWidths(1).greenWidth}`}}></div> <div className="reviews bar rating1Bar gray" style={{width: `${getBarWidths(1).grayWidth}`}}></div> </div>
         </div>
-        <div className="reviews allRatingBars">
+        <div className="reviews allRightRatingBars">
           <div>{reviewsMeta.ratings[5]}</div>
           <div>{reviewsMeta.ratings[4]}</div>
           <div>{reviewsMeta.ratings[3]}</div>
