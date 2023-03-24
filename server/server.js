@@ -6,10 +6,13 @@ const interactions_api = require('./api_handlers/interactions');
 const products_api = require('./api_handlers/products');
 const qa_api = require('./api_handlers/qa');
 const reviews_api = require('./api_handlers/reviews');
+const expressStaticGzip = require('express-static-gzip');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname,'../client/dist')));
+app.use(expressStaticGzip(path.join(__dirname,'../client/dist'), {
+  enableBrotli: true
+}));
 
 // PRODUCT ROUTES:
 
