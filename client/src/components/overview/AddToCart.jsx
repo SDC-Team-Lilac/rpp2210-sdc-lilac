@@ -5,7 +5,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   // Known refactor need: On style change, reset this component so size and qty need to be reselected ***
   // Known refactor need: Out of Stock conditional rendering for size ***
 
-  console.log('Selected Style in AddToCart: ', selectedStyle.style_id);
+  // console.log('Selected Style in AddToCart: ', selectedStyle.style_id);
 
 
   const [selectedSize, setSelectedSize] = useState('');
@@ -39,15 +39,15 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   // console.log('Style SKU Data: ', styleSkuData);
 
   const resetSizeOptions = () => {
-    console.log('1 SKU: ', styleSkuData);
+    // console.log('1 SKU: ', styleSkuData);
     setStyleSkuData([]);
     setSizesUsed([]);
     setSizeOptions([]);
   }
 
   const handleStyleChange = (selectedStyle) => {
-    console.log('2');
-    console.log('2 SKU: ', styleSkuData);
+    // console.log('2');
+    // console.log('2 SKU: ', styleSkuData);
     let productStyleSkuData = [];
     for (var sku in selectedStyle.skus) {
       productStyleSkuData.push([sku, selectedStyle.skus[sku].quantity, selectedStyle.skus[sku].size]);
@@ -67,12 +67,12 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     if (productSizeOptions.length < 1) {
       setSizeDefaultValue(<option value="Select Size" selected disabled>OUT OF STOCK</option>);
     }
-    console.log('3');
+    // console.log('3');
   }
 
   const handleSizeChange = (e) => {
     e.preventDefault();
-    console.log('Handle Size Change e.target.value: ', e.target.value);
+    // console.log('Handle Size Change e.target.value: ', e.target.value);
     setSelectedSize(e.target.value);
     // Unsure as to why I need both setting of the default qty value here and in useEffect, but the functionality is presently only working with both
     setQuantityDefaultValue(<option value="Starting Quantity">1</option>);
@@ -84,7 +84,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   }
 
   useEffect(() => {
-    console.log('Selected Style useEffect!!!! ', selectedStyle.style_id);
+    // console.log('Selected Style useEffect!!!! ', selectedStyle.style_id);
 
     // If we're changing to a different style (this is new, in progress *)
     if (selectedStyle.style_id !== previousStyle) {
@@ -95,17 +95,17 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       setSizesUsed([]);
       setSizeOptions([]);
       // resetSizeOptions();
-      console.log('++++++++++++');
+      // console.log('++++++++++++');
       // setSizeDefaultValue(<option value="Select Size" disabled>Select Size</option>);
       handleStyleChange(selectedStyle);
-      console.log('4');
-      console.log('4 SKU: ', styleSkuData);
+      // console.log('4');
+      // console.log('4 SKU: ', styleSkuData);
     // If we're on the same style, but haven't selected a size yet
     }
   }, [selectedStyle]);
 
   useEffect(() => {
-    console.log('*** Selected Size Changed ***');
+    // console.log('*** Selected Size Changed ***');
     // If we're on the same style, but haven't selected a size yet
     if (selectedSize !== '') { // <-- If the user has selected a size, set the quantity default value to 1 and select the value of 1
       setQuantityDefaultValue(<option value="Starting Quantity" selected>1</option>);
@@ -120,12 +120,12 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       }));
     }
     else {
-      console.log('!!! Else is running in selectedSize useEffect !!!');
+      // console.log('!!! Else is running in selectedSize useEffect !!!');
       setSizeDefaultValue(<option value="Select Size" selected disabled>Select Size</option>);
     }
   }, [selectedSize]);
 
-  console.log('&&& Size default value: &&&', sizeDefaultValue);
+  // console.log('&&& Size default value: &&&', sizeDefaultValue);
 
   return (
     <div className="overview_addToCart">
