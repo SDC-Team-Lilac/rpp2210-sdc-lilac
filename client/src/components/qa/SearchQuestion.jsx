@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 const SearchQuestion = (props) => {
 
   const [searchQuestion, setSearchQuestion] = useState('');
-  const [filteredQuestions, setFilterQuestions] = useState([])
 
   let questionListCopy = props.questionList.slice();
 
@@ -16,11 +15,14 @@ const SearchQuestion = (props) => {
     if (searchQuestion.length >= 3) {
       let newQuestionList = [];
       questionListCopy.forEach(question=>{
-        if (question.question_body.includes(searchQuestion)) {
-          newQuestionList.push(question);
+        if (question.question_body.toLowerCase().includes(searchQuestion)) {
+          newQuestionList.unshift(question);
         }
       })
-      setFilterQuestions(newQuestionList);
+      props.setFilterQuestions(newQuestionList);
+      props.setShowFilteredQuestions(true)
+    } else {
+      props.setFilterQuestions(props.questionList);
     }
   }, [searchQuestion]);
 
@@ -30,7 +32,6 @@ const SearchQuestion = (props) => {
     <div>
     <form >
       <label data-testid="qaSearchQuestion">Seach Questions</label><input type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
-      {/* <button type='submit'>Submit</button> */}
     </form>
     </div>
   )

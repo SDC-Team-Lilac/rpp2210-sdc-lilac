@@ -15,7 +15,6 @@ const Question = (props) => {
   useEffect(()=>{
     getAnswersForOneQuestion(props.question.question_id)
     .then((result)=> {
-      console.log('ansewer result --->>', result)
       setAnswerList(result.data.results);
     })
     .catch(err=>{
@@ -28,7 +27,7 @@ const Question = (props) => {
     <div style={{border: '2px solid red'}}>
       <div data-testid="qaQuestion"> {'Q: ' + props.question.question_body} </div>
       <AnswerList answerList={answerList}/>
-      <AddAnswer question={props.question}/>
+      <AddAnswer question={props.question} getAnswersForOneQuestion={getAnswersForOneQuestion} setAnswerList={setAnswerList}/>
     </div>
   )
 };
