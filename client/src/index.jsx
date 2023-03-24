@@ -34,7 +34,7 @@ const App = () => {
     } else {
       setMyOutfit(localStorage.getItem("outfitList"));
     }
-    updateSelectedProduct(71702);
+    updateSelectedProduct(71697);
   }, []);
 
   // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
