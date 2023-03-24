@@ -9,6 +9,8 @@ const QA = (props) => {
   //props will have the product_id from parent component ---> props.product_id
   //questionList state ---> all questions for product_id
   const [questionList, setQuestionList] = useState([]);
+  const [filteredQuestions, setFilterQuestions] = useState([])
+  const [showFilteredQuestions, setShowFilteredQuestions] = useState(false);
 
   // on the initial APP rendering, do we need to call the below func??
   const getQuestionsForOneProduct = (productId) => {
@@ -16,7 +18,7 @@ const QA = (props) => {
   };
 
   useEffect(()=>{
-    getQuestionsForOneProduct(71701)
+    getQuestionsForOneProduct(props.productId)
     .then(result=>{
       console.log('result', result.data)
       setQuestionList(result.data.results)
@@ -30,9 +32,9 @@ const QA = (props) => {
   return (
     <div style={{border: '2px solid black'}}>
       <div data-testid='qaQa'> QA! </div>
-      <SearchQuestion getQuestionsForOneProduct={getQuestionsForOneProduct} productId={props.productId} questionList={questionList}/>
-      <QuestionList questionList={questionList} />
-      <AddQuestion />
+      <SearchQuestion setFilterQuestions={setFilterQuestions} productId={props.productId} questionList={questionList} setShowFilteredQuestions={setShowFilteredQuestions}/>
+      <QuestionList questionList={questionList} filteredQuestions={filteredQuestions} showFilteredQuestions={showFilteredQuestions}/>
+      <AddQuestion productId={props.productId} productName={props.productName}/>
     </div>
   )
 }

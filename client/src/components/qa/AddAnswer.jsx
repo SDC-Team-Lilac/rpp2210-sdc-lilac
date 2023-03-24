@@ -6,14 +6,16 @@ const AddAnswer = (props) => {
   const [answerInput, setAnswerInput] = useState ('');
   const [answerNicknameInput, setAnswerNicknameInput] = useState ('');
   const [answerEmailInput, setAnswerEmailInput] = useState ('');
-  const [answerPhotoInput, setAnswerPhotoInput] = useState ('');
+  const [photos, setPhotos] = useState([]);
   const [showAddAnswerForm, setShowAddAnswerForm] = useState(false);
   const [warning, setWarning] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState('');
+
 
   const ansewerInputHandler = (event) => {
-    if (event.target.value.length <= 1000) {
+    // if (event.target.value.length <= 1000) {
       setAnswerInput(event.target.value);
-    }
+    // }
   };
 
   const nicknameInputHandler = (event) => {
@@ -29,12 +31,18 @@ const AddAnswer = (props) => {
   };
 
   const photosInputHandler = (event) => {
-    setAnswerPhotoInput(event.target.value);
+    const files = event.target.files;
+    const newPhotos= [...photos];
+    for (let i = 0; i < files.length && i + photos.length < 5; i++) {
+      newPhotos.push(files[i]);
+    }
+
+    setPhotos(newPhotos);
+
   };
 
   const onClickHandler = () => {
     setShowAddAnswerForm(true);
-    setWarning('')
   };
 
   const answerSubmitFunc = (id, answer) => {
@@ -44,49 +52,61 @@ const AddAnswer = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (answerInput===''){
-      setWarning('Invalid Input!')
-    } else if (answerNicknameInput===''){
-      setWarning('Invalid Input!')
-    } else if (answerEmailInput===''){
-      setWarning('Invalid Input!')
-    };
-    if (warning !== 'Invalid Input!') {
-
     let newAnswer = {
-      answer:answerInput,
+      body:answerInput,
       name:answerNicknameInput,
       email:answerEmailInput,
-      photo:[answerPhotoInput]
+      photos:photos.map(photo=>URL.createObjectURL(photo))
     };
+    console.log('newAnswer', newAnswer)
 
     answerSubmitFunc(props.question.question_id, newAnswer)
     .then(()=> {
       console.log('Your answer has been submitted!');
-      setShowAddAnswerForm(false)
+      setShowAddAnswerForm(false);
+      setSubmitSuccess('Your answer has been submitted!')
+      props.getAnswersForOneQuestion(props.question.question_id)
+      .then((result)=> {
+        console.log('new ansewer result --->>', result.data.results)
+        props.setAnswerList(result.data.results);
+      })
+      .catch(err=>{
+        console.log(err)
+      })
     })
     .catch(err=>{
       console.log(err);
       setShowAddAnswerForm(false)
+      setSubmitSuccess('Your answer has not been submitted! Please valid your input!')
     });
-  }
+  // }
   setShowAddAnswerForm(false)
+  setPhotos([])
   };
 
   return (
     <div>
       <div>
         <button data-testid="addButton" onClick={onClickHandler}>Add Ansewer</button>
-        {warning && (<div>{warning}</div>)}
+        {submitSuccess && (<div>{submitSuccess}</div>)}
       </div>
       {showAddAnswerForm && (<div>
         <h2>Submit your Ansewer</h2>
         {/* <h3>{`${productName}: ${questionBody}`}</h3> */}
         <form onSubmit={submitHandler}>
-          <div><label>Your Answer</label><input type='text' onChange={ansewerInputHandler}></input></div>
-          <div><label>Your Nickname</label><input type='text' onChange={nicknameInputHandler}></input><div>For privacy reasons, do not use your full name or email address</div></div>
-          <div><label>Your email</label><input type='text' placeholder='Example: jack@email.com' onChange={emailInputHandler}></input><div>For authentication reasons, you will not be emailed</div></div>
-          <div><label>Your Photos</label><input type='text' onChange={photosInputHandler}></input></div>
+          <div><label>Your Answer</label><input type='text' onChange={ansewerInputHandler} maxLength={1000} required></input></div>
+          <div><label>Your Nickname</label><input type='text' onChange={nicknameInputHandler} maxLength={60} required></input><div>For privacy reasons, do not use your full name or email address</div></div>
+          <div><label>Your email</label><input type='text' placeholder='Example: jack@email.com' onChange={emailInputHandler} maxLength={60} required></input><div>For authentication reasons, you will not be emailed</div></div>
+          <div><label>Your Photos</label><input id="photos" type="file" onChange={photosInputHandler} accept="image/*" multiple />
+
+          {photos.length > 0 && (
+            <div className="photo-preview">
+              {photos.map((photo) => (
+                <img key={photo.name} src={URL.createObjectURL(photo)} alt={photo.name} />
+              ))}
+            </div>
+          )}
+          </div>
           <button type='submit'>Submit Answer</button>
         </form>
       </div>)}
@@ -95,3 +115,4 @@ const AddAnswer = (props) => {
 }
 
 export default AddAnswer;
+
