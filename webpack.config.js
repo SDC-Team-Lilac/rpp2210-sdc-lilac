@@ -1,4 +1,6 @@
 const path = require('path');
+const CompressionPlugin = require("compression-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
 
 module.exports = {
   //mode development or production
@@ -10,10 +12,6 @@ module.exports = {
     path: path.join(__dirname, 'client/dist'),
     filename: 'bundle.js'
   },
-  //module object rules
-  //  rules will be an array with a nested object
-  //    use loader
-  //    test jsx regex
   module: {
     rules: [
       {
@@ -27,6 +25,12 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       }
     ]
-  }
+  },
+  plugins: [
+    new CompressionPlugin({
+      algorithm: "gzip"
+    }),
+    new BrotliPlugin()
+  ]
 
 }
