@@ -37,7 +37,7 @@ const App = () => {
     } else {
       setMyOutfit(JSON.parse(localStorage.getItem("outfitList")));
     }
-    updateSelectedProduct(71697);
+    updateSelectedProduct(productId);
   }, []);
 
   // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
@@ -58,8 +58,16 @@ const App = () => {
         })
       })
       .then(relatedProductsData => {
-        setRelatedProducts(relatedProductsData.data);
-        return ProductListInfo(relatedProductsData.data, setProductCards, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId);
+        return axios.get('/relatedProducts/info', {
+          params: {
+            relatedProducts: relatedProductsData,
+            productId: productId
+          }
+        })
+        .then((results) => {
+          setRelatedProducts(results);
+          return ProductListInfo(results.data, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards);
+        })
       })
       .then(success => {
         return axios.get(`/products/${product_id}/styles`, {
@@ -89,7 +97,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} setProductId={setProductId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} updateSelectedProduct={updateSelectedProduct} productCards={productCards} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName}/>
+      <RelatedProducts productId={productId} setProductId={setProductId} relatedProductFeatures={relatedProductFeatures} setRelatedProductFeatures={setRelatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} updateSelectedProduct={updateSelectedProduct} productCards={productCards} setProductCards={setProductCards} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setRelatedProductName={setRelatedProductName}/>
       <QA productId={productId}/>
       <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
     </div>

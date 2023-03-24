@@ -6,6 +6,7 @@ const interactions_api = require('./api_handlers/interactions');
 const products_api = require('./api_handlers/products');
 const qa_api = require('./api_handlers/qa');
 const reviews_api = require('./api_handlers/reviews');
+const relatedChainHelper = require('./helperFunctions/relatedProductsChain.js');
 const expressStaticGzip = require('express-static-gzip');
 
 app.use(express.json());
@@ -50,6 +51,16 @@ app.get('/products/:product_id/related', (req, res) => {
       console.error('Error in getRelated: ', error);
       res.status(404).send(error);
     })
+});
+
+app.get('/relatedProducts/info', (req, res) => {
+  relatedChainHelper.ProductListInfo(req, res)
+  .then((details) => {
+    res.status(200).send(details);
+  })
+  .catch((err) => {
+    res.status(404).send(err)
+  })
 });
 
 app.get('/products/:product_id/styles', (req, res) => {
