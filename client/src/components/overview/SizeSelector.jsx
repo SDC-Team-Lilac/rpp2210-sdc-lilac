@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const SizeSelector = ( { selectedStyle } ) => {
+const SizeSelector = ( { selectedStyle, setSelectedStyleData, setSelectedQuantity } ) => {
 
   const [selected, setSelected] = useState('default');
 
   useEffect(() => {
     setSelected('default');
+    setSelectedQuantity('Starting Quantity');
   }, [selectedStyle]);
-
-  const handleSizeChange = (e) => {
-    e.preventDefault();
-    setSelected(e.target.value);
-    // setQuantityDefaultValue(<option value="Starting Quantity">1</option>);
-  }
 
   let styleSkuData = [];
   let sizesUsed = [];
@@ -26,16 +21,21 @@ const SizeSelector = ( { selectedStyle } ) => {
       sizesUsed.push(item[2]);
       return (
         <option key={item[0]} value={styleSkuData.indexOf(item)}>{item[2]}</option>
-      )
+        )
+      }
+    })
+    if (sizeOptions.length > 0) {
+      sizeOptions.unshift(<option value="default" disabled>Select Size</option>);
+    } else {
+      sizeOptions.unshift(<option value="default" disabled>OUT OF STOCK</option>);
     }
-  })
-  if (sizeOptions.length > 0) {
-    sizeOptions.unshift(<option value="default" disabled>Select Size</option>);
-  } else {
-    sizeOptions.unshift(<option value="default" disabled>OUT OF STOCK</option>);
+
+  const handleSizeChange = (e) => {
+    e.preventDefault();
+    setSelected(e.target.value);
+    setSelectedStyleData(e.target.value, styleSkuData);
   }
 
-  console.log('Seleted? ', selected);
   return (
     <select className="size_selector_dropdown" value={selected} onChange={handleSizeChange}>
       {sizeOptions}
