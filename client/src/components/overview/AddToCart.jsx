@@ -17,7 +17,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   const [sizesUsed, setSizesUsed] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
   const [previousStyle, setPreviousStyle] = useState(selectedStyle.style_id);
-  const [sizeDefaultValue, setSizeDefaultValue] = useState(<option value="Select Size" disabled>Select Size</option>);
+  const [sizeDefaultValue, setSizeDefaultValue] = useState(<option value="Select Size" selected disabled>Select Size</option>);
 
   // let styleSkuData = [];
   // let sizesUsed = [];
@@ -39,7 +39,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   // console.log('Style SKU Data: ', styleSkuData);
 
   const resetSizeOptions = () => {
-    console.log('1');
+    console.log('1 SKU: ', styleSkuData);
     setStyleSkuData([]);
     setSizesUsed([]);
     setSizeOptions([]);
@@ -47,6 +47,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   const handleStyleChange = (selectedStyle) => {
     console.log('2');
+    console.log('2 SKU: ', styleSkuData);
     let productStyleSkuData = [];
     for (var sku in selectedStyle.skus) {
       productStyleSkuData.push([sku, selectedStyle.skus[sku].quantity, selectedStyle.skus[sku].size]);
@@ -64,14 +65,14 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     });
     setSizeOptions(productSizeOptions);
     if (productSizeOptions.length < 1) {
-      setSizeDefaultValue(<option value="Select Size" disabled>OUT OF STOCK</option>);
+      setSizeDefaultValue(<option value="Select Size" selected disabled>OUT OF STOCK</option>);
     }
     console.log('3');
   }
 
   const handleSizeChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    console.log('Handle Size Change e.target.value: ', e.target.value);
     setSelectedSize(e.target.value);
     // Unsure as to why I need both setting of the default qty value here and in useEffect, but the functionality is presently only working with both
     setQuantityDefaultValue(<option value="Starting Quantity">1</option>);
@@ -90,16 +91,25 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       setPreviousStyle(selectedStyle.style_id);
       setSelectedSize('');
       setSelectedQuantity('');
-      resetSizeOptions();
-      setSizeDefaultValue(<option value="Select Size" disabled>Select Size</option>);
+      setStyleSkuData([]);
+      setSizesUsed([]);
+      setSizeOptions([]);
+      // resetSizeOptions();
       console.log('++++++++++++');
+      // setSizeDefaultValue(<option value="Select Size" disabled>Select Size</option>);
       handleStyleChange(selectedStyle);
       console.log('4');
+      console.log('4 SKU: ', styleSkuData);
     // If we're on the same style, but haven't selected a size yet
-    } else
+    }
+  }, [selectedStyle]);
+
+  useEffect(() => {
+    console.log('*** Selected Size Changed ***');
+    // If we're on the same style, but haven't selected a size yet
     if (selectedSize !== '') { // <-- If the user has selected a size, set the quantity default value to 1 and select the value of 1
       setQuantityDefaultValue(<option value="Starting Quantity" selected>1</option>);
-      setSelectedQuantity(1); // Just added this ***
+      setSelectedQuantity(1);
       let sizeStock = styleSkuData[selectedSize][1];
       setQuantityOptions(possibleQuantities.map(quantity => {
         if (quantity <= sizeStock) {
@@ -107,17 +117,22 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
             <option key={quantity} value={quantity}>{quantity}</option>
           )
         }
-      }))
-      console.log('5');
+      }));
     }
-  }, [selectedStyle, selectedSize]);
+    else {
+      console.log('!!! Else is running in selectedSize useEffect !!!');
+      setSizeDefaultValue(<option value="Select Size" selected disabled>Select Size</option>);
+    }
+  }, [selectedSize]);
+
+  console.log('&&& Size default value: &&&', sizeDefaultValue);
 
   return (
     <div className="overview_addToCart">
       {/* <h3>This is the Add to Cart Component!</h3> */}
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
-          <select className="size_selector_dropdown" defaultValue="Select Size" onChange={handleSizeChange}>
+          <select className="size_selector_dropdown" onChange={handleSizeChange}>
             {/* {sizeOptions.length > 0 ? <option value="Select Size" disabled>Select Size</option> : <option value="Select Size" disabled>OUT OF STOCK</option>} */}
             {sizeDefaultValue}
             {sizeOptions}
