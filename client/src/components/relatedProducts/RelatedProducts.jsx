@@ -7,11 +7,11 @@ import ComparisonModal from './ComparisonModal.jsx';
 import RelatedProductsList from './RelatedProductsList.jsx';
 
 const RelatedProducts = (props) => {
-  var outfits = ['Fake-Outfit'];
+  // var outfits = ['Fake-Outfit'];
   return (
     <div>
       <RelatedProductsList relatedProductFeatures={props.relatedProductFeatures} productId={props.productId} productCards={props.productCards} currentProductFeatures={props.productFeatures} productName={props.productName} relatedProductName={props.relatedProductName}/>
-      <YourOutfit myOutfit={props.myOutfit} setMyOutfit={props.setMyOutfit} currentProductId={props.productId}/>
+      <YourOutfit myOutfit={props.myOutfit} outfitCards={props.outfitCards} setMyOutfit={props.setMyOutfit} currentProductId={props.productId} updateSelectedProduct={props.updateSelectedProduct} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards}/>
     </div>
   )
 }

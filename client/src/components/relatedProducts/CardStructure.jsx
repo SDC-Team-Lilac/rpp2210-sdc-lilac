@@ -8,7 +8,7 @@ const CardStructure = (props) => {
   }
   var determine = () => {
     if (props.listName === 'outfit') {
-      return XButton();
+      return XButton(props.product.productId, props.setMyOutfit);
     } else {
       return StarButton(props.currentProductFeatures, props.product.productId, props.setRelatedProductFeatures, props.product.name, props.setRelatedProductName);
     }
@@ -19,14 +19,16 @@ const CardStructure = (props) => {
         <div className='sarah-product-button-div' >
           {determine()}
         </div>
-        <div onClick={() => {OnCardClick(props.relatedProductId, props.setProductId, props.updateSelectedProduct);}}>
+        <div onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
           <div className='sarah-product-image-div'>
             <img className='sarah-product-image' data-testid='card-image' src={props.product.image} width='200px' height='225px'></img>
           </div>
           <h4 className='sarah-product-category' data-testid='card-category' >{props.product.category}</h4>
           <h4 className='sarah-product-name' data-testid='card-name' >{props.product.name}</h4>
           <h4 className='sarah-product-price' data-testid='card-price' >{props.product.price}</h4>
-          <h4 className='sarah-product-ratings' data-testid='card-rating' >{StarRating(props.product.rating)}</h4>
+          <div className='sarah-product-ratings' data-testid='card-rating' >
+            <StarRating rating={props.product.rating}/>
+          </div>
         </div>
       </div>
     );

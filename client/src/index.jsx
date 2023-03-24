@@ -4,7 +4,7 @@ import Overview from './components/overview/Overview.jsx'
 import QA from './components/qa/QA.jsx'
 import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx'
 import Reviews from './components/reviews/Reviews.jsx'
-import { ProductListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
+import { ProductListInfo, OutfitListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
 
 const axios = require('axios');
 
@@ -20,6 +20,7 @@ const App = () => {
   const [averageStarRating, setAverageStarRating] = useState(null);
   const [totalNumberReviews, setTotalNumberReviews] = useState(null);
   const [myOutfit, setMyOutfit] = useState([]);
+  const [outfitCards, setOutfitCards] = useState([]);
   const [productFeatures, setProductFeatures] = useState([]);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [productDefaultImg, setProductDefaultImg] = useState('');
@@ -29,10 +30,12 @@ const App = () => {
 
 
   useEffect(() => {
+    // localStorage.removeItem("outfitList");
+    // localStorage.setItem("outfitList", JSON.stringify([]));
     if (localStorage.getItem("outfitList") === undefined) {
-      localStorage.setItem("outfitList", []);
+      localStorage.setItem("outfitList", JSON.stringify([]));
     } else {
-      setMyOutfit(localStorage.getItem("outfitList"));
+      setMyOutfit(JSON.parse(localStorage.getItem("outfitList")));
     }
     updateSelectedProduct(71699);
   }, []);
@@ -67,6 +70,7 @@ const App = () => {
       })
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
+        return OutfitListInfo(setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -85,7 +89,7 @@ const App = () => {
     <div>
       Hello World!
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} productCards={productCards} setMyOutfit={setMyOutfit} productName={productName} relatedProductName={relatedProductName}/>
+      <RelatedProducts productId={productId} setProductId={setProductId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} updateSelectedProduct={updateSelectedProduct} productCards={productCards} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName}/>
       <QA productId={productId}/>
       <Reviews productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
     </div>
