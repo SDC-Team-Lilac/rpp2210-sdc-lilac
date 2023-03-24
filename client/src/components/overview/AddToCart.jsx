@@ -31,6 +31,9 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     setSelectedQuantity(e.target.value);
   }
 
+  console.log('Size: ', selectedSize);
+  console.log('Quantity: ', selectedQuantity);
+
   return (
     <div className="overview_addToCart">
       {/* <h3>This is the Add to Cart Component!</h3> */}
