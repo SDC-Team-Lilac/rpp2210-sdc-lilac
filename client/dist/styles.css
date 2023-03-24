@@ -78,15 +78,17 @@
 
 .gallery_thumbnail {
   object-fit: cover;
-  height: 80px;
-  width: 80px;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 70px;
+  width: 70px;
   border: 3px solid rgba(255, 255, 255, 0);
 }
 
 .selected_gallery_thumbnail {
   object-fit: cover;
-  height: 80px;
-  width: 80px;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 70px;
+  width: 70px;
   opacity: .7;
   border: 3px solid rgba(255, 255, 255, 0.762);
 }

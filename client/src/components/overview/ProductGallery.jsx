@@ -8,16 +8,17 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   const [mainImage, setMainImage] = useState('');
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
-  const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(6);
+  const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(7);
 
   // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
   useEffect(() => {
-    setMainImage(productPhotos[0].url);
+    setMainImage(productPhotos[mainImageIndex].url);
   }, [productPhotos]);
 
   const handleThumbnailClick = (e) => {
     e.preventDefault();
-    let thumbnail_index = e.target.id;
+    console.log('Thumbnail clicked! ', e.target.id);
+    let thumbnail_index = parseInt(e.target.id);
     setMainImage(productPhotos[thumbnail_index].url);
     setMainImageIndex(thumbnail_index);
   }
@@ -42,14 +43,24 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleMainPreviousClick = (e) => {
     e.preventDefault();
+    console.log('Main previous clicked! ', 'main: ', mainImageIndex, 'thumbnail top: ', topThumbnailIndex);
     setMainImage(productPhotos[mainImageIndex - 1].url);
     setMainImageIndex(mainImageIndex - 1);
+    if (mainImageIndex - 1 < topThumbnailIndex) {
+      setTopThumbnailIndex(topThumbnailIndex - 1);
+      setBottomThumbnailIndex(bottomThumbnailIndex - 1);
+    }
   }
 
   const handleMainNextClick = (e) => {
     e.preventDefault();
+    console.log('Main next clicked! ', 'main: ', mainImageIndex, 'thumbnail bottom: ', bottomThumbnailIndex);
     setMainImage(productPhotos[mainImageIndex + 1].url);
     setMainImageIndex(mainImageIndex + 1);
+    if (mainImageIndex === bottomThumbnailIndex) {
+      setTopThumbnailIndex(topThumbnailIndex + 1);
+      setBottomThumbnailIndex(bottomThumbnailIndex + 1);
+    }
   }
 
   const handleThumbnailPreviousClick = (e) => {
