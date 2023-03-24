@@ -24,6 +24,21 @@
   width: 750px;
 }
 
+.main_image_previous {
+  background-color: greenyellow;
+  align-self: center;
+  position: absolute;
+  top: 375px;
+  left: 120px;
+}
+
+.main_image_next {
+  background-color: greenyellow;
+  position: absolute;
+  top: 375px;
+  left: 675px;
+}
+
 .thumbnailGallery {
   display: flex;
   flex-direction: column;
@@ -31,6 +46,34 @@
   gap: 10px;
   top: 20px;
   left: 17px;
+  bottom: 20px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.thumbnailCarousel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 40px;
+  gap: 10px;
+  overflow: hidden;
+  /* top: 20px;
+  left: 17px; */
+  /* transform: translateY(0);
+  transition: transform 0.5s; */
+}
+
+.thumbnail_gallery_previous {
+  position: absolute;
+  background-color: aquamarine;
+  top: 10px;
+}
+
+.thumbnail_gallery_next {
+  position: absolute;
+  background-color: aquamarine;
+  top: 620px;
 }
 
 .gallery_thumbnail {
@@ -203,8 +246,9 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   z-index: 10;
   background-color: white;
   width: 500px;
@@ -217,10 +261,20 @@
 }
 
 .sarah-modal-header {
+  font-weight: bolder;
+  font-size: larger;
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  z-index: 10;
+  background-color: white;
+}
+
+.sarah-modal-column-header {
   padding: 10px 15px;
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -245,6 +299,14 @@
   pointer-events: all;
   opacity: 1;
   min-width: 300px;
+}
+
+tr:nth-child(even) {
+ background-color:#ECECEC;
+}
+
+tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.762);
 }
 
 body {
@@ -284,7 +346,7 @@ body.active {
   border: 0.5px solid black;
   width: fit-content;
   margin: 10px;
-  height:307px;
+  height:319px;
 }
 
 .sarah-product-button-div {
@@ -295,7 +357,7 @@ body.active {
 
 .sarah-product-image-div {
   position: relative;
-  top: -29px;
+  top: -28px;
 }
 
 .sarah-product-category {
@@ -328,6 +390,7 @@ body.active {
 .sarah-list-with-arrows {
   display: flex;
   justify-content: center;
+  transition: 200ms ease-out;
 }
 
 .sarah-add-to-outfit-card {
@@ -355,11 +418,26 @@ body.active {
   font-weight: bolder;
 }
 
+.sarah-left-arrow:hover, .sarah-left-arrow:focus {
+  color: blue;
+}
+
+.sarah-right-arrow:hover, .sarah-right-arrow:focus {
+  color: blue;
+}
+
 /* Begin Reviews CSS*/
+
+
+/* MAIN COMPONENT */
 .reviewsMain{
   display: flex;
   justify-content: center;
 }
+/* ---- */
+
+
+/* REVIEW LIST (RIGHT HAND SIDE} */
 .reviewList {
   display: flex;
   flex-direction: column;
@@ -368,6 +446,7 @@ body.active {
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
 }
+/* ADD NEW REVIEW */
 .newReview {
   display: flex;
   justify-content: center;
@@ -384,7 +463,57 @@ body.active {
   margin-left: -200px;
   margin-top: -150px;
 }
+/* ---- */
 
+
+/* RATINGS & REVIEWS (LEFT HAND SIDE) */
+.reviews.ratingSummary {
+  display: flex;
+  align-items: center;
+}
+
+.reviews.ratingBreakdown {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviews.bar {
+  width: 50px;
+  height: 12px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviews.bar.green {
+  background-color: green
+}
+
+.reviews.bar.gray {
+  background-color: gray
+}
+.reviews.allRatingBars {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-content: space-around; */
+  flex-grow: 1;
+}
+.reviews.fullRatingBar {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.reviews.leftRatingBar,
+.reviews.rightRatingBar
+ {
+  width: 33.33%
+}
+
+/* ----- */
+
+
+/* STARS */
 .starRatings {
   display: inline-block;
   position: relative;
@@ -394,8 +523,9 @@ body.active {
 
 .fullStars {
   position: absolute;
-  color: yellow;
+  color: red;
   overflow: hidden;
   font-size: 30px;
 }
+/* ----- */
 /* End Reviews CSS */

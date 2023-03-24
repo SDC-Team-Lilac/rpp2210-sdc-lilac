@@ -36,6 +36,10 @@ const StarRating = ({ rating }) => {
   }, [])
 
   useEffect(() => {
+    quarterRating(rating)
+  }, [rating])
+
+  useEffect(() => {
     updatePercentage(starRating)
   }, [starRating])
 

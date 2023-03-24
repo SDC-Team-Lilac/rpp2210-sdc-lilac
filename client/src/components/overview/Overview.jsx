@@ -5,9 +5,9 @@ import ProductSelected from './ProductSelected.jsx';
 import ProductDetails from './ProductDetails.jsx';
 const axios = require('axios');
 
-const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, updateSelectedProduct } ) => {
+const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures } ) => {
 
-  console.log('Product ID in Overview: ', productId);
+  // console.log('Product ID in Overview: ', productId);
 
   const [productDetails, setProductDetails] = useState({id: null, name: '', slogan: '', description: '', category: '', default_price: '', features: []});
   const [productStyles, setProductStyles] = useState([{name: '', photos: [{thumbnail_url: '', url: ''}]}]);
@@ -226,7 +226,7 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
       {/* <h1>This is the Overview Component!</h1> */}
       <div id="overview_top">
         <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
-        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} updateSelectedStyle={updateSelectedStyle}/>
+        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} updateSelectedStyle={updateSelectedStyle} />
       </div>
       <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/>
     </div>
