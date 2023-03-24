@@ -68,26 +68,22 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 // CART ROUTES:
 app.get('/cart', (req, res) => {
-  console.log('Cart Get activated!');
   cart_api.getCartItems()
     .then((cartItems) => {
-      console.log('Cart Items: ', cartItems);
       res.status(200).send(cartItems.data)
     })
     .catch((error) => {
-      console.error('Error in getCartItems: ', error);
       res.status(404).send(error);
     })
 });
 
 app.post('/cart', (req, res) => {
+  // console.log('Add to Cart Server Count: ', req.body.count);
   cart_api.addToCart(req.body.sku_id, req.body.count)
     .then((success) => {
-      console.log('Cart Items Posted!!!');
       res.status(201).send('Item successfully added to cart!');
     })
     .catch((error) => {
-      console.error('Error in addToCart POST: ', error);
       res.status(400).send(error);
     })
 })

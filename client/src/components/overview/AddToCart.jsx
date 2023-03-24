@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SizeSelector from './SizeSelector.jsx';
+const axios = require('axios');
 
 const AddToCart = ( { selectedStyle, productStyles } ) => {
-
-  // Known refactor need: On style change, reset this component so size and qty need to be reselected ***
-  // Known refactor need: Out of Stock conditional rendering for size ***
 
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
@@ -14,7 +12,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   let possibleQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   const setSelectedStyleData = (selectedSkuIndex, styleSkuData) => {
-    setSelectedSize(styleSkuData[selectedSkuIndex][2]);
+    setSelectedSize(styleSkuData[selectedSkuIndex][0]);
     setSelectedQuantity(1);
     let sizeStock = styleSkuData[selectedSkuIndex][1];
       setQuantityOptions(possibleQuantities.map(quantity => {
@@ -31,8 +29,30 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     setSelectedQuantity(e.target.value);
   }
 
-  console.log('Size: ', selectedSize);
-  console.log('Quantity: ', selectedQuantity);
+  const handleAddToCartClick = (e) => {
+    // Known refactor need -- handle cases where invalid size/qty selected
+    // As per HelpDesk -- Known API bug: Count on a GET to /cart is the number of times the SKU has been added, NOT the total quantity added
+    e.preventDefault();
+    console.log('Add to Cart Clicked!');
+    console.log('Size SKU: ', selectedSize);
+    console.log('Quantity: ', selectedQuantity);
+    axios.post('/cart', {
+      sku_id: selectedSize,
+      count: selectedQuantity
+    })
+      .then(success => {
+        // Refactor if time -- send the user some sort of visual to let them know it's been added
+        console.log('Item successfully added to cart!');
+        return axios.get('./cart')
+      })
+      .then(cartData => {
+        console.log('Cart data in addToCart: ', cartData.data);
+      })
+      .catch(error => {
+        console.error('Error adding product to cart!');
+      });
+
+  }
 
   return (
     <div className="overview_addToCart">
@@ -49,7 +69,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         </div>
       </div>
       <div className="addToCart_bottom">
-        <button data-testid="addToCartButton" className="addToCartButton">Add to Bag</button>
+        <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>
         <button data-testid="addToOutfitButton" className="addToOutfitButton">
           <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
         </button>

@@ -18,6 +18,7 @@ const getCartItems = () => {
 // {"sku_id": 2580537, "count": 2} <-- EXAMPLE IN POSTMAN
 // Count coming through Overview Widget will be defaulted to 1 if not otherwise specified
 const addToCart = (sku_id, count) => {
+  // console.log('Add to Cart API Count: ', count);
   return axios.post(`${APIHostURL}/cart`, {
     sku_id: sku_id,
     count: count
