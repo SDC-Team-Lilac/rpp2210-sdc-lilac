@@ -66,6 +66,71 @@ var ProductListInfo = async(relatedProducts, setProductCards, setRelatedProductF
   return list;
 }
 
+var OutfitListInfo = async(setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct) => {
+  var productIds;
+  if (myOutfit === undefined || myOutfit.length === 0) {
+    productIds = JSON.parse(localStorage.getItem("outfitList"));
+    if (productIds[0] === undefined) {
+      setOutfitCards([]);
+      return;
+    }
+  } else {
+    productIds = myOutfit;
+  }
+  var details = [];
+  var cardList = [];
+  var count = 0;
+  const list =  await Promise.all(productIds.map(async function(product) {
+    if (product === null) {
+      return;
+    }
+    var products = {productId: product};
+    await axios.get(`/products/${product}`, {
+      params: {
+        product_id: product
+      }
+    })
+      .then((details) => {
+        products['category'] = details.data.category;
+        products['name'] = details.data.name;
+        products['price'] = details.data.default_price;
+        return axios.get(`/products/${product}/styles`)
+      })
+      .then((styles) => {
+        products.image = styles.data.results[0].photos[0].url;
+        return axios.get('/reviews/meta', {
+          params: {
+            product_id: product
+          }
+        })
+      })
+      .then((reviews) => {
+        return RatingCalculator(reviews.data.ratings);
+      })
+      .then((rating) => {
+        products.rating = rating;
+        details.push(products);
+        cardList.push(<CardStructure product={products} listName={'outfit'} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct}/>)
+        count += 1;
+        if (count === productIds.length) {
+          setOutfitCards(cardList);
+        }
+        return cardList;
+      })
+      .catch((err) => {
+        console.log('Error in ProductListInfo: ', err);
+      })
+  }))
+    .then((results) => {
+      return;
+    })
+    .catch((err) => {
+      console.log('ERROR IN MAP: ', err);
+    })
+
+  return list;
+}
+
 const ComparisonDetails = (currentProductFeatures, product_id, setRelatedProductFeatures) => {
   if (product_id === null) {
     return;
@@ -91,3 +156,4 @@ const ComparisonDetails = (currentProductFeatures, product_id, setRelatedProduct
 
 export { ProductListInfo };
 export { ComparisonDetails };
+export { OutfitListInfo };

@@ -1,11 +1,17 @@
 import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
 import $ from 'jquery';
-import { ComparisonDetails } from './RelatedProductRequests.jsx'
+import { ComparisonDetails } from './RelatedProductRequests.jsx';
+import { OutfitListInfo } from './RelatedProductRequests.jsx';
 
-const XButton = () => {
+const XButton = (productId, setMyOutfit) => {
   var onClick = () => {
-    console.log('The X button was clicked!')
+    var currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
+    var index = currentOutfitList.indexOf(productId);
+    currentOutfitList.splice(index, 1);
+    localStorage.removeItem("outfitList");
+    localStorage.setItem("outfitList", JSON.stringify(currentOutfitList));
+    setMyOutfit(currentOutfitList);
   }
   return (
     <button className='sarah-x-button' data-testid='x-button' onClick={() => {onClick()}}>&#10006;</button>
@@ -13,7 +19,6 @@ const XButton = () => {
 }
 
 const OnCardClick = (productId, setProductId, updateSelectedProduct) => {
-  console.log('The product card was clicked!');
   setProductId(productId);
   updateSelectedProduct(productId);
 }
@@ -36,23 +41,23 @@ const StarButton = (currentProduct, clickedProduct, setRelatedProductId, clicked
 
 const PlusButton = (currentProductId, setMyOutfit) => {
   var onClick = () => {
-    console.log('The plus button was clicked!: ', currentProductId);
-    //get current outfit list from local storage
-    //  save that info to variable
-    var currentOutfitList = localStorage.getItem("outfitList");
-    //check to make sure that product id is not already in the list
+    var currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
+    if (typeof currentOutfitList === 'number') {
+      currentOutfitList = [currentOutfitList];
+    }
+    var newOutfitList = [];
     if (currentOutfitList === null) {
-      currentOutfitList = [currentProductId];
-      localStorage.setItem("outfitList", currentOutfitList);
-      // setMyOutfit(currentOutfitList);
+      newOufitList.push(currentProductId);
+      var stringNew = JSON.stringify(newOutfitList);
+      localStorage.setItem("outfitList", stringNew);
+      setMyOutfit(newOutfitList);
     } else if (currentOutfitList.indexOf(currentProductId) < 0) {
-      //  if not in the list, then reset item to old item plus current product id
       currentOutfitList.push(currentProductId);
+      var stringOld = JSON.stringify(currentOutfitList);
       localStorage.removeItem("outfitList");
-      localStorage.setItem("outfitList", currentOutfitList);
-      // setMyOutfit(currentOutfitList);
+      localStorage.setItem("outfitList", stringOld);
+      setMyOutfit(currentOutfitList);
     } else {
-      //  else return
       return;
     }
   }
@@ -104,7 +109,7 @@ const RightArrow = (props) => {
     'fontSize': '35px'
   }
   var determineStyle = () => {
-    if (props.relatedProductsCount - 4 === props.startingIndex) {
+    if (props.relatedProductsCount - 4 <= props.startingIndex) {
       return styleHidden;
     } else {
       return styleView;

@@ -405,6 +405,11 @@ body.active {
   justify-content: center;
 }
 
+.sarah-outfit-card-container {
+  display: flex;
+  justify-content: center;
+}
+
 .sarah-plus-button {
   height: 307px;
   width: 200px;
