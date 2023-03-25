@@ -8,16 +8,16 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   const [mainImage, setMainImage] = useState('');
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
-  const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(6);
+  const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(7);
 
   // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
   useEffect(() => {
-    setMainImage(productPhotos[0].url);
+    setMainImage(productPhotos[mainImageIndex].url);
   }, [productPhotos]);
 
   const handleThumbnailClick = (e) => {
     e.preventDefault();
-    let thumbnail_index = e.target.id;
+    let thumbnail_index = parseInt(e.target.id);
     setMainImage(productPhotos[thumbnail_index].url);
     setMainImageIndex(thumbnail_index);
   }
@@ -44,24 +44,30 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
     e.preventDefault();
     setMainImage(productPhotos[mainImageIndex - 1].url);
     setMainImageIndex(mainImageIndex - 1);
+    if (mainImageIndex - 1 < topThumbnailIndex) {
+      setTopThumbnailIndex(topThumbnailIndex - 1);
+      setBottomThumbnailIndex(bottomThumbnailIndex - 1);
+    }
   }
 
   const handleMainNextClick = (e) => {
     e.preventDefault();
     setMainImage(productPhotos[mainImageIndex + 1].url);
     setMainImageIndex(mainImageIndex + 1);
+    if (mainImageIndex === bottomThumbnailIndex - 1) {
+      setTopThumbnailIndex(topThumbnailIndex + 1);
+      setBottomThumbnailIndex(bottomThumbnailIndex + 1);
+    }
   }
 
   const handleThumbnailPreviousClick = (e) => {
     e.preventDefault();
-    console.log('Thumbnail previous clicked!!!');
     setTopThumbnailIndex(topThumbnailIndex - 1);
     setBottomThumbnailIndex(bottomThumbnailIndex - 1);
   }
 
   const handleThumbnailNextClick = (e) => {
     e.preventDefault();
-    console.log('Thumbnail next clicked!!!');
     setTopThumbnailIndex(topThumbnailIndex + 1);
     setBottomThumbnailIndex(bottomThumbnailIndex + 1);
   }
@@ -75,7 +81,7 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       <div className="thumbnailGallery">
         {topThumbnailIndex > 0 ? <button className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick}>Up!!!</button> : null}
         <div className="thumbnailCarousel">{thunbnailList.slice(topThumbnailIndex, bottomThumbnailIndex)}</div>
-        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length - 1 ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
+        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
       </div>
     </div>
   )
