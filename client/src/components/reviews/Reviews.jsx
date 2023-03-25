@@ -103,7 +103,6 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
     } else {
       setFilteredReviews(reviews);
     }
-    console.log('WHat are the reviews', filteredReviews)
   }
 
   useEffect(() => {
@@ -135,7 +134,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
         { reviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
