@@ -44,7 +44,6 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
 
 
   const showBarSelection = (filters, star) => {
-    console.log('THESE ARE THE FILTERS', filters)
     if (filters.includes(star)) {
       return " selected"
     } else {
