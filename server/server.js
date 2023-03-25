@@ -70,7 +70,7 @@ app.get('/products/:product_id/styles', (req, res) => {
 app.get('/cart', (req, res) => {
   cart_api.getCartItems()
     .then((cartItems) => {
-      res.status(200).send(cartItems.data)
+      res.status(200).send(cartItems.data);
     })
     .catch((error) => {
       res.status(404).send(error);

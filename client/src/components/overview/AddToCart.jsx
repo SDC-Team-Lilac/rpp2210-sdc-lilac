@@ -53,7 +53,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         .then(success => {
           // Refactor if time -- send the user some sort of visual to let them know it's been added
           console.log('Item successfully added to cart!');
-          return axios.get('./cart')
+          return axios.get('./cart');
         })
         .then(cartData => {
           console.log('Cart data in addToCart: ', cartData.data);
