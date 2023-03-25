@@ -17,7 +17,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleThumbnailClick = (e) => {
     e.preventDefault();
-    console.log('Thumbnail clicked! ', e.target.id);
     let thumbnail_index = parseInt(e.target.id);
     setMainImage(productPhotos[thumbnail_index].url);
     setMainImageIndex(thumbnail_index);

@@ -42,11 +42,10 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
     // As per HelpDesk -- Known API bug: Count on a GET to /cart is the number of times the SKU has been added, NOT the total quantity added
     e.preventDefault();
     // console.log('Add to Cart Clicked!');
-    console.log('Size SKU: ', selectedSize);
-    console.log('Quantity: ', selectedQuantity);
+    // console.log('Size SKU: ', selectedSize);
+    // console.log('Quantity: ', selectedQuantity);
 
     if (selectedSize.length > 0 && selectedQuantity > 0) {
-      // console.log('Valid Add to Cart Clicked!');
       axios.post('/cart', {
         sku_id: selectedSize,
         count: selectedQuantity
@@ -63,9 +62,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
           console.error('Error adding product to cart!');
         });
     } else {
-      console.log('Please select size!');
       setAlertSize(true);
-      // console.log('Ref.current: ', ref.current);
       ref.current.focus();
     }
 
