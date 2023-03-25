@@ -44,7 +44,7 @@
   flex-direction: column;
   position: absolute;
   gap: 10px;
-  top: 20px;
+  top: 30px;
   left: 17px;
   bottom: 20px;
   align-items: center;
@@ -73,7 +73,7 @@
 .thumbnail_gallery_next {
   position: absolute;
   background-color: aquamarine;
-  top: 620px;
+  top: 640px;
 }
 
 .gallery_thumbnail {
