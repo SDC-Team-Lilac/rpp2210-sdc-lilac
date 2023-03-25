@@ -108,7 +108,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
         </div>
       </div>
       <div>{recommended}% recommend this product!</div>
-      <ProductBreakdown />
+      <ProductBreakdown characteristics={reviewsMeta.characteristics}/>
     </div>
   )
 }

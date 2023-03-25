@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import BreakdownBar from './BreakdownBar.jsx'
 
-const ProductBreakdown = () => {
+const ProductBreakdown = ({characteristics}) => {
 
 
-  /*  This Component will:
-      1)
-   */
+  const loadBars = () => {
+    var breakdowns = [];
+    for (const individualCharacteristic in characteristics) {
+      breakdowns.push(<BreakdownBar characteristic={individualCharacteristic}/>)
+    }
+    return breakdowns;
+  }
+      console.log('THESE ARE THE CHARACTERISTICS', characteristics)
 
   return (
-    <div data-testid='productBreakdown-1'> ProductBreakdown! </div>
+    <div data-testid='productBreakdown-1' className="reviews productBreakdown"> ProductBreakdown!
+    {loadBars()}
+    </div>
   )
 }
 
