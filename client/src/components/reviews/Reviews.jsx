@@ -33,6 +33,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
   const [count, setCount] = useState(1000000)
+  const [filter, setFilter] = useState([]);
 
   const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
@@ -68,12 +69,30 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   }
 
 
-  const sortReviews = (e, option) => {
+  const sortReviews = (e) => {
     e.preventDefault();
     var newSort = e.target.value.toLowerCase()
     setSort(newSort)
 
   }
+
+  const filterReviews = (e, stars, clicked) => {
+    e.preventDefault();
+    console.log('WAS IT CLICKED', clicked)
+    if (!filter.includes(stars)){
+      setFilter([...filter, stars]);
+    }
+    console.log('Filters', filter)
+  }
+
+  // const unfilterReviews = (e, stars) => {
+  //   e.preventDefault();
+  //   var index = filter.indexOf(stars);
+  //   if (index > -1) {
+  //    var newFilters = filter.splice(index, 1);
+  //   }
+  //   console.log('filters', filter)
+  // }
 
   useEffect(() => {
     updateReviews()
@@ -94,7 +113,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
+        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} filterReviews={filterReviews} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
         { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
       </div>
     </div>
