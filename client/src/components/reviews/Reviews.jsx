@@ -32,6 +32,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const [reviewsMeta, setReviewsMeta] = useState(null)
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
+  //Could refactor to get reviews count first.
   const [count, setCount] = useState(1000000)
 
   const getReviews = (currentCount, currentPage, currentSort) => {
@@ -62,6 +63,9 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const updateReviews = () => {
     getReviews(count, page, sort)
     .then((result) => {
+      if (result.data.results.length === 0) {
+        updateAverageRating(0)
+      }
       setReviews(result.data.results);
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
@@ -91,11 +95,12 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   }, [sort])
 
 
+
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
-        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
+        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
   )

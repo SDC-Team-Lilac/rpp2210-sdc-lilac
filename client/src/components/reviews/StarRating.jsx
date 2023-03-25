@@ -43,6 +43,7 @@ const StarRating = ({ rating }) => {
     updatePercentage(starRating)
   }, [starRating])
 
+  if (rating) {
   return (
     <div data-testid='starRating-1' className="reviews starRatings">
       <span style={{width: percentage}}className="fullStars" >
@@ -51,6 +52,11 @@ const StarRating = ({ rating }) => {
       &#9734;&#9734;&#9734;&#9734;&#9734;
     </div>
   )
+  } else {
+    return (
+      'There are no reviews!'
+    )
+  }
 }
 
 
