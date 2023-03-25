@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 
-const SizeSelector = ( { selectedStyle, setSelectedStyleData, setSelectedQuantity } ) => {
+const SizeSelector = forwardRef(function SizeSelector({ selectedStyle, setSelectedStyleData, setSelectedQuantity }, ref ) {
 
   const [selected, setSelected] = useState('default');
 
@@ -28,6 +28,7 @@ const SizeSelector = ( { selectedStyle, setSelectedStyleData, setSelectedQuantit
       sizeOptions.unshift(<option value="default" disabled>Select Size</option>);
     } else {
       sizeOptions.unshift(<option value="default" disabled>OUT OF STOCK</option>);
+      setSelectedQuantity(0);
     }
 
   const handleSizeChange = (e) => {
@@ -37,10 +38,10 @@ const SizeSelector = ( { selectedStyle, setSelectedStyleData, setSelectedQuantit
   }
 
   return (
-    <select className="size_selector_dropdown" value={selected} onChange={handleSizeChange}>
+    <select ref={ref} className="size_selector_dropdown" value={selected} onChange={handleSizeChange}>
       {sizeOptions}
     </select>
   )
-}
+})
 
 export default SizeSelector;
