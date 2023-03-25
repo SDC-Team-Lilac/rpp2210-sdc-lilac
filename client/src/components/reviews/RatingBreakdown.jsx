@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductBreakdown from './ProductBreakdown.jsx'
 import StarRating from './StarRating.jsx'
 
-const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, filterReviews }) => {
+const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, updateFilters }) => {
 
   /*  This Component will:
       1)
@@ -10,7 +10,6 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
 
   const [recommended, setRecommended] = useState(null);
   const [mousedOver, setMousedOver] = useState(false);
-  const [filterClicked, setFilterClicked] = useState({5: false, 4: false, 3: false, 2: false, 1: false})
 
   const percentRecommend = () => {
     var total = Number(reviewsMeta.recommended.false) + Number(reviewsMeta.recommended.true);
@@ -66,7 +65,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
       Rating Breakdown!
       <div className="reviews ratingBreakdown" >
         <div className="reviews allRatingBars">
-          <div className="reviews fullRatingBar" onClick={(e) => {filterReviews(e, 5, filterClicked[5])}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className="reviews fullRatingBar" onClick={(e) => {updateFilters(e, 5)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">5 Stars:</div>
             <div className="reviews bar rating5Bar">
               <div className="reviews bar rating5Bar green" style={{width: `${getBarWidths(5).greenWidth}`}}></div>
@@ -74,7 +73,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[5]}</div>
           </div>
-          <div className="reviews fullRatingBar" onClick={(e) => {filterReviews(e, 4)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className="reviews fullRatingBar" onClick={(e) => {updateFilters(e, 4)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">4 Stars:</div>
             <div className="reviews bar rating4Bar">
               <div className="reviews bar rating4Bar green" style={{width: `${getBarWidths(4).greenWidth}`}}></div>
@@ -82,7 +81,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[4]}</div>
           </div>
-          <div className="reviews fullRatingBar" onClick={(e) => {filterReviews(e, 3)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className="reviews fullRatingBar" onClick={(e) => {updateFilters(e, 3)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">3 Stars:</div>
             <div className="reviews bar rating3Bar">
               <div className="reviews bar rating3Bar green" style={{width: `${getBarWidths(3).greenWidth}`}}></div>
@@ -90,7 +89,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[3]}</div>
           </div>
-          <div className="reviews fullRatingBar" onClick={(e) => {filterReviews(e, 2)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className="reviews fullRatingBar" onClick={(e) => {updateFilters(e, 2)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">2 Stars:</div>
             <div className="reviews bar rating2Bar">
               <div className="reviews bar rating2Bar green" style={{width: `${getBarWidths(2).greenWidth}`}}></div>
@@ -98,7 +97,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[2]}</div>
           </div>
-          <div className="reviews fullRatingBar" onClick={(e) => {filterReviews(e, 1)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <div className="reviews fullRatingBar" onClick={(e) => {updateFilters(e, 1)}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">1 Stars:</div>
             <div className="reviews bar rating1Bar">
               <div className="reviews bar rating1Bar green" style={{width: `${getBarWidths(1).greenWidth}`}}></div>

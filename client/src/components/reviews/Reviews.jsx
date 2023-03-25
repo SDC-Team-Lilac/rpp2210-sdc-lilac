@@ -29,12 +29,13 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   const [reviews, setReviews] = useState([])
+  const [filteredReviews, setFilteredReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState(null)
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
   //Could refactor to get reviews count first.
   const [count, setCount] = useState(1000000)
-  const [filter, setFilter] = useState([]);
+  const [filters, setFilters] = useState([]);
 
   const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
@@ -80,23 +81,30 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
   }
 
-  const filterReviews = (e, stars, clicked) => {
+  const updateFilters = (e, stars) => {
     e.preventDefault();
-    console.log('WAS IT CLICKED', clicked)
-    if (!filter.includes(stars)){
-      setFilter([...filter, stars]);
-    }
-    console.log('Filters', filter)
+    if (!filters.includes(stars)){
+      setFilters([...filters, stars]);
+    } else {
+        var newFilters = filters.filter((currentFilter)=>{
+          return currentFilter !== stars
+        });
+        setFilters(newFilters);
+      }
   }
 
-  // const unfilterReviews = (e, stars) => {
-  //   e.preventDefault();
-  //   var index = filter.indexOf(stars);
-  //   if (index > -1) {
-  //    var newFilters = filter.splice(index, 1);
-  //   }
-  //   console.log('filters', filter)
-  // }
+  const filterReviews = () => {
+    var filteredReviews = reviews.filter((review)=> {
+      return filters.includes(review.rating);
+    });
+
+    if (filters.length !== 0) {
+      setFilteredReviews(filteredReviews);
+    } else {
+      setFilteredReviews(reviews);
+    }
+    console.log('WHat are the reviews', filteredReviews)
+  }
 
   useEffect(() => {
     updateReviews()
@@ -111,15 +119,24 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
   useEffect(() => {
     updateReviews()
+    filterReviews()
   }, [sort])
+
+  useEffect(() => {
+    filterReviews()
+  }, [filters])
+
+  useEffect(() => {
+    filterReviews()
+  }, [reviews])
 
 
 
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
-        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
+        { reviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
   )
