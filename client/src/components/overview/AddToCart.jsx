@@ -74,7 +74,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   return (
     <div className="overview_addToCart">
       {/* <h3>This is the Add to Cart Component!</h3> */}
-      {alertSize ? <div className="size_selector_alert">Please select size</div> : null}
+      {alertSize ? <div className="size_selector_alert">Please select size</div> : <div className="size_selector_alert"></div>}
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
           <SizeSelector ref={ref} selectedStyle={selectedStyle} setSelectedStyleData={setSelectedStyleData} setSelectedQuantity={setSelectedQuantity}/>
@@ -87,7 +87,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         </div>
       </div>
       <div className="addToCart_bottom">
-        <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>
+        {selectedQuantity < 1 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton">
           <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
         </button>
