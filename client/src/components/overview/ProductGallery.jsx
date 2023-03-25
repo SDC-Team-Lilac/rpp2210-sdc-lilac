@@ -43,7 +43,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleMainPreviousClick = (e) => {
     e.preventDefault();
-    console.log('Main previous clicked! ', 'main: ', mainImageIndex, 'thumbnail top: ', topThumbnailIndex);
     setMainImage(productPhotos[mainImageIndex - 1].url);
     setMainImageIndex(mainImageIndex - 1);
     if (mainImageIndex - 1 < topThumbnailIndex) {
@@ -54,10 +53,9 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleMainNextClick = (e) => {
     e.preventDefault();
-    console.log('Main next clicked! ', 'main: ', mainImageIndex, 'thumbnail bottom: ', bottomThumbnailIndex);
     setMainImage(productPhotos[mainImageIndex + 1].url);
     setMainImageIndex(mainImageIndex + 1);
-    if (mainImageIndex === bottomThumbnailIndex) {
+    if (mainImageIndex === bottomThumbnailIndex - 1) {
       setTopThumbnailIndex(topThumbnailIndex + 1);
       setBottomThumbnailIndex(bottomThumbnailIndex + 1);
     }
@@ -65,14 +63,12 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleThumbnailPreviousClick = (e) => {
     e.preventDefault();
-    console.log('Thumbnail previous clicked!!!');
     setTopThumbnailIndex(topThumbnailIndex - 1);
     setBottomThumbnailIndex(bottomThumbnailIndex - 1);
   }
 
   const handleThumbnailNextClick = (e) => {
     e.preventDefault();
-    console.log('Thumbnail next clicked!!!');
     setTopThumbnailIndex(topThumbnailIndex + 1);
     setBottomThumbnailIndex(bottomThumbnailIndex + 1);
   }
@@ -86,7 +82,7 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       <div className="thumbnailGallery">
         {topThumbnailIndex > 0 ? <button className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick}>Up!!!</button> : null}
         <div className="thumbnailCarousel">{thunbnailList.slice(topThumbnailIndex, bottomThumbnailIndex)}</div>
-        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length - 1 ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
+        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
       </div>
     </div>
   )
