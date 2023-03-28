@@ -495,6 +495,12 @@ body.active {
   justify-content: space-between;
 }
 
+.reviews.breakdownBar.bar {
+  background-color: gray;
+  width: 50px;
+  height: 12px;
+}
+
 .reviews.bar {
   width: 50px;
   height: 12px;
