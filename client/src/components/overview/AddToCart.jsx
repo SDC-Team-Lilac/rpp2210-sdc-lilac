@@ -6,6 +6,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
+  // CHANGE STARTING QUANTITY TO 0, for addToCartButton testing
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
@@ -18,18 +19,22 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   }, [alertSize]);
 
-  const setSelectedStyleData = (selectedSkuIndex, styleSkuData) => {
-    setSelectedSize(styleSkuData[selectedSkuIndex][0]);
-    setSelectedQuantity(1);
-    let sizeStock = styleSkuData[selectedSkuIndex][1];
-      setQuantityOptions(possibleQuantities.map(quantity => {
-        if (quantity <= sizeStock) {
-          return (
-            <option key={quantity} value={quantity}>{quantity}</option>
-          )
-        }
-      }));
-    setAlertSize(false);
+  const setSelectedStyleData = (quantityStart, selectedSkuIndex, styleSkuData) => {
+    if (quantityStart === 0) {
+      setSelectedQuantity(0);
+    } else {
+      setSelectedSize(styleSkuData[selectedSkuIndex][0]);
+      setSelectedQuantity(1);
+      let sizeStock = styleSkuData[selectedSkuIndex][1];
+        setQuantityOptions(possibleQuantities.map(quantity => {
+          if (quantity <= sizeStock) {
+            return (
+              <option key={quantity} value={quantity}>{quantity}</option>
+            )
+          }
+        }));
+      setAlertSize(false);
+    }
   }
 
   const handleQuantityChange = (e) => {
@@ -68,6 +73,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   }
 
+  // Can pass the selector data as props, and pass functions as well*
   return (
     <div className="overview_addToCart">
       {/* <h3>This is the Add to Cart Component!</h3> */}
@@ -84,7 +90,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         </div>
       </div>
       <div className="addToCart_bottom">
-        {selectedQuantity < 1 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
+        {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton">
           <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
         </button>
