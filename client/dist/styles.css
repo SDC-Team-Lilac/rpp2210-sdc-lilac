@@ -107,6 +107,7 @@
   object-fit: cover;
   width: inherit;
   height: inherit;
+  overflow: clip;
 }
 
 .expanded_gallery_mainImage {
@@ -115,9 +116,9 @@
   height: inherit;
 }
 
-.expanded_gallery_mainImage:hover {
+/* .expanded_gallery_mainImage:hover {
   cursor: crosshair;
-}
+} */
 
 .expanded_gallery_close {
   background-color: fuchsia;
