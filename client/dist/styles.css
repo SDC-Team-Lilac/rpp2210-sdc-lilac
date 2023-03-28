@@ -493,6 +493,7 @@ body.active {
 .reviews.ratingBreakdown {
   display: flex;
   justify-content: space-between;
+  font-size: small;
 }
 
 
@@ -513,9 +514,7 @@ body.active {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-
   border-top: 10px solid black;
-  margin-left: 10px;
 }
 .reviews.breakdownBar.charbar {
   /* position: relative; */
@@ -530,22 +529,19 @@ body.active {
   align-self: stretch;
   display: flex;
 
-  flex-direction: column;
+  /* flex-direction: column; */
   margin-left: 10%;
   margin-right: 10%;
 }
-.reviews.breakdownBar.ratingScaleNums {
+.reviews.breakdownBar.ratingScaleInstance {
   display: flex;
-  justify-content: space-between;
-}
-.reviews.breakdownBar.ratingScaleCharacteristics {
-  display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
   font-size: smaller;
-
+  border: solid lightgrey 1px;
+  width: 33%;
+  word-wrap: break-word;
 }
-
-
 
 
 .reviews.bar {
