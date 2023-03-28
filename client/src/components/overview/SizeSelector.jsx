@@ -25,9 +25,9 @@ const SizeSelector = forwardRef(function SizeSelector({ selectedStyle, setSelect
       }
     })
     if (sizeOptions.length > 0) {
-      sizeOptions.unshift(<option value="default" disabled>Select Size</option>);
+      sizeOptions.unshift(<option value="default" key="select_size" disabled>Select Size</option>);
     } else {
-      sizeOptions.unshift(<option value="default" disabled>OUT OF STOCK</option>);
+      sizeOptions.unshift(<option value="default" key="out_of_stock" disabled>OUT OF STOCK</option>);
       setSelectedQuantity(0);
     }
 

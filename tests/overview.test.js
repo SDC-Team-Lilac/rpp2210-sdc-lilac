@@ -329,7 +329,7 @@ describe('Product Selected', () => {
 
     const addToCartButton = screen.getByTestId("addToCartButton");
     expect(addToCartButton).toBeInTheDocument();
-    expect(addToCartButton).toHaveTextContent("Add to Bag");
+    expect(addToCartButton).toHaveTextContent("Add to Cart");
 
     // Will need to be changed to a star icon later, currently under construction ***
     const addToOutfitButton = screen.getByTestId("addToOutfitButton");
