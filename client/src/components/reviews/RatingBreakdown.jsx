@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductBreakdown from './ProductBreakdown.jsx'
 import StarRating from './StarRating.jsx'
 
-const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
+const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, characteristicSelections }) => {
 
   /*  This Component will:
       1)
@@ -52,7 +52,6 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     countReviews()
     percentRecommend()
   }, [reviewsMeta])
-
 
 
   return (
@@ -108,7 +107,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
         </div>
       </div>
       <div>{recommended}% recommend this product!</div>
-      <ProductBreakdown characteristics={reviewsMeta.characteristics}/>
+      <ProductBreakdown characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import BreakdownBar from './BreakdownBar.jsx'
 
-const ProductBreakdown = ({characteristics}) => {
+const ProductBreakdown = ({characteristics, characteristicSelections}) => {
 
 
   const loadBars = () => {
     var breakdowns = [];
     for (const individualCharacteristic in characteristics) {
-      breakdowns.push(<BreakdownBar characteristic={individualCharacteristic}/>)
+      breakdowns.push(<BreakdownBar characteristic={individualCharacteristic} characteristicSelections={characteristicSelections}/>)
     }
     return breakdowns;
   }
