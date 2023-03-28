@@ -10,7 +10,7 @@ const RelatedProducts = (props) => {
   // var outfits = ['Fake-Outfit'];
   return (
     <div>
-      <RelatedProductsList relatedProductFeatures={props.relatedProductFeatures} productId={props.productId} productCards={props.productCards} currentProductFeatures={props.productFeatures} productName={props.productName} relatedProductName={props.relatedProductName}/>
+      <RelatedProductsList relatedProductFeatures={props.relatedProductFeatures} setRelatedProductFeatures={props.setRelatedProductFeatures} productId={props.productId} productCards={props.productCards} currentProductFeatures={props.productFeatures} productName={props.productName} relatedProductName={props.relatedProductName} setProductCards={props.setProductCards} setRelatedProductName={props.setRelatedProductName} setProductId={props.setProductId} updateSelectedProduct={props.updateSelectedProduct} />
       <YourOutfit myOutfit={props.myOutfit} outfitCards={props.outfitCards} setMyOutfit={props.setMyOutfit} currentProductId={props.productId} updateSelectedProduct={props.updateSelectedProduct} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards}/>
     </div>
   )
