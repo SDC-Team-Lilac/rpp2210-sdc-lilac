@@ -65,10 +65,6 @@
   top: 40px;
   gap: 10px;
   overflow: hidden;
-  /* top: 20px;
-  left: 17px; */
-  /* transform: translateY(0);
-  transition: transform 0.5s; */
 }
 
 .thumbnail_gallery_previous {
@@ -115,10 +111,6 @@
   width: inherit;
   height: inherit;
 }
-
-/* .expanded_gallery_mainImage:hover {
-  cursor: crosshair;
-} */
 
 .expanded_gallery_close {
   background-color: fuchsia;
@@ -181,18 +173,6 @@
   padding: 0px 10px 10px 10px;
 }
 
-/* #overview_top {
-  display: flex;
-  flex-direction: row;
-  border: 2px solid aqua;
-}
-
-.gallery {
-  border: 2px solid greenyellow;
-  flex-grow: 3;
-  position: relative;
-  max-width: 750px;
-} */
 .size_selector_alert {
   color: red;
   padding-bottom: 4px;

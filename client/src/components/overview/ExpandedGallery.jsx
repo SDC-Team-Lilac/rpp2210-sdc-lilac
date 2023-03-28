@@ -15,7 +15,6 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
     setIsZoomed(false);
   }
 
-
   const handleExpandedMainImageClick = (e) => {
     console.log('Expanded Image Clicked!');
     if (!isZoomed) {
@@ -35,18 +34,14 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
     if (isZoomed) {
       const x = e.clientX - e.target.offsetLeft;
       const y = e.clientY - e.target.offsetTop;
-
-      console.log(x, y);
-
       setTransformOrigin(`${x}px ${y}px`);
     }
   }
 
   return (
     <div id="expanded_gallery">
-      {/* Hello, I'm the expanded gallery component! */}
       <img className="expanded_gallery_mainImage" src={mainImage} alt={imageDescription} style={{transform: transform, transformOrigin: transformOrigin, cursor: cursor}} onMouseMove={handleMouseMove} onClick={handleExpandedMainImageClick}></img>
-      <button className="expanded_gallery_close" onClick={handleCloseClick}>Close</button>
+      {isZoomed ? null : <button className="expanded_gallery_close" onClick={handleCloseClick}>Close</button>}
     </div>
   )
 }
