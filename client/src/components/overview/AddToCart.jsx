@@ -43,13 +43,8 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   }
 
   const handleAddToCartClick = (e) => {
-    // Known refactor need -- handle cases where invalid size/qty selected
     // As per HelpDesk -- Known API bug: Count on a GET to /cart is the number of times the SKU has been added, NOT the total quantity added
     e.preventDefault();
-    // console.log('Add to Cart Clicked!');
-    // console.log('Size SKU: ', selectedSize);
-    // console.log('Quantity: ', selectedQuantity);
-
     if (selectedSize.length > 0 && selectedQuantity > 0) {
       axios.post('/cart', {
         sku_id: selectedSize,
@@ -73,10 +68,8 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 
   }
 
-  // Can pass the selector data as props, and pass functions as well*
   return (
     <div className="overview_addToCart">
-      {/* <h3>This is the Add to Cart Component!</h3> */}
       {alertSize ? <div className="size_selector_alert">Please select size</div> : <div className="size_selector_alert"></div>}
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">

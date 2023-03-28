@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import ExpandedGallery from './ExpandedGallery.jsx';
 
 const ProductGallery = ( { productPhotos, productName, styleName } ) => {
-
-  // Current Bug -- when switching style, next click to "next" on mainImage results in undefined URL, but if you click previous and THEN next it's fine (?)
-    // Also seems to be happening on any "next" mainImage click if you jump click to another thumbnail
 
   const [mainImage, setMainImage] = useState('');
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
   const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(7);
+
+  // Added for modal
+  const [showExpanded, setShowExpanded] = useState(false);
 
   // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
   useEffect(() => {
@@ -39,6 +41,12 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       );
     }
   });
+
+  const handleMainImageClick = (e) => {
+    e.preventDefault();
+    console.log('CLICK');
+    setShowExpanded(true);
+  }
 
   const handleMainPreviousClick = (e) => {
     e.preventDefault();
@@ -77,7 +85,11 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       {/* <h2>This is the Product Gallery Component!</h2> */}
       {mainImageIndex > 0 ? <button className="main_image_previous" onClick={handleMainPreviousClick}>Previous!!!</button> : null}
       {mainImageIndex < thunbnailList.length - 1 ? <button className="main_image_next" onClick={handleMainNextClick}>Next!!!</button> : null}
-      <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription}></img>
+      <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} onClick={handleMainImageClick}></img>
+      {showExpanded && createPortal(
+        <ExpandedGallery mainImage={mainImage} imageDescription={imageDescription} setShowExpanded={setShowExpanded} onClose={() => setShowExpanded(false)} />,
+        document.getElementById("overview_top")
+      )}
       <div className="thumbnailGallery">
         {topThumbnailIndex > 0 ? <button className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick}>Up!!!</button> : null}
         <div className="thumbnailCarousel">{thunbnailList.slice(topThumbnailIndex, bottomThumbnailIndex)}</div>

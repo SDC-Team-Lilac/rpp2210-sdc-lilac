@@ -3,12 +3,15 @@
   flex-direction: column;
   border: 2px solid aqua;
   font-family: 'Playfair Display', serif;
+  width: 1330px;
 }
 
 #overview_top {
   display: flex;
   flex-direction: row;
   border: 2px solid aqua;
+  width: inherit;
+  height: 760px;
 }
 
 .gallery {
@@ -95,6 +98,28 @@
   width: 70px;
   opacity: .7;
   border: 3px solid rgba(255, 255, 255, 0.762);
+}
+
+.expanded_gallery {
+  /* // This could just connect to my overview-top, as it has the same dimensions */
+  border: 4px solid peachpuff;
+  position: absolute;
+  object-fit: cover;
+  width: inherit;
+  height: inherit;
+}
+
+.expanded_gallery_mainImage {
+  object-fit: cover;
+  width: inherit;
+  height: inherit;
+}
+
+.expanded_gallery_close {
+  background-color: fuchsia;
+  position: absolute;
+  top: 10px;
+  left: 1260px;
 }
 
 .overview_product_selected {
