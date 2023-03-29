@@ -66,7 +66,7 @@ const App = () => {
           }
         })
         .then((results) => {
-          setRelatedProducts(results);
+          setRelatedProducts(results.data);
           return ProductListInfo(results.data, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards);
         })
       })
