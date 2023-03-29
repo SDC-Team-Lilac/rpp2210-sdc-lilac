@@ -69,7 +69,6 @@ const NewReview = ({reviewsMeta, onClose }) => {
 
 
   const handleRecommendClick = (e) => {
-    e.preventDefault();
     let option = e.target.value;
     const recommendMap = {
       Yes: true,
