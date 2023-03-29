@@ -10,7 +10,6 @@ const BreakdownBar = ({characteristic, characteristicSelections, characteristicV
 
   const getMarginPercentage = () => {
     var result = ((Number(characteristicValue.value).toFixed(2)/5) * 100).toString() + '%'
-    console.log('WHATS the percent', result)
     setMarginPercent(result)
   }
 

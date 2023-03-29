@@ -13,7 +13,6 @@ const ProductBreakdown = ({characteristics, characteristicSelections}) => {
     }
     return breakdowns;
   }
-      console.log('THESE ARE THE CHARACTERISTICS', characteristics)
 
   return (
     <div data-testid='productBreakdown-1' className="reviews productBreakdown"> ProductBreakdown!
