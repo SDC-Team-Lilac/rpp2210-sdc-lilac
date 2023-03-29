@@ -770,13 +770,13 @@ button.sarah-right-arrow:hover {
 .starRatings {
   display: inline-block;
   position: relative;
-  color: rgb(144, 144, 7);
+  color: #683b2B99;
   font-size: 30px;
 }
 
 .fullStars {
   position: absolute;
-  color: red;
+  color: #B08401;
   overflow: hidden;
   font-size: 30px;
 }
