@@ -462,11 +462,12 @@ body.active {
   border-radius: 12px;
   position:  absolute;
   left: 50%;
-  top: 250%;
+  top: 140%;
   width: 450px;
   height: 400px;
-  margin-left: -200px;
-  margin-top: -150px;
+  margin: -200px 0 0 -250px;
+
+  z-index:1000;
 }
 /* ---- */
 
@@ -519,6 +520,7 @@ body.active {
 
 
 /* STARS */
+.reviews.newReviewItem.stars,
 .starRatings {
   display: inline-block;
   position: relative;
@@ -526,11 +528,15 @@ body.active {
   font-size: 30px;
 }
 
+.newReviewStars,
 .fullStars {
   position: absolute;
   color: red;
   overflow: hidden;
   font-size: 30px;
 }
+/* ----- */
+
+/* NewReviews Modal */
 /* ----- */
 /* End Reviews CSS */
