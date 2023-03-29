@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductBreakdown from './ProductBreakdown.jsx'
 import StarRating from './StarRating.jsx'
 
-const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, updateFilters, filters  characteristicSelections}) => {
+const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, updateFilters, filters,  characteristicSelections}) => {
 
   /*  This Component will:
       1)

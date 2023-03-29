@@ -6,8 +6,10 @@ const ProductBreakdown = ({characteristics, characteristicSelections}) => {
 
   const loadBars = () => {
     var breakdowns = [];
+    var key = 1;
     for (const individualCharacteristic in characteristics) {
-      breakdowns.push(<BreakdownBar characteristic={individualCharacteristic} characteristicValue={characteristics[individualCharacteristic]} characteristicSelections={characteristicSelections}/>)
+      breakdowns.push(<BreakdownBar key={key} characteristic={individualCharacteristic} characteristicValue={characteristics[individualCharacteristic]} characteristicSelections={characteristicSelections}/>)
+      key+=1;
     }
     return breakdowns;
   }
