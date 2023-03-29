@@ -37,6 +37,15 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const [count, setCount] = useState(1000000)
   const [filters, setFilters] = useState([]);
 
+  const characteristicSelections = {
+    Size: {1: 'A size too small', 2: '½ a size too small', 3: 'Perfect', 4: '½ a size too big', 5: 'A size too wide'},
+    Width: {1: 'Too narrow', 2: 'Slightly narrow', 3: 'Perfect', 4: 'Slightly wide', 5: 'Too wide'},
+    Comfort: {1: 'Uncomfortable', 2: 'Slightly uncomfortable', 3: 'Ok', 4: 'Comforatble', 5: 'Perfect'},
+    Quality: {1: 'Poor', 2: 'Below Average', 3: 'What I expected', 4: 'Pretty great', 5: 'Perfect'},
+    Length: {1: 'Runs short', 2: 'Runs slightly short', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'},
+    Fit: {1: 'Runs tight', 2: 'Runs slightly tight', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'}
+  }
+
   const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
       params: {
@@ -134,8 +143,8 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
-        { reviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
+        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
   )
