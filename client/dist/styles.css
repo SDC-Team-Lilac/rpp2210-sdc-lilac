@@ -24,6 +24,10 @@
   width: 750px;
 }
 
+.mainImage:hover {
+  cursor: zoom-in;
+}
+
 .main_image_previous {
   background-color: greenyellow;
   align-self: center;
@@ -44,9 +48,9 @@
   flex-direction: column;
   position: absolute;
   gap: 10px;
-  top: 20px;
-  left: 17px;
-  bottom: 20px;
+  top: 40px;
+  left: 27px;
+  bottom: 40px;
   align-items: center;
   overflow: hidden;
 }
@@ -73,20 +77,22 @@
 .thumbnail_gallery_next {
   position: absolute;
   background-color: aquamarine;
-  top: 620px;
+  top: 640px;
 }
 
 .gallery_thumbnail {
   object-fit: cover;
-  height: 80px;
-  width: 80px;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 70px;
+  width: 70px;
   border: 3px solid rgba(255, 255, 255, 0);
 }
 
 .selected_gallery_thumbnail {
   object-fit: cover;
-  height: 80px;
-  width: 80px;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 70px;
+  width: 70px;
   opacity: .7;
   border: 3px solid rgba(255, 255, 255, 0.762);
 }
@@ -116,7 +122,7 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
-  padding: 20px 10px 20px 10px;
+  padding: 20px 10px 10px 10px;
   font-size: large;
 }
 
@@ -142,7 +148,7 @@
 
 .overview_addToCart {
   border: 2px solid fuchsia;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
 }
 
 /* #overview_top {
@@ -157,6 +163,11 @@
   position: relative;
   max-width: 750px;
 } */
+.size_selector_alert {
+  color: red;
+  padding-bottom: 4px;
+  min-height: 21px;
+}
 
 .addToCart_top {
   display: flex;
@@ -195,6 +206,7 @@
 .addToCart_bottom {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   gap: 20px;
   width: 516px;
   padding-top: 10px;
@@ -214,6 +226,7 @@
 .addToOutfitButton {
   flex-grow: 1;
   position: relative;
+  max-width: 60px;
   background-color: rgb(238, 238, 238);
   border: 1px solid rgb(62, 62, 62);
   display: inline-block;
@@ -514,6 +527,10 @@ body.active {
 .reviews.rightRatingBar
  {
   width: 33.33%
+}
+
+.reviews.fullRatingBar.selected {
+  background-color: #89CFF0;
 }
 
 /* ----- */

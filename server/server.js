@@ -6,10 +6,12 @@ const interactions_api = require('./api_handlers/interactions');
 const products_api = require('./api_handlers/products');
 const qa_api = require('./api_handlers/qa');
 const reviews_api = require('./api_handlers/reviews');
+const relatedChainHelper = require('./helperFunctions/relatedProductsChain.js');
 const expressStaticGzip = require('express-static-gzip');
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+// Make sure to comment this out when testing through Postman***
 app.use(expressStaticGzip(path.join(__dirname,'../client/dist'), {
   enableBrotli: true
 }));
@@ -52,6 +54,16 @@ app.get('/products/:product_id/related', (req, res) => {
     })
 });
 
+app.get('/relatedProducts/info', (req, res) => {
+  relatedChainHelper.ProductListInfo(req, res)
+  .then((details) => {
+    res.status(200).send(details);
+  })
+  .catch((err) => {
+    res.status(404).send(err)
+  })
+});
+
 app.get('/products/:product_id/styles', (req, res) => {
   var product_id = req.params.product_id;
   // console.log('THIS IS PRODUCT_ID: ', product_id);
@@ -64,6 +76,28 @@ app.get('/products/:product_id/styles', (req, res) => {
       res.status(404).send(error);
     })
 });
+
+// CART ROUTES:
+app.get('/cart', (req, res) => {
+  cart_api.getCartItems()
+    .then((cartItems) => {
+      res.status(200).send(cartItems.data);
+    })
+    .catch((error) => {
+      res.status(404).send(error);
+    })
+});
+
+app.post('/cart', (req, res) => {
+  // console.log('Add to Cart Server Count: ', req.body.count);
+  cart_api.addToCart(req.body.sku_id, req.body.count)
+    .then((success) => {
+      res.status(201).send('Item successfully added to cart!');
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    })
+})
 
 //REVIEW ROUTES:
 
