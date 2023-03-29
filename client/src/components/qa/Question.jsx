@@ -7,6 +7,20 @@ import axios from 'axios';
 const Question = (props) => {
 
   const [answerList, setAnswerList] = useState([]);
+  const [helpfulCount, setHelpfulCount] = useState(props.question.question_helpfulness);
+
+  const helpfulCountHandler = (e) =>{
+    e.preventDefault();
+    let count = props.question.question_helpfulness + 1;
+    setHelpfulCount(count);
+    axios.put(`/qa/questions/${props.question.question_id}/helpful`)  ///qa/questions/:question_id/helpful
+    .then(()=> {
+      console.log('Helpful count for this question has been updated!')
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  };
 
   const getAnswersForOneQuestion = (question_id) => {
     return axios.get(`/qa/questions/${question_id}/answers`)
@@ -24,10 +38,14 @@ const Question = (props) => {
 
 
   return (
-    <div style={{border: '2px solid red'}}>
-      <div data-testid="qaQuestion"> {'Q: ' + props.question.question_body} </div>
-      <AnswerList answerList={answerList}/>
-      <AddAnswer question={props.question} getAnswersForOneQuestion={getAnswersForOneQuestion} setAnswerList={setAnswerList}/>
+    <div>
+      <div className='qa_answerList'>
+      <div  className='qa_question' data-testid="qaQuestion">
+          <strong>{'Q: '}</strong> {props.question.question_body}  <span className='qa_questionHelpful'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>
+      </div>
+        <AnswerList answerList={answerList}/>
+        <AddAnswer question={props.question} getAnswersForOneQuestion={getAnswersForOneQuestion} setAnswerList={setAnswerList} productName={props.productName}/>
+      </div>
     </div>
   )
 };

@@ -16,11 +16,10 @@ const AnswerList = (props) => {
   };
 
   return (
-    <div style={{border: '2px solid yellow'}}>
-      <div> AnswerList! </div>
+    <div>
       {visibleAnswers.map(answer=>
       <Answer key={answer.answer_id} answer={answer}/>)}
-      {props.answerList.length >= 2? <button data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
+      {props.answerList.length > 2? <button data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
     </div>
   )
 }

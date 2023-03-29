@@ -6,7 +6,7 @@ import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
 
 
-const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, updateReviewCount }) => {
+const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, updateReviewCount, characteristicSelections, productName }) => {
 
   const [currentReviews, setCurrentReviews] = useState([]);
   const [maxReviews, setMaxReviews] = useState(2);
@@ -76,7 +76,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
       <button onClick={showModal}>Add Review</button>
 
       {showNewReview && createPortal(
-        <NewReview reviewsMeta={reviewsMeta} onClose={hideModal}/>,
+        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
         document.body
       )}
 
