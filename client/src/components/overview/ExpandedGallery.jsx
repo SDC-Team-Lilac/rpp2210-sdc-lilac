@@ -41,7 +41,7 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
   return (
     <div id="expanded_gallery">
       <img className="expanded_gallery_mainImage" src={mainImage} alt={imageDescription} style={{transform: transform, transformOrigin: transformOrigin, cursor: cursor}} onMouseMove={handleMouseMove} onClick={handleExpandedMainImageClick}></img>
-      {isZoomed ? null : <button className="expanded_gallery_close" onClick={handleCloseClick}>Close</button>}
+      {isZoomed ? null : <img className="expanded_gallery_close" src="https://cdn-icons-png.flaticon.com/512/607/607863.png" alt="Close" onClick={handleCloseClick}></img>}
     </div>
   )
 }

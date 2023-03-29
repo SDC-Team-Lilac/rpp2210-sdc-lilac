@@ -83,17 +83,17 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   return (
     <div className="gallery">
       {/* <h2>This is the Product Gallery Component!</h2> */}
-      {mainImageIndex > 0 ? <button className="main_image_previous" onClick={handleMainPreviousClick}>Previous!!!</button> : null}
-      {mainImageIndex < thunbnailList.length - 1 ? <button className="main_image_next" onClick={handleMainNextClick}>Next!!!</button> : null}
+      {mainImageIndex > 0 ? <img className="main_image_previous" onClick={handleMainPreviousClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Previous"></img> : null}
+      {mainImageIndex < thunbnailList.length - 1 ? <img className="main_image_next" onClick={handleMainNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Next"></img> : null}
       <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} onClick={handleMainImageClick}></img>
       {showExpanded && createPortal(
         <ExpandedGallery mainImage={mainImage} imageDescription={imageDescription} setShowExpanded={setShowExpanded} onClose={() => setShowExpanded(false)} />,
         document.getElementById("overview_top")
       )}
       <div className="thumbnailGallery">
-        {topThumbnailIndex > 0 ? <button className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick}>Up!!!</button> : null}
+        {topThumbnailIndex > 0 ? <img className="thumbnail_gallery_previous" onClick={handleThumbnailPreviousClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732661.png" alt="Up"></img> : null}
         <div className="thumbnailCarousel">{thunbnailList.slice(topThumbnailIndex, bottomThumbnailIndex)}</div>
-        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length ? <button className="thumbnail_gallery_next" onClick={handleThumbnailNextClick}>Down!!!</button> : null}
+        {thunbnailList.length > 7 && bottomThumbnailIndex < thunbnailList.length ? <img className="thumbnail_gallery_next" onClick={handleThumbnailNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732661.png" alt="Down"></img> : null}
       </div>
     </div>
   )
