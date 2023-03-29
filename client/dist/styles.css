@@ -156,6 +156,83 @@
   cursor: pointer;
 }
 
+.main_image_previous {
+  filter: invert(100%);
+  opacity: .8;
+  position: absolute;
+  top: 360px;
+  left: 120px;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  padding: 2px 5px 2px 0px;
+}
+
+.expanded_main_image_previous {
+  filter: invert(100%);
+  opacity: .8;
+  position: absolute;
+  top: 360px;
+  left: 120px;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  padding: 2px 5px 2px 0px;
+}
+
+.expanded_main_image_next {
+  filter: invert(100%);
+  opacity: .8;
+  position: absolute;
+  top: 360px;
+  left: 685px;
+  transform: scaleX(-1);
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  padding: 2px 5px 2px 0px;
+}
+
+.expanded_main_image_previous:hover, .expanded_main_image_next:hover {
+  background-color: white;
+  border-radius: 50%;
+  opacity: .7;
+}
+
+.expandedThumbnailGallery {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 5px;
+  top: 40px;
+  left: 27px;
+  bottom: 40px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.expanded_gallery_thumbnail {
+  object-fit: cover;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 25px;
+  width: 25px;
+  filter: invert(100%);
+  opacity: .5;
+  border: 3px solid rgba(255, 255, 255, 0);
+}
+
+.expanded_selected_gallery_thumbnail {
+  object-fit: cover;
+  /* FIX SIZING ONCE FUNCTION IS WORKING */
+  height: 25px;
+  width: 25px;
+  filter: invert(100%);
+  opacity: .7;
+  border: 3px solid rgba(255, 255, 255, 0);
+  /* Figure out how to make this stand out but not too much *** */
+  border-bottom: 3px solid rgba(255, 255, 255, 0.762);
+}
+
 .overview_product_selected {
   display: flex;
   flex-direction: column;
