@@ -678,7 +678,7 @@ body.active {
 
 button.sarah-left-arrow {
   background-color: transparent;
-  border: 11px solid white;
+  border: 11px solid #FAF6F2;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
@@ -705,7 +705,7 @@ button.sarah-left-arrow:hover {
 
 button.sarah-right-arrow {
   background-color: transparent;
-  border: 11px solid white;
+  border: 11px solid #FAF6F2;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
