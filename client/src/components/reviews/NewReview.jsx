@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
 
-const NewReview = ({reviewsMeta, onClose }) => {
+const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
 
   /* This component will:
     1) Need to control the inputs of each field in their own state
@@ -26,7 +26,7 @@ const NewReview = ({reviewsMeta, onClose }) => {
 
 
 
-
+  console.log('THESE ARE THE CHARACTERISTICS', characteristicSelections)
 
   var fullReview = {
     product_id: Number(reviewsMeta.product_id),
@@ -113,7 +113,7 @@ const NewReview = ({reviewsMeta, onClose }) => {
           </select> */}
         </div>
         <div className="reviews newReviewItem characteristic">
-          <Characteristics characteristics={reviewsMeta.characteristics}/>
+          <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
         </div>
         <div className="reviews newReviewItem summary">
           <label>Review Summary</label>
