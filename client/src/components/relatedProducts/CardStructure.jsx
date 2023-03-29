@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
 import StarRating from '../reviews/StarRating.jsx';
 
@@ -8,7 +8,7 @@ const CardStructure = (props) => {
   }
   var determine = () => {
     if (props.listName === 'outfit') {
-      return XButton(props.product.productId, props.setMyOutfit);
+      return <XButton setOutfitCards={props.setOutfitCards} currentProductId={props.currentProductId} myOutfit={props.myOutfit} updateSelectedProduct={props.updateSelectedProduct} productId={props.product.productId} setMyOutfit={props.setMyOutfit} OutfitListInfo={props.OutfitListInfo}/>
     } else {
       return StarButton(props.currentProductFeatures, props.product.productId, props.setRelatedProductFeatures, props.product.name, props.setRelatedProductName);
     }
@@ -19,15 +19,17 @@ const CardStructure = (props) => {
         <div className='sarah-product-button-div' >
           {determine()}
         </div>
-        <div onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
+        <div className="sarah-product-card-clickable" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
           <div className='sarah-product-image-div'>
-            <img className='sarah-product-image' data-testid='card-image' src={props.product.image} width='200px' height='225px'></img>
+            <img className='sarah-product-image' data-testid='card-image' src={props.product.image} alt={props.product.name} width='200px' height='225px'></img>
           </div>
-          <h4 className='sarah-product-category' data-testid='card-category' >{props.product.category}</h4>
-          <h4 className='sarah-product-name' data-testid='card-name' >{props.product.name}</h4>
-          <h4 className='sarah-product-price' data-testid='card-price' >{props.product.price}</h4>
-          <div className='sarah-product-ratings' data-testid='card-rating' >
-            <StarRating rating={props.product.rating}/>
+          <div className='sarah-product-details-container'>
+            <h4 className='sarah-product-category' data-testid='card-category' >{props.product.category}</h4>
+            <h4 className='sarah-product-name' data-testid='card-name' >{props.product.name}</h4>
+            <h4 className='sarah-product-price' data-testid='card-price' >{props.product.price}</h4>
+            <div className='sarah-product-ratings' data-testid='card-rating' >
+              <StarRating rating={props.product.rating}/>
+            </div>
           </div>
         </div>
       </div>

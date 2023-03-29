@@ -343,10 +343,15 @@ body.active {
 }
 
 .sarah-product-card {
-  border: 0.5px solid black;
   width: fit-content;
   margin: 10px;
-  height:319px;
+}
+
+.sarah-product-details-container {
+  border-bottom: 0.5px solid black;
+  border-left: 0.5px solid black;
+  border-right: 0.5px solid black;
+  height: 44px;
 }
 
 .sarah-product-button-div {
@@ -357,7 +362,8 @@ body.active {
 
 .sarah-product-image-div {
   position: relative;
-  top: -28px;
+  top: -29px;
+  height:fit-content;
 }
 
 .sarah-product-category {
@@ -397,7 +403,7 @@ body.active {
   border: 0.5px solid black;
   width: 200px;
   margin: 10px;
-  height:307px;;
+  height:319px;;
 }
 
 .sarah-outfit-list-container {
@@ -411,8 +417,15 @@ body.active {
 }
 
 .sarah-plus-button {
-  height: 307px;
+  height: 319px;
   width: 200px;
+}
+
+.sarah-x-button {
+  position: relative;
+  right: -8px;
+  color: #ECECEC;
+  font-size: 24px;
 }
 
 .sarah-add-to-outfit-title {
@@ -423,12 +436,60 @@ body.active {
   font-weight: bolder;
 }
 
-.sarah-left-arrow:hover, .sarah-left-arrow:focus {
-  color: blue;
+.sarah-left-arrow-text {
+  position: relative;
+  top: -10px;
+  left: 0px;
 }
 
-.sarah-right-arrow:hover, .sarah-right-arrow:focus {
-  color: blue;
+button.sarah-left-arrow {
+  background-color: transparent;
+  border: 11px solid white;
+  border-radius: 100px;
+  height:48px;
+  font-size: 35px;
+  top: 42%;
+  left: 2px;
+  position: relative;
+  color: rgb(132, 132, 132);
+}
+
+button.sarah-left-arrow:hover {
+  border-color: rgb(132, 132, 132);
+  background-color:rgb(132, 132, 132);
+  color: white;
+}
+
+.sarah-right-arrow-text {
+  position: relative;
+  top: -10px;
+  left: 1px;
+}
+
+button.sarah-right-arrow {
+  background-color: transparent;
+  border: 11px solid white;
+  border-radius: 100px;
+  height:48px;
+  font-size: 35px;
+  top: 42%;
+  left: 2px;
+  position: relative;
+  color: rgb(132, 132, 132);
+}
+
+button.sarah-right-arrow:hover {
+  border-color: rgb(132, 132, 132);
+  background-color:rgb(132, 132, 132);
+  color: white;
+}
+
+.sarah-products-list {
+  width: 100%;
+}
+
+.sarah-x-button:hover {
+  color: rgb(132, 132, 132);
 }
 
 /* Begin Reviews CSS*/

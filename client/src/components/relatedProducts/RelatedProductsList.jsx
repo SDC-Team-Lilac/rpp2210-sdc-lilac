@@ -7,21 +7,22 @@ const axios = require('axios');
 
 const RelatedProductsList = (props) => {
   const [startingIndex, setStartingIndex] = useState(0);
-  // useEffect(() => {
-  //   props.updateSelectedProduct(props.productId);
-  // }, [props.productId])
   return (
     <div className='sarah-products-list' id='sarah-products-list' data-testid='product-list-container'>
-      <h2 className='sarah-products-list-title'  data-testid='product-list-title'>Related Products</h2>
+      <h3 className='sarah-products-list-title'  data-testid='product-list-title'>Related Products</h3>
       <div className='sarah-list-with-arrows'>
+        <div className='sarah-left-arrow-div'>
         <LeftArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} />
+        </div>
         <div className='sarah-product-cards-container'  data-testid='product-cards-container'>
           {props.productCards[startingIndex]}
           {props.productCards[startingIndex + 1]}
           {props.productCards[startingIndex + 2]}
           {props.productCards[startingIndex + 3]}
         </div>
-        <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} relatedProductsCount={props.productCards.length}/>
+        <div className='sarah-right-arrow-div'>
+          <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} relatedProductsCount={props.productCards.length}/>
+        </div>
       </div>
       <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
         var modalElement = document.getElementById('sarah-modal');
