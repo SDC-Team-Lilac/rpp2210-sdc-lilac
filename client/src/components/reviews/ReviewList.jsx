@@ -13,7 +13,6 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
   const [showMoreButton, setShowMoreButton] = useState(false)
   const [showNewReview, setShowNewReview] = useState(false)
 
-  //SET STATE FOR ADDITIVE FILTER IF NO FILTER THEN RENDER NORMAL, IF FILTER THEN ONLY PUSH REVIEWS IF THEY HAVE THE REQUIRED RATING[s]
   const updateCurrentReviews = (reviews) => {
     var reviewsHolder = []
     for (let i = 0; i < maxReviews; i ++) {
@@ -61,20 +60,20 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
 
   return (
 
-    <div data-testid='reviewList-1' style={{border: '5px solid blue'}}>
-      ReviewsList!
+    <div data-testid='reviewList-1' className="reviews reviewList">
       <SortOptions sortReviews={sortReviews}/>
-      <KeywordSearch />
-      <div style={{maxHeight: '450px', overflowY: 'auto'}}>
+      {/* <KeywordSearch /> */}
+      <div className="reviews fullReviewList">
         {currentReviews.map((review) => {
           return (
             <ReviewTile key={review.review_id} review={review} updateReviews={updateReviews}/>
           )
         })}
       </div>
-      {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
-      <button onClick={showModal}>Add Review</button>
-
+      <div className="reviews reviewListButtons">
+        {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
+        <button onClick={showModal}>Add Review</button>
+      </div>
       {showNewReview && createPortal(
         <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
         document.body

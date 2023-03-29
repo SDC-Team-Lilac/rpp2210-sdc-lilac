@@ -1,14 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx'
-const ReviewTile = ({ review, updateReviews }) => {
+import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
-  /* This component:
-    1) needs an individual review
-    2) Will render data for: star rating, date of review, review summary, review body, recommend, reviewer name, response to review, rating helpfulness
-    3) Needs to have an option for them to click if this rating was helpful then send put request
-    4) Needs to have an option for them to click and report this then send put request
-    */
+const ReviewTile = ({ review, updateReviews }) => {
 
   const renderImages = () => {
     let photoResults = [];
@@ -46,16 +41,14 @@ const ReviewTile = ({ review, updateReviews }) => {
   }
 
   return (
-    <div data-testid='reviewTile-1' style={{border: '2px solid purple'}}>
-      <StarRating rating={review.rating}/>
-      <div>Summary: {review.summary}</div>
-      <div>Body: {review.body}</div>
-      <div>Reviewer Name: {review.reviewer_name}</div>
-      <div>Date Reviewed: {review.date}</div>
-      <div>Helpfulness Rating: {review.helpfulness}</div>
+    <div data-testid='reviewTile-1' className="reviews reviewTile fullTile">
+      <div className="reviews reviewTile topRow">
+      <div><StarRating rating={review.rating}/></div><div>{review.reviewer_name}, {formatDistanceToNow(parseISO(review.date))} ago {format(parseISO(review.date), "EEEE MMMM io yyyy")}</div>
+      </div>
+      <div className="reviews reviewTile summary">{review.summary}</div>
+      <div className="reviews reviewTile body" >{review.body}</div>
+      <div className="reviews reviewTile helpfulReport">Helpful? <a href='' onClick={handleHelpful}> Yes {review.helpfulness}</a> | <a href='' onClick={handleReport}>Report</a></div>
       <div>{renderImages()} </div>
-      <button onClick={handleHelpful}>Mark as Helpful</button>
-      <button onClick={handleReport}>Report Review</button>
     </div>
   )
 }
