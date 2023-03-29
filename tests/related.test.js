@@ -55,7 +55,7 @@ const productCards = [
   </div>
 ];
 
-xdescribe('RelatedProducts', () => {
+describe('RelatedProducts', () => {
   it('renders related products component', () => {
     render(<RelatedProducts productId={71697} relatedProductFeatures={[]} productFeatures={[]} myOutfit={{outfits: []}} relatedProducts={[]} productCards={[]}/>);
     expect(screen.getByText('Related Products')).toBeInTheDocument();
@@ -64,7 +64,7 @@ xdescribe('RelatedProducts', () => {
   });
 })
 
-xdescribe('CardStructure', () => {
+describe('CardStructure', () => {
   it('renders a product card', () => {
     render(<CardStructure product={productId} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures}/>);
     const image = screen.getByTestId('card-image');
@@ -84,7 +84,7 @@ xdescribe('CardStructure', () => {
   });
 })
 
-xdescribe('ComparisonModalList', () => {
+describe('ComparisonModalList', () => {
   it('renders related modal comparison features', () => {
     render(<ComparisonModalList relatedProductFeatures={relatedProductFeatures} currentProductFeatures={productFeatures}/>);
     const container = screen.getByTestId('modal-container');
@@ -98,7 +98,7 @@ xdescribe('ComparisonModalList', () => {
   });
 })
 
-xdescribe('RelatedProductsList', () => {
+describe('RelatedProductsList', () => {
   it('renders related products list', () => {
     render(<RelatedProductsList relatedProductFeatures={relatedProductFeatures} productId={productId} productCards={productCards} currentProductFeatures={productFeatures} />);
     const pContainer = screen.getByTestId('product-list-container');
@@ -118,7 +118,7 @@ xdescribe('RelatedProductsList', () => {
   })
 })
 
-xdescribe('helperFunctions-RatingCalculator', () => {
+describe('helperFunctions-RatingCalculator', () => {
   it('returns rounded star rating', () => {
     const ratings = {
       1: "10",
@@ -132,7 +132,7 @@ xdescribe('helperFunctions-RatingCalculator', () => {
   });
 })
 
-xdescribe('Buttons', () => {
+describe('Buttons', () => {
   it('should render buttons', () => {
     render(<XButton />);
     render(<PlusButton />);

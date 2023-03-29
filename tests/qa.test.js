@@ -205,7 +205,7 @@ const question =  [
     return axios.get(`/qa/questions?product_id=${productId}`);
   };
 
-xdescribe('AddAnswer', () => {
+describe('AddAnswer', () => {
 
   it('renders AddAnswer component', () => {
 
@@ -216,7 +216,7 @@ xdescribe('AddAnswer', () => {
   });
 });
 
-xdescribe('AddQuestion', () => {
+describe('AddQuestion', () => {
   it('renders AddQuestion component', () => {
     render(<AddQuestion />);
     const qaAddQuestion = screen.getByTestId("AddQuestion");
@@ -225,7 +225,7 @@ xdescribe('AddQuestion', () => {
   });
 });
 
-xdescribe('Answer', () => {
+describe('Answer', () => {
   it('renders Answer component', () => {
 
     render(<Answer key={answer.answer_id} answer={answer}/>);
@@ -235,7 +235,7 @@ xdescribe('Answer', () => {
   });
 });
 
-xdescribe('AnswerList', () => {
+describe('AnswerList', () => {
   it('renders AnswerList component', () => {
     render(<AnswerList answerList={answerList}/>);
     const qaAnswerList = screen.getByTestId("answerList1");
@@ -244,7 +244,7 @@ xdescribe('AnswerList', () => {
   });
 });
 
-xdescribe('QA', () => {
+describe('QA', () => {
   it('renders QA component', () => {
     render(<QA productId={productId}/>);
     const qaQa = screen.getByTestId("qaQa");
@@ -253,7 +253,7 @@ xdescribe('QA', () => {
   });
 });
 
-xdescribe('Question', () => {
+describe('Question', () => {
   it('renders Question component', () => {
     render(<Question key={question.question_id} question={question}/>);
     const qaQuestion = screen.getByTestId("qaQuestion");
@@ -262,7 +262,7 @@ xdescribe('Question', () => {
   });
 });
 
-xdescribe('QuestionList', () => {
+describe('QuestionList', () => {
   it('renders QuestionList component', () => {
     render(<QuestionList questionList={questionList}/>);
     const qaQuestionList = screen.getByTestId("qaQuestionList");
@@ -271,7 +271,7 @@ xdescribe('QuestionList', () => {
   });
 });
 
-xdescribe('SearchQuestion', () => {
+describe('SearchQuestion', () => {
   it('renders SearchQuestion component', () => {
     render(<SearchQuestion  getQuestionsForOneProduct={getQuestionsForOneProduct} productId={productId} questionList={questionList}/>);
     const qaSearchQuestion = screen.getByTestId("qaSearchQuestion");
