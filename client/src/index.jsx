@@ -14,7 +14,7 @@ const root = createRoot(domNode);
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71699);
+  const [productId, setProductId] = useState(71702);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -96,7 +96,7 @@ const App = () => {
   return (
     <div>
       Hello World!
-      <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
+      <Overview id="overview" productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
       <RelatedProducts productId={productId} setProductId={setProductId} relatedProductFeatures={relatedProductFeatures} setRelatedProductFeatures={setRelatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} updateSelectedProduct={updateSelectedProduct} productCards={productCards} setProductCards={setProductCards} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setRelatedProductName={setRelatedProductName}/>
       <QA productId={productId}/>
       <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
