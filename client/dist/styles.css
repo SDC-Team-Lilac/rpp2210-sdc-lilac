@@ -581,6 +581,10 @@ body.active {
   width: 33.33%
 }
 
+.reviews.fullRatingBar.selected {
+  background-color: #89CFF0;
+}
+
 /* ----- */
 
 

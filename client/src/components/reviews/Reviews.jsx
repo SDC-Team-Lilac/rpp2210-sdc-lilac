@@ -29,11 +29,13 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   const [reviews, setReviews] = useState([])
+  const [filteredReviews, setFilteredReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState(null)
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
   //Could refactor to get reviews count first.
   const [count, setCount] = useState(1000000)
+  const [filters, setFilters] = useState([]);
 
   const characteristicSelections = {
     Size: {1: 'A size too small', 2: '½ a size too small', 3: 'Perfect', 4: '½ a size too big', 5: 'A size too wide'},
@@ -81,11 +83,35 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   }
 
 
-  const sortReviews = (e, option) => {
+  const sortReviews = (e) => {
     e.preventDefault();
     var newSort = e.target.value.toLowerCase()
     setSort(newSort)
 
+  }
+
+  const updateFilters = (e, stars) => {
+    e.preventDefault();
+    if (!filters.includes(stars)){
+      setFilters([...filters, stars]);
+    } else {
+        var newFilters = filters.filter((currentFilter)=>{
+          return currentFilter !== stars
+        });
+        setFilters(newFilters);
+      }
+  }
+
+  const filterReviews = () => {
+    var filteredReviews = reviews.filter((review)=> {
+      return filters.includes(review.rating);
+    });
+
+    if (filters.length !== 0) {
+      setFilteredReviews(filteredReviews);
+    } else {
+      setFilteredReviews(reviews);
+    }
   }
 
   useEffect(() => {
@@ -101,15 +127,24 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
   useEffect(() => {
     updateReviews()
+    filterReviews()
   }, [sort])
+
+  useEffect(() => {
+    filterReviews()
+  }, [filters])
+
+  useEffect(() => {
+    filterReviews()
+  }, [reviews])
 
 
 
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
-        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
+        { reviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
   )
