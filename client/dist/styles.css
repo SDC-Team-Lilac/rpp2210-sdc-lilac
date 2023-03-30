@@ -3,7 +3,7 @@
   flex-direction: column;
   border: 2px solid aqua;
   font-family: 'Playfair Display', serif;
-  width: 1330px;
+  /* width: 1330px; */
 }
 
 #overview_top {
@@ -225,15 +225,26 @@
   width: 516px;
 }
 
-.style_thumbnail_cropper {
+.style_thumbnail_cropper, .selected_style_thumbnail_cropper {
   flex-basis: 21%;
+  position: relative;
 }
 
-.style_thumbnail {
+.style_thumbnail, .selected_style_thumbnail {
   object-fit: cover;
   border-radius: 50%;
   height: 120px;
   width: 120px;
+}
+
+.selected_style_icon {
+  /* Possible Refactor - Change background color to match theme */
+  background-color: rgba(255, 255, 255, 0.515);
+  border-radius: 50%;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 85px;
 }
 
 .overview_addToCart {
@@ -311,7 +322,6 @@
   font: inherit;
   text-align: center;
   padding: 10px 5px 5px 5px;
-
 }
 
 .overview_product_details {
