@@ -26,7 +26,6 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
 
 
 
-  console.log('THESE ARE THE CHARACTERISTICS', characteristicSelections)
 
   var fullReview = {
     product_id: Number(reviewsMeta.product_id),
@@ -52,31 +51,73 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
     var input = e.target.value
   }
 
-  const handleStarClick = (e) => {
-    e.preventDefault();
-    let starName = e.target.attributes.name.nodeValue;
-    const starMapping = {
-      star1: {percent: '20%', description: "Poor"},
-      star2: {percent: '40%', description: "Fair"},
-      star3: {percent: '60%', description: "Average"},
-      star4: {percent: '80%', description: "Good"},
-      star5: {percent: '100%', description: "Great"}
+
+  //POTENTIAL REFACTOR, MAKE ONE HANDLE CLICK TACKLE ALL CASES
+
+  const handleClick = (e, charValue) => {
+    let attributeName = e.target.attributes.name.nodeValue;
+    if (attributeName.slice(0, attributeName.length-1) === "star") {
+      const starMapping = {
+        star1: {percent: '20%', description: "Poor"},
+        star2: {percent: '40%', description: "Fair"},
+        star3: {percent: '60%', description: "Average"},
+        star4: {percent: '80%', description: "Good"},
+        star5: {percent: '100%', description: "Great"}
+      }
+      setStarPercentage(starMapping[attributeName].percent)
+      setOverall(Number(attributeName.slice(-1)))
+      setRatingDescription(starMapping[attributeName].description)
+    } else if (attributeName === "recommend") {
+      let option = e.target.value;
+      const recommendMap = {
+        Yes: true,
+        No: false
+      }
+      setRecommend(recommendMap[option])
+    } else {
+      let newCharacteristicRatings = {...characteristics, ...{[attributeName]: charValue}};
+      setCharacteristics(newCharacteristicRatings);
     }
-    setStarPercentage(starMapping[starName].percent)
-    setOverall(Number(starName.slice(-1)))
-    setRatingDescription(starMapping[starName].description)
   }
 
-
-  const handleRecommendClick = (e) => {
-    let option = e.target.value;
-    const recommendMap = {
-      Yes: true,
-      No: false
+  const loadCharacteristics = () => {
+    var characteristicReview = [];
+    var characteristics = reviewsMeta.characteristics
+    var key = 1;
+    for (const individualCharacteristic in characteristics) {
+      characteristicReview.push(<Characteristics key={key} handleClick={handleClick}characteristicId={characteristics[individualCharacteristic].id} characteristic={individualCharacteristic} characteristicSelections={characteristicSelections}/>)
+      key+=1;
     }
-    setRecommend(recommendMap[option])
-    console.log(option)
+    return characteristicReview;
   }
+
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   let starName = e.target.attributes.name.nodeValue;
+  //   const starMapping = {
+  //     star1: {percent: '20%', description: "Poor"},
+  //     star2: {percent: '40%', description: "Fair"},
+  //     star3: {percent: '60%', description: "Average"},
+  //     star4: {percent: '80%', description: "Good"},
+  //     star5: {percent: '100%', description: "Great"}
+  //   }
+  //   setStarPercentage(starMapping[starName].percent)
+  //   setOverall(Number(starName.slice(-1)))
+  //   setRatingDescription(starMapping[starName].description)
+  // }
+
+  // const handleRecommendClick = (e) => {
+  //   let option = e.target.value;
+  //   const recommendMap = {
+  //     Yes: true,
+  //     No: false
+  //   }
+  //   setRecommend(recommendMap[option])
+  // }
+
+  // const handleCharacteristicClick = () => {
+
+  // }
 
   return (
     <div data-testid='newReview-1' className="reviews newReview">
@@ -86,34 +127,31 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
           <label >Overall Rating</label>
           <div className="reviews newReviewItem stars">
             <span style={{width: starPercentage}} className="newReviewStars" >
-            <span className="reviews newReviewItem fullStar1" name="star1" onClick={handleStarClick}>&#9733;</span>
-            <span className="reviews newReviewItem fullStar2" name="star2" onClick={handleStarClick}>&#9733;</span>
-            <span className="reviews newReviewItem fullStar3" name="star3" onClick={handleStarClick}>&#9733;</span>
-            <span className="reviews newReviewItem fullStar4" name="star4" onClick={handleStarClick}>&#9733;</span>
-            <span className="reviews newReviewItem fullStar5" name="star5" onClick={handleStarClick}>&#9733;</span>
+            <span className="reviews newReviewItem fullStar1" name="star1" onClick={handleClick}>&#9733;</span>
+            <span className="reviews newReviewItem fullStar2" name="star2" onClick={handleClick}>&#9733;</span>
+            <span className="reviews newReviewItem fullStar3" name="star3" onClick={handleClick}>&#9733;</span>
+            <span className="reviews newReviewItem fullStar4" name="star4" onClick={handleClick}>&#9733;</span>
+            <span className="reviews newReviewItem fullStar5" name="star5" onClick={handleClick}>&#9733;</span>
             </span>
-            <span className="reviews newReviewItem star1" name="star1" onClick={handleStarClick}>&#9734;</span>
-            <span className="reviews newReviewItem star2" name="star2" onClick={handleStarClick}>&#9734;</span>
-            <span className="reviews newReviewItem star3" name="star3" onClick={handleStarClick}>&#9734;</span>
-            <span className="reviews newReviewItem star4" name="star4" onClick={handleStarClick}>&#9734;</span>
-            <span className="reviews newReviewItem star5" name="star5" onClick={handleStarClick}>&#9734;</span>
+            <span className="reviews newReviewItem star1" name="star1" onClick={handleClick}>&#9734;</span>
+            <span className="reviews newReviewItem star2" name="star2" onClick={handleClick}>&#9734;</span>
+            <span className="reviews newReviewItem star3" name="star3" onClick={handleClick}>&#9734;</span>
+            <span className="reviews newReviewItem star4" name="star4" onClick={handleClick}>&#9734;</span>
+            <span className="reviews newReviewItem star5" name="star5" onClick={handleClick}>&#9734;</span>
           </div>
           {ratingDescription ? <div> {ratingDescription} </div>: null}
         </div>
         <div className="reviews newReviewItem recommend">
           <label>Do you recommend this product?</label>
             <label for="Yes">Yes</label>
-            <input type="radio" name="recommend" value="Yes" onClick={handleRecommendClick}></input>
+            <input type="radio" name="recommend" value="Yes" onClick={handleClick}></input>
           <label for="No">No</label>
-            <input type="radio" name="recommend" value="No" onClick={handleRecommendClick}></input>
-
-          {/* <select className="reviews newReviewItem recommendOptions" onClick={handleRecommendClick}>
-            <option> Yes </option>
-            <option> No </option>
-          </select> */}
+            <input type="radio" name="recommend" value="No" onClick={handleClick}></input>
         </div>
         <div className="reviews newReviewItem characteristic">
-          <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
+          {/* <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/> */}
+          Please rate the following Characteristics!
+          {loadCharacteristics()}
         </div>
         <div className="reviews newReviewItem summary">
           <label>Review Summary</label>

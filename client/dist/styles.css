@@ -523,8 +523,8 @@ body.active {
   position:  absolute;
   left: 50%;
   top: 140%;
-  width: 450px;
-  height: 400px;
+  width: 650px;
+  height: 600px;
   margin: -200px 0 0 -250px;
 
   z-index:1000;
