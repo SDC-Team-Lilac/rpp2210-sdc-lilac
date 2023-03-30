@@ -6,6 +6,8 @@ import Overview from '../client/src/components/Overview/Overview.jsx';
 import ProductGallery from '../client/src/components/Overview/ProductGallery.jsx';
 import ProductSelected from '../client/src/components/Overview/ProductSelected.jsx';
 import ProductDetails from '../client/src/components/Overview/ProductDetails.jsx';
+import ProductSummary from '../client/src/components/Overview/ProductSummary.jsx';
+import SizeSelector from '../client/src/components/Overview/SizeSelector.jsx';
 
 afterEach(() => {
   cleanup();
@@ -329,7 +331,7 @@ describe('Product Selected', () => {
 
     const addToCartButton = screen.getByTestId("addToCartButton");
     expect(addToCartButton).toBeInTheDocument();
-    expect(addToCartButton).toHaveTextContent("Add to Bag");
+    expect(addToCartButton).toHaveTextContent("Add to Cart");
 
     // Will need to be changed to a star icon later, currently under construction ***
     const addToOutfitButton = screen.getByTestId("addToOutfitButton");
@@ -337,6 +339,247 @@ describe('Product Selected', () => {
     // expect(addToOutfitButton).toHaveAttribute('src', "https://img.icons8.com/ios/256/christmas-star.png");
     // expect(addToOutfitButton).toHaveAttribute('alt', "Add to My Outfit");
   });
+
+  it('Renders size selector correctly when passed a product which is out of stock', () => {
+    const outOfStockProductDetails = {
+        "id": 71697,
+        "campus": "hr-rpp",
+        "name": "Camo Onesie",
+        "slogan": "Blend in to your crowd",
+        "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+        "category": "Jackets",
+        "default_price": "140.00",
+        "created_at": "2022-05-11T19:38:15.373Z",
+        "updated_at": "2022-05-11T19:38:15.373Z",
+        "features": [
+            {
+                "feature": "Fabric",
+                "value": "Canvas"
+            },
+            {
+                "feature": "Buttons",
+                "value": "Brass"
+            }
+        ]
+      };
+    const outOfStockSelectedStyle = {
+    "style_id": 444218,
+    "name": "Forest Green & Black",
+    "original_price": "140.00",
+    "sale_price": null,
+    "default?": true,
+    "photos": [
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+        },
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
+        },
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80"
+        },
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+        },
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+        },
+        {
+            "thumbnail_url": "https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+            "url": "https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+        }
+    ],
+    "skus": {
+        "2580526": {
+            "quantity": 0,
+            "size": "XS"
+        },
+        "2580527": {
+            "quantity": 0,
+            "size": "S"
+        },
+        "2580528": {
+            "quantity": 0,
+            "size": "M"
+        },
+        "2580529": {
+            "quantity": 0,
+            "size": "L"
+        },
+        "2580530": {
+            "quantity": 0,
+            "size": "XL"
+        },
+        "2580531": {
+            "quantity": 0,
+            "size": "XL"
+        }
+      }
+    };
+    const outOfStockProductStyles = [
+      {
+        "style_id": 444218,
+        "name": "Forest Green & Black",
+        "original_price": "140.00",
+        "sale_price": null,
+        "default?": true,
+        "photos": [
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            }
+        ],
+        "skus": {
+            "2580526": {
+                "quantity": 0,
+                "size": "XS"
+            },
+            "2580527": {
+                "quantity": 0,
+                "size": "S"
+            },
+            "2580528": {
+                "quantity": 0,
+                "size": "M"
+            },
+            "2580529": {
+                "quantity": 0,
+                "size": "L"
+            },
+            "2580530": {
+                "quantity": 0,
+                "size": "XL"
+            },
+            "2580531": {
+                "quantity": 0,
+                "size": "XL"
+            }
+        }
+      }
+    ];
+
+    render(<SizeSelector selectedStyle={outOfStockSelectedStyle} setSelectedStyleData={(() => {})} setSelectedQuantity={(() => {return 0})} />);
+
+    const outOfStockSizeSelector = screen.getByTestId("out_of_stock_select");
+    expect(outOfStockSizeSelector).toBeInTheDocument();
+    expect(outOfStockSizeSelector).toHaveTextContent("OUT OF STOCK");
+
+  });
+
+  it('Renders the product sale price if product is on sale', () => {
+    const saleProductDetails = {
+        "id": 71697,
+        "campus": "hr-rpp",
+        "name": "Camo Onesie",
+        "slogan": "Blend in to your crowd",
+        "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+        "category": "Jackets",
+        "default_price": "140.00",
+        "created_at": "2022-05-11T19:38:15.373Z",
+        "updated_at": "2022-05-11T19:38:15.373Z",
+        "features": [
+            {
+                "feature": "Fabric",
+                "value": "Canvas"
+            },
+            {
+                "feature": "Buttons",
+                "value": "Brass"
+            }
+        ]
+      };
+    const saleSelectedStyle = {
+      "style_id": 444220,
+      "name": "Ocean Blue & Grey",
+      "original_price": "140.00",
+      "sale_price": "100.00",
+      "default?": false,
+      "photos": [
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2761&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1544131750-2985d621da30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1544131750-2985d621da30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1557760257-b02421ae77fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1557760257-b02421ae77fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1551506448-074afa034c05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1551506448-074afa034c05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=938&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1556268652-ad74ebb8f1e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1556268652-ad74ebb8f1e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+            },
+            {
+                "thumbnail_url": "https://images.unsplash.com/photo-1557394976-32cc983558ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                "url": "https://images.unsplash.com/photo-1557394976-32cc983558ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+            }
+        ],
+        "skus": {
+            "2580538": {
+                "quantity": 8,
+                "size": "XS"
+            },
+            "2580539": {
+                "quantity": 16,
+                "size": "S"
+            },
+            "2580540": {
+                "quantity": 17,
+                "size": "M"
+            },
+            "2580541": {
+                "quantity": 10,
+                "size": "L"
+            },
+            "2580542": {
+                "quantity": 15,
+                "size": "XL"
+            },
+            "2580543": {
+                "quantity": 6,
+                "size": "XXL"
+            }
+        }
+    };
+
+    render(<ProductSummary productDetails={saleProductDetails} selectedStyle={saleSelectedStyle} averageStarRating={4.0} totalNumberReviews={44} />)
+
+    const salePrice = screen.getByTestId("product_sale_price");
+    expect(salePrice).toBeInTheDocument();
+    expect(salePrice).toHaveTextContent("$100.00");
+  });
+
 });
 
 describe('Product Details', () => {

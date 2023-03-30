@@ -29,10 +29,22 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   const [reviews, setReviews] = useState([])
+  const [filteredReviews, setFilteredReviews] = useState([])
   const [reviewsMeta, setReviewsMeta] = useState(null)
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant')
+  //Could refactor to get reviews count first.
   const [count, setCount] = useState(1000000)
+  const [filters, setFilters] = useState([]);
+
+  const characteristicSelections = {
+    Size: {1: 'A size too small', 2: '½ a size too small', 3: 'Perfect', 4: '½ a size too big', 5: 'A size too wide'},
+    Width: {1: 'Too narrow', 2: 'Slightly narrow', 3: 'Perfect', 4: 'Slightly wide', 5: 'Too wide'},
+    Comfort: {1: 'Uncomfortable', 2: 'Slightly uncomfortable', 3: 'Ok', 4: 'Comforatble', 5: 'Perfect'},
+    Quality: {1: 'Poor', 2: 'Below Average', 3: 'What I expected', 4: 'Pretty great', 5: 'Perfect'},
+    Length: {1: 'Runs short', 2: 'Runs slightly short', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'},
+    Fit: {1: 'Runs tight', 2: 'Runs slightly tight', 3: 'Perfect', 4: 'Runs slightly long', 5: 'Runs long'}
+  }
 
   const getReviews = (currentCount, currentPage, currentSort) => {
     return axios.get('/reviews', {
@@ -62,17 +74,44 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const updateReviews = () => {
     getReviews(count, page, sort)
     .then((result) => {
+      if (result.data.results.length === 0) {
+        updateAverageRating(0)
+      }
       setReviews(result.data.results);
     })
     .catch((err) => {console.log('Trouble getting reviews from client', err)});
   }
 
 
-  const sortReviews = (e, option) => {
+  const sortReviews = (e) => {
     e.preventDefault();
     var newSort = e.target.value.toLowerCase()
     setSort(newSort)
 
+  }
+
+  const updateFilters = (e, stars) => {
+    e.preventDefault();
+    if (!filters.includes(stars)){
+      setFilters([...filters, stars]);
+    } else {
+        var newFilters = filters.filter((currentFilter)=>{
+          return currentFilter !== stars
+        });
+        setFilters(newFilters);
+      }
+  }
+
+  const filterReviews = () => {
+    var filteredReviews = reviews.filter((review)=> {
+      return filters.includes(review.rating);
+    });
+
+    if (filters.length !== 0) {
+      setFilteredReviews(filteredReviews);
+    } else {
+      setFilteredReviews(reviews);
+    }
   }
 
   useEffect(() => {
@@ -88,14 +127,24 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
   useEffect(() => {
     updateReviews()
+    filterReviews()
   }, [sort])
+
+  useEffect(() => {
+    filterReviews()
+  }, [filters])
+
+  useEffect(() => {
+    filterReviews()
+  }, [reviews])
+
 
 
   return (
     <div data-testid='reviews-1' style={{border: '2px solid red'}}>
       <div className="reviews reviewsMain">
-        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating}/> : null }
-        { reviews.length !== 0 ? <ReviewList reviews={reviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : null}
+        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
+        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
       </div>
     </div>
   )

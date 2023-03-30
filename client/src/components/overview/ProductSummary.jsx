@@ -13,7 +13,7 @@ const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, tot
   } else {
     productPrice =
       <div>
-        <span className="product_sale_price"> ${selectedStyle.sale_price}&ensp;</span>
+        <span className="product_sale_price" data-testid="product_sale_price"> ${selectedStyle.sale_price}&ensp;</span>
         <span><s>${selectedStyle.original_price}</s></span>
       </div>
   }
