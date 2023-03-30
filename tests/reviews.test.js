@@ -157,7 +157,7 @@ describe('ReviewList Component', () => {
   })
 })
 
-xdescribe('Reviews Component', () => {
+describe('Reviews Component', () => {
   it('Renders Reviews component', () => {
     render (<Reviews productId={71697}/>)
     const element = screen.getByTestId('reviews-1');

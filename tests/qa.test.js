@@ -253,7 +253,7 @@ describe('QA', () => {
   });
 });
 
- xdescribe('Question', () => {
+describe('Question', () => {
   it('renders Question component', () => {
     render(<Question key={question.question_id} question={question}/>);
     const qaQuestion = screen.getByTestId("qaQuestion");

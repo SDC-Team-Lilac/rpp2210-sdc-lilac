@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProductListInfo } from './RelatedProductRequests.jsx';
 import $ from 'jquery';
 import { LeftArrow, RightArrow, OnCardClick, StarButton, XButton } from './CardButtons.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
+const axios = require('axios');
 
 const RelatedProductsList = (props) => {
   const [startingIndex, setStartingIndex] = useState(0);
+  // useEffect(() => {
+  //   props.updateSelectedProduct(props.productId);
+  // }, [props.productId])
   return (
     <div className='sarah-products-list' id='sarah-products-list' data-testid='product-list-container'>
       <h2 className='sarah-products-list-title'  data-testid='product-list-title'>Related Products</h2>

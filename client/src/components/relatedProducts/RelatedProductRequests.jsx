@@ -8,17 +8,33 @@ import CardStructure from './CardStructure.jsx';
 
 const server = 'http://localhost:3000'
 
-var ProductListInfo = async(relatedProducts, setProductCards, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId) => {
-  var productIds = [];
-  for (var i = 0; i < relatedProducts.length; i++) {
-    if (productIds.indexOf(relatedProducts[i]) < 0 && relatedProducts[i] !== productId) {
-      productIds.push(relatedProducts[i]);
+var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards) => {
+  const list = relatedProducts.map((product) => {
+    product.rating = RatingCalculator(product.rating);
+    return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct}/>
+  })
+  setProductCards(list);
+  return;
+}
+
+var OutfitListInfo = async(setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct) => {
+  var productIds;
+  if (myOutfit === undefined || myOutfit.length === 0) {
+    productIds = JSON.parse(localStorage.getItem("outfitList"));
+    if (productIds[0] === undefined) {
+      setOutfitCards([]);
+      return;
     }
+  } else {
+    productIds = myOutfit;
   }
   var details = [];
   var cardList = [];
   var count = 0;
   const list =  await Promise.all(productIds.map(async function(product) {
+    if (product === null) {
+      return;
+    }
     var products = {productId: product};
     await axios.get(`/products/${product}`, {
       params: {
@@ -45,10 +61,10 @@ var ProductListInfo = async(relatedProducts, setProductCards, setRelatedProductF
       .then((rating) => {
         products.rating = rating;
         details.push(products);
-        cardList.push(<CardStructure product={products} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct}/>)
+        cardList.push(<CardStructure product={products} listName={'outfit'} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct}/>)
         count += 1;
-        if (count === relatedProducts.length) {
-          setProductCards(cardList);
+        if (count === productIds.length) {
+          setOutfitCards(cardList);
         }
         return cardList;
       })
@@ -91,3 +107,4 @@ const ComparisonDetails = (currentProductFeatures, product_id, setRelatedProduct
 
 export { ProductListInfo };
 export { ComparisonDetails };
+export { OutfitListInfo };
