@@ -333,12 +333,51 @@
 .overview_product_information {
   border: 2px solid fuchsia;
   flex-grow: 3;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 30px 10px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-content: flex-start;
+}
+
+.overview_product_slogan {
+  font-size: larger;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.overview_product_description {
+  font-size: medium;
+  flex-grow: 5;
+}
+
+.product_details_separator {
+  /* Refactor: Change color once we have a palette */
+  border-left: 2px solid rgba(0, 0, 0, 0.591);
+  flex-grow: 1;
+  padding-right: 10px;
+  position: relative;
 }
 
 .overview_product_features {
   border: 2px solid fuchsia;
   flex-grow: 2;
+  min-width: 460px;
+}
+
+.product_feature {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.product_feature_text {
+  font-size: medium;
+}
+
+.feature_checkmark {
+  height: 26px;
+  padding-right: 4px;
 }
 
 #sarah-modal {

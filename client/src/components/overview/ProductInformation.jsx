@@ -7,9 +7,8 @@ const ProductInformation = ( { slogan, description } ) => {
   if (slogan) {
     return (
       <div className="overview_product_information">
-        {/* <h3>This is the Product Information Component!</h3> */}
-        <span data-testid="slogan"><b>{slogan}</b></span><br></br>
-        <span data-testid="description">{description}</span>
+        <span className="overview_product_slogan" data-testid="slogan">{slogan}</span>
+        <span className="overview_product_description" data-testid="description">{description}</span>
       </div>
     );
   }
