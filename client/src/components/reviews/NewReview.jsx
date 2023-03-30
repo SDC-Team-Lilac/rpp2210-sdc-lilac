@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
-import { storag, uploadBytes } from './reviewsFirebase.jsx';
-import { ref } from "firebase/storage";
+import { storage } from '../qa/AddPhoto.jsx';
+import { ref,  uploadBytes, getDownloadURL } from "firebase/storage";
 import {v4} from 'uuid';
 
 
@@ -60,7 +60,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     } else if (attributeName === 'body') {
       setBody(input);
     } else if (attributeName === 'photos') {
-      setPhotos(e.target.files[0]);
+      setPhotos(e.target.files);
     } else if (attributeName === 'nickname') {
       setNickname(input);
     } else if (attributeName === 'email') {
@@ -108,19 +108,29 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     return characteristicReview;
   }
 
-  const uploadFirebase = () => {
+  const uploadFirebase = (e) => {
+    e.preventDefault();
     if (photos === null) {
       return null;
     }
-    const imageRef = ref(storage, `images/${photos.name + v4()}`);
-    uploadBytes(imageRef, photos)
-    .then (() => {
-      alert("Image Uploaded")
-    })
-    .catch(() => {
-      alert('Problem uploading image!')
-    })
-
+    let newPhotoURLS = [];
+    for (let i = 0; i < photos.length; i ++) {
+      let photo = photos[i];
+      const imageRef = ref(storage, `reviewImages/${photo.name + v4()}`);
+      uploadBytes(imageRef, photo)
+      .then ((snapshot) => {
+        console.log("Image Uploaded");
+        return getDownloadURL(snapshot.ref)
+      })
+      .then((downloadURL) => {
+        console.log('Download URL', downloadURL);
+        newPhotoURLS.push(downloadURL);
+      })
+      .catch(() => {
+        console.log('Problem uploading image!')
+      })
+    }
+    setPhotoURLs(newPhotoURLS);
   }
 
   return (
@@ -167,7 +177,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem photos">
           <label>Upload Your Photos</label>
-          <input name="photos" type="file" accept="image/*" onChange={handleChange}></input><button>Upload</button>
+          <input name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input><button onClick={uploadFirebase}>Upload</button>
         </div>
         <div className="reviews newReviewItem nickname">
           <label>What is your nickname?</label>
