@@ -712,3 +712,112 @@ button.sarah-right-arrow:hover {
 }
 /* ----- */
 /* End Reviews CSS */
+
+
+/* STARS QA CSS */
+
+.qa_left {
+  display: inline-block;
+  float: left;
+}
+
+.qa_right {
+  display:inline-block;
+}
+
+
+.qa_qa {
+  line-height: 1.5;
+  align-items: center;
+}
+
+.qa_searchQuestion {
+  font-size: 120%;
+  margin-bottom: 1%;
+}
+
+.qa_answer{
+  font-size: 100%;
+  margin-bottom: 0.5%;
+  padding-left: 0%;
+}
+
+.qa_questionList{
+  font-size: 120%;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.qa_question {
+  background-color: antiquewhite;
+  font-weight: bold;
+  /* text-decoration: underline; */
+  margin-bottom: 0.5%;
+}
+
+
+.qa_answerList {
+  border-left: 1px solid black;
+  padding-left: 0.8%
+}
+
+.qa_addAnswer {
+  /* padding-left: 1%; */
+  margin-bottom: 1%;
+}
+
+.qa_addAnswerModal {
+  font-size: 120%;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  right:auto;
+  bottom:auto;
+  margin-right: '-150%';
+  transform: translate(-50%, -50%);
+  padding: 5%;
+  border: 1px solid #050505;
+  background-color: rgb(254, 254, 254);
+
+}
+
+
+.qa_addQuestionModal {
+  font-size: 120%;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  right:auto;
+  bottom:auto;
+  margin-right: '-50%';
+  transform: translate(-50%, -50%);
+  padding: 5%;
+  border: 1px solid #050505;
+  background-color: rgb(254, 254, 254);
+}
+
+.qa_questionHelpful{
+  padding-left: 3%;
+
+}
+
+.qa_qaFormItem {
+  padding-bottom: 15%;
+}
+
+.qa_qaFormText {
+ padding-bottom: 15%;
+ font-size: 80%;
+ font-weight: lighter;
+ font-style: italic;
+}
+
+.qa_qaFormErrorText {
+  color:red;
+  padding-bottom: 15%;
+  font-size: 80%;
+  font-weight: lighter;
+  font-style: italic;
+}
+/* End QA CSS */
