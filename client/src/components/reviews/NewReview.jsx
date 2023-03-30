@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
+import { storag, uploadBytes } from './reviewsFirebase.jsx';
+import { ref } from "firebase/storage";
+import {v4} from 'uuid';
+
 
 const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName }) => {
 
@@ -18,7 +22,8 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
   const [characteristics, setCharacteristics] = useState({})
   const [summary, setSummary] = useState('Test Summary')
   const [body, setBody] = useState('Test body')
-  const [photos, setPhotos] = useState([])
+  const [photos, setPhotos] = useState(null)
+  const [photoURLs, setPhotoURLs] = useState([]);
   const [nickname, setNickname] = useState('Nickname')
   const [email, setEmail] = useState('myemail@email.com')
   const [starPercentage, setStarPercentage] = useState('0%')
@@ -35,7 +40,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     recommend: recommend,
     name: nickname,
     email: email,
-    photos: photos,
+    photos: photoURLs,
     characteristics: characteristics
   }
   const handleSubmit = (e) => {
@@ -55,7 +60,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     } else if (attributeName === 'body') {
       setBody(input);
     } else if (attributeName === 'photos') {
-      setPhotos(input);
+      setPhotos(e.target.files[0]);
     } else if (attributeName === 'nickname') {
       setNickname(input);
     } else if (attributeName === 'email') {
@@ -103,6 +108,21 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     return characteristicReview;
   }
 
+  const uploadFirebase = () => {
+    if (photos === null) {
+      return null;
+    }
+    const imageRef = ref(storage, `images/${photos.name + v4()}`);
+    uploadBytes(imageRef, photos)
+    .then (() => {
+      alert("Image Uploaded")
+    })
+    .catch(() => {
+      alert('Problem uploading image!')
+    })
+
+  }
+
   return (
     <div data-testid='newReview-1' className="reviews newReview">
       <form onSubmit={handleSubmit}>
@@ -143,11 +163,11 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem body">
           <label>Review Body</label>
-          <textarea  name="body" rows="3" cols="4" onChange={handleChange}></textarea>
+          <textarea  name="body" rows="2" cols="10" onChange={handleChange}></textarea>
         </div>
         <div className="reviews newReviewItem photos">
           <label>Upload Your Photos</label>
-          <input name="photos" type="text" onChange={handleChange}></input>
+          <input name="photos" type="file" accept="image/*" onChange={handleChange}></input><button>Upload</button>
         </div>
         <div className="reviews newReviewItem nickname">
           <label>What is your nickname?</label>
