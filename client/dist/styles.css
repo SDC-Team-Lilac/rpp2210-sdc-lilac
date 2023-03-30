@@ -31,32 +31,36 @@
   cursor: zoom-in;
 }
 
-.main_image_previous {
+.main_image_previous, .main_image_next, .expanded_main_image_previous, .expanded_main_image_next {
   filter: invert(100%);
   opacity: .8;
   position: absolute;
   top: 360px;
-  left: 120px;
   height: 40px;
   width: 40px;
   object-fit: cover;
   padding: 2px 5px 2px 0px;
+}
+
+.main_image_previous {
+  left: 120px;
 }
 
 .main_image_next {
-  filter: invert(100%);
-  opacity: .8;
-  position: absolute;
-  top: 360px;
   left: 685px;
   transform: scaleX(-1);
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  padding: 2px 5px 2px 0px;
 }
 
-.main_image_next:hover, .main_image_previous:hover {
+.expanded_main_image_previous {
+  left: 80px;
+}
+
+.expanded_main_image_next {
+  left: 1257px;
+  transform: scaleX(-1);
+}
+
+.main_image_next:hover, .main_image_previous:hover, .expanded_main_image_previous:hover, .expanded_main_image_next:hover, .expanded_gallery_close:hover {
   background-color: white;
   border-radius: 50%;
   opacity: .7;
@@ -114,7 +118,6 @@
 
 .gallery_thumbnail {
   object-fit: cover;
-  /* FIX SIZING ONCE FUNCTION IS WORKING */
   height: 70px;
   width: 70px;
   border: 3px solid rgba(255, 255, 255, 0);
@@ -122,7 +125,6 @@
 
 .selected_gallery_thumbnail {
   object-fit: cover;
-  /* FIX SIZING ONCE FUNCTION IS WORKING */
   height: 70px;
   width: 70px;
   opacity: .7;
@@ -146,14 +148,43 @@
 }
 
 .expanded_gallery_close {
-  /* background-color: fuchsia; */
   filter: invert(100%);
-  opacity: .6;
+  opacity: .8;
   position: absolute;
-  top: 10px;
-  left: 1270px;
-  max-height: 30px;
+  top: 20px;
+  left: 1267px;
+  max-height: 40px;
   cursor: pointer;
+}
+
+.expandedThumbnailGallery {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 5px;
+  top: 30px;
+  left: 28px;
+  bottom: 40px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.expanded_gallery_thumbnail {
+  object-fit: cover;
+  height: 25px;
+  width: 25px;
+  filter: invert(100%);
+  opacity: .5;
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+.expanded_selected_gallery_thumbnail {
+  object-fit: cover;
+  height: 25px;
+  width: 25px;
+  filter: invert(100%);
+  opacity: .8;
+  border: 2px solid rgba(255, 255, 255, 0.504);
 }
 
 .overview_product_selected {
@@ -161,12 +192,20 @@
   flex-direction: column;
   flex-grow: 2;
   border: 2px solid greenyellow;
-  padding: 30px 20px 30px 20px;
+  padding: 20px 20px 30px 20px;
 }
 
 .overview_product_summary {
   border: 2px solid fuchsia;
   padding: 10px 10px 10px 10px;
+}
+
+.overview_product_rating {
+  max-height: 42px;
+}
+
+.overview_product_rating_empty {
+  min-height: 42px;
 }
 
 .product_summary_title {
@@ -181,7 +220,7 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
-  padding: 20px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   font-size: large;
 }
 
@@ -194,15 +233,26 @@
   width: 516px;
 }
 
-.style_thumbnail_cropper {
+.style_thumbnail_cropper, .selected_style_thumbnail_cropper {
   flex-basis: 21%;
+  position: relative;
 }
 
-.style_thumbnail {
+.style_thumbnail, .selected_style_thumbnail {
   object-fit: cover;
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
+}
+
+.selected_style_icon {
+  /* Possible Refactor - Change background color to match theme */
+  background-color: rgba(255, 255, 255, 0.661);
+  border-radius: 50%;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 70px;
 }
 
 .overview_addToCart {
@@ -280,7 +330,6 @@
   font: inherit;
   text-align: center;
   padding: 10px 5px 5px 5px;
-
 }
 
 .overview_product_details {
@@ -292,12 +341,51 @@
 .overview_product_information {
   border: 2px solid fuchsia;
   flex-grow: 3;
-  padding: 10px 10px 10px 10px;
+  padding: 0px 30px 10px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-content: flex-start;
+}
+
+.overview_product_slogan {
+  font-size: larger;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.overview_product_description {
+  font-size: medium;
+  flex-grow: 5;
+}
+
+.product_details_separator {
+  /* Refactor: Change color once we have a palette */
+  border-left: 2px solid rgba(0, 0, 0, 0.591);
+  flex-grow: 1;
+  padding-right: 10px;
+  position: relative;
 }
 
 .overview_product_features {
   border: 2px solid fuchsia;
   flex-grow: 2;
+  min-width: 460px;
+}
+
+.product_feature {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.product_feature_text {
+  font-size: medium;
+}
+
+.feature_checkmark {
+  height: 26px;
+  padding-right: 4px;
 }
 
 #sarah-modal {

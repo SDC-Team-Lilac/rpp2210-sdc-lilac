@@ -7,8 +7,8 @@ const ProductDetails = ( { slogan, description, features } ) => {
 
   return (
     <div className="overview_product_details">
-      {/* <h2>This is the Product Details Component!</h2> */}
       <ProductInformation slogan={slogan} description={description}/>
+      <div className="product_details_separator"></div>
       <ProductFeatures features={features}/>
     </div>
   )
