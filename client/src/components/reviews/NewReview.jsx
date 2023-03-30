@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
 
-const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
+const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName }) => {
 
   /* This component will:
     1) Need to control the inputs of each field in their own state
@@ -48,7 +48,19 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    var input = e.target.value
+    let attributeName = e.target.attributes.name.nodeValue;
+    let input = e.target.value
+    if (attributeName === 'summary'){
+      setSummary(input);
+    } else if (attributeName === 'body') {
+      setBody(input);
+    } else if (attributeName === 'photos') {
+      setPhotos(input);
+    } else if (attributeName === 'nickname') {
+      setNickname(input);
+    } else if (attributeName === 'email') {
+      setEmail(input);
+    }
   }
 
 
@@ -91,38 +103,10 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
     return characteristicReview;
   }
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   let starName = e.target.attributes.name.nodeValue;
-  //   const starMapping = {
-  //     star1: {percent: '20%', description: "Poor"},
-  //     star2: {percent: '40%', description: "Fair"},
-  //     star3: {percent: '60%', description: "Average"},
-  //     star4: {percent: '80%', description: "Good"},
-  //     star5: {percent: '100%', description: "Great"}
-  //   }
-  //   setStarPercentage(starMapping[starName].percent)
-  //   setOverall(Number(starName.slice(-1)))
-  //   setRatingDescription(starMapping[starName].description)
-  // }
-
-  // const handleRecommendClick = (e) => {
-  //   let option = e.target.value;
-  //   const recommendMap = {
-  //     Yes: true,
-  //     No: false
-  //   }
-  //   setRecommend(recommendMap[option])
-  // }
-
-  // const handleCharacteristicClick = () => {
-
-  // }
-
   return (
     <div data-testid='newReview-1' className="reviews newReview">
       <form onSubmit={handleSubmit}>
-        Write your review about PRODUCT_NAME
+        <div> Write your review about {productName}! </div>
         <div className="reviews newReviewItem overall">
           <label >Overall Rating</label>
           <div className="reviews newReviewItem stars">
@@ -155,23 +139,23 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections }) => {
         </div>
         <div className="reviews newReviewItem summary">
           <label>Review Summary</label>
-          <input type="text"></input>
+          <input name="summary" type="text" placeholder="Example: Best purchase ever!" maxLength="60" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem body">
           <label>Review Body</label>
-          <input type="text"></input>
+          <textarea  name="body" rows="3" cols="4" onChange={handleChange}></textarea>
         </div>
         <div className="reviews newReviewItem photos">
           <label>Upload Your Photos</label>
-          <input type="text"></input>
+          <input name="photos" type="text" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem nickname">
           <label>What is your nickname?</label>
-          <input type="text"></input>
+          <input name="nickname" type="text" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem email">
           <label>What is your email?</label>
-          <input type="text"></input>
+          <input name="email" type="text" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem submit">
           <label>Submit Review</label>
