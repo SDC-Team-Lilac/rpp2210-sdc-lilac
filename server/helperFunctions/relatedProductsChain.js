@@ -7,19 +7,23 @@ const APIHostURL = "https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp";
 const APIKey = process.env.FEC_API_KEY;
 
 var ProductListInfo = async(req, res) => {
-  console.log('PARAMETERS: ', req.query);
-  var relatedProducts = req.query.relatedProducts.data;
+  var relatedProducts = req.query.relatedProducts;
   var productId = req.query.productId;
-  var productIds = [];
-  for (var i = 0; i < relatedProducts.length; i++) {
-    if (productIds.indexOf(relatedProducts[i]) < 0 && relatedProducts[i] !== productId) {
-      productIds.push(relatedProducts[i]);
+  var listName = req.query.listName;
+  var productIds;
+  if (listName === 'related') {
+    productIds = [];
+    for (var i = 0; i < relatedProducts.length; i++) {
+      if (productIds.indexOf(relatedProducts[i]) < 0 && relatedProducts[i] !== productId) {
+        productIds.push(relatedProducts[i]);
+      }
     }
+  } else {
+    productIds = relatedProducts;
   }
   var details = [];
   return await Promise.all(productIds.map(async function(product) {
     var products = {productId: product};
-    console.log('PRODUCT: ', product);
     await products_api.getOneProduct(product)
       .then((details) => {
         products['category'] = details.data.category;
@@ -39,7 +43,6 @@ var ProductListInfo = async(req, res) => {
         });
       })
       .then((reviews) => {
-        console.log(reviews);
         products.rating = reviews.data.ratings;
         details.push(products);
         return products;

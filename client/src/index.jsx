@@ -60,8 +60,9 @@ const App = () => {
       .then(relatedProductsData => {
         return axios.get('/relatedProducts/info', {
           params: {
-            relatedProducts: relatedProductsData,
-            productId: productId
+            relatedProducts: relatedProductsData.data,
+            productId: productId,
+            listName: 'related'
           }
         })
         .then((results) => {
@@ -78,7 +79,20 @@ const App = () => {
       })
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
-        return OutfitListInfo(setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct);
+        var outfitList = JSON.parse(localStorage.getItem("outfitList"))
+        if (outfitList.length !== 0) {
+          return axios.get('/relatedProducts/info', {
+            params: {
+              relatedProducts: outfitList,
+              productId: productId,
+              listName: 'outfit'
+            }
+          })
+        }
+      })
+      .then((results) => {
+        setMyOutfit(results.data);
+        return OutfitListInfo(setOutfitCards, setProductId, productId, results.data, setMyOutfit, updateSelectedProduct);
       })
       .catch(error => {
         console.error('Error in updateSelectedProduct: ', error);
@@ -93,11 +107,12 @@ const App = () => {
     setTotalNumberReviews(count);
   }
 
+
   return (
     <div>
       Hello World!
       <Overview id="overview" productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct}/>
-      <RelatedProducts productId={productId} setProductId={setProductId} relatedProductFeatures={relatedProductFeatures} setRelatedProductFeatures={setRelatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} relatedProducts={relatedProducts} updateSelectedProduct={updateSelectedProduct} productCards={productCards} setProductCards={setProductCards} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setRelatedProductName={setRelatedProductName}/>
+      <RelatedProducts OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct}/>
       <QA productId={productId}/>
       <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating}/>
     </div>
