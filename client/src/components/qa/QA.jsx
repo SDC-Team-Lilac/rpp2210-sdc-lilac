@@ -20,13 +20,12 @@ const QA = (props) => {
   useEffect(()=>{
     getQuestionsForOneProduct(props.productId)
     .then(result=>{
-      // console.log('result', result.data)
       setQuestionList(result.data.results)
     })
     .catch(err=>{
       console.log(err)
     })
-  }, []);
+  }, [props.productId]);
 
   return (
     <div className='qa_qa' >
