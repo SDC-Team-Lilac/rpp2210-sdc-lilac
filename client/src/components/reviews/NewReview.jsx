@@ -181,11 +181,12 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem nickname">
           <label>What is your nickname?</label>
-          <input name="nickname" type="text" onChange={handleChange}></input>
+          <input name="nickname" type="text" placeholder="Example: jackson11!"maxLength="60" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem email">
           <label>What is your email?</label>
-          <input name="email" type="text" onChange={handleChange}></input>
+          <input name="email" type="text" placeholder="Example: jackson11@email.com" maxLength="60" onChange={handleChange}></input>
+          <div>For authentication reasons, you will not be emailed!</div>
         </div>
         <div className="reviews newReviewItem submit">
           <label>Submit Review</label>
