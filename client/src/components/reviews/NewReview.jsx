@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import Characteristics from './Characteristics.jsx'
 import { storage } from '../qa/AddPhoto.jsx';
@@ -27,10 +27,14 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
   const [nickname, setNickname] = useState('Nickname')
   const [email, setEmail] = useState('myemail@email.com')
   const [starPercentage, setStarPercentage] = useState('0%')
+  const modalRef = useRef(null);
 
 
 
-
+  useEffect(() => {
+    console.log(modalRef);
+    modalRef.current.scrollIntoView({behavior: "smooth"});
+  },[])
 
   var fullReview = {
     product_id: Number(reviewsMeta.product_id),
@@ -134,7 +138,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
   }
 
   return (
-    <div data-testid='newReview-1' className="reviews newReview">
+    <div data-testid='newReview-1' className="reviews newReview" ref={modalRef}>
       <form onSubmit={handleSubmit}>
         <div> Write your review about {productName}! </div>
         <div className="reviews newReviewItem overall">
