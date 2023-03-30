@@ -200,6 +200,14 @@
   padding: 10px 10px 10px 10px;
 }
 
+.overview_product_rating {
+  max-height: 42px;
+}
+
+.overview_product_rating_empty {
+  min-height: 42px;
+}
+
 .product_summary_title {
   font-size: xx-large;
   letter-spacing: 1px;

@@ -20,10 +20,11 @@ const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, tot
 
   return (
     <div className="overview_product_summary">
-      <div>
-        {averageStarRating !== null ? <StarRating rating={averageStarRating}/> : null}
+      {totalNumberReviews > 0 ? <div className="overview_product_rating">
+        <StarRating rating={averageStarRating}/>
         <span>Read all {totalNumberReviews} reviews</span>
-      </div><br></br>
+      </div> : <div className="overview_product_rating_empty"></div>}
+      <br></br>
       <span >{productDetails.category.toUpperCase()}</span><br></br>
       <span className="product_summary_title" data-testid="productTitle"><b>{productDetails.name}</b></span><br></br>
       {productPrice}
