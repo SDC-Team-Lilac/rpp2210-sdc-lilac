@@ -3,7 +3,7 @@
   flex-direction: column;
   border: 2px solid aqua;
   font-family: 'Playfair Display', serif;
-  /* width: 1330px; */
+  width: 1330px;
 }
 
 #overview_top {
@@ -192,7 +192,7 @@
   flex-direction: column;
   flex-grow: 2;
   border: 2px solid greenyellow;
-  padding: 30px 20px 30px 20px;
+  padding: 20px 20px 30px 20px;
 }
 
 .overview_product_summary {
@@ -212,7 +212,7 @@
 
 .overview_style_selector {
   border: 2px solid fuchsia;
-  padding: 20px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   font-size: large;
 }
 
@@ -233,18 +233,18 @@
 .style_thumbnail, .selected_style_thumbnail {
   object-fit: cover;
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 }
 
 .selected_style_icon {
   /* Possible Refactor - Change background color to match theme */
-  background-color: rgba(255, 255, 255, 0.515);
+  background-color: rgba(255, 255, 255, 0.661);
   border-radius: 50%;
   position: absolute;
-  width: 35px;
-  height: 35px;
-  left: 85px;
+  width: 30px;
+  height: 30px;
+  left: 70px;
 }
 
 .overview_addToCart {
