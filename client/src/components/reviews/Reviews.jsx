@@ -94,6 +94,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
     }
   }
 
+  //Key Word Search low priority feature. Will implement at the end if time allows.
   // const searchReviews = () => {
   //   let searchedReviews = filteredReviews.filter(())
   // }
@@ -125,7 +126,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   return (
-    <div data-testid='reviews-1' style={{border: '2px solid red'}}>
+    <div data-testid='reviews-1'>
       <div className="reviews reviewsMain">
         { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
         { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/> : 'There are no reviews!'}

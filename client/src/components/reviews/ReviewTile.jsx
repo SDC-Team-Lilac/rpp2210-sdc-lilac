@@ -3,13 +3,8 @@ import axios from 'axios';
 import StarRating from './StarRating.jsx'
 const ReviewTile = ({ review, updateReviews }) => {
 
-  /* This component:
-    1) needs an individual review
-    2) Will render data for: star rating, date of review, review summary, review body, recommend, reviewer name, response to review, rating helpfulness
-    3) Needs to have an option for them to click if this rating was helpful then send put request
-    4) Needs to have an option for them to click and report this then send put request
-    */
 
+//TODO: Implement only clicking helpfulness once.
   const handleHelpful = (e) => {
     e.preventDefault();
     console.log('Marked Helpful')
@@ -27,15 +22,15 @@ const ReviewTile = ({ review, updateReviews }) => {
   }
 
   return (
-    <div data-testid='reviewTile-1' style={{border: '2px solid purple'}}>
-      <StarRating rating={review.rating}/>
+    <div data-testid='reviewTile-1' className="reviews reviewTile fullTile">
+      <div className="reviews reviewTile topRow">
+      <div><StarRating rating={review.rating}/></div><div>{review.reviewer_name}, {review.date}</div>
+      </div>
       <div>Summary: {review.summary}</div>
       <div>Body: {review.body}</div>
-      <div>Reviewer Name: {review.reviewer_name}</div>
-      <div>Date Reviewed: {review.date}</div>
-      <div>Helpfulness Rating: {review.helpfulness}</div>
+
+      <div>Was this review helpful? <a href='' onClick={handleHelpful}>Yes</a>{review.helpfulness}</div>
       {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
-      <button onClick={handleHelpful}>Mark as Helpful</button>
       <button onClick={handleReport}>Report Review</button>
     </div>
   )

@@ -60,10 +60,9 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
 
   return (
 
-    <div data-testid='reviewList-1' style={{border: '5px solid blue'}}>
-      ReviewsList!
+    <div data-testid='reviewList-1'>
       <SortOptions sortReviews={sortReviews}/>
-      <KeywordSearch />
+      {/* <KeywordSearch /> */}
       <div style={{maxHeight: '450px', overflowY: 'auto'}}>
         {currentReviews.map((review) => {
           return (

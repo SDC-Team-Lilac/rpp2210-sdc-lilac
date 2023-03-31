@@ -678,6 +678,19 @@ button.sarah-right-arrow:hover {
 
   z-index:1000;
 }
+
+/* Review Tile */
+
+.reviewTile.fullTile {
+  border-bottom: solid black 1px;
+}
+
+.reviewTile.topRow {
+  display: flex;
+  justify-content:space-between;
+  /* align-content: center; */
+  align-items: center;
+}
 /* ---- */
 
 
@@ -692,12 +705,6 @@ button.sarah-right-arrow:hover {
   justify-content: space-between;
   font-size: small;
 }
-
-
-/* .reviews.breakdownBar {
-  display: flex;
-  flex-direction: column;
-} */
 
 .reviews.breakdownBar.fullBar {
   display: flex;
@@ -714,7 +721,6 @@ button.sarah-right-arrow:hover {
   border-top: 10px solid black;
 }
 .reviews.breakdownBar.charbar {
-  /* position: relative; */
   background-color: gray;
   height: 10px;
   align-self: stretch;
@@ -725,8 +731,6 @@ button.sarah-right-arrow:hover {
 .reviews.breakdownBar.ratingScale {
   align-self: stretch;
   display: flex;
-
-  /* flex-direction: column; */
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -749,10 +753,6 @@ button.sarah-right-arrow:hover {
   justify-content: space-between;
 }
 
-
-
-
-
 .reviews.bar.green {
   background-color: green
 }
@@ -764,12 +764,10 @@ button.sarah-right-arrow:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* align-content: space-around; */
   flex-grow: 1;
 }
 .reviews.fullRatingBar {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
 }
 .reviews.leftRatingBar,
@@ -790,14 +788,14 @@ button.sarah-right-arrow:hover {
 .starRatings {
   display: inline-block;
   position: relative;
-  color: rgb(144, 144, 7);
+  color: #B08401;
   font-size: 30px;
 }
 
 .newReviewStars,
 .fullStars {
   position: absolute;
-  color: red;
+  color:#D49E8D;
   overflow: hidden;
   font-size: 30px;
 }

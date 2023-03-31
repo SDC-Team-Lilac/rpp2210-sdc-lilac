@@ -66,7 +66,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
   // }, [filters])
 
   return (
-    <div data-testid='ratingBreakdown-1' style={{border: '5px solid green'}}> Ratings & Reviews
+    <div data-testid='ratingBreakdown-1'> Ratings & Reviews
       <div className="reviews ratingSummary">
         <div> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
         <StarRating rating={averageStarRating}/>
