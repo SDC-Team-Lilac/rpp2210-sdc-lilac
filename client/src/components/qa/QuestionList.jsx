@@ -22,11 +22,11 @@ const QuestionList = (props) => {
 
   return (
     <div>
-      <div data-testid="qaQuestionList"> QuestionList! </div>
+      <label className='qa_questionList' data-testid="qaQuestionList"> <strong>Customer questions & answers</strong> </label>
       {!props.showFilteredQuestions && visibleQuestions.map(question=>
-      <Question key={question.question_id} question={question}/>)}
+      <Question key={question.question_id} question={question} productName={props.productName}/>)}
       {props.showFilteredQuestions && props.filteredQuestions.map(question=>
-      <Question key={question.question_id} question={question}/>)}
+      <Question key={question.question_id} question={question} productName={props.productName}/>)}
        {Qexpanded && <button onClick={onClickHandler}>More Answered Questions</button>}
     </div>
   )

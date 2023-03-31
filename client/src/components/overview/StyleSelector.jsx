@@ -2,15 +2,26 @@ import React from 'react';
 
 const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) => {
 
+  // console.log('Selected Style: ', selectedStyle);
+  // console.log('Product Styles: ', productStyles);
   let count = -1;
   const styleThumbnails = productStyles.map(style => {
     count++;
     let styleDescription = style.name;
-    return (
-      <div key={count} className="style_thumbnail_cropper">
-        <img className="style_thumbnail" data-testid={`styleThumbnailImage${count}`} id={count} src={style.photos[0].thumbnail_url} alt={style.name} onClick={updateSelectedStyle}></img>
-      </div>
-    )
+    if (style.style_id === selectedStyle.style_id) {
+      return (
+        <div key={count} className="selected_style_thumbnail_cropper">
+          <img className="selected_style_icon" src="https://cdn-icons-png.flaticon.com/512/1442/1442912.png" alt="Selected Style"></img>
+          <img className="selected_style_thumbnail" data-testid={`selectedStyleThumbnailImage${count}`} id={count} src={style.photos[0].thumbnail_url} alt={style.name} onClick={updateSelectedStyle}></img>
+        </div>
+      )
+    } else {
+      return (
+        <div key={count} className="style_thumbnail_cropper">
+          <img className="style_thumbnail" data-testid={`styleThumbnailImage${count}`} id={count} src={style.photos[0].thumbnail_url} alt={style.name} onClick={updateSelectedStyle}></img>
+        </div>
+      )
+    }
   })
 
   return (

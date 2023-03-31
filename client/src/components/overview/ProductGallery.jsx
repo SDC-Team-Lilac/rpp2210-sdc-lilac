@@ -17,11 +17,17 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
     setMainImage(productPhotos[mainImageIndex].url);
   }, [productPhotos]);
 
-  const handleThumbnailClick = (e) => {
+  const handleThumbnailClick = (e, expandedId) => {
     e.preventDefault();
-    let thumbnail_index = parseInt(e.target.id);
-    setMainImage(productPhotos[thumbnail_index].url);
-    setMainImageIndex(thumbnail_index);
+    console.log('Thumbnail Clicked!');
+    if (expandedId) {
+      setMainImage(productPhotos[expandedId].url);
+      setMainImageIndex(expandedId);
+    } else {
+      let thumbnail_index = parseInt(e.target.id);
+      setMainImage(productPhotos[thumbnail_index].url);
+      setMainImageIndex(thumbnail_index);
+    }
   }
 
   const imageDescription = productName.concat(', ', styleName);
@@ -44,7 +50,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleMainImageClick = (e) => {
     e.preventDefault();
-    console.log('CLICK');
     setShowExpanded(true);
   }
 
@@ -87,7 +92,7 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
       {mainImageIndex < thunbnailList.length - 1 ? <img className="main_image_next" onClick={handleMainNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Next"></img> : null}
       <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} onClick={handleMainImageClick}></img>
       {showExpanded && createPortal(
-        <ExpandedGallery mainImage={mainImage} imageDescription={imageDescription} setShowExpanded={setShowExpanded} onClose={() => setShowExpanded(false)} />,
+        <ExpandedGallery mainImage={mainImage} imageDescription={imageDescription} mainImageIndex={mainImageIndex} productPhotos={productPhotos} handleMainPreviousClick={handleMainPreviousClick} handleMainNextClick={handleMainNextClick} handleThumbnailClick={handleThumbnailClick} setShowExpanded={setShowExpanded} onClose={() => setShowExpanded(false)} />,
         document.getElementById("overview_top")
       )}
       <div className="thumbnailGallery">

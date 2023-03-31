@@ -20,21 +20,19 @@ const QA = (props) => {
   useEffect(()=>{
     getQuestionsForOneProduct(props.productId)
     .then(result=>{
-      console.log('result', result.data)
       setQuestionList(result.data.results)
     })
     .catch(err=>{
       console.log(err)
     })
-  }, []);
-
+  }, [props.productId]);
 
   return (
-    <div style={{border: '2px solid black'}}>
-      <div data-testid='qaQa'> QA! </div>
+    <div className='qa_qa' >
+      <h1 data-testid='qaQa'> Questions & Answers </h1>
       <SearchQuestion setFilterQuestions={setFilterQuestions} productId={props.productId} questionList={questionList} setShowFilteredQuestions={setShowFilteredQuestions}/>
-      <QuestionList questionList={questionList} filteredQuestions={filteredQuestions} showFilteredQuestions={showFilteredQuestions}/>
-      <AddQuestion productId={props.productId} productName={props.productName}/>
+      <QuestionList questionList={questionList} filteredQuestions={filteredQuestions} showFilteredQuestions={showFilteredQuestions} productName={props.productName}/>
+      <AddQuestion productId={props.productId} productName={props.productName} setQuestionList={setQuestionList} getQuestionsForOneProduct={getQuestionsForOneProduct}/>
     </div>
   )
 }

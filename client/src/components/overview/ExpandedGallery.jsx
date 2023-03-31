@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => {
+const ExpandedGallery = ( { mainImage, imageDescription, mainImageIndex, productPhotos, handleMainPreviousClick, handleMainNextClick, handleThumbnailClick, setShowExpanded } ) => {
 
   // Refactor need -- take care of right and bottom whitespace on zoomed image ***
 
@@ -8,6 +8,22 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
   const [transformOrigin, setTransformOrigin] = useState({});
   const [transform, setTransform] = useState('none');
   const [cursor, setCursor] = useState('crosshair');
+
+  let count = -1;
+
+  const expandedThunbnailList = productPhotos.map(photo => {
+    count++;
+    let thumbnailDescription = imageDescription.concat(' Image #', count);
+    if (photo.url === mainImage) {
+      return (
+        <img className="expanded_selected_gallery_thumbnail" key={count} id={count} data-testid={`expandedGalleryThumbnailImage${count}`} src="https://cdn-icons-png.flaticon.com/512/649/649768.png" alt={thumbnailDescription} onClick={handleThumbnailClick}></img>
+      );
+    } else {
+      return (
+        <img className="expanded_gallery_thumbnail" key={count} id={count} data-testid={`expandedGalleryThumbnailImage${count}`} src="https://cdn-icons-png.flaticon.com/512/649/649768.png" alt={thumbnailDescription} onClick={handleThumbnailClick}></img>
+      );
+    }
+  });
 
   const handleCloseClick = (e) => {
     e.preventDefault();
@@ -17,6 +33,7 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
 
   const handleExpandedMainImageClick = (e) => {
     console.log('Expanded Image Clicked!');
+    e.preventDefault();
     if (!isZoomed) {
       setTransform('scale(2.5)');
       // Refactor need -- make this a - sign instead ***
@@ -41,6 +58,9 @@ const ExpandedGallery = ( { mainImage, imageDescription, setShowExpanded } ) => 
   return (
     <div id="expanded_gallery">
       <img className="expanded_gallery_mainImage" src={mainImage} alt={imageDescription} style={{transform: transform, transformOrigin: transformOrigin, cursor: cursor}} onMouseMove={handleMouseMove} onClick={handleExpandedMainImageClick}></img>
+      {isZoomed ? null : <div className="expandedThumbnailGallery">{expandedThunbnailList}</div>}
+      {mainImageIndex > 0 && !isZoomed ? <img className="expanded_main_image_previous" onClick={handleMainPreviousClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Previous"></img> : null}
+      {mainImageIndex < productPhotos.length - 1 && !isZoomed ? <img className="expanded_main_image_next" onClick={handleMainNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Next"></img> : null}
       {isZoomed ? null : <img className="expanded_gallery_close" src="https://cdn-icons-png.flaticon.com/512/607/607863.png" alt="Close" onClick={handleCloseClick}></img>}
     </div>
   )

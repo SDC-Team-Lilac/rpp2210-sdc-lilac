@@ -8,17 +8,18 @@ const ProductFeatures = ( { features } ) => {
   const featuresList = features.map((feature => {
     count++;
     return (
-      // <li key={count}><b>{feature.feature}: </b>{feature.value}</li>
-      <li key={count} data-testid={`feature-${count}`}>{feature.value} {feature.feature}</li>
+      <div className="product_feature">
+        <img className="feature_checkmark" src="https://cdn-icons-png.flaticon.com/512/9675/9675140.png" alt="Product Feature"></img>
+        <span key={count} className="product_feature_text" data-testid={`feature-${count}`}>{feature.value} {feature.feature}</span><br></br>
+      </div>
     );
   }))
 
   return (
     <div className="overview_product_features">
-      {/* <h3>This is the Product Features Component!</h3> */}
-      <ul>
+      <div>
         {featuresList}
-      </ul>
+      </div>
     </div>
   )
 }
