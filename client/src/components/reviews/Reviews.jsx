@@ -7,26 +7,6 @@ import axios from 'axios';
 
 const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
-  /*  This Component will need the below from it's parent:
-        -) product_id, product name, product characteristics (latter two needed for NewReview)
-      This Component will request the below from the API:
-        -) Reviews from GET /reviews/
-        -) Review Metadata from GET /reviews/meta
-      This Component will store the following state:
-        -) Reviews
-        -) Reviews Metadata
-      This Component will send the following state:
-        -) Reviews TO ReviewList
-        -) Reviews Metadata to RatingBreakdown
-      This Component's state can be updated by the following components:
-        -) SortOptions (can sort by dropdown)
-        -) ReviewTile (can mark as helpful)
-        -) **UNSURE RatingBreakdown (can filter for reviews with specific ratings, additive)
-        -) KeywordSearch
-    Note: Will need to make functions for subsequent calls to getReviews API to filter & sort the results
-  */
-     // //array of review objects
-
 
   const [reviews, setReviews] = useState([])
   const [filteredReviews, setFilteredReviews] = useState([])
@@ -113,6 +93,10 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
       setFilteredReviews(reviews);
     }
   }
+
+  // const searchReviews = () => {
+  //   let searchedReviews = filteredReviews.filter(())
+  // }
 
   useEffect(() => {
     updateReviews()
