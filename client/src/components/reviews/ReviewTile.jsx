@@ -4,9 +4,6 @@ import StarRating from './StarRating.jsx'
 const ReviewTile = ({ review, updateReviews }) => {
 
 
-<<<<<<< HEAD
-//TODO: Implement only clicking helpfulness once.
-=======
   const renderImages = () => {
     let photoResults = [];
     if (review.photos.length === 0) {
@@ -26,7 +23,6 @@ const ReviewTile = ({ review, updateReviews }) => {
 
   }
 
->>>>>>> c3a9be94db2ef79d531b2c2bdb2d0b8823ae0ed9
   const handleHelpful = (e) => {
     e.preventDefault();
     console.log('Marked Helpful')
@@ -50,17 +46,11 @@ const ReviewTile = ({ review, updateReviews }) => {
       </div>
       <div>Summary: {review.summary}</div>
       <div>Body: {review.body}</div>
-<<<<<<< HEAD
-
-      <div>Was this review helpful? <a href='' onClick={handleHelpful}>Yes</a>{review.helpfulness}</div>
-      {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
-=======
       <div>Reviewer Name: {review.reviewer_name}</div>
       <div>Date Reviewed: {review.date}</div>
       <div>Helpfulness Rating: {review.helpfulness}</div>
       <div>{renderImages()} </div>
       <button onClick={handleHelpful}>Mark as Helpful</button>
->>>>>>> c3a9be94db2ef79d531b2c2bdb2d0b8823ae0ed9
       <button onClick={handleReport}>Report Review</button>
     </div>
   )
