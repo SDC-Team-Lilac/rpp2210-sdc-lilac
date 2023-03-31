@@ -17,7 +17,7 @@ const XButton = (props) => {
     return axios.get('/relatedProducts/info', {
       params: {
         relatedProducts: currentOutfitList,
-        productId: props.productId,
+        productId: props.currentProductId,
         listName: 'outfit'
       }
     })
@@ -27,7 +27,8 @@ const XButton = (props) => {
   }
   var styleSettings ={
     'backgroundColor': 'transparent',
-    'border': 'none'
+    'border': 'none',
+    'color': '#D49E8D'
   }
   return (
     <button className='sarah-x-button' style={styleSettings} data-testid='x-button' onClick={() => {onClick()}}>&#10006;</button>
@@ -48,10 +49,11 @@ const StarButton = (currentProduct, clickedProduct, setRelatedProductId, clicked
   var styleSettings ={
     'backgroundColor': 'transparent',
     'border': 'none',
-    'fontSize': '20px'
+    'fontSize': '28px',
+    'color': '#D49E8D'
   }
   return (
-    <button style={styleSettings} className='sarah-star-button' data-testid='star-button' onClick={() => {onClick()}}>&#11088;</button>
+    <button style={styleSettings} className='sarah-star-button' data-testid='star-button' onClick={() => {onClick()}}>&#9733;</button>
   )
 }
 
@@ -101,8 +103,12 @@ const PlusButton = (props) => {
       return;
     }
   }
+  var styleSettings = {
+    'color': '#B08401',
+    'fontSize': '66px'
+  }
   return (
-    <button className='sarah-plus-button' data-testid='plus-button' onClick={() => {onClick()}}>&#10133;</button>
+    <button className='sarah-plus-button' style={styleSettings} data-testid='plus-button' onClick={() => {onClick()}}>&#43;</button>
   )
 }
 
