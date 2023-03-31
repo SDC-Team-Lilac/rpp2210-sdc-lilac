@@ -699,6 +699,9 @@ button.sarah-right-arrow:hover {
   display: flex;
   align-items: center;
 }
+.reviews.rating {
+  font-size: 35px;
+}
 
 .reviews.ratingBreakdown {
   display: flex;
