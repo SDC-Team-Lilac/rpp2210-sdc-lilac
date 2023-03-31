@@ -3,7 +3,6 @@ import BreakdownBar from './BreakdownBar.jsx'
 
 const ProductBreakdown = ({characteristics, characteristicSelections}) => {
 
-
   const loadBars = () => {
     var breakdowns = [];
     var key = 1;
