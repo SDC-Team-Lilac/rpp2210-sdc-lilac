@@ -60,7 +60,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
 
   return (
 
-    <div data-testid='reviewList-1'>
+    <div data-testid='reviewList-1' className="reviews reviewList">
       <SortOptions sortReviews={sortReviews}/>
       {/* <KeywordSearch /> */}
       <div style={{maxHeight: '450px', overflowY: 'auto'}}>
@@ -70,9 +70,10 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
           )
         })}
       </div>
-      {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
-      <button onClick={showModal}>Add Review</button>
-
+      <div className="reviews reviewListButtons">
+        {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
+        <button onClick={showModal}>Add Review</button>
+      </div>
       {showNewReview && createPortal(
         <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
         document.body

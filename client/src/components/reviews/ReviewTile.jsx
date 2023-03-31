@@ -44,14 +44,10 @@ const ReviewTile = ({ review, updateReviews }) => {
       <div className="reviews reviewTile topRow">
       <div><StarRating rating={review.rating}/></div><div>{review.reviewer_name}, {review.date}</div>
       </div>
-      <div>Summary: {review.summary}</div>
-      <div>Body: {review.body}</div>
-      <div>Reviewer Name: {review.reviewer_name}</div>
-      <div>Date Reviewed: {review.date}</div>
-      <div>Helpfulness Rating: {review.helpfulness}</div>
+      <div className="reviews reviewTile summary">{review.summary}</div>
+      <div className="reviews reviewTile body" >{review.body}</div>
+      <div className="reviews reviewTile helpfulReport">Helpful? <a href='' onClick={handleHelpful}> Yes {review.helpfulness}</a> | <a href='' onClick={handleReport}>Report</a></div>
       <div>{renderImages()} </div>
-      <button onClick={handleHelpful}>Mark as Helpful</button>
-      <button onClick={handleReport}>Report Review</button>
     </div>
   )
 }

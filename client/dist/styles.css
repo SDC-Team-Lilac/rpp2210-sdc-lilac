@@ -647,6 +647,7 @@ button.sarah-right-arrow:hover {
 .reviewsMain{
   display: flex;
   justify-content: center;
+  gap:35px;
 }
 /* ---- */
 
@@ -656,9 +657,10 @@ button.sarah-right-arrow:hover {
   display: flex;
   flex-direction: column;
   background-color: white;
-  border: 2px solid rgb(132, 132, 132);
+  border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
+  gap:15px;
 }
 /* ADD NEW REVIEW */
 .newReview {
@@ -682,7 +684,7 @@ button.sarah-right-arrow:hover {
 /* Review Tile */
 
 .reviewTile.fullTile {
-  border-bottom: solid black 1px;
+  border-bottom: solid #B08401 1px;
 }
 
 .reviewTile.topRow {
@@ -701,10 +703,29 @@ button.sarah-right-arrow:hover {
 .reviews.image:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+.reviews.reviewTile.summary {
+  font-size: larger;
+}
+
+/* .reviews.reviewTile.helpfulReport {
+  font-size: larger;
+} */
+
+.reviews.reviewListButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+}
 /* ---- */
 
 
 /* RATINGS & REVIEWS (LEFT HAND SIDE) */
+.reviews.fullRatingBreakdown {
+  border:2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
 .reviews.ratingSummary {
   display: flex;
   align-items: center;
