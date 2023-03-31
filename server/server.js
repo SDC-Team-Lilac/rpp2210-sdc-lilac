@@ -46,6 +46,7 @@ app.get('/products/:product_id/related', (req, res) => {
   products_api.getRelated(product_id)
     .then((relatedProducts) => {
       //console.log('Related Products Request: ', relatedProducts.data);
+      console.log('results of api get related products: ', relatedProducts.data);
       res.status(200).send(relatedProducts.data)
     })
     .catch((error) => {

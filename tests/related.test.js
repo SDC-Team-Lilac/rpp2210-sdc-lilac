@@ -133,12 +133,35 @@ describe('helperFunctions-RatingCalculator', () => {
 })
 
 describe('Buttons', () => {
-  it('should render buttons', () => {
-    render(<XButton />);
-    render(<PlusButton />);
+  it('should render buttons', async () => {
+    const productId = 71699;
+    const currentProductId = 71704;
+    const updateSelectedProduct = () => {
+      console.log('update');
+    }
+    const setProductId = (productId) => {
+      console.log(productId);
+    };
+    const myOutfit = [];
+    const setMyOutfit = (myOutfit) => {
+      console.log(myOutfit);
+    };
+    const setOutfitCards = () => {
+      console.log('cards');
+    }
+    const OutfitListInfo = (setOutfitCards, setProductId, currentProductId, productId, setMyOutfit, updateSelectedProduct) => {
+      console.log('list')
+    }
+    const clickMe = jest.fn()
+    await render(<XButton onClick={clickMe} setOutfitCards={setOutfitCards} setProductId={setProductId} currentProductId={currentProductId} productId={productId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} />);
+    await render(<PlusButton onClick={clickMe}/>);
+
     const x = screen.getByTestId('x-button');
     const plus = screen.getByTestId('plus-button');
+    fireEvent.click(x);
+    fireEvent.click(plus);
     expect(x).toBeInTheDocument();
     expect(plus).toBeInTheDocument();
+    expect(clickMe).toHaveBeenCalledTimes(2);
   });
 })

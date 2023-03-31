@@ -14,7 +14,7 @@ const root = createRoot(domNode);
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71702);
+  const [productId, setProductId] = useState(71697);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -66,7 +66,7 @@ const App = () => {
           }
         })
         .then((results) => {
-          setRelatedProducts(results);
+          setRelatedProducts(results.data);
           return ProductListInfo(results.data, setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards);
         })
       })

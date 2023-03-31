@@ -430,11 +430,13 @@ body {
   background-color: white;
   width: 500px;
   max-width: 80%;
+  font-family: 'Playfair Display', serif;
 }
 
 #sarah-modal.active {
   transform: translate(-50%, -50%) scale(1);
   overflow-y: scroll;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-modal-header {
@@ -445,6 +447,8 @@ body {
   border-top-left-radius: 10px;
   z-index: 10;
   background-color: white;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-modal-column-header {
@@ -453,10 +457,14 @@ body {
   border-bottom: 1px solid black;
   font-size: 1rem;
   font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-modal-content {
   padding: 10px 15px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 #sarah-overlay {
@@ -470,60 +478,81 @@ body {
   background-color: rgba(0, 0, 0, .5);
   pointer-events: none;
   overflow: auto;
+  font-family: 'Playfair Display', serif;
 }
 
 #sarah-overlay.active {
   pointer-events: all;
   opacity: 1;
   min-width: 300px;
+  font-family: 'Playfair Display', serif;
 }
 
 tr:nth-child(even) {
  background-color:#ECECEC;
+ font-family: 'Playfair Display', serif;
 }
 
 tr:nth-child(odd) {
   background-color: rgba(255, 255, 255, 0.762);
+  font-family: 'Playfair Display', serif;
 }
 
 body {
   overflow: auto;
+  font-family: 'Playfair Display', serif;
 }
 
 body.active {
   overflow-y: hidden;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-product-cards-container {
   display: flex;
   justify-content: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-modal-product1-feature {
   text-align: center;
   width: 164.66px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-modal-feature {
   text-align: center;
   width: 164.66px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-modal-product2-feature {
   text-align: center;
   width: 164.66px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-modal {
   justify-content: center;
   align-items: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-product-card {
   width: fit-content;
   margin: 10px;
+  font-family: 'Playfair Display', serif;
 }
 
+.sarah-product-card {
+  border: 1px solid;
+  border-color: #FAF6F2;
+  background-color: #DED1BD;
+  height: 325px;
+  font-family: 'Playfair Display', serif;
 .sarah-product-details-container {
   /* border-bottom: 0.5px solid black;
   border-left: 0.5px solid black;
@@ -535,12 +564,19 @@ body.active {
   position: relative;
   z-index: 9;
   right: -160px;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-product-image-div {
   position: relative;
-  top: -29px;
-  height:fit-content;
+  top: -38px;
+  height: 225px;
+  font-family: 'Playfair Display', serif;
+}
+
+.sarah-product-image {
+  object-fit: cover;
+  overflow: clip;
 }
 
 .sarah-product-category {
@@ -548,6 +584,8 @@ body.active {
   position: relative;
   top: -50px;
   left: 5px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-product-name {
@@ -555,6 +593,8 @@ body.active {
   font-weight: bolder;
   top: -70px;
   left: 5px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-product-price {
@@ -562,40 +602,51 @@ body.active {
   position: relative;
   top: -90px;
   left: 5px;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-product-ratings {
   position: relative;
-  top: -110px;
+  top: -113px;
   left: 5px;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-list-with-arrows {
   display: flex;
   justify-content: center;
   transition: 200ms ease-out;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-add-to-outfit-card {
   border: 0.5px solid black;
   width: 200px;
   margin: 10px;
-  height:319px;;
+  height:319px;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-outfit-list-container {
   display: flex;
   justify-content: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-outfit-card-container {
   display: flex;
   justify-content: center;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-plus-button {
   height: 319px;
   width: 200px;
+  border: 1px;
+  background-color: #D49E8D;
+  font-family: 'Playfair Display', serif;
+  color: #B08401;
 }
 
 .sarah-x-button {
@@ -603,6 +654,7 @@ body.active {
   right: -8px;
   color: #ECECEC;
   font-size: 24px;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-add-to-outfit-title {
@@ -611,12 +663,15 @@ body.active {
   left: 50px;
   font-size: large;
   font-weight: bolder;
+  font-family: 'Playfair Display', serif;
+  color: #683b2B;
 }
 
 .sarah-left-arrow-text {
   position: relative;
-  top: -10px;
-  left: 0px;
+  top: -16px;
+  left: 1px;
+  font-family: 'Playfair Display', serif;
 }
 
 button.sarah-left-arrow {
@@ -628,19 +683,22 @@ button.sarah-left-arrow {
   top: 42%;
   left: 2px;
   position: relative;
-  color: rgb(132, 132, 132);
+  color: #DED1BD;
+  font-family: 'Playfair Display', serif;
 }
 
 button.sarah-left-arrow:hover {
-  border-color: rgb(132, 132, 132);
-  background-color:rgb(132, 132, 132);
-  color: white;
+  border-color: #DED1BD;
+  background-color:#DED1BD;
+  color: #B08401;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-right-arrow-text {
   position: relative;
-  top: -10px;
+  top: -16px;
   left: 1px;
+  font-family: 'Playfair Display', serif;
 }
 
 button.sarah-right-arrow {
@@ -652,21 +710,38 @@ button.sarah-right-arrow {
   top: 42%;
   left: 2px;
   position: relative;
-  color: rgb(132, 132, 132);
+  color: #DED1BD;
+  font-family: 'Playfair Display', serif;
 }
 
 button.sarah-right-arrow:hover {
-  border-color: rgb(132, 132, 132);
-  background-color:rgb(132, 132, 132);
-  color: white;
+  border-color: #DED1BD;
+  background-color:#DED1BD;
+  color: #B08401;
+  font-family: 'Playfair Display', serif;
 }
 
 .sarah-products-list {
   width: 100%;
+  font-family: 'Playfair Display', serif;
+}
+
+.sarah-products-list-title {
+  color: #683b2B;
+  font-family: 'Playfair Display', serif;
+}
+
+.sarah-outfit-list-title {
+  color: #683b2B;
+  font-family: 'Playfair Display', serif;
+  top: 50%;
+  left: 0%;
+  position: relative;
 }
 
 .sarah-x-button:hover {
   color: rgb(132, 132, 132);
+  font-family: 'Playfair Display', serif;
 }
 
 /* Begin Reviews CSS*/
@@ -676,6 +751,7 @@ button.sarah-right-arrow:hover {
 .reviewsMain{
   display: flex;
   justify-content: center;
+  gap:35px;
 }
 /* ---- */
 
@@ -685,9 +761,10 @@ button.sarah-right-arrow:hover {
   display: flex;
   flex-direction: column;
   background-color: white;
-  border: 2px solid rgb(132, 132, 132);
+  border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
+  gap:15px;
 }
 /* ADD NEW REVIEW */
 .newReview {
@@ -700,19 +777,70 @@ button.sarah-right-arrow:hover {
   border-radius: 12px;
   position:  absolute;
   left: 50%;
-  top: 250%;
-  width: 450px;
-  height: 400px;
-  margin-left: -200px;
-  margin-top: -150px;
+  top: 140%;
+  width: 650px;
+  height: 600px;
+  margin: -200px 0 0 -250px;
+
+  z-index:1000;
+}
+
+/* Review Tile */
+
+.reviewTile.fullTile {
+  border-bottom: solid #B08401 1px;
+}
+.reviews.fullReviewList {
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+}
+
+.reviewTile.topRow {
+  display: flex;
+  justify-content:space-between;
+  /* align-content: center; */
+  align-items: center;
+}
+.reviews.image {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+.reviews.image:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.reviews.reviewTile.summary {
+  font-size: larger;
+}
+
+/* .reviews.reviewTile.helpfulReport {
+  font-size: larger;
+} */
+
+.reviews.reviewListButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
 }
 /* ---- */
 
 
 /* RATINGS & REVIEWS (LEFT HAND SIDE) */
+.reviews.fullRatingBreakdown {
+  border:2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
 .reviews.ratingSummary {
   display: flex;
   align-items: center;
+}
+.reviews.rating {
+  font-size: 35px;
 }
 
 .reviews.ratingBreakdown {
@@ -720,12 +848,6 @@ button.sarah-right-arrow:hover {
   justify-content: space-between;
   font-size: small;
 }
-
-
-/* .reviews.breakdownBar {
-  display: flex;
-  flex-direction: column;
-} */
 
 .reviews.breakdownBar.fullBar {
   display: flex;
@@ -742,7 +864,6 @@ button.sarah-right-arrow:hover {
   border-top: 10px solid black;
 }
 .reviews.breakdownBar.charbar {
-  /* position: relative; */
   background-color: gray;
   height: 10px;
   align-self: stretch;
@@ -753,8 +874,6 @@ button.sarah-right-arrow:hover {
 .reviews.breakdownBar.ratingScale {
   align-self: stretch;
   display: flex;
-
-  /* flex-direction: column; */
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -777,10 +896,6 @@ button.sarah-right-arrow:hover {
   justify-content: space-between;
 }
 
-
-
-
-
 .reviews.bar.green {
   background-color: green
 }
@@ -792,12 +907,10 @@ button.sarah-right-arrow:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* align-content: space-around; */
   flex-grow: 1;
 }
 .reviews.fullRatingBar {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
 }
 .reviews.leftRatingBar,
@@ -814,19 +927,24 @@ button.sarah-right-arrow:hover {
 
 
 /* STARS */
+.reviews.newReviewItem.stars,
 .starRatings {
   display: inline-block;
   position: relative;
-  color: #683b2b99;
+  color: #B08401;
   font-size: 30px;
 }
 
+.newReviewStars,
 .fullStars {
   position: absolute;
-  color: #B08401;
+  color:#D49E8D;
   overflow: hidden;
   font-size: 30px;
 }
+/* ----- */
+
+/* NewReviews Modal */
 /* ----- */
 /* End Reviews CSS */
 
@@ -898,7 +1016,6 @@ button.sarah-right-arrow:hover {
   background-color: rgb(254, 254, 254);
 
 }
-
 
 .qa_addQuestionModal {
   font-size: 120%;

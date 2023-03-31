@@ -7,26 +7,6 @@ import axios from 'axios';
 
 const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
 
-  /*  This Component will need the below from it's parent:
-        -) product_id, product name, product characteristics (latter two needed for NewReview)
-      This Component will request the below from the API:
-        -) Reviews from GET /reviews/
-        -) Review Metadata from GET /reviews/meta
-      This Component will store the following state:
-        -) Reviews
-        -) Reviews Metadata
-      This Component will send the following state:
-        -) Reviews TO ReviewList
-        -) Reviews Metadata to RatingBreakdown
-      This Component's state can be updated by the following components:
-        -) SortOptions (can sort by dropdown)
-        -) ReviewTile (can mark as helpful)
-        -) **UNSURE RatingBreakdown (can filter for reviews with specific ratings, additive)
-        -) KeywordSearch
-    Note: Will need to make functions for subsequent calls to getReviews API to filter & sort the results
-  */
-     // //array of review objects
-
 
   const [reviews, setReviews] = useState([])
   const [filteredReviews, setFilteredReviews] = useState([])
@@ -114,6 +94,11 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
     }
   }
 
+  //Key Word Search low priority feature. Will implement at the end if time allows.
+  // const searchReviews = () => {
+  //   let searchedReviews = filteredReviews.filter(())
+  // }
+
   useEffect(() => {
     updateReviews()
     getReviewsMeta()
@@ -141,10 +126,10 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   return (
-    <div data-testid='reviews-1' style={{border: '2px solid red'}}>
+    <div data-testid='reviews-1'>
       <div className="reviews reviewsMain">
         { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
-        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta}/> : 'There are no reviews!'}
+        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/> : 'There are no reviews!'}
       </div>
     </div>
   )

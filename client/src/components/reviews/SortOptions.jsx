@@ -9,7 +9,7 @@ const SortOptions = ({sortReviews}) => {
   */
 
   return (
-    <div data-testid='sortOptions-1' className="reviews sortOptions" style={{border: '2px solid black'}}>
+    <div data-testid='sortOptions-1' className="reviews sortOptions">
       <label>Sort By:</label>
       <select onClick={sortReviews}>
         <option>Relevant</option>
