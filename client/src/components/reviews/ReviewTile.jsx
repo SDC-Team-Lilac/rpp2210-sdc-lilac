@@ -10,6 +10,25 @@ const ReviewTile = ({ review, updateReviews }) => {
     4) Needs to have an option for them to click and report this then send put request
     */
 
+  const renderImages = () => {
+    let photoResults = [];
+    if (review.photos.length === 0) {
+      return null;
+    } else {
+      for (let i = 0; i < review.photos.length; i ++) {
+        let image = review.photos[i];
+        console.log('----image', image)
+        if (typeof image === 'object'){
+           photoResults.push(<a target="_blank" href={image.url}><img className="reviews image" src={image.url} alt="Image of reviewed item."/></a>)
+        } else {
+          hotoResults.push(<a target="_blank" href={image}><img className="reviews image" src={image} alt="Image of reviewed item."/></a>)
+        }
+      }
+    }
+    return photoResults;
+
+  }
+
   const handleHelpful = (e) => {
     e.preventDefault();
     console.log('Marked Helpful')
@@ -34,7 +53,7 @@ const ReviewTile = ({ review, updateReviews }) => {
       <div>Reviewer Name: {review.reviewer_name}</div>
       <div>Date Reviewed: {review.date}</div>
       <div>Helpfulness Rating: {review.helpfulness}</div>
-      {/* <div>Review Image: <img src={review.photos[0].url}/> </div> */}
+      <div>{renderImages()} </div>
       <button onClick={handleHelpful}>Mark as Helpful</button>
       <button onClick={handleReport}>Report Review</button>
     </div>
