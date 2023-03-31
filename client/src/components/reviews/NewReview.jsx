@@ -49,6 +49,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
   }
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(fullReview);
     axios.post('/reviews', fullReview)
     .then((success) => {console.log('Succesfully added new review')})
     .catch((err) => {console.log('ERROR adding new review', err)})
