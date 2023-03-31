@@ -686,6 +686,11 @@ button.sarah-right-arrow:hover {
 .reviewTile.fullTile {
   border-bottom: solid #B08401 1px;
 }
+.reviews.fullReviewList {
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+}
 
 .reviewTile.topRow {
   display: flex;

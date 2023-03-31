@@ -63,7 +63,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
     <div data-testid='reviewList-1' className="reviews reviewList">
       <SortOptions sortReviews={sortReviews}/>
       {/* <KeywordSearch /> */}
-      <div style={{maxHeight: '450px', overflowY: 'auto'}}>
+      <div style={{maxHeight: '450px', overflowY: 'auto'}} className="reviews fullReviewList">
         {currentReviews.map((review) => {
           return (
             <ReviewTile key={review.review_id} review={review} updateReviews={updateReviews}/>
