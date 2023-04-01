@@ -949,6 +949,8 @@ button.sarah-right-arrow:hover {
 .reviews.leftRatingBar {
   text-align: right;
 }
+
+/* BUG ON PROPER BAR IS HERE, CAUSES TROUBLE WITH WIDTH OF GREEN BAR, specifically flex on reviews.bar*/
 .reviews.rightRatingBar,
 .reviews.leftRatingBar,
 .reviews.bar {
