@@ -71,8 +71,8 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
         })}
       </div>
       <div className="reviews reviewListButtons">
-        {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
-        <button onClick={showModal}>Add Review</button>
+        {showMoreButton ? <button className="reviews moreReviewsButton" onClick={addReviews}>More Reviews</button>  : null}
+        <button className="reviews addReviewButton" onClick={showModal}>Add Review +</button>
       </div>
       {showNewReview && createPortal(
         <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
