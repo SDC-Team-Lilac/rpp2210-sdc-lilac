@@ -11,7 +11,7 @@ const SortOptions = ({sortReviews}) => {
   return (
     <div data-testid='sortOptions-1' className="reviews sortOptions">
       <label>Sort By:</label>
-      <select onClick={sortReviews}>
+      <select className="reviews sortDropdown"onClick={sortReviews}>
         <option>Relevant</option>
         <option>Helpful</option>
         <option>Newest</option>
