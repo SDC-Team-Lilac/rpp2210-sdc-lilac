@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx'
-const ReviewTile = ({ review, updateReviews }) => {
+import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
+const ReviewTile = ({ review, updateReviews }) => {
 
   const renderImages = () => {
     let photoResults = [];
@@ -42,7 +43,7 @@ const ReviewTile = ({ review, updateReviews }) => {
   return (
     <div data-testid='reviewTile-1' className="reviews reviewTile fullTile">
       <div className="reviews reviewTile topRow">
-      <div><StarRating rating={review.rating}/></div><div>{review.reviewer_name}, {review.date}</div>
+      <div><StarRating rating={review.rating}/></div><div>{review.reviewer_name}, {formatDistanceToNow(parseISO(review.date))} ago {format(parseISO(review.date), "EEEE MMMM io yyyy")}</div>
       </div>
       <div className="reviews reviewTile summary">{review.summary}</div>
       <div className="reviews reviewTile body" >{review.body}</div>
