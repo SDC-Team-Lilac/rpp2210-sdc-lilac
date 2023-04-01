@@ -5,7 +5,6 @@ import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
 const ReviewTile = ({ review, updateReviews }) => {
 
-  console.log('DATE_-----', parseISO(review.date))
   const renderImages = () => {
     let photoResults = [];
     if (review.photos.length === 0) {
