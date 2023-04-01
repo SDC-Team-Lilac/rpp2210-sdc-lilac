@@ -71,10 +71,10 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
         <div className="reviews rating"> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
         <StarRating rating={averageStarRating}/>
       </div>
-      <div>There are {totalNumberReviews} reviews!</div>
-      Rating Breakdown!
+      <div className="reviews totalReviews">{totalNumberReviews} reviews</div>
+      <div className="reviews ratingBreakdownTitle">Rating Breakdown!</div>
       <div className="reviews ratingBreakdown" >
-        <div className="reviews allRatingBars">
+        {/* <div className="reviews allRatingBars"> */}
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 5)} onClick={(e) => {updateFilters(e, 5);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">5 Stars:</div>
             <div className="reviews bar rating5Bar">
@@ -115,9 +115,9 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[1]}</div>
           </div>
-        </div>
+        {/* </div> */}
       </div>
-      <div>{recommended}% recommend this product!</div>
+      <div className="reviews recommendedTotal">{recommended}% recommendended</div>
       <ProductBreakdown characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
     </div>
   )

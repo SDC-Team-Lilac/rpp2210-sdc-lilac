@@ -753,6 +753,7 @@ button.sarah-right-arrow:hover {
   display: flex;
   justify-content: center;
   gap:35px;
+  margin: 10px;
 }
 /* ---- */
 
@@ -770,7 +771,8 @@ button.sarah-right-arrow:hover {
   gap:15px;
   padding: 15px;
   /* align-content: stretch; */
-  max-height: 575px;
+  max-height: 616px;
+  flex: 0 0 710px;
   overflow-y: auto
 }
 
@@ -830,6 +832,7 @@ button.sarah-right-arrow:hover {
   display: flex;
   flex-direction: column;
   gap:10px;
+
 }
 
 .reviewTile.topRow {
@@ -894,24 +897,65 @@ button.sarah-right-arrow:hover {
 
 /* RATINGS & REVIEWS (LEFT HAND SIDE) */
 .reviews.fullRatingBreakdown {
+  display: flex;
+  flex-direction: column;
   border:2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
   padding: 15px;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: stretch;
+  flex: 0 0 350px;
 }
 .reviews.ratingSummary {
   display: flex;
   align-items: center;
+  align-self: center;
 }
 .reviews.rating {
   font-size: 35px;
 }
+.reviews.totalReviews {
+  font-size: 15px;
+  align-self: center;
+}
+
+.reviews.ratingBreakdownTitle {
+  align-self: center;
+}
 
 .reviews.ratingBreakdown {
+  align-self: stretch;
   display: flex;
-  justify-content: space-between;
-  font-size: small;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  font-size: medium;
+  justify-content: stretch;
+
 }
+
+.reviews.fullRatingBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  column-gap: 10px;
+}
+.reviews.rightRatingBar{
+  text-align: left;
+}
+
+.reviews.leftRatingBar {
+  text-align: right;
+}
+.reviews.rightRatingBar,
+.reviews.leftRatingBar,
+.reviews.bar {
+  flex: 1;
+}
+
+/* Product Breakdown */
 
 .reviews.breakdownBar.fullBar {
   display: flex;
@@ -967,21 +1011,12 @@ button.sarah-right-arrow:hover {
 .reviews.bar.gray {
   background-color: gray
 }
-.reviews.allRatingBars {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex-grow: 1;
-}
-.reviews.fullRatingBar {
-  display: flex;
-  align-items: center;
-}
-.reviews.leftRatingBar,
+
+/* .reviews.leftRatingBar,
 .reviews.rightRatingBar
  {
   width: 33.33%
-}
+} */
 
 .reviews.fullRatingBar.selected {
   background-color: #89CFF0;
