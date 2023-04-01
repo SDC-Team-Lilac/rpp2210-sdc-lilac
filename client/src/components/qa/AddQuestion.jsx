@@ -62,9 +62,9 @@ const AddQuestion = (props) => {
   };
 
   return (
-    <div>
-    {/* <div data-testid='AddQuestion'> AddQuestion! </div> */}
-    <button onClick={handleClick}>Ask Your Question</button>
+    <div className='qa_addQuestion'>
+    <div data-testid='AddQuestion'> Didn't find the question you were looking for? Ask your question! </div>
+    <button className='qa_button' onClick={handleClick}>Ask Your Question</button>
     <Modal className="qa_addQuestionModal" isOpen={showModal} onRequestClose={handleClose}>
        <div>
         <form onSubmit={newQuestionSubmitHandler}>

@@ -41,7 +41,7 @@ const Question = (props) => {
     <div>
       <div className='qa_answerList'>
       <div  className='qa_question' data-testid="qaQuestion">
-          <strong>{'Q: '}</strong> {props.question.question_body}  <span className='qa_questionHelpful'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>
+          <strong>{'Q: '}</strong> {props.question.question_body}  <span className='qa_questionHelpful'>| Helpful? <a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a></span>
       </div>
         <AnswerList answerList={answerList}/>
         <AddAnswer question={props.question} getAnswersForOneQuestion={getAnswersForOneQuestion} setAnswerList={setAnswerList} productName={props.productName}/>

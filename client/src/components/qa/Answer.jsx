@@ -31,6 +31,15 @@ const Answer = (props) => {
     })
   };
 
+  const dateConverter = (inputDate) => {
+    const dateObj = new Date(inputDate);
+    const month = dateObj.toLocaleString('default', { month: 'long' });
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const formattedDate = `${month} ${day}, ${year}`;
+    return formattedDate;
+  }
+
 
   return (
     <div className='qa_answer'>
@@ -43,7 +52,7 @@ const Answer = (props) => {
         ))}
       </div>
       <div>
-      <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{props.answer.date.split('T')[0]}</span>
+      <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
     </div>
     <div>
       <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}

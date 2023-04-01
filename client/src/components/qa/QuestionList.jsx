@@ -27,7 +27,7 @@ const QuestionList = (props) => {
       <Question key={question.question_id} question={question} productName={props.productName}/>)}
       {props.showFilteredQuestions && props.filteredQuestions.map(question=>
       <Question key={question.question_id} question={question} productName={props.productName}/>)}
-       {Qexpanded && <button onClick={onClickHandler}>More Answered Questions</button>}
+       {Qexpanded && <button className='qa_button' onClick={onClickHandler}>More Answered Questions</button>}
     </div>
   )
 }

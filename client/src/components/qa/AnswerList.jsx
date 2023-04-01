@@ -19,7 +19,7 @@ const AnswerList = (props) => {
     <div>
       {visibleAnswers.map(answer=>
       <Answer key={answer.answer_id} answer={answer}/>)}
-      {props.answerList.length > 2? <button data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
+      {props.answerList.length > 2? <button className='qa_button' data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
     </div>
   )
 }

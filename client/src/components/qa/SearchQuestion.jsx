@@ -32,8 +32,8 @@ const SearchQuestion = (props) => {
     <div className='qa_searchQuestion'>
     <form >
       <label data-testid="qaSearchQuestion"><strong>Looking for specific Question?</strong></label>
-      <div>
-      <input type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
+      <div >
+      <input className='qa_searchQuestionInput' type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
       </div>
     </form>
     </div>

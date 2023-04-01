@@ -553,6 +553,8 @@ body.active {
   background-color: #DED1BD;
   height: 325px;
   font-family: 'Playfair Display', serif;
+}
+
 .sarah-product-details-container {
   /* border-bottom: 0.5px solid black;
   border-left: 0.5px solid black;
@@ -969,6 +971,8 @@ button.sarah-right-arrow:hover {
 .qa_searchQuestion {
   font-size: 120%;
   margin-bottom: 1%;
+  display: flex;
+
 }
 
 .qa_answer{
@@ -982,19 +986,28 @@ button.sarah-right-arrow:hover {
   margin-bottom: 1%;
   display: flex;
   justify-content: flex-start;
+
 }
 
 .qa_question {
-  background-color: antiquewhite;
+  background-color: #DED1BD;
   font-weight: bold;
   /* text-decoration: underline; */
   margin-bottom: 0.5%;
+  display: initial;
+
 }
 
 
 .qa_answerList {
-  border-left: 1px solid black;
-  padding-left: 0.8%
+  border-left: 0.5rem solid #D49E8D;
+  padding-left: 0.8%;
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 1%;
+  padding-top: 1%;
 }
 
 .qa_addAnswer {
@@ -1032,8 +1045,9 @@ button.sarah-right-arrow:hover {
 }
 
 .qa_questionHelpful{
-  padding-left: 3%;
-
+  padding-left: 5%;
+  /* font-size: 80%; */
+background-color: #FAF6F2;
 }
 
 .qa_qaFormItem {
@@ -1054,4 +1068,33 @@ button.sarah-right-arrow:hover {
   font-weight: lighter;
   font-style: italic;
 }
+
+input:placeholder-shown {
+  border-color: rgb(2, 2, 2);
+  color: purple;
+  font-style: italic;
+  display: flex;
+  text-overflow:ellipsis
+}
+
+.qa_addQuestion{
+  margin-bottom: 2%;
+}
+
+.qa_button {
+  /* background-color:#D49E8D */
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
+
+.qa_searchQuestionInput{
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
+
+
 /* End QA CSS */
