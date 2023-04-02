@@ -65,12 +65,15 @@ const AddAnswer = (props) => {
       return;
     }
 
-    for (let i=0; i<imageTypes.length; i++){
+    if (imageTypes.length !== 0) {
+       for (let i=0; i<imageTypes.length; i++){
       if (imageTypes[i] !== 'image/jpeg') {
         setSubmitSuccess('The photo provided is not in correct format');
         return;
       };
     };
+    };
+
 
 
     answerSubmitFunc(props.question.question_id, newAnswer)
@@ -104,7 +107,6 @@ const AddAnswer = (props) => {
 
       </div>
       <Modal  className='qa_addAnswerModal' isOpen={showModal} onRequestClose={closeHandler}  >
-
         <div>
             <h2>Submit your Ansewer</h2>
             <h3>{`${props.productName}: ${props.question.question_body}`}</h3>

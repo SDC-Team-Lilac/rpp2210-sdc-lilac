@@ -63,7 +63,7 @@ const AddQuestion = (props) => {
 
   return (
     <div className='qa_addQuestion'>
-    <div data-testid='AddQuestion'> Didn't find the question you were looking for? Ask your question! </div>
+    <div data-testid='AddQuestion'> <strong>Didn't find the question you were looking for? Ask your question!</strong> </div>
     <button className='qa_button' onClick={handleClick}>Ask Your Question</button>
     <Modal className="qa_addQuestionModal" isOpen={showModal} onRequestClose={handleClose}>
        <div>

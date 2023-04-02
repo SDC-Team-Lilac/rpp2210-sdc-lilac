@@ -51,11 +51,13 @@ const Answer = (props) => {
           <span key={photo.id}><img style={{height: '200px', width: '200px'}} src={photo.url}></img></span>
         ))}
       </div>
-      <div>
-      <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
-    </div>
-    <div>
-      <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}
+     <div className=''>
+        <div>
+        <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
+        </div>
+        <div>
+        <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}
+      </div>
     </div>
   </div>
   )

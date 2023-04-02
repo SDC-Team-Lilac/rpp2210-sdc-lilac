@@ -554,10 +554,6 @@ body.active {
   height: 325px;
   font-family: 'Playfair Display', serif;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 2ac5a262ba204edd7b52741a0510d4db7159981b
 .sarah-product-details-container {
   /* border-bottom: 0.5px solid black;
   border-left: 0.5px solid black;
@@ -1015,6 +1011,7 @@ button.sarah-right-arrow:hover {
 
 .qa_addAnswer {
   /* padding-left: 1%; */
+  margin-top: 1%;
   margin-bottom: 1%;
 }
 
@@ -1090,6 +1087,15 @@ input:placeholder-shown {
   border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
+  /* margin-bottom: 1%; */
+}
+
+.qa_moreQuestionButton{
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 1%;
 }
 
 .qa_searchQuestionInput{
@@ -1098,6 +1104,15 @@ input:placeholder-shown {
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
 }
+.qa_searchQuestionTitle {
+  /* margin-bottom: 1%; */
+  padding-bottom: 5%;
+}
+
+.qa_noQuestions {
+  margin-bottom: 1%;
+}
+
 
 
 /* End QA CSS */
