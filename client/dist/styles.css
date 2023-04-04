@@ -994,11 +994,14 @@ button.sarah-right-arrow:hover {
   border-top: 10px solid black;
 }
 .reviews.breakdownBar.charbar {
-  background-color: gray;
+  background-color: #DED1B8;
   height: 10px;
   align-self: stretch;
   margin-left: 10%;
   margin-right: 10%;
+  /* border: .5px solid #B08401; */
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 2px;
 }
 
 .reviews.breakdownBar.ratingScale {
