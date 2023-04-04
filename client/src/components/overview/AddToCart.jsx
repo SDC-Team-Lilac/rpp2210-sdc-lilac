@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import SizeSelector from './SizeSelector.jsx';
 const axios = require('axios');
 
-const AddToCart = ( { selectedStyle, productStyles } ) => {
+const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, setMyOutfit } ) => {
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
@@ -10,6 +10,9 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
+
+  // Potential solution -- sync w/ Sarah***
+  const [inOutfit, setInOutfit] = useState(false);
 
   const ref = useRef(null);
 
@@ -65,7 +68,14 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       setAlertSize(true);
       ref.current.focus();
     }
+  }
 
+  // Sync with Sarah to see if we can import a function from cardButtons.jsx ***
+  const handleAddToOutfitClick = (e) => {
+    e.preventDefault();
+    console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
+    console.log('My Outfit: ', myOutfit);
+    // let currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
   }
 
   return (
@@ -84,7 +94,7 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
       </div>
       <div className="addToCart_bottom">
         {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
-        <button data-testid="addToOutfitButton" className="addToOutfitButton">
+        <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
           <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
         </button>
       </div>
