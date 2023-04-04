@@ -273,6 +273,7 @@ body {
   width: 30px;
   height: 30px;
   left: 70px;
+  opacity: .8;
 }
 
 .overview_addToCart {
@@ -293,15 +294,21 @@ body {
   width: 516px;
 }
 
+.size_selector_dropdown, .quantity_selector_dropdown, .addToCartButton, .addToOutfitButton {
+  background-color: #FAF6F2;
+  border: 1px solid #683B2B;
+}
+
+.size_selector_dropdown:focus, .quantity_selector_dropdown:focus {
+  outline: 1px solid #B08401;
+}
+
 .size_selector {
   flex-grow: 2;
   position: relative;
-  background-color: #FAF6F2;
 }
 
 .size_selector_dropdown {
-  background-color: rgb(238, 238, 238);
-  border: 1px solid rgb(62, 62, 62);
   display: inline-block;
   font: inherit;
   padding: 15px 10px;
@@ -311,12 +318,9 @@ body {
 .quantity_selector {
   flex-grow: 1;
   position: relative;
-  background-color: #FAF6F2;
 }
 
 .quantity_selector_dropdown {
-  background-color: rgb(238, 238, 238);
-  border: 1px solid rgb(62, 62, 62);
   display: inline-block;
   font: inherit;
   padding: 15px 10px;
@@ -335,30 +339,28 @@ body {
 .addToCartButton {
   flex-grow: 4;
   position: relative;
-  /* background-color: rgb(238, 238, 238); */
-  border: 1px solid rgb(62, 62, 62);
   display: inline-block;
   font: inherit;
   text-align: left;
   padding: 15px 10px;
-  background-color: #FAF6F2;
-}
-
-.addToCartButton:hover {
-  background-color: #683b2b10;
 }
 
 .addToOutfitButton {
   flex-grow: 1;
   position: relative;
   max-width: 60px;
-  background-color: rgb(238, 238, 238);
-  border: 1px solid rgb(62, 62, 62);
   display: inline-block;
   font: inherit;
   text-align: center;
   padding: 10px 5px 5px 5px;
-  background-color: #FAF6F2;
+}
+
+.addToOutfitIcon {
+  opacity: .7;
+}
+
+.addToCartButton:hover, .addToOutfitButton:hover {
+  background-color: #683b2b10;
 }
 
 .overview_product_details {
@@ -394,10 +396,12 @@ body {
 
 .product_details_separator {
   /* Refactor: Change color once we have a palette */
-  border-left: 2px solid #D49E8D;
+  border-left: 2px solid #d49d8dd6;
   flex-grow: 1;
   padding-right: 10px;
   position: relative;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .overview_product_features {
@@ -418,7 +422,8 @@ body {
 
 .feature_checkmark {
   height: 26px;
-  padding-right: 4px;
+  padding-right: 3px;
+  opacity: .6;
 }
 
 #sarah-modal {
