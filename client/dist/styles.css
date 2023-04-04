@@ -280,8 +280,8 @@ body {
   padding: 0px 10px 10px 10px;
 }
 
-.size_selector_alert {
-  color: #D49E8D;
+.size_selector_alert, .successful_add_alert {
+  color: #683B2B;
   padding-bottom: 4px;
   min-height: 21px;
 }
@@ -335,13 +335,17 @@ body {
 .addToCartButton {
   flex-grow: 4;
   position: relative;
-  background-color: rgb(238, 238, 238);
+  /* background-color: rgb(238, 238, 238); */
   border: 1px solid rgb(62, 62, 62);
   display: inline-block;
   font: inherit;
   text-align: left;
   padding: 15px 10px;
   background-color: #FAF6F2;
+}
+
+.addToCartButton:hover {
+  background-color: #683b2b10;
 }
 
 .addToOutfitButton {

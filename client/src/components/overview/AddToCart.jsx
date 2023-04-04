@@ -6,6 +6,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
+  const [alertSuccessfulAdd, setAlertSuccessfulAdd] = useState(false);
   // CHANGE STARTING QUANTITY TO 0, for addToCartButton testing
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
   const [quantityOptions, setQuantityOptions] = useState([]);
@@ -19,8 +20,14 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   let possibleQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   useEffect(() => {
+    if (alertSuccessfulAdd) {
+      setTimeout(() => setAlertSuccessfulAdd(false), 2000);
+    }
+  }, [alertSize, alertSuccessfulAdd, inOutfit]);
 
-  }, [alertSize]);
+  useEffect(() => {
+    setInOutfit(false);
+  }, [productDetails]);
 
   const setSelectedStyleData = (quantityStart, selectedSkuIndex, styleSkuData) => {
     if (quantityStart === 0) {
@@ -64,6 +71,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         .catch(error => {
           console.error('Error adding product to cart!');
         });
+        setAlertSuccessfulAdd(true);
     } else {
       setAlertSize(true);
       ref.current.focus();
@@ -75,12 +83,13 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
     e.preventDefault();
     console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
     console.log('My Outfit: ', myOutfit);
+    setInOutfit(true);
     // let currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
   }
 
   return (
     <div className="overview_addToCart">
-      {alertSize ? <div className="size_selector_alert">Please select size</div> : <div className="size_selector_alert"></div>}
+      {alertSize ? <div className="size_selector_alert">Please select size</div> : alertSuccessfulAdd ? <div className="successful_add_alert">Item added to cart!</div> : <div className="size_selector_alert"></div>}
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
           <SizeSelector ref={ref} selectedStyle={selectedStyle} setSelectedStyleData={setSelectedStyleData} setSelectedQuantity={setSelectedQuantity}/>
@@ -95,7 +104,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
       <div className="addToCart_bottom">
         {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
-          <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
+          {inOutfit ? <img src="https://img.icons8.com/ios-filled/256/christmas-star.png" alt="In My Outfit" width="35px" height="35px"></img> : <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>}
         </button>
       </div>
     </div>
