@@ -74,6 +74,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         setAlertSuccessfulAdd(true);
     } else {
       setAlertSize(true);
+      console.log('Current Ref: ', ref.current);
       ref.current.focus();
     }
   }
@@ -104,7 +105,8 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
       <div className="addToCart_bottom">
         {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
-          {inOutfit ? <img className="addToOutfitIcon" src="https://img.icons8.com/ios-filled/256/christmas-star.png" alt="In My Outfit" width="35px" height="35px"></img> : <img className="addToOutfitIcon" src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>}
+          {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>}
+          {/* {inOutfit ? <img className="addToOutfitIcon" src="https://img.icons8.com/ios-filled/256/christmas-star.png" alt="In My Outfit" width="35px" height="35px"></img> : <img className="addToOutfitIcon" src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>} */}
         </button>
       </div>
     </div>

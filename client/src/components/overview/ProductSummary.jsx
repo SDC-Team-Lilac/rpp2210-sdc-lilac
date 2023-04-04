@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import StarRating from '../reviews/StarRating.jsx';
 
-const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, totalNumberReviews } ) => {
+const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, totalNumberReviews, reviewsRef } ) => {
 
   // console.log('averageStarRating: ', averageStarRating);
-  // To-Do: Sync with Christian regarding star rating implementation
-  // To-Do: Sync with Christian regarding integration of # reviews, and component linking
 
   let productPrice;
   if (!selectedStyle.sale_price) {
@@ -18,12 +16,16 @@ const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, tot
       </div>
   }
 
+  const handleTotalReviewsClick = (e) => {
+    e.preventDefault();
+    reviewsRef.current.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <div className="overview_product_summary">
       {totalNumberReviews > 0 ? <div className="overview_product_rating">
         <StarRating rating={averageStarRating}/>
-        <span>Read all {totalNumberReviews} reviews</span>
-      </div> : <div className="overview_product_rating_empty"></div>}
+        <span className="overview_total_reviews" onClick={handleTotalReviewsClick}>Read all {totalNumberReviews} reviews</span></div> : <div className="overview_product_rating_empty"></div>}
       <br></br>
       <span >{productDetails.category.toUpperCase()}</span><br></br>
       <span className="product_summary_title" data-testid="productTitle"><b>{productDetails.name}</b></span><br></br>

@@ -222,10 +222,22 @@ body {
 
 .overview_product_rating {
   max-height: 42px;
+  display: flex;
+  align-items: center;
 }
 
 .overview_product_rating_empty {
   min-height: 42px;
+}
+
+.overview_total_reviews {
+  padding-left: 8px;
+}
+
+.overview_total_reviews:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: .8;
 }
 
 .product_summary_title {
@@ -345,6 +357,22 @@ body {
   padding: 15px 10px;
 }
 
+/* .reviews.newReviewItem.stars,
+.starRatings {
+  display: inline-block;
+  position: relative;
+  color: #B08401;
+  font-size: 30px;
+}
+
+.newReviewStars,
+.fullStars {
+  position: absolute;
+  color:#D49E8D;
+  overflow: hidden;
+  font-size: 30px;
+} */
+
 .addToOutfitButton {
   flex-grow: 1;
   position: relative;
@@ -352,15 +380,22 @@ body {
   display: inline-block;
   font: inherit;
   text-align: center;
-  padding: 10px 5px 5px 5px;
 }
 
-.addToOutfitIcon {
-  opacity: .7;
+.addedToOutfit, .notAddedToOutfit {
+  font-size: 35px;
+}
+
+.addedToOutfit {
+  color: #b08401c7;
+}
+
+.notAddedToOutfit {
+  color: #D49E8D;
 }
 
 .addToCartButton:hover, .addToOutfitButton:hover {
-  background-color: #683b2b10;
+  background-color: #683b2b08;
 }
 
 .overview_product_details {

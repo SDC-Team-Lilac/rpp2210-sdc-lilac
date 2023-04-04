@@ -5,7 +5,7 @@ import ProductSelected from './ProductSelected.jsx';
 import ProductDetails from './ProductDetails.jsx';
 const axios = require('axios');
 
-const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, myOutfit, setMyOutfit } ) => {
+const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, myOutfit, setMyOutfit, reviewsRef } ) => {
 
   // console.log('Product ID in Overview: ', productId);
 
@@ -49,7 +49,7 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
     <div id="overview">
       <div id="overview_top">
         <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
-        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} updateSelectedStyle={updateSelectedStyle} myOutfit={myOutfit} setMyOutfit={setMyOutfit} />
+        <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} updateSelectedStyle={updateSelectedStyle} myOutfit={myOutfit} setMyOutfit={setMyOutfit} reviewsRef={reviewsRef} />
       </div>
       {productDetails.features.length > 0 ? <ProductDetails slogan={productDetails.slogan} description={productDetails.description} features={productDetails.features}/> : null}
     </div>
