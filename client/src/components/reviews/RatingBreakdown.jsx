@@ -27,8 +27,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
 
   const getBarWidths = (ratingNumber) => {
     let greenBar = ((reviewsMeta.ratings[ratingNumber]/totalNumberReviews) * 100).toFixed(2)
-    let grayBar = 100 - greenBar;
-    return {greenWidth: `${greenBar}%`, grayWidth: `${grayBar}%`}
+    return `${greenBar}%`;
   }
 
   const handleMouseOver = (e) => {
@@ -74,49 +73,42 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
       <div className="reviews totalReviews">{totalNumberReviews} reviews</div>
       <div className="reviews ratingBreakdownTitle">Rating Breakdown!</div>
       <div className="reviews ratingBreakdown" >
-        {/* <div className="reviews allRatingBars"> */}
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 5)} onClick={(e) => {updateFilters(e, 5);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">5 Stars:</div>
-            <div className="reviews bar rating5Bar">
-              <div className="reviews bar rating5Bar green" style={{width: `${getBarWidths(5).greenWidth}`}}></div>
-              <div className="reviews bar rating5Bar gray" style={{width: `${getBarWidths(5).grayWidth}`}}></div>
+            <div className="reviews bar rating5Bar gray">
+              <span className="reviews bar rating5Bar green" style={{width: `${getBarWidths(5)}`}}></span>
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[5]}</div>
           </div>
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 4)} onClick={(e) => {updateFilters(e, 4);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">4 Stars:</div>
-            <div className="reviews bar rating4Bar">
-              <div className="reviews bar rating4Bar green" style={{width: `${getBarWidths(4).greenWidth}`}}></div>
-              <div className="reviews bar rating4Bar gray" style={{width: `${getBarWidths(4).grayWidth}`}}></div>
+            <div className="reviews bar rating4Bar gray">
+              <span className="reviews bar rating4Bar green" style={{width: `${getBarWidths(4)}`}}></span>
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[4]}</div>
           </div>
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 3)} onClick={(e) => {updateFilters(e, 3);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">3 Stars:</div>
-            <div className="reviews bar rating3Bar">
-              <div className="reviews bar rating3Bar green" style={{width: `${getBarWidths(3).greenWidth}`}}></div>
-              <div className="reviews bar rating3Bar gray" style={{width: `${getBarWidths(3).grayWidth}`}}></div>
+            <div className="reviews bar rating3Bar gray">
+              <span className="reviews bar rating3Bar green" style={{width: `${getBarWidths(3)}`}}></span>
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[3]}</div>
           </div>
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 2)} onClick={(e) => {updateFilters(e, 2);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">2 Stars:</div>
-            <div className="reviews bar rating2Bar">
-              <div className="reviews bar rating2Bar green" style={{width: `${getBarWidths(2).greenWidth}`}}></div>
-              <div className="reviews bar rating2Bar gray" style={{width: `${getBarWidths(2).grayWidth}`}}></div>
+            <div className="reviews bar rating2Bar gray">
+              <span className="reviews bar rating2Bar green" style={{width: `${getBarWidths(2)}`}}></span>
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[2]}</div>
           </div>
           <div className={"reviews fullRatingBar" + showBarSelection(filters, 1)} onClick={(e) => {updateFilters(e, 1);}} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <div className="reviews leftRatingBar">1 Stars:</div>
-            <div className="reviews bar rating1Bar">
-              <div className="reviews bar rating1Bar green" style={{width: `${getBarWidths(1).greenWidth}`}}></div>
-              <div className="reviews bar rating1Bar gray" style={{width: `${getBarWidths(1).grayWidth}`}}></div>
+            <div className="reviews bar rating1Bar gray">
+              <span className="reviews bar rating1Bar green" style={{width: `${getBarWidths(1)}`}}></span>
               </div>
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[1]}</div>
           </div>
-        {/* </div> */}
-      </div>
+        </div>
       <div className="reviews recommendedTotal">{recommended}% recommendended</div>
       <ProductBreakdown characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
     </div>

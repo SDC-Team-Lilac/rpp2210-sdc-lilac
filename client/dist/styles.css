@@ -771,7 +771,7 @@ button.sarah-right-arrow:hover {
   gap:15px;
   padding: 15px;
   /* align-content: stretch; */
-  max-height: 616px;
+  max-height: 622px;
   flex: 0 0 710px;
   overflow-y: auto
 }
@@ -1008,11 +1008,15 @@ button.sarah-right-arrow:hover {
 }
 
 .reviews.bar.green {
-  background-color: green
+  background-color: green;
+  position: absolute;
+  overflow: hidden;
 }
 
 .reviews.bar.gray {
-  background-color: gray
+  background-color: #DED1B8;
+  display: inline-block;
+  position: relative;
 }
 
 /* .reviews.leftRatingBar,
