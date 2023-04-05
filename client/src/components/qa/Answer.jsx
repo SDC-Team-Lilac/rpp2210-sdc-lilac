@@ -52,12 +52,10 @@ const Answer = (props) => {
         ))}
       </div>
      <div className='qa_answerer'>
-        <div>
+
         <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
-        </div>
-        <div >
-        <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}
-      </div>
+        <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{'    |     ' + report}</span>}
+
     </div>
   </div>
   )

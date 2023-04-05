@@ -1024,7 +1024,7 @@ button.sarah-right-arrow:hover {
   margin-bottom: 1%;
   display: flex;
   justify-content: flex-start;
-
+padding-bottom: 1%;
 }
 
 .qa_question {
@@ -1086,9 +1086,8 @@ button.sarah-right-arrow:hover {
 }
 
 .qa_questionHelpful{
-  padding-left: 5%;
-  /* font-size: 80%; */
-background-color: #FAF6F2;
+  padding-left: 50%;
+  background-color: #FAF6F2;
 }
 
 .qa_qaFormItem {
@@ -1145,8 +1144,9 @@ input:placeholder-shown {
   border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
-  width: 300px;
+  width: 600px;
   height: 30px;
+  padding-right: 30px;
 }
 .qa_searchQuestionTitle {
   /* margin-bottom: 1%; */
@@ -1185,5 +1185,20 @@ input:placeholder-shown {
   border-style: solid;
   padding-left: 1%;
 }
+
+.qa_searchbar {
+  position: relative;
+  display: inline-block;
+}
+
+.qa_searchIcon{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  /* cursor: pointer; */
+}
+
+
 
 /* End QA CSS */
