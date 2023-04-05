@@ -446,11 +446,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #D49E8D;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   z-index: 10;
-  background-color: white;
+  background-color: #DED1B8;
   width: 500px;
   max-width: 80%;
   font-family: 'Playfair Display', serif;
@@ -469,7 +469,7 @@ body {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   z-index: 10;
-  background-color: white;
+  background-color: #FAF6F2;
   font-family: 'Playfair Display', serif;
   color: #683b2B;
 }
@@ -477,7 +477,7 @@ body {
 .sarah-modal-column-header {
   padding: 10px 15px;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #D49E8D;
   font-size: 1rem;
   font-weight: bold;
   font-family: 'Playfair Display', serif;
@@ -512,12 +512,12 @@ body {
 }
 
 tr:nth-child(even) {
- background-color:#ECECEC;
+ background-color: #DED1B8;
  font-family: 'Playfair Display', serif;
 }
 
 tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.762);
+  background-color: #FAF6F2;
   font-family: 'Playfair Display', serif;
 }
 
@@ -700,7 +700,7 @@ body.active {
 
 button.sarah-left-arrow {
   background-color: transparent;
-  border: 11px solid white;
+  border: 11px solid #FAF6F2;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
@@ -727,7 +727,7 @@ button.sarah-left-arrow:hover {
 
 button.sarah-right-arrow {
   background-color: transparent;
-  border: 11px solid white;
+  border: 11px solid #FAF6F2;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
@@ -998,7 +998,7 @@ button.sarah-right-arrow:hover {
 .newReviewStars,
 .fullStars {
   position: absolute;
-  color:#D49E8D;
+  color: #B08401;
   overflow: hidden;
   font-size: 30px;
 }
@@ -1012,7 +1012,7 @@ button.sarah-right-arrow:hover {
 /* STARS QA CSS */
 
 .qa_left {
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
 }
 
