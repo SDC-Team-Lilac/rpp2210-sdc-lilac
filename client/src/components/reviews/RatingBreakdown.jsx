@@ -32,7 +32,7 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
 
   const handleMouseOver = (e) => {
     e.preventDefault();
-    e.currentTarget.style.backgroundColor = '#89CFF0'
+    e.currentTarget.style.backgroundColor = '#d0c1b2'
   }
 
   const handleMouseOut = (e) => {
@@ -65,7 +65,8 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
   // }, [filters])
 
   return (
-    <div data-testid='ratingBreakdown-1' className="reviews fullRatingBreakdown"> Ratings & Reviews
+    <div data-testid='ratingBreakdown-1' className="reviews fullRatingBreakdown">
+    <div className="reviews ratingBreakdownTitle" >Ratings & Reviews</div>
       <div className="reviews ratingSummary">
         <div className="reviews rating"> {averageStarRating ? averageStarRating.toFixed(1) : null} </div>
         <StarRating rating={averageStarRating}/>

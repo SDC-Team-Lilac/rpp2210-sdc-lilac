@@ -909,6 +909,10 @@ button.sarah-right-arrow:hover {
   flex: 0 0 350px;
   background-color: white;
 }
+
+.reviews.ratingBreakdownTitle {
+  align-self: center;
+}
 .reviews.ratingSummary {
   display: flex;
   align-items: center;
@@ -916,9 +920,11 @@ button.sarah-right-arrow:hover {
 }
 .reviews.rating {
   font-size: 35px;
+  text-align:start;
+  height: 40px;
 }
 .reviews.totalReviews {
-  font-size: 15px;
+  font-size: 20px;
   align-self: center;
 }
 
@@ -976,8 +982,27 @@ button.sarah-right-arrow:hover {
 .reviews.bar {
   flex: 1;
 }
+.reviews.recommendedTotal {
+  align-self: stretch;
+  border-bottom: #B08401 2px solid;
+  text-align: center;
+  padding-bottom: 5px;
+}
 
 /* Product Breakdown */
+.reviews.productBreakdown {
+  display: flex;
+  flex-direction: column;
+}
+.reviews.productBreakdownTitle {
+  align-self: center;
+}
+
+.reviews.breakdownBar.characteristic {
+  margin-left: 35px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
 .reviews.breakdownBar.fullBar {
   display: flex;
@@ -1030,7 +1055,7 @@ button.sarah-right-arrow:hover {
 } */
 
 .reviews.fullRatingBar.selected {
-  background-color: #89CFF0;
+  background-color: #d0c1b2;
 }
 
 /* ----- */
