@@ -351,32 +351,25 @@ body {
 .addToCartButton {
   flex-grow: 4;
   position: relative;
-  display: inline-block;
   font: inherit;
   text-align: left;
   padding: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-height: 55px;
 }
 
-/* .reviews.newReviewItem.stars,
-.starRatings {
-  display: inline-block;
-  position: relative;
-  color: #B08401;
+.addToCartPlus {
+  padding-left: 310px;
   font-size: 30px;
 }
-
-.newReviewStars,
-.fullStars {
-  position: absolute;
-  color:#D49E8D;
-  overflow: hidden;
-  font-size: 30px;
-} */
 
 .addToOutfitButton {
   flex-grow: 1;
   position: relative;
   max-width: 60px;
+  min-width: 60px;
   display: inline-block;
   font: inherit;
   text-align: center;

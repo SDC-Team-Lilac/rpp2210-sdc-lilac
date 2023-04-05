@@ -13,7 +13,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
 
   // Potential solution -- sync w/ Sarah***
-  const [inOutfit, setInOutfit] = useState(false);
+  // const [inOutfit, setInOutfit] = useState(false);
 
   const ref = useRef(null);
 
@@ -23,11 +23,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
     if (alertSuccessfulAdd) {
       setTimeout(() => setAlertSuccessfulAdd(false), 2000);
     }
-  }, [alertSize, alertSuccessfulAdd, inOutfit]);
-
-  useEffect(() => {
-    setInOutfit(false);
-  }, [productDetails]);
+  }, [alertSize, alertSuccessfulAdd]);
 
   const setSelectedStyleData = (quantityStart, selectedSkuIndex, styleSkuData) => {
     if (quantityStart === 0) {
@@ -84,8 +80,11 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
     e.preventDefault();
     console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
     console.log('My Outfit: ', myOutfit);
-    setInOutfit(true);
-    // let currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
+    // If inOutfit
+      // Remove From Outfit
+    // If not inOutfit
+      // Add to Outfit
+    // May need to add an effect hook to re-render the star correctly
   }
 
   return (
@@ -103,9 +102,10 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         </div>
       </div>
       <div className="addToCart_bottom">
-        {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
+        {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart<span className="addToCartPlus">+</span></button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
-          {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>}
+        <span className="notAddedToOutfit">&#9734;</span>
+          {/* {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>} */}
           {/* {inOutfit ? <img className="addToOutfitIcon" src="https://img.icons8.com/ios-filled/256/christmas-star.png" alt="In My Outfit" width="35px" height="35px"></img> : <img className="addToOutfitIcon" src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>} */}
         </button>
       </div>
