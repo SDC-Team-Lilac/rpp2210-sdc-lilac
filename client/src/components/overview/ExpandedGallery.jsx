@@ -32,7 +32,6 @@ const ExpandedGallery = ( { mainImage, imageDescription, mainImageIndex, product
   }
 
   const handleExpandedMainImageClick = (e) => {
-    console.log('Expanded Image Clicked!');
     e.preventDefault();
     if (!isZoomed) {
       setTransform('scale(2.5)');

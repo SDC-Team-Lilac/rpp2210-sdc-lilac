@@ -3,8 +3,6 @@ import StarRating from '../reviews/StarRating.jsx';
 
 const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, totalNumberReviews, reviewsRef } ) => {
 
-  // console.log('averageStarRating: ', averageStarRating);
-
   let productPrice;
   if (!selectedStyle.sale_price) {
     productPrice = <span>${selectedStyle.original_price}</span>

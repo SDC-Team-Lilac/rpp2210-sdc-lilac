@@ -7,7 +7,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
   const [alertSuccessfulAdd, setAlertSuccessfulAdd] = useState(false);
-  // CHANGE STARTING QUANTITY TO 0, for addToCartButton testing
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
@@ -57,8 +56,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         count: selectedQuantity
       })
         .then(success => {
-          // Refactor if time -- send the user some sort of visual to let them know it's been added
-          console.log('Item successfully added to cart!');
           return axios.get('./cart');
         })
         .then(cartData => {
@@ -70,7 +67,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         setAlertSuccessfulAdd(true);
     } else {
       setAlertSize(true);
-      console.log('Current Ref: ', ref.current);
       ref.current.focus();
     }
   }
@@ -106,7 +102,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
         <span className="notAddedToOutfit">&#9734;</span>
           {/* {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>} */}
-          {/* {inOutfit ? <img className="addToOutfitIcon" src="https://img.icons8.com/ios-filled/256/christmas-star.png" alt="In My Outfit" width="35px" height="35px"></img> : <img className="addToOutfitIcon" src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>} */}
         </button>
       </div>
     </div>
@@ -114,11 +109,3 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
 }
 
 export default AddToCart;
-
-// BUTTON SOURCES
-// Unfilled Star: https://icons8.com/icon/2549/christmas-star
-// Filled Star: https://icons8.com/icon/10159/christmas-star
-
-// BUTTON SRCs TO USE
-// Unfilled Star: https://img.icons8.com/ios/256/christmas-star.png
-// Filled Star: https://img.icons8.com/ios-filled/256/christmas-star.png

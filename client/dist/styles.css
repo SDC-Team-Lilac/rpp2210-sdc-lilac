@@ -21,21 +21,17 @@ body {
 #overview {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid aqua; */
-  justify-content: center;
 }
 
 #overview_top {
   display: flex;
   flex-direction: row;
-  /* border: 2px solid aqua; */
   width: inherit;
   height: 750px;
   background-color: #d49d8d88;
 }
 
 .gallery {
-  /* border: 2px solid greenyellow; */
   flex-grow: 3;
   position: relative;
   width: 750px;
@@ -153,7 +149,6 @@ body {
 }
 
 #expanded_gallery {
-  /* border: 4px solid peachpuff; */
   position: absolute;
   object-fit: cover;
   width: 1330px;
@@ -211,12 +206,10 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 2;
-  /* border: 2px solid greenyellow; */
   padding: 20px 10px 30px 10px;
 }
 
 .overview_product_summary {
-  /* border: 2px solid fuchsia; */
   padding: 10px 10px 10px 10px;
 }
 
@@ -251,7 +244,6 @@ body {
 }
 
 .overview_style_selector {
-  /* border: 2px solid fuchsia; */
   padding: 10px 10px 10px 10px;
   font-size: large;
 }
@@ -278,7 +270,6 @@ body {
 }
 
 .selected_style_icon {
-  /* Possible Refactor - Change background color to match theme */
   background-color: rgba(255, 255, 255, 0.661);
   border-radius: 50%;
   position: absolute;
@@ -289,7 +280,6 @@ body {
 }
 
 .overview_addToCart {
-  /* border: 2px solid fuchsia; */
   padding: 0px 10px 10px 10px;
 }
 
@@ -387,14 +377,13 @@ body {
   color: #D49E8D;
 }
 
-.addToCartButton:hover, .addToOutfitButton:hover {
+.addToCartButton:hover, .addToOutfitButton:hover, .size_selector_dropdown:hover, .quantity_selector_dropdown:hover {
   background-color: #683b2b08;
 }
 
 .overview_product_details {
   display: flex;
   flex-direction: row;
-  /* border: 2px solid greenyellow; */
   margin-top: 10px;
   background-color: #ded1bdb6;
   padding-top: 4px;
@@ -402,7 +391,6 @@ body {
 }
 
 .overview_product_information {
-  /* border: 2px solid fuchsia; */
   flex-grow: 3;
   padding: 0px 30px 10px 100px;
   display: flex;
@@ -423,7 +411,6 @@ body {
 }
 
 .product_details_separator {
-  /* Refactor: Change color once we have a palette */
   border-left: 2px solid #d49d8dd6;
   flex-grow: 1;
   padding-right: 10px;
@@ -433,7 +420,6 @@ body {
 }
 
 .overview_product_features {
-  /* border: 2px solid fuchsia; */
   flex-grow: 2;
   min-width: 460px;
 }

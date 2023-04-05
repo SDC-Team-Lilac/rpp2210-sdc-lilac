@@ -7,14 +7,11 @@ const axios = require('axios');
 
 const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, myOutfit, setMyOutfit, reviewsRef } ) => {
 
-  // console.log('Product ID in Overview: ', productId);
-
   const [productDetails, setProductDetails] = useState({id: null, name: '', slogan: '', description: '', category: '', default_price: '', features: []});
   const [productStyles, setProductStyles] = useState([{name: '', photos: [{thumbnail_url: '', url: ''}]}]);
   const [selectedStyle, setSelectedStyle] = useState({name: '', photos: [{thumbnail_url: '', url: ''}], skus: {null: {quantity: null, size: null}} });
 
   useEffect(() => {
-    console.log('Overview Rendering!!!!!!!');
     getProductDetails(productId);
     setProductStylesDetails(productId);
   }, [productId]);

@@ -8,8 +8,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   const [topThumbnailIndex, setTopThumbnailIndex] = useState(0);
   const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(7);
-
-  // Added for modal
   const [showExpanded, setShowExpanded] = useState(false);
 
   // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
@@ -19,7 +17,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   const handleThumbnailClick = (e, expandedId) => {
     e.preventDefault();
-    console.log('Thumbnail Clicked!');
     if (expandedId) {
       setMainImage(productPhotos[expandedId].url);
       setMainImageIndex(expandedId);
@@ -87,7 +84,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
 
   return (
     <div className="gallery">
-      {/* <h2>This is the Product Gallery Component!</h2> */}
       {mainImageIndex > 0 ? <img className="main_image_previous" onClick={handleMainPreviousClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Previous"></img> : null}
       {mainImageIndex < thunbnailList.length - 1 ? <img className="main_image_next" onClick={handleMainNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Next"></img> : null}
       <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} onClick={handleMainImageClick}></img>

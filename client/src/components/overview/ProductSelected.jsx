@@ -5,10 +5,6 @@ import AddToCart from './AddToCart.jsx';
 
 const ProductSelected = ( { productDetails, selectedStyle, productStyles, averageStarRating, totalNumberReviews, updateSelectedStyle, updateSelectedProduct, myOutfit, setMyOutfit, reviewsRef } ) => {
 
-  // console.log('Product Details in ProductSelected: ', productDetails);
-  // console.log('Product SelectedStyle in ProductSelected: ', selectedStyle);
-  // console.log('Product Styles in ProductSelected: ', productStyles);
-
   return (
     <div className="overview_product_selected">
       <ProductSummary productDetails={productDetails} selectedStyle={selectedStyle} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} reviewsRef={reviewsRef}/>
