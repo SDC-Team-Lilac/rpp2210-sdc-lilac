@@ -2,8 +2,6 @@ import React from 'react';
 
 const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) => {
 
-  // console.log('Selected Style: ', selectedStyle);
-  // console.log('Product Styles: ', productStyles);
   let count = -1;
   const styleThumbnails = productStyles.map(style => {
     count++;
@@ -26,7 +24,6 @@ const StyleSelector = ( { selectedStyle, productStyles, updateSelectedStyle } ) 
 
   return (
     <div className="overview_style_selector">
-      {/* <h3>This is the Style Selector Component!</h3> */}
       <div>
         <span data-testid="selectedStyleTitle"><b>{selectedStyle.name.toUpperCase()} > </b></span>
         <span>SELECTED STYLE</span>

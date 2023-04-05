@@ -2,8 +2,6 @@ import React from 'react';
 
 const ProductInformation = ( { slogan, description } ) => {
 
-  // console.log('Product Information: ', slogan, description);
-
   if (slogan) {
     return (
       <div className="overview_product_information">

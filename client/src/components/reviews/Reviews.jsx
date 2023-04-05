@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import RatingBreakdown from './RatingBreakdown.jsx'
 import ReviewList from './ReviewList.jsx'
 import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
 
-const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews }) => {
-
+const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews, reviewsRef }) => {
 
   const [reviews, setReviews] = useState([])
   const [filteredReviews, setFilteredReviews] = useState([])
@@ -127,7 +126,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
   return (
     <div data-testid='reviews-1'>
-      <div className="reviews reviewsMain">
+      <div className="reviews reviewsMain" ref={reviewsRef}>
         { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
         { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/> : 'There are no reviews!'}
       </div>
