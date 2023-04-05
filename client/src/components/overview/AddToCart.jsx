@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SizeSelector from './SizeSelector.jsx';
+import { DetermineAction } from '../relatedProducts/CardButtons.jsx';
 const axios = require('axios');
 
-const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, setMyOutfit } ) => {
+const AddToCart = ( { productDetails, selectedStyle, productStyles, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit } ) => {
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
@@ -11,18 +12,16 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
 
-  // Potential solution -- sync w/ Sarah***
-  // const [inOutfit, setInOutfit] = useState(false);
-
   const ref = useRef(null);
 
   let possibleQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   useEffect(() => {
+    console.log('In Outfit in AddToCart useEffect: ', inOutfit);
     if (alertSuccessfulAdd) {
       setTimeout(() => setAlertSuccessfulAdd(false), 2000);
     }
-  }, [alertSize, alertSuccessfulAdd]);
+  }, [alertSize, alertSuccessfulAdd, inOutfit]);
 
   const setSelectedStyleData = (quantityStart, selectedSkuIndex, styleSkuData) => {
     if (quantityStart === 0) {
@@ -75,12 +74,9 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   const handleAddToOutfitClick = (e) => {
     e.preventDefault();
     console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
-    console.log('My Outfit: ', myOutfit);
-    // If inOutfit
-      // Remove From Outfit
-    // If not inOutfit
-      // Add to Outfit
-    // May need to add an effect hook to re-render the star correctly
+    console.log('Determine Action: ', DetermineAction);
+    console.log('inOutfit? ', inOutfit);
+    DetermineAction(productDetails.id, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit);
   }
 
   return (
@@ -100,8 +96,8 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
       <div className="addToCart_bottom">
         {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart<span className="addToCartPlus">+</span></button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
-        <span className="notAddedToOutfit">&#9734;</span>
-          {/* {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>} */}
+        {/* <span className="notAddedToOutfit">&#9734;</span> */}
+          {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>}
         </button>
       </div>
     </div>

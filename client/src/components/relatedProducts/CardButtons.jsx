@@ -85,7 +85,7 @@ const AddToOutfitList = (currentProductId, setMyOutfit, setOutfitCards, setProdu
 }
 
 const DetermineAction = (currentProductId, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit) => {
-  if (inOutfit) {
+  if (!inOutfit) {
     return AddToOutfitList(currentProductId, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit);
   } else {
     return DeleteFromOutfitList(currentProductId, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit);
