@@ -8,7 +8,7 @@ const CardStructure = (props) => {
   }
   var determine = () => {
     if (props.listName === 'outfit') {
-      return <XButton setOutfitCards={props.setOutfitCards} currentProductId={props.currentProductId} myOutfit={props.myOutfit} updateSelectedProduct={props.updateSelectedProduct} productId={props.product.productId} setMyOutfit={props.setMyOutfit} OutfitListInfo={props.OutfitListInfo}/>
+      return <XButton setOutfitCards={props.setOutfitCards} currentProductId={props.currentProductId} myOutfit={props.myOutfit} updateSelectedProduct={props.updateSelectedProduct} productId={props.product.productId} setMyOutfit={props.setMyOutfit} OutfitListInfo={props.OutfitListInfo} inOutfit={props.inOutfit} setInOutfit={props.setInOutfit} />
     } else {
       return StarButton(props.currentProductFeatures, props.product.productId, props.setRelatedProductFeatures, props.product.name, props.setRelatedProductName);
     }

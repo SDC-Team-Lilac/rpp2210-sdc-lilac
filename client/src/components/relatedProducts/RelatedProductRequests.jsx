@@ -17,14 +17,12 @@ var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productF
   return;
 }
 
-var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct) => {
-  //coming in out of order
-  console.log('outfit in outfitListInfo: ', myOutfit);
+var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit) => {
   const list = myOutfit.map((outfit) => {
     if (typeof outfit.rating === 'object') {
       outfit.rating = RatingCalculator(outfit.rating);
     }
-    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo}/>
+    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} />
   })
   setOutfitCards(list);
   return;
