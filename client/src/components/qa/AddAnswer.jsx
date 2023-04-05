@@ -103,7 +103,7 @@ const AddAnswer = (props) => {
   return (
     <div className='qa_addAnswer'>
       <div>
-        <button className='qa_button' data-testid="addButton" onClick={onClickHandler}>Add Ansewer</button>
+        <button className='qa_button' data-testid="addButton" onClick={onClickHandler}>Add Answer</button>
 
       </div>
       <Modal  className='qa_addAnswerModal' isOpen={showModal} onRequestClose={closeHandler}  >

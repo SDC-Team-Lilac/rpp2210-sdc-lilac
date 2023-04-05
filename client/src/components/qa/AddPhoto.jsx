@@ -56,7 +56,7 @@ function AddPhoto(props) {
       <input type="file" onChange={photoUploadHandler} accept="image/*" multiple/>
       {props.imageUrls.length <= 4? <button onClick={uploadFile}> Upload Image</button>: null}
       {props.imageUrls.map((url) => {
-        return <img key={v4()} src={url}/>;
+        return <img  key={v4()} src={url}/>;
       })}
     </div>
   );

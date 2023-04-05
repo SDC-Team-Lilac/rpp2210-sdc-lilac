@@ -48,14 +48,14 @@ const Answer = (props) => {
       </div>
       <div>
         {props.answer.photos.map(photo=>(
-          <span key={photo.id}><img style={{height: '200px', width: '200px'}} src={photo.url}></img></span>
+          <span key={photo.id}><img className='qa_img' src={photo.url}></img></span>
         ))}
       </div>
-     <div className=''>
+     <div className='qa_answerer'>
         <div>
         <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
         </div>
-        <div>
+        <div >
         <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}
       </div>
     </div>

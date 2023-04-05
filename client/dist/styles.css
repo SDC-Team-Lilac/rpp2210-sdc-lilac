@@ -965,6 +965,9 @@ button.sarah-right-arrow:hover {
 .qa_qa {
   line-height: 1.5;
   align-items: center;
+  /* height: 100px;
+  width: 54vw; */
+  margin-bottom: 1%;
 }
 
 .qa_searchQuestion {
@@ -1007,6 +1010,8 @@ button.sarah-right-arrow:hover {
   border-radius: 6px;
   margin-bottom: 1%;
   padding-top: 1%;
+  margin-right: 2%;
+  padding-left: 1%;
 }
 
 .qa_addAnswer {
@@ -1087,6 +1092,7 @@ input:placeholder-shown {
   border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
+
   /* margin-bottom: 1%; */
 }
 
@@ -1103,6 +1109,8 @@ input:placeholder-shown {
   border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
+  width: 300px;
+  height: 30px;
 }
 .qa_searchQuestionTitle {
   /* margin-bottom: 1%; */
@@ -1112,7 +1120,34 @@ input:placeholder-shown {
 .qa_noQuestions {
   margin-bottom: 1%;
 }
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100vw;
+}
 
+.answer-container {
+  width: 70%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
 
+.qa_answerer {
+  font-size: 80%;
+  font-style: italic;
+}
+
+.qa_img {
+  object-fit: cover;
+  margin-left: 0.5%;
+}
+
+.qa_questionListWrapper {
+  border-color: #683B2B;
+  border-radius: 1%;
+  border-style: solid;
+  padding-left: 1%;
+}
 
 /* End QA CSS */
