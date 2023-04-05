@@ -14,7 +14,7 @@ const Characteristics = ({ characteristic, characteristicId, characteristicSelec
 
 
   return (
-    <div data-testid='characteristics-1' style={{border: '2px solid gray'}}>
+    <div data-testid='characteristics-1' className="reviews charatersticReview">
     <div>{characteristic}</div>
     <div><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
     <label for={characteristicOption1}>{characteristicOption1}</label>

@@ -754,6 +754,7 @@ button.sarah-right-arrow:hover {
   justify-content: center;
   gap:35px;
   margin: 10px;
+  align-self: center;
 }
 /* ---- */
 
@@ -771,7 +772,7 @@ button.sarah-right-arrow:hover {
   gap:15px;
   padding: 15px;
   /* align-content: stretch; */
-  max-height: 622px;
+  max-height: 780px;
   flex: 0 0 710px;
   overflow-y: auto
 }
@@ -798,7 +799,7 @@ button.sarah-right-arrow:hover {
   align-items: center;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   background-color: white;
-  border: 2px solid rgb(132, 132, 132);
+  border: 2px solid #B08401;
   border-radius: 12px;
   position:  absolute;
   left: 50%;
@@ -806,9 +807,104 @@ button.sarah-right-arrow:hover {
   width: 650px;
   height: 600px;
   margin: -200px 0 0 -250px;
-
   z-index:1000;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
 }
+.reviews.newReviewForm{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between;
+  align-items: stretch; */
+
+}
+.reviews.newReviewFormProduct{
+  align-self: center;
+}
+
+.reviews.newReviewItem.overall{
+  display: flex;
+  align-items: center;
+}
+.reviews.newReviewItem.overallLabel{
+ display: flex;
+ width: 50%;
+}
+
+.reviews.newReviewItem.stars{
+  padding-bottom: 5px;
+  width: 25%;
+}
+.reviews.newReviewItem.starRated{
+  font-size: medium;
+  margin-left: 10px;
+  text-align: start;
+  width:25%
+}
+
+
+.reviews.newReviewItem.recommend{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.reviews.newReviewItem.recommendLabel{
+  width: 50%;
+}
+
+
+.reviews.newReviewItem.summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reviews.newReviewItem.summaryLabel{
+  width:50%;
+}
+.reviews.newReviewItem.summaryOptions{
+  width:50%;
+}
+
+.reviews.newReviewItem.body{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reviews.newReviewItem.bodyLabel{
+  width:50%
+}
+.reviews.newReviewItem.bodyOptions{
+  resize: none;
+  width:50%
+}
+.reviews.newReviewItem.photos{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviews.newReviewItem.nickname{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviews.newReviewItem.email{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviews.newReviewItem.submit{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
 
 .reviews.sortDropdown {
   border: transparent;
@@ -919,9 +1015,10 @@ button.sarah-right-arrow:hover {
   align-self: center;
 }
 .reviews.rating {
-  font-size: 35px;
+  font-size: 40px;
   text-align:start;
   height: 40px;
+  margin-right: 10px;
 }
 .reviews.totalReviews {
   font-size: 20px;
