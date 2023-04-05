@@ -144,7 +144,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         <div className="reviews newReviewFormProduct"> Write your review about {productName}! </div>
         <div className="reviews newReviewItem overall">
           <label className="reviews newReviewItem overallLabel">Overall Rating</label>
-          <div className="reviews newReviewItem starRated"> Rated: {ratingDescription ? <span> {ratingDescription} </span>: 'nothing'}</div>
+          <div className="reviews newReviewItem starRated"> Rated: {ratingDescription ? <span> {ratingDescription} </span>: ''}</div>
           <div className="reviews newReviewItem stars">
             <span style={{width: starPercentage}} className="newReviewStars" >
             <span className="reviews newReviewItem fullStar1" name="star1" onClick={handleClick}>&#9733;</span>
