@@ -86,7 +86,7 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
     <div className="gallery">
       {mainImageIndex > 0 ? <img className="main_image_previous" onClick={handleMainPreviousClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Previous"></img> : null}
       {mainImageIndex < thunbnailList.length - 1 ? <img className="main_image_next" onClick={handleMainNextClick} src="https://cdn-icons-png.flaticon.com/512/2732/2732652.png" alt="Next"></img> : null}
-      <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} onClick={handleMainImageClick}></img>
+      <img className="mainImage" data-testid="mainImage" src={mainImage} alt={imageDescription} height="750" width="750" onClick={handleMainImageClick}></img>
       {showExpanded && createPortal(
         <ExpandedGallery mainImage={mainImage} imageDescription={imageDescription} mainImageIndex={mainImageIndex} productPhotos={productPhotos} handleMainPreviousClick={handleMainPreviousClick} handleMainNextClick={handleMainNextClick} handleThumbnailClick={handleThumbnailClick} setShowExpanded={setShowExpanded} onClose={() => setShowExpanded(false)} />,
         document.getElementById("overview_top")
