@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+// import { createPortal } from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
 import KeywordSearch from './KeywordSearch.jsx';
 import SortOptions from './SortOptions.jsx';
 import NewReview from './NewReview.jsx';
+import Modal from 'react-modal'
 
+Modal.setAppElement('#root')
 
 const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, updateReviewCount, characteristicSelections, productName }) => {
 
@@ -71,13 +73,16 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
         })}
       </div>
       <div className="reviews reviewListButtons">
-        {showMoreButton ? <button onClick={addReviews}>More Reviews</button>  : null}
-        <button onClick={showModal}>Add Review</button>
+        {showMoreButton ? <button className="reviews moreReviewsButton" onClick={addReviews}>More Reviews</button>  : null}
+        <button className="reviews addReviewButton" onClick={showModal}>Add Review +</button>
       </div>
-      {showNewReview && createPortal(
+      {/* {showNewReview && createPortal(
         <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
         document.body
-      )}
+      )} */}
+      <Modal className="reviews reviewModal" isOpen={showNewReview} onRequestClose={hideModal}>
+        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/>
+       </Modal>
 
     </div>
   )

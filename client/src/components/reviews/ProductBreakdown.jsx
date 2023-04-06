@@ -14,7 +14,8 @@ const ProductBreakdown = ({characteristics, characteristicSelections}) => {
   }
 
   return (
-    <div data-testid='productBreakdown-1' className="reviews productBreakdown"> ProductBreakdown!
+    <div data-testid='productBreakdown-1' className="reviews productBreakdown">
+    <div className="reviews productBreakdownTitle">Product Breakdown!</div>
     {loadBars()}
     </div>
   )

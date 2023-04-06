@@ -140,10 +140,11 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
 
   return (
     <div data-testid='newReview-1' className="reviews newReview" ref={modalRef}>
-      <form onSubmit={handleSubmit}>
-        <div> Write your review about {productName}! </div>
+      <form onSubmit={handleSubmit} className="reviews newReviewForm">
+        <div className="reviews newReviewFormProduct"> Write your review about {productName}! </div>
         <div className="reviews newReviewItem overall">
-          <label >Overall Rating</label>
+          <label className="reviews newReviewItem overallLabel">Overall Rating</label>
+          <div className="reviews newReviewItem starRated"> Rated: {ratingDescription ? <span> {ratingDescription} </span>: ''}</div>
           <div className="reviews newReviewItem stars">
             <span style={{width: starPercentage}} className="newReviewStars" >
             <span className="reviews newReviewItem fullStar1" name="star1" onClick={handleClick}>&#9733;</span>
@@ -158,14 +159,15 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
             <span className="reviews newReviewItem star4" name="star4" onClick={handleClick}>&#9734;</span>
             <span className="reviews newReviewItem star5" name="star5" onClick={handleClick}>&#9734;</span>
           </div>
-          {ratingDescription ? <div> {ratingDescription} </div>: null}
         </div>
         <div className="reviews newReviewItem recommend">
-          <label>Do you recommend this product?</label>
+          <label className="reviews newReviewItem recommendLabel">Do you recommend this product?</label>
+          <div className="reviews newReviewItem recommendOptions">
             <label for="Yes">Yes</label>
-            <input type="radio" name="recommend" value="Yes" onClick={handleClick}></input>
-          <label for="No">No</label>
-            <input type="radio" name="recommend" value="No" onClick={handleClick}></input>
+              <input type="radio" name="recommend" value="Yes" onClick={handleClick}></input>
+            <label for="No">No</label>
+              <input type="radio" name="recommend" value="No" onClick={handleClick}></input>
+            </div>
         </div>
         <div className="reviews newReviewItem characteristic">
           {/* <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/> */}
@@ -173,31 +175,31 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
           {loadCharacteristics()}
         </div>
         <div className="reviews newReviewItem summary">
-          <label>Review Summary</label>
-          <input name="summary" type="text" placeholder="Example: Best purchase ever!" maxLength="60" onChange={handleChange}></input>
+          <label className="reviews newReviewItem summaryLabel">Review Summary</label>
+          <input className="reviews newReviewItem summaryOptions" name="summary" type="text" placeholder="Example: Best purchase ever!" maxLength="60" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem body">
-          <label>Review Body</label>
-          <textarea  name="body" rows="2" cols="10" onChange={handleChange}></textarea>
+          <label className="reviews newReviewItem bodyLabel">Review Body</label>
+          <textarea  className="reviews newReviewItem bodyOptions" name="body" rows="2" cols="10" onChange={handleChange}></textarea>
         </div>
         <div className="reviews newReviewItem photos">
-          <label>Upload Your Photos</label>
-          <input name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input><button onClick={uploadFirebase}>Upload</button>
+          <label className="reviews newReviewItem photosLabel">Upload Your Photos</label>
+          <input className="reviews newReviewItem photosOptions" name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input><button onClick={uploadFirebase}>Upload</button>
         </div>
         <div className="reviews newReviewItem nickname">
-          <label>What is your nickname?</label>
-          <input name="nickname" type="text" placeholder="Example: jackson11!"maxLength="60" onChange={handleChange}></input>
+          <label className="reviews newReviewItem nicknameLabel">What is your nickname?</label>
+          <input className="reviews newReviewItem nicknameOptions" name="nickname" type="text" placeholder="Example: jackson11!"maxLength="60" onChange={handleChange}></input>
         </div>
         <div className="reviews newReviewItem email">
-          <label>What is your email?</label>
-          <input name="email" type="text" placeholder="Example: jackson11@email.com" maxLength="60" onChange={handleChange}></input>
-          <div>For authentication reasons, you will not be emailed!</div>
+          <label className="reviews newReviewItem emailLabel">What is your email?</label>
+          <input className="reviews newReviewItem emailOptions" name="email" type="text" placeholder="Example: jackson11@email.com" maxLength="60" onChange={handleChange}></input>
         </div>
+        <div className="reviews newReviewItem emailMessage">For authentication reasons, you will not be emailed!</div>
         <div className="reviews newReviewItem submit">
-          <label>Submit Review</label>
-          <input type="submit"></input>
+          <label className="reviews newReviewItem submitLabel">Submit Review</label>
+          <input className="reviews newReviewItem submitOptions" type="submit"></input>
         </div>
-        <button onClick={onClose}>Close</button>
+        {/* <button onClick={onClose}>Close</button> */}
       </form>
     </div>
   )

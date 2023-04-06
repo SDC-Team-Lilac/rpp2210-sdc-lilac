@@ -6,17 +6,16 @@ const Characteristics = ({ characteristic, characteristicId, characteristicSelec
     1) Receive characteristics from the reviews metadata in NewReview
     2) Generate the 5 radio buttons
   */
-  const characteristicOption1 = characteristicSelections[characteristic][1];
-  const characteristicOption2 = characteristicSelections[characteristic][2];
-  const characteristicOption3 = characteristicSelections[characteristic][3];
-  const characteristicOption4 = characteristicSelections[characteristic][4];
-  const characteristicOption5 = characteristicSelections[characteristic][5];
+  const characteristicOption1 = characteristicSelections[characteristic][1] +"  (1)";
+  const characteristicOption2 = characteristicSelections[characteristic][2] +"  (2)";
+  const characteristicOption3 = characteristicSelections[characteristic][3] +"  (3)";
+  const characteristicOption4 = characteristicSelections[characteristic][4] +"  (4)";
+  const characteristicOption5 = characteristicSelections[characteristic][5] +"  (5)";
 
 
   return (
-    <div data-testid='characteristics-1' style={{border: '2px solid gray'}}>
+    <div data-testid='characteristics-1' className="reviews charatersticReview">
     <div>{characteristic}</div>
-    <div><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
     <label for={characteristicOption1}>{characteristicOption1}</label>
     <input type="radio" name={characteristicId} value={characteristicOption1} onClick={(e) => {handleClick(e, 1)}} ></input>
     <label for={characteristicOption2}>{characteristicOption2}</label>
