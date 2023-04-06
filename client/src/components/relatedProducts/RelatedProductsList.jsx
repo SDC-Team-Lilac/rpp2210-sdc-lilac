@@ -24,14 +24,6 @@ const RelatedProductsList = (props) => {
           <RightArrow startingIndex={startingIndex} setStartingIndex={setStartingIndex} relatedProductsCount={props.productCards.length}/>
         </div>
       </div>
-      <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
-        var modalElement = document.getElementById('sarah-modal');
-        var overlayElement = document.getElementById('sarah-overlay');
-        var body = document.querySelector("body");
-        modalElement.classList.remove('active');
-        overlayElement.classList.remove('active');
-        body.classList.remove('active');
-      }}></div>
       <ComparisonModal relatedProductName={props.relatedProductName} currentProductName={props.productName} relatedProductFeatures={props.relatedProductFeatures} currentProductFeatures={props.currentProductFeatures}/>
     </div>
   )

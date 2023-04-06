@@ -12,6 +12,7 @@ const ReviewTile = ({ review, updateReviews }) => {
     } else {
       for (let i = 0; i < review.photos.length; i ++) {
         let image = review.photos[i];
+        // console.log('----image', image)
         if (typeof image === 'object'){
            photoResults.push(<a target="_blank" href={image.url}><img className="reviews image" src={image.url} alt="Image of reviewed item."/></a>)
         } else {

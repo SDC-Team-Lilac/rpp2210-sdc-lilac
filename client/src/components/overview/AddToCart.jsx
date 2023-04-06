@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SizeSelector from './SizeSelector.jsx';
+import { DetermineAction } from '../relatedProducts/CardButtons.jsx';
 const axios = require('axios');
 
-const AddToCart = ( { selectedStyle, productStyles } ) => {
+const AddToCart = ( { productDetails, selectedStyle, productStyles, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit } ) => {
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
-  // CHANGE STARTING QUANTITY TO 0, for addToCartButton testing
+  const [alertSuccessfulAdd, setAlertSuccessfulAdd] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState('Starting Quantity');
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [quantityDefaultValue, setQuantityDefaultValue] = useState(<option value="Starting Quantity" disabled>-</option>);
@@ -16,8 +17,11 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
   let possibleQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   useEffect(() => {
-
-  }, [alertSize]);
+    console.log('In Outfit in AddToCart useEffect: ', inOutfit);
+    if (alertSuccessfulAdd) {
+      setTimeout(() => setAlertSuccessfulAdd(false), 2000);
+    }
+  }, [alertSize, alertSuccessfulAdd, inOutfit]);
 
   const setSelectedStyleData = (quantityStart, selectedSkuIndex, styleSkuData) => {
     if (quantityStart === 0) {
@@ -51,8 +55,6 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         count: selectedQuantity
       })
         .then(success => {
-          // Refactor if time -- send the user some sort of visual to let them know it's been added
-          console.log('Item successfully added to cart!');
           return axios.get('./cart');
         })
         .then(cartData => {
@@ -61,16 +63,25 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         .catch(error => {
           console.error('Error adding product to cart!');
         });
+        setAlertSuccessfulAdd(true);
     } else {
       setAlertSize(true);
       ref.current.focus();
     }
+  }
 
+  // Sync with Sarah to see if we can import a function from cardButtons.jsx ***
+  const handleAddToOutfitClick = (e) => {
+    e.preventDefault();
+    console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
+    console.log('Determine Action: ', DetermineAction);
+    console.log('inOutfit? ', inOutfit);
+    DetermineAction(productDetails.id, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit);
   }
 
   return (
     <div className="overview_addToCart">
-      {alertSize ? <div className="size_selector_alert">Please select size</div> : <div className="size_selector_alert"></div>}
+      {alertSize ? <div className="size_selector_alert">Please select size</div> : alertSuccessfulAdd ? <div className="successful_add_alert">Item added to cart!</div> : <div className="size_selector_alert"></div>}
       <div className="addToCart_top">
         <div data-testid="sizeSelector" className="size_selector">
           <SizeSelector ref={ref} selectedStyle={selectedStyle} setSelectedStyleData={setSelectedStyleData} setSelectedQuantity={setSelectedQuantity}/>
@@ -83,9 +94,10 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
         </div>
       </div>
       <div className="addToCart_bottom">
-        {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart</button>}
-        <button data-testid="addToOutfitButton" className="addToOutfitButton">
-          <img src="https://img.icons8.com/ios/256/christmas-star.png" alt="Add to Outfit" width="35px" height="35px"></img>
+        {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart<span className="addToCartPlus">+</span></button>}
+        <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
+        {/* <span className="notAddedToOutfit">&#9734;</span> */}
+          {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>}
         </button>
       </div>
     </div>
@@ -93,11 +105,3 @@ const AddToCart = ( { selectedStyle, productStyles } ) => {
 }
 
 export default AddToCart;
-
-// BUTTON SOURCES
-// Unfilled Star: https://icons8.com/icon/2549/christmas-star
-// Filled Star: https://icons8.com/icon/10159/christmas-star
-
-// BUTTON SRCs TO USE
-// Unfilled Star: https://img.icons8.com/ios/256/christmas-star.png
-// Filled Star: https://img.icons8.com/ios-filled/256/christmas-star.png

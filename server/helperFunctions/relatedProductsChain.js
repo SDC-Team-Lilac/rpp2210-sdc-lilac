@@ -52,7 +52,6 @@ var ProductListInfo = async(req, res) => {
       })
   }))
     .then((results) => {
-      console.log('details from product chain: ', details, listName);
       return details;
     })
     .catch((err) => {
