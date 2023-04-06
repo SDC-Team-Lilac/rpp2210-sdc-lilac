@@ -13,7 +13,7 @@ const YourOutfit = (props) => {
           <LeftArrow startingIndex={outfitStartingIndex} setStartingIndex={setOutfitStartingIndex} />
         </div>
         <div className='sarah-add-to-outfit-card'>
-          <PlusButton updateSelectedProduct={props.updateSelectedProduct} currentProductId={props.currentProductId} setMyOutfit={props.setMyOutfit} OutfitListInfo={props.OutfitListInfo} currentProductId={props.currentProductId} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards} inOutfit={props.inOutfit} setInOutfit={props.setInOutfit}/>
+          <PlusButton updateSelectedProduct={props.updateSelectedProduct} currentProductId={props.currentProductId} setMyOutfit={props.setMyOutfit} OutfitListInfo={props.OutfitListInfo} currentProductId={props.currentProductId} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards} inOutfit={props.inOutfit} setInOutfit={props.setInOutfit} myOutfit={props.myOutfit} />
           <h4 className='sarah-add-to-outfit-title'>Add to Outfit</h4>
         </div>
         <div className='sarah-outfit-card-container'>

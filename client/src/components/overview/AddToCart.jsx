@@ -3,7 +3,7 @@ import SizeSelector from './SizeSelector.jsx';
 import { DetermineAction } from '../relatedProducts/CardButtons.jsx';
 const axios = require('axios');
 
-const AddToCart = ( { productDetails, selectedStyle, productStyles, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit } ) => {
+const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit } ) => {
 
   const [selectedSize, setSelectedSize] = useState('');
   const [alertSize, setAlertSize] = useState(false);
@@ -76,7 +76,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, setMyOutfit,
     console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
     console.log('Determine Action: ', DetermineAction);
     console.log('inOutfit? ', inOutfit);
-    DetermineAction(productDetails.id, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit);
+    DetermineAction(productDetails.id, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit, myOutfit);
   }
 
   return (
