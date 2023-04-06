@@ -199,7 +199,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
           <label className="reviews newReviewItem submitLabel">Submit Review</label>
           <input className="reviews newReviewItem submitOptions" type="submit"></input>
         </div>
-        <button onClick={onClose}>Close</button>
+        {/* <button onClick={onClose}>Close</button> */}
       </form>
     </div>
   )

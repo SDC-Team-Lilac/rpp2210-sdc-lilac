@@ -804,20 +804,32 @@ button.sarah-right-arrow:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
-  background-color: white;
+  z-index: 99;
+}
+
+
+.reviewModal {
+  font-size: 120%;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  right:auto;
+  bottom:auto;
+  margin-right: '-150%';
+  transform: translate(-50%, -50%);
+  padding: 5%;
+  background-color: rgb(254, 254, 254);
   border: 2px solid #B08401;
   border-radius: 12px;
-  position:  absolute;
-  left: 50%;
-  top: 140%;
-  width: 700px;
-  height: 600px;
-  margin: -200px 0 0 -250px;
-  z-index:1000;
   font-family: 'Playfair Display', serif;
-  color: #683B2B;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  z-index: 99
 }
+/* .ReactModalPortal {
+
+} */
+
+
 .reviews.newReviewForm{
   display: flex;
   flex-direction: column;
