@@ -19,18 +19,18 @@ const AnswerList = (props) => {
   return (
     <div>
      <div >
-      <Scrollbars
+      {/* <Scrollbars
       autoHeight
         // autoHeightMin={300}
         autoHeightMax={500}
-        >
-      <div >
+        > */}
+      <div className='qa_answerScrollBar'>
         {visibleAnswers.map(answer=>
         <Answer key={answer.answer_id} answer={answer}/>)}
       </div>
-      </Scrollbars>
+      {/* </Scrollbars> */}
      </div>
-     {props.answerList.length > 2? <button className='qa_button' data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
+     {props.answerList.length > 2? <button className='qa_button2' data-testid='answerList1' onClick={onClickHandler}>{expanded? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button> : null}
     </div>
   )
 }

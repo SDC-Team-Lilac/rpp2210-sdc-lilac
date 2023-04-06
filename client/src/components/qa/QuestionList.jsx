@@ -43,16 +43,18 @@ const QuestionList = (props) => {
     <div className='qa_questionListWrapper'>
 
       <label className='qa_questionList' data-testid="qaQuestionList"> <strong>Customer questions & answers</strong> </label>
-      <Scrollbars
+      {/* <Scrollbars
       autoHeight
         // autoHeightMin={600}
-        autoHeightMax={1000}>
-      {!props.showFilteredQuestions && visibleQuestions.map(question=>
-      <Question key={question.question_id} question={question} productName={props.productName}/>)}
-      {props.showFilteredQuestions && sortedFilteredQuestions.map(question=>
-      <Question key={question.question_id} question={question} productName={props.productName}/>)}
-      </Scrollbars>
-       {Qexpanded && <button className='qa_moreQuestionButton' onClick={onClickHandler}>More Answered Questions</button>}
+        autoHeightMax={1000}> */}
+      <div className='qa_questionScrollBar'>
+        {!props.showFilteredQuestions && visibleQuestions.map(question=>
+        <Question key={question.question_id} question={question} productName={props.productName}/>)}
+        {props.showFilteredQuestions && sortedFilteredQuestions.map(question=>
+        <Question key={question.question_id} question={question} productName={props.productName}/>)}
+        {/* </Scrollbars> */}
+      </div>
+       {Qexpanded && <button className='qa_button4' onClick={onClickHandler}>MORE ANSWERED QUESTIONS</button>}
     </div>
   )
 }

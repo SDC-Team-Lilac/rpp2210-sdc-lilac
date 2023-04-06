@@ -10,7 +10,6 @@ const AddAnswer = (props) => {
   const [answerInput, setAnswerInput] = useState ('');
   const [answerNicknameInput, setAnswerNicknameInput] = useState ('');
   const [answerEmailInput, setAnswerEmailInput] = useState ('');
-  const [showAddAnswerForm, setShowAddAnswerForm] = useState(false);
   const [warning, setWarning] = useState('');
   const [submitSuccess, setSubmitSuccess] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -56,19 +55,19 @@ const AddAnswer = (props) => {
     };
 
     if (!newAnswer.body || !newAnswer.name || !newAnswer.email) {
-      setSubmitSuccess('You must enter the following: Answer, Name and Email');
+      alert('You must enter the following: Answer, Name and Email');
       return;
     }
 
     if (!newAnswer.email.includes('@')) {
-      setSubmitSuccess('The email address provided is not in correct email format');
+      alert('The email address provided is not in correct email format');
       return;
     }
 
     if (imageTypes.length !== 0) {
        for (let i=0; i<imageTypes.length; i++){
       if (imageTypes[i] !== 'image/jpeg') {
-        setSubmitSuccess('The photo provided is not in correct format');
+        alert('The photo provided is not in correct format');
         return;
       };
     };
@@ -78,9 +77,8 @@ const AddAnswer = (props) => {
 
     answerSubmitFunc(props.question.question_id, newAnswer)
     .then(()=> {
-      console.log('Your answer has been submitted!');
-      setShowAddAnswerForm(false);
-      setSubmitSuccess('Your answer has been submitted!')
+      alert('Your answer has been submitted!')
+      setImageUrls([]);
       props.getAnswersForOneQuestion(props.question.question_id)
       .then((result)=> {
         console.log('new ansewer result --->>', result.data.results)
@@ -92,11 +90,8 @@ const AddAnswer = (props) => {
     })
     .catch(err=>{
       console.log(err);
-      setShowAddAnswerForm(false)
-      setSubmitSuccess('Your answer has not been submitted! Please valid your input!')
+      alert('Your answer has not been submitted! Please valid your input!')
     });
-  // }
-  setShowAddAnswerForm(false)
   };
 
 
@@ -116,7 +111,7 @@ const AddAnswer = (props) => {
               <div><label>Your email*</label><input type='text' placeholder='Example: jack@email.com' onChange={emailInputHandler} maxLength={60} ></input><div className='qa_qaFormText'>For authentication reasons, you will not be emailed</div></div>
               <div className='qa_qaFormItem'><AddPhoto setImageUrls={setImageUrls} imageUrls={imageUrls} setImageTypes={setImageTypes} imageTypes={imageTypes}/></div>
               {submitSuccess && (<div className='qa_qaFormErrorText'>{submitSuccess}</div>)}
-              <button type='submit'>Submit Answer</button>
+              <button type='submit' value='submit'>Submit Answer</button>
             </form>
           </div>
       </Modal>
