@@ -11,6 +11,10 @@ const server = 'http://localhost:3000'
 var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards) => {
   const list = relatedProducts.map((product) => {
     product.rating = RatingCalculator(product.rating);
+    var localStorageProduct = JSON.parse(localStorage.getItem(product.productId));
+    if (localStorageProduct === undefined || localStorageProduct === null) {
+      localStorage.setItem(product.productId, JSON.stringify(product));
+    }
     return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct}/>
   })
   setProductCards(list);
@@ -21,6 +25,10 @@ var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOu
   const list = myOutfit.map((outfit) => {
     if (typeof outfit.rating === 'object') {
       outfit.rating = RatingCalculator(outfit.rating);
+    }
+    var localStorageProduct = JSON.parse(localStorage.getItem(outfit.productId));
+    if (localStorageProduct === undefined || localStorageProduct === null) {
+      localStorage.setItem(outfit.productId, JSON.stringify(outfit));
     }
     return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} myOutfit={myOutfit}/>
   })

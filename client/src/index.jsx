@@ -37,6 +37,7 @@ const App = () => {
     // localStorage.setItem("outfitList", JSON.stringify([]));
     if (localStorage.getItem("outfitList") === undefined || localStorage.getItem("outfitList") === null) {
       localStorage.setItem("outfitList", JSON.stringify([]));
+      localStorage.setItem("outfitListDetails", JSON.stringify([]));
     }
     updateSelectedProduct(productId);
   }, []);
@@ -80,21 +81,10 @@ const App = () => {
       })
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
-        var outfitList = JSON.parse(localStorage.getItem("outfitList"))
+        var outfitList = JSON.parse(localStorage.getItem("outfitListDetails"));
+        //set my outfit?
         if (outfitList.length !== 0) {
-          return axios.get('/relatedProducts/info', {
-            params: {
-              relatedProducts: outfitList,
-              productId: productId,
-              listName: 'outfit'
-            }
-          })
-        }
-      })
-      .then((results) => {
-        if (results !== undefined) {
-          setMyOutfit(results.data);
-          return OutfitListInfo(setOutfitCards, setProductId, productId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+          return OutfitListInfo(setOutfitCards, setProductId, productId, outfitList, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
         }
       })
       .catch(error => {
