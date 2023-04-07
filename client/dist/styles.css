@@ -796,7 +796,7 @@ button.sarah-right-arrow:hover {
   padding: 15px;
   /* align-content: stretch; */
   max-height: 780px;
-  flex: 0 0 710px;
+  flex: 1 0 710px;
 
 }
 .reviews.fullReviewList {
@@ -843,7 +843,7 @@ button.sarah-right-arrow:hover {
   padding: 2%;
   background-color: rgb(254, 254, 254);
   border: 2px solid #B08401;
-  border-radius: 12px;
+  border-radius: 6px;
   font-family: 'Playfair Display', serif;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   z-index: 99
@@ -853,6 +853,8 @@ button.sarah-right-arrow:hover {
 .reviews.newReviewForm{
   display: flex;
   flex-direction: column;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
 }
 .reviews.newReviewFormProduct{
   align-self: center;
@@ -891,10 +893,6 @@ button.sarah-right-arrow:hover {
   width: 50%;
 }
 
-.reviews.newReviewItem.recommendOptions input{
-  border:1px solid #ff0000
-}
-
 .reviews.charatersticReview {
   border-bottom: #B08401 solid 1px;
   margin-top: 10px;
@@ -905,44 +903,72 @@ button.sarah-right-arrow:hover {
   align-items: baseline;
   justify-content: space-between;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .reviews.newReviewItem.summaryLabel{
   width:50%;
 }
 .reviews.newReviewItem.summaryOptions{
   width:50%;
+  border: 1px solid #B08401;
+  border-radius: 3px;
 }
 
 .reviews.newReviewItem.body{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+
 }
 .reviews.newReviewItem.bodyLabel{
   width:50%
 }
 .reviews.newReviewItem.bodyOptions{
   resize: none;
-  width:50%
+  width:50%;
+  border: 1px solid #B08401;
+  border-radius: 3px;
 }
 .reviews.newReviewItem.photos{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.reviews.newReviewItem.photosLabel {
+  width: 50%;
 }
 
 .reviews.newReviewItem.nickname{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.reviews.newReviewItem.nicknameOptions {
+  width:50%;
+  border: 1px solid #B08401;
+  border-radius: 3px;
 }
 
 .reviews.newReviewItem.email{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+.reviews.newReviewItem.emailOptions{
+  width:50%;
+  border: 1px solid #B08401;
+  border-radius: 3px;
 }
 
+.reviews.newReviewItem.emailMessage {
+  margin-bottom: 10px;
+}
 .reviews.newReviewItem.submit{
   display: flex;
   align-items: center;
