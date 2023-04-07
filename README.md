@@ -46,17 +46,17 @@ This project would fit within existing system architecture as a product landing 
 
 ## Tech Stack:
 ---
-[ReactJS](https://img.shields.io/badge/-React-#61DAFB)
-[Javascript](https://img.shields.io/badge/-Javascript-#F7DF1E)
-[Node](https://img.shields.io/badge/-Node.js-#339933)
-[Nodemon](https://img.shields.io/badge/-Nodemon-#76D04B)
-[Express](https://img.shields.io/badge/-Express-#000000)
-[Jquery](https://img.shields.io/badge/-jQuery-#0769AD)
-[Axios](https://img.shields.io/badge/-Axios-#5A29E4)
-[Babel](https://img.shields.io/badge/-Babel-#F9DC3E)
-[Webpack](https://img.shields.io/badge/-Webpack-#8DD6F9)
-[Jest](https://img.shields.io/badge/-Jest-#C21325)
-[React Testing Library](https://img.shields.io/badge/-Testing%Library-#E33332)
+[ReactJS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+[Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+[Node](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+[Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
+[Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+[Jquery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+[Axios](https://img.shields.io/badge/Axios-5A29E4?logo=axios&logoColor=fff&style=for-the-badge)
+[Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+[Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+[Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
+[React Testing Library](https://img.shields.io/badge/testing%20library-323330?style=for-the-badge&logo=testing-library&logoColor=red)
 
 ## Team Members:
 ---
