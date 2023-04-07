@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import StarRating from './StarRating.jsx'
 import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
 const ReviewTile = ({ review, updateReviews }) => {
+
+
+  const [markedHelpful, setMarkedHelpful] = useState(false);
 
   const renderImages = () => {
     let photoResults = [];
@@ -12,7 +15,6 @@ const ReviewTile = ({ review, updateReviews }) => {
     } else {
       for (let i = 0; i < review.photos.length; i ++) {
         let image = review.photos[i];
-        // console.log('----image', image)
         if (typeof image === 'object'){
            photoResults.push(<a target="_blank" href={image.url}><img className="reviews image" src={image.url} alt="Image of reviewed item."/></a>)
         } else {
@@ -24,9 +26,13 @@ const ReviewTile = ({ review, updateReviews }) => {
 
   }
 
+
   const handleHelpful = (e) => {
     e.preventDefault();
-    console.log('Marked Helpful')
+    if (markedHelpful) {
+      return;
+    }
+    setMarkedHelpful(true);
     axios.put('/reviews/helpful', {id: review.review_id})
     .then((success) => {console.log('Marked Review as Helpful!'); updateReviews()})
     .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
@@ -34,7 +40,6 @@ const ReviewTile = ({ review, updateReviews }) => {
 
   const handleReport = (e) => {
     e.preventDefault();
-    console.log('Reported Review')
     axios.put('/reviews/report', {id: review.review_id})
     .then((success) => {console.log('Reported Review!!'); updateReviews()})
     .catch((err) => {console.log('ERROR reporting review!', err)})
