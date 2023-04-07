@@ -10,10 +10,11 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
     productId = currentProductId;
   }
   var currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
-  var indexLocalStorage;
-  var indexMyOutfit;
+  var listDetails = JSON.parse(localStorage.getItem("outfitListDetails"));
+  var indexOutfitList;
+  var indexOutfitDetails;
   console.log('before: ', currentOutfitList);
-  console.log('myOutfit: ', myOutfit);
+  console.log('listDetails: ', listDetails);
   console.log('product clicked: ', productId);
   console.log('currentProductId: ', currentProductId);
   if (typeof productId === 'string') {
@@ -21,88 +22,75 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
   }
   if (productId === currentProductId) {
     setInOutfit(false);
-    indexLocalStorage = currentOutfitList.indexOf(currentProductId);
+    indexOutfitList = currentOutfitList.indexOf(currentProductId);
   } else {
-    indexLocalStorage = currentOutfitList.indexOf(productId);
+    indexOutfitList = currentOutfitList.indexOf(productId);
   }
-  for (var i = 0; i < myOutfit.length; i++) {
-    if (Number(myOutfit[i].productId) === productId) {
-      indexMyOutfit = i;
+  for (var i = 0; i < listDetails.length; i++) {
+    if (Number(listDetails[i].productId) === productId) {
+      indexOutfitDetails = i;
     }
   }
-  if (indexLocalStorage < 0) {
-    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+  if (indexOutfitList < 0) {
+    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, listDetails, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
   }
-  currentOutfitList.splice(indexLocalStorage, 1);
-  var newOutfit = myOutfit;
-  newOutfit.splice(indexMyOutfit, 1);
-  setMyOutfit(newOutfit);
+  currentOutfitList.splice(indexOutfitList, 1);
+  var newOutfit = listDetails;
+  newOutfit.splice(indexOutfitDetails, 1);
+  localStorage.removeItem("outfitListDetails");
+  localStorage.setItem("outfitListDetails", JSON.stringify(newOutfit));
   localStorage.removeItem("outfitList");
   localStorage.setItem("outfitList", JSON.stringify(currentOutfitList));
-  console.log('index: ', indexLocalStorage);
-  console.log('myOutfit Index: ', indexMyOutfit);
+  console.log('index: ', indexOutfitList);
+  console.log('listDetails Index: ', indexOutfitDetails);
   console.log('after: ', currentOutfitList);
-  console.log('myOutfit After: ', newOutfit);
+  console.log('listDetails After: ', newOutfit);
   if (currentOutfitList.length === 0) {
     return OutfitListInfo(setOutfitCards, setProductId, currentProductId, [], setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
   } else {
-    setMyOutfit(newOutfit);
     return OutfitListInfo(setOutfitCards, setProductId, currentProductId, newOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
-    // return axios.get('/relatedProducts/info', {
-    //   params: {
-    //     relatedProducts: currentOutfitList,
-    //     productId: currentProductId,
-    //     listName: 'outfit'
-    //   }
-    // })
-    // .then((results) => {
-    //   setMyOutfit(results.data);
-    //   return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
-    // })
   }
 };
 
 const AddToOutfitList = (currentProductId, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit, myOutfit) => {
   var currentOutfitList = JSON.parse(localStorage.getItem("outfitList"));
+  var listDetails = JSON.parse(localStorage.getItem("outfitListDetails"));
   setInOutfit(!inOutfit);
-  if (typeof currentOutfitList === 'number') {
-    currentOutfitList = [currentOutfitList];
-  }
   var newOutfitList = [];
   if (currentOutfitList === null) {
-    newOutfitList.push(props.currentProductId);
+    newOutfitList.push(currentProductId);
     var stringNew = JSON.stringify(newOutfitList);
     localStorage.setItem("outfitList", stringNew);
-    return axios.get('/relatedProducts/info', {
-      params: {
-        relatedProducts: newOutfitList,
-        productId: currentProductId,
-        listName: 'outfit'
-      }
-    })
-    .then((results) => {
-      setMyOutfit(results.data);
-      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
-    })
   } else if (currentOutfitList.indexOf(currentProductId) < 0) {
     currentOutfitList.push(currentProductId);
     var stringNew = JSON.stringify(currentOutfitList);
     localStorage.removeItem("outfitList");
     localStorage.setItem("outfitList", stringNew);
-    return axios.get('/relatedProducts/info', {
-      params: {
-        relatedProducts: currentOutfitList,
-        productId: currentProductId,
-        listName: 'outfit'
-      }
-    })
-    .then((results) => {
-      setMyOutfit(results.data);
-      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
-    })
   } else {
     return;
   }
+  var localStorageProduct = JSON.parse(localStorage.getItem(currentProductId));
+    if (localStorageProduct === undefined || localStorageProduct === null) {
+      return axios.get('/relatedProducts/info', {
+        params: {
+          relatedProducts: [currentProductId],
+          productId: currentProductId,
+          listName: 'outfit'
+        }
+      })
+      .then((results) => {
+        var newList = listDetails.concat(results.data);
+        localStorage.removeItem("outfitListDetails");
+        localStorage.setItem("outfitListDetails", JSON.stringify(newList));
+        return OutfitListInfo(setOutfitCards, setProductId, currentProductId, newList, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+      })
+    } else {
+      var array = [localStorageProduct]
+      var newList = listDetails.concat(array);
+      localStorage.removeItem("outfitListDetails");
+      localStorage.setItem("outfitListDetails", JSON.stringify(newList));
+      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, newList, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+    }
 }
 
 const DetermineAction = (currentProductId, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit, myOutfit) => {

@@ -11,7 +11,11 @@ const server = 'http://localhost:3000'
 var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards) => {
   const list = relatedProducts.map((product) => {
     product.rating = RatingCalculator(product.rating);
-    return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} />
+    var localStorageProduct = JSON.parse(localStorage.getItem(product.productId));
+    if (localStorageProduct === undefined || localStorageProduct === null) {
+      localStorage.setItem(product.productId, JSON.stringify(product));
+    }
+    return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct}/>
   })
   setProductCards(list);
   return;
@@ -22,7 +26,11 @@ var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOu
     if (typeof outfit.rating === 'object') {
       outfit.rating = RatingCalculator(outfit.rating);
     }
-    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} myOutfit={myOutfit} />
+    var localStorageProduct = JSON.parse(localStorage.getItem(outfit.productId));
+    if (localStorageProduct === undefined || localStorageProduct === null) {
+      localStorage.setItem(outfit.productId, JSON.stringify(outfit));
+    }
+    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} myOutfit={myOutfit}/>
   })
   setOutfitCards(list);
   return;

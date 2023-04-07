@@ -446,11 +446,11 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border-bottom: 1px solid #D49E8D;
+  border: 3px solid #B08401;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   z-index: 10;
-  background-color: #DED1B8;
+  background-color: white;
   width: 500px;
   max-width: 80%;
   font-family: 'Playfair Display', serif;
@@ -466,10 +466,13 @@ body {
   font-weight: bolder;
   font-size: larger;
   padding: 10px 15px;
+  border-top: 3px solid #B08401;
+  border-right: 3px solid #B08401;
+  border-left: 3px solid #B08401;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   z-index: 10;
-  background-color: #FAF6F2;
+  background-color: white;
   font-family: 'Playfair Display', serif;
   color: #683b2B;
 }
@@ -477,7 +480,7 @@ body {
 .sarah-modal-column-header {
   padding: 10px 15px;
   align-items: center;
-  border-bottom: 1px solid #D49E8D;
+  border-bottom: 1px solid #B08401;
   font-size: 1rem;
   font-weight: bold;
   font-family: 'Playfair Display', serif;
@@ -498,7 +501,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgb(254, 254, 254);
   pointer-events: none;
   overflow: auto;
   font-family: 'Playfair Display', serif;
@@ -506,7 +509,7 @@ body {
 
 #sarah-overlay.active {
   pointer-events: all;
-  opacity: 1;
+  opacity: 0.5;
   min-width: 300px;
   font-family: 'Playfair Display', serif;
 }
@@ -517,7 +520,7 @@ tr:nth-child(even) {
 }
 
 tr:nth-child(odd) {
-  background-color: #FAF6F2;
+  background-color: white;
   font-family: 'Playfair Display', serif;
 }
 
@@ -526,10 +529,10 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-body.active {
+/* body.active {
   overflow-y: hidden;
   font-family: 'Playfair Display', serif;
-}
+} */
 
 .sarah-product-cards-container {
   display: flex;
@@ -568,14 +571,16 @@ body.active {
   width: fit-content;
   margin: 10px;
   font-family: 'Playfair Display', serif;
+  border-radius: 6px;
 }
 
 .sarah-product-card {
-  border: 1px solid;
-  border-color: #FAF6F2;
+  border: 2px solid #B08401;
+  border-radius: 6px;
   background-color: #DED1BD;
   height: 325px;
   font-family: 'Playfair Display', serif;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
 }
 .sarah-product-details-container {
   /* border-bottom: 0.5px solid black;
@@ -591,9 +596,16 @@ body.active {
   font-family: 'Playfair Display', serif;
 }
 
-.sarah-product-image-div {
+.sarah-product-image-div .outfit{
   position: relative;
-  top: -38px;
+  top: -34px;
+  height: 230px;
+  font-family: 'Playfair Display', serif;
+}
+
+.sarah-product-image-div .related{
+  position: relative;
+  top: -39px;
   height: 225px;
   font-family: 'Playfair Display', serif;
 }
@@ -601,6 +613,8 @@ body.active {
 .sarah-product-image {
   object-fit: cover;
   overflow: clip;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
 }
 
 .sarah-product-category {
@@ -645,7 +659,7 @@ body.active {
 }
 
 .sarah-add-to-outfit-card {
-  border: 0.5px solid black;
+  border-radius: 6px;
   width: 200px;
   margin: 10px;
   height:319px;
@@ -658,6 +672,11 @@ body.active {
   font-family: 'Playfair Display', serif;
 }
 
+.sarah-outfit-list {
+  background-color: #d49d8d88;
+  height: 423px;
+}
+
 .sarah-outfit-card-container {
   display: flex;
   justify-content: center;
@@ -665,12 +684,14 @@ body.active {
 }
 
 .sarah-plus-button {
-  height: 319px;
-  width: 200px;
-  border: 1px;
-  background-color: #D49E8D;
+  height: 327px;
+  width: 201px;
+  background-color: #DED1B8;
   font-family: 'Playfair Display', serif;
   color: #B08401;
+  border: 2px solid #B08401;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
 }
 
 .sarah-x-button {
@@ -700,20 +721,20 @@ body.active {
 
 button.sarah-left-arrow {
   background-color: transparent;
-  border: 11px solid #FAF6F2;
+  border: 11px solid transparent;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
   top: 42%;
   left: 2px;
   position: relative;
-  color: #DED1BD;
+  color: #faf6f2;
   font-family: 'Playfair Display', serif;
 }
 
 button.sarah-left-arrow:hover {
-  border-color: #DED1BD;
-  background-color:#DED1BD;
+  border-color: #f7e2cc;
+  background-color:#f7e2cc;
   color: #B08401;
   font-family: 'Playfair Display', serif;
 }
@@ -727,20 +748,20 @@ button.sarah-left-arrow:hover {
 
 button.sarah-right-arrow {
   background-color: transparent;
-  border: 11px solid #FAF6F2;
+  border: 11px solid transparent;
   border-radius: 100px;
   height:48px;
   font-size: 35px;
   top: 42%;
   left: 2px;
   position: relative;
-  color: #DED1BD;
+  color: #faf6f2;
   font-family: 'Playfair Display', serif;
 }
 
 button.sarah-right-arrow:hover {
-  border-color: #DED1BD;
-  background-color:#DED1BD;
+  border-color: #f7e2cc;
+  background-color:#f7e2cc;
   color: #B08401;
   font-family: 'Playfair Display', serif;
 }
@@ -748,18 +769,23 @@ button.sarah-right-arrow:hover {
 .sarah-products-list {
   width: 100%;
   font-family: 'Playfair Display', serif;
+  background-color: #DED1B8;
+  height: 423px;
 }
 
 .sarah-products-list-title {
   color: #683b2B;
   font-family: 'Playfair Display', serif;
+  left: 10px;
+  top: 7px;
+  position: relative;
 }
 
 .sarah-outfit-list-title {
   color: #683b2B;
   font-family: 'Playfair Display', serif;
-  top: 50%;
-  left: 0%;
+  left: 10px;
+  top: 7px;
   position: relative;
 }
 

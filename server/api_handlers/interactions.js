@@ -16,4 +16,20 @@ const APIKey = process.env.FEC_API_KEY;
     // widget (STRING) -- required param for name of module for widget in which the click occurred
     // time (STRING) -- required param for time the interaction occurred
 
-// module.exports.fnName = fnName;
+    const interaction = (data) => {
+      console.log('data=====>>', data)
+
+      return axios.post(`${APIHostURL}/interactions`,
+        {
+          element: data.element,
+          widget: data.module,
+          time: data.time
+        },
+        {
+          headers: {
+          Authorization: APIKey
+        }
+      });
+    };
+
+module.exports.interaction = interaction;
