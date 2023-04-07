@@ -11,7 +11,7 @@ const APIKey = process.env.FEC_API_KEY;
   //   page (INT) -- select page of results to return, defaults to 1
   //   count (INT) -- specifies how many results per page to return, defaults to 5
 
-const getProductQuestions = (product_id, page=1, count=5) => {
+const getProductQuestions = (product_id, page=1, count=10) => {
   return axios.get(`${APIHostURL}/qa/questions`, {
     params: {
         product_id: product_id,
@@ -29,7 +29,7 @@ const getProductQuestions = (product_id, page=1, count=5) => {
   // query params:
     // page (INT) -- select page of results to return, defaults to 1
     // count (INT) -- specifies how many results per page to return, defaults to 5
-const getProductAnswers = (question_id, page=1, count=5) => {
+const getProductAnswers = (question_id, page=1, count=10) => {
   return axios.get(`${APIHostURL}/qa/questions/${question_id}/answers`, {
     params: {
         page,

@@ -4,6 +4,7 @@ import ReviewList from './ReviewList.jsx'
 import NewReview from './NewReview.jsx'
 import { RatingCalculator } from '../relatedProducts/helperFunctions.jsx'
 import axios from 'axios';
+import useInteraction from '../../useInteraction.jsx';
 
 const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageRating, averageStarRating, updateTotalNumberReviews, totalNumberReviews, reviewsRef }) => {
 
@@ -125,10 +126,10 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
 
 
   return (
-    <div data-testid='reviews-1'>
+    <div data-testid='reviews-1' onClick={(event)=>useInteraction(event, 'Reviews')}>
       <div className="reviews reviewsMain" ref={reviewsRef}>
-        { reviewsMeta!== null && reviews.length !== 0 ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
-        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/> : 'There are no reviews!'}
+        { reviewsMeta!== null ? <RatingBreakdown reviewsMeta={reviewsMeta} filters={filters} updateFilters={updateFilters} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} averageStarRating={averageStarRating} characteristicSelections={characteristicSelections}/> : null }
+        { filteredReviews.length !== 0 ? <ReviewList reviews={filteredReviews}  sortReviews={sortReviews} updateReviews={updateReviews} reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/> : null}
       </div>
     </div>
   )

@@ -11,7 +11,7 @@ const RelatedProducts = (props) => {
   return (
     <div>
       <RelatedProductsList relatedProductFeatures={props.relatedProductFeatures} productCards={props.productCards} currentProductFeatures={props.productFeatures} productName={props.productName} relatedProductName={props.relatedProductName} />
-      <YourOutfit inOutfit={props.inOutfit} setInOutfit={props.setInOutfit} OutfitListInfo={props.OutfitListInfo} outfitCards={props.outfitCards} setMyOutfit={props.setMyOutfit} currentProductId={props.productId} currentProductId={props.productId} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards} />
+      <YourOutfit inOutfit={props.inOutfit} setInOutfit={props.setInOutfit} OutfitListInfo={props.OutfitListInfo} outfitCards={props.outfitCards} setMyOutfit={props.setMyOutfit} currentProductId={props.productId} currentProductId={props.productId} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards} myOutfit={props.myOutfit}/>
       <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
         var modalElement = document.getElementById('sarah-modal');
         var overlayElement = document.getElementById('sarah-overlay');

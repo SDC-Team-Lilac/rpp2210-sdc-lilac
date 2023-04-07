@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Answer from './Answer.jsx'
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const AnswerList = (props) => {
 
@@ -17,9 +18,19 @@ const AnswerList = (props) => {
 
   return (
     <div>
-      {visibleAnswers.map(answer=>
-      <Answer key={answer.answer_id} answer={answer}/>)}
-      {props.answerList.length > 2? <button data-testid='answerList1' onClick={onClickHandler}>{expanded? 'Collapse answers' : 'See more answers'}</button> : null}
+     <div >
+      {/* <Scrollbars
+      autoHeight
+        // autoHeightMin={300}
+        autoHeightMax={500}
+        > */}
+      <div className='qa_answerScrollBar'>
+        {visibleAnswers.map(answer=>
+        <Answer key={answer.answer_id} answer={answer}/>)}
+      </div>
+      {/* </Scrollbars> */}
+     </div>
+     {props.answerList.length > 2? <button className='qa_button2' data-testid='answerList1' onClick={onClickHandler}>{expanded? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button> : null}
     </div>
   )
 }

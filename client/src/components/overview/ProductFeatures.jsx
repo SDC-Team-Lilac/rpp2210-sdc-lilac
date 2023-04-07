@@ -7,7 +7,7 @@ const ProductFeatures = ( { features } ) => {
     count++;
     return (
       <div className="product_feature">
-        <img className="feature_checkmark" src="https://cdn-icons-png.flaticon.com/512/9675/9675140.png" alt="Product Feature"></img>
+        <img className="feature_checkmark" src="https://cdn-icons-png.flaticon.com/512/9675/9675140.png" alt="Product Feature" height="26px" width="26px"></img>
         <span key={count} className="product_feature_text" data-testid={`feature-${count}`}>{feature.value} {feature.feature}</span><br></br>
       </div>
     );

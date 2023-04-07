@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const SearchQuestion = (props) => {
 
@@ -31,9 +33,12 @@ const SearchQuestion = (props) => {
   return (
     <div className='qa_searchQuestion'>
     <form >
-      <label data-testid="qaSearchQuestion"><strong>Looking for specific Question?</strong></label>
-      <div>
-      <input type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
+      <div className='qa_searchQuestionTitle'>
+      <label data-testid="qaSearchQuestion" ><strong>Looking for specific Question?</strong></label>
+      </div>
+      <div className="qa_searchbar">
+      <input className='qa_searchQuestionInput' type='text' placeholder='Have a question? Search for answers…' onChange={searchQuestionHandler}></input>
+      <FontAwesomeIcon icon={faSearch} className='qa_searchIcon'/>
       </div>
     </form>
     </div>

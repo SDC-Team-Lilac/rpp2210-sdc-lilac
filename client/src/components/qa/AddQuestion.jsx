@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 Modal.setAppElement('#root');
 
@@ -62,9 +64,10 @@ const AddQuestion = (props) => {
   };
 
   return (
-    <div>
-    {/* <div data-testid='AddQuestion'> AddQuestion! </div> */}
-    <button onClick={handleClick}>Ask Your Question</button>
+    <div className='qa_addQuestion'>
+    <div data-testid='AddQuestion'> <strong>Didn't find the question you were looking for? Ask your question!</strong> </div>
+    <button className='qa_button3' onClick={handleClick}> ADD A QUESTION <FontAwesomeIcon icon={faPlus} /></button>
+
     <Modal className="qa_addQuestionModal" isOpen={showModal} onRequestClose={handleClose}>
        <div>
         <form onSubmit={newQuestionSubmitHandler}>
