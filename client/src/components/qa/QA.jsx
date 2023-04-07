@@ -3,6 +3,7 @@ import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import SearchQuestion from './SearchQuestion.jsx';
 import axios from 'axios';
+import useInteraction from '../../useInteraction.jsx';
 
 const QA = (props) => {
 
@@ -37,7 +38,7 @@ const QA = (props) => {
   }, [props.productId]);
 
   return (
-    <div className='qa_qa' >
+    <div className='qa_qa' onClick={(event)=>useInteraction(event, 'QA')} >
       <div>
       <h1 data-testid='qaQa'> Questions & Answers </h1>
       </div>
