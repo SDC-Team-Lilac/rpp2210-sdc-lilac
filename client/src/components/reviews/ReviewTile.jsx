@@ -16,7 +16,7 @@ const ReviewTile = ({ review, updateReviews }) => {
         if (typeof image === 'object'){
            photoResults.push(<a target="_blank" href={image.url}><img className="reviews image" src={image.url} alt="Image of reviewed item."/></a>)
         } else {
-          hotoResults.push(<a target="_blank" href={image}><img className="reviews image" src={image} alt="Image of reviewed item."/></a>)
+          photoResults.push(<a target="_blank" href={image}><img className="reviews image" src={image} alt="Image of reviewed item."/></a>)
         }
       }
     }

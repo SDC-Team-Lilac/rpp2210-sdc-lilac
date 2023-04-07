@@ -172,7 +172,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         <div className="reviews newReviewItem characteristic">
           {/* <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/> */}
           Please rate the following Characteristics!
-          {loadCharacteristics()}
+          <div style={{whiteSpace:"nowrap"}}>{loadCharacteristics()}</div>
         </div>
         <div className="reviews newReviewItem summary">
           <label className="reviews newReviewItem summaryLabel">Review Summary</label>
