@@ -1413,12 +1413,13 @@ button.sarah-right-arrow:hover {
   border: 2px solid #B08401;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   border-radius: 6px;
-  width: 600px;
+  width: 1263px;
   height: 30px;
   padding-right: 30px;
 }
 .qa_searchQuestionTitle {
-  padding-bottom: 5%;
+  padding-bottom: 2%;
+  margin-top: 2%;
 }
 
 .qa_noQuestions {
@@ -1483,6 +1484,21 @@ button.sarah-right-arrow:hover {
 
 }
 
+.qa_imgModal {
+  position:fixed;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  right:auto;
+  bottom:auto;
+  margin-right: '-50%';
+  transform: translate(-50%, -50%);
+  padding: 5%;
+  background-color: rgb(254, 254, 254);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit:contain;
+}
 
 
 /* End QA CSS */

@@ -39,9 +39,9 @@ const QA = (props) => {
 
   return (
     <div className='qa_qa' onClick={(event)=>useInteraction(event, 'QA')} >
-      <div>
-      <h1 data-testid='qaQa'> Questions & Answers </h1>
-      </div>
+      {/* <div>
+      <h3 data-testid='qaQa'> Questions & Answers </h3>
+      </div> */}
       {!noQuestionMessage &&
       <SearchQuestion setFilterQuestions={setFilterQuestions} productId={props.productId} questionList={questionList} setShowFilteredQuestions={setShowFilteredQuestions}/>
       }
