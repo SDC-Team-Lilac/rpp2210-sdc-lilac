@@ -36,7 +36,8 @@ function AddPhoto(props) {
 
   const imagesListRef = ref(storage, "images/");
 
-  const uploadFile = () => {
+  const uploadFile = (event) => {
+    event.preventDefault();
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
@@ -54,7 +55,7 @@ function AddPhoto(props) {
   return (
     <div>
       <input type="file" onChange={photoUploadHandler} accept="image/*" multiple/>
-      {props.imageUrls.length <= 4? <button onClick={uploadFile}> Upload Image</button>: null}
+      {props.imageUrls.length <= 4? <button onClick={uploadFile} value='upload'> Upload Image</button>: null}
       {props.imageUrls.map((url) => {
         return <img key={v4()} src={url}/>;
       })}

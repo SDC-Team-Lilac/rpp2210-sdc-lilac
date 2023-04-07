@@ -1222,12 +1222,15 @@ button.sarah-right-arrow:hover {
 
 .qa_qa {
   line-height: 1.5;
+  max-height: 100vmax;
   align-items: center;
+  margin-bottom: 1%;
 }
 
 .qa_searchQuestion {
   font-size: 120%;
   margin-bottom: 1%;
+  display: flex;
 }
 
 .qa_answer{
@@ -1238,26 +1241,37 @@ button.sarah-right-arrow:hover {
 
 .qa_questionList{
   font-size: 120%;
-  margin-bottom: 1%;
   display: flex;
   justify-content: flex-start;
+  padding-bottom: 1%;
+  margin-bottom: 1%;
+  white-space: nowrap;
 }
 
 .qa_question {
-  background-color: antiquewhite;
+  background-color: #DED1BD;
   font-weight: bold;
-  /* text-decoration: underline; */
   margin-bottom: 0.5%;
+  display: initial;
 }
 
 
 .qa_answerList {
-  border-left: 1px solid black;
-  padding-left: 0.8%
+  border-left: 0.5rem solid #D49E8D;
+  padding-left: 0.8%;
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  margin-right: 30px;
+  position: relative;
+  min-height: 65px;
 }
 
 .qa_addAnswer {
-  /* padding-left: 1%; */
+  margin-top: 1%;
   margin-bottom: 1%;
 }
 
@@ -1268,12 +1282,11 @@ button.sarah-right-arrow:hover {
   left: 50%;
   right:auto;
   bottom:auto;
-  margin-right: '-150%';
+  margin-right: '-120%';
   transform: translate(-50%, -50%);
   padding: 5%;
   border: 1px solid #050505;
   background-color: rgb(254, 254, 254);
-
 }
 
 .qa_addQuestionModal {
@@ -1291,7 +1304,19 @@ button.sarah-right-arrow:hover {
 }
 
 .qa_questionHelpful{
-  padding-left: 3%;
+  /* padding-right: 10%; */
+  /* margin-left: 90%; */
+  /* background-color: #FAF6F2; */
+  position: absolute;
+  top:10px;
+  right:200px;
+  font-size: 16px;
+}
+
+.qa_addAnswer1 {
+  position:absolute;
+  top:10px;
+  right:100px;
 
 }
 
@@ -1313,4 +1338,151 @@ button.sarah-right-arrow:hover {
   font-weight: lighter;
   font-style: italic;
 }
+
+.qa_addQuestion{
+  margin-bottom: 2%;
+}
+
+.qa_button {
+  background-color: white;
+  border: none;
+  text-align: center;
+  padding:15px 1px;
+  font-size: 16px;
+  text-decoration: underline;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+}
+
+.qa_button2 {
+  background-color: white;
+  border: none;
+  text-align: center;
+  padding:15px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+  /* border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px; */
+  /* border-radius: 6px; */
+  margin-bottom: 1%;
+}
+
+.qa_button3 {
+  background-color: white;
+  border: none;
+  text-align: center;
+  padding:5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 1%;
+  margin-top: 2%;
+}
+
+.qa_button4 {
+  background-color: white;
+  border: none;
+  text-align: center;
+  padding:5px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 1%;
+}
+
+.qa_moreQuestionButton{
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  margin-bottom: 1%;
+}
+
+.qa_searchQuestionInput{
+  background-color: white;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+  width: 600px;
+  height: 30px;
+  padding-right: 30px;
+}
+.qa_searchQuestionTitle {
+  padding-bottom: 5%;
+}
+
+.qa_noQuestions {
+  margin-bottom: 1%;
+}
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.answer-container {
+  width: 70%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.qa_answerer {
+  font-size: 80%;
+  font-style: italic;
+}
+
+.qa_img {
+  object-fit: cover;
+  margin-left: 0.5%;
+}
+
+.qa_searchbar {
+  position: relative;
+  display: inline-block;
+}
+
+.qa_searchIcon{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  /* cursor: pointer; */
+}
+
+.qa_answerScrollBar {
+  overflow-y: auto;
+  white-space: nowrap;
+  max-height: 400px;
+  scrollbar-width: 1px;
+  scrollbar-color:inherit
+}
+
+.qa_questionScrollBar {
+  overflow-y: auto;
+  white-space: nowrap;
+  max-height: 700px;
+  margin-bottom: 10px;
+  scrollbar-color:inherit
+}
+
+.qa_plusIcon{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+
+}
+
+
+
 /* End QA CSS */

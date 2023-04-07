@@ -31,6 +31,15 @@ const Answer = (props) => {
     })
   };
 
+  const dateConverter = (inputDate) => {
+    const dateObj = new Date(inputDate);
+    const month = dateObj.toLocaleString('default', { month: 'long' });
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const formattedDate = `${month} ${day}, ${year}`;
+    return formattedDate;
+  }
+
 
   return (
     <div className='qa_answer'>
@@ -39,14 +48,14 @@ const Answer = (props) => {
       </div>
       <div>
         {props.answer.photos.map(photo=>(
-          <span key={photo.id}><img style={{height: '200px', width: '200px'}} src={photo.url}></img></span>
+          <a target="_blank" href={photo.url} key={photo.id} ><img className='qa_img' src={photo.url}></img></a>
         ))}
       </div>
-      <div>
-      <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{props.answer.date.split('T')[0]}</span>
-    </div>
-    <div>
-      <span data-testid='answer'>Helpful? </span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>{report === 'Report'?<a href='' onClick={reportHandler}>{' | ' + report}</a>:<span>{' | ' + report}</span>}
+     <div className='qa_answerer'>
+
+        <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
+        <span data-testid='answer'>&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;Helpful?&nbsp;</span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>{report === 'Report'?<a href='' onClick={reportHandler}>{report}</a>:<span>{report}</span>}
+
     </div>
   </div>
   )
