@@ -254,6 +254,17 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
     });
 });
 
+app.post('/interactions', (req, res)=> {
+  interactions_api.interaction(req.body)
+  .then(() => {
+    res.status(201).end();
+  })
+  .catch(error => {
+    console.error('Error in interaction:', error);
+    res.status(422).send(error);
+  });
+})
+
 
 // END QA ROUTES
 
