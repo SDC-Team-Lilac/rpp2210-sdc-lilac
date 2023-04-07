@@ -872,7 +872,6 @@ button.sarah-right-arrow:hover {
 
 .reviews.newReviewItem.stars{
   padding-bottom: 5px;
-  width: 25%;
   cursor: pointer;
 }
 .reviews.newReviewItem.starRated{
