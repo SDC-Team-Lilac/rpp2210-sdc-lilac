@@ -117,7 +117,8 @@ const XButton = (props) => {
 
 const OnCardClick = (productId, setProductId, updateSelectedProduct) => {
   setProductId(productId);
-  updateSelectedProduct(productId);
+  location.pathname=('/' + productId.toString());
+  // updateSelectedProduct(productId);
 }
 
 const StarButton = (currentProduct, clickedProduct, setRelatedProductId, clickedProductName, setRelatedProductName) => {
