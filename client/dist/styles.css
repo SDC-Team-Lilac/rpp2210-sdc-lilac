@@ -18,6 +18,16 @@ body {
   margin-right: 2%;
 }
 
+#header {
+  background-color: #FAF6F2;
+  position: sticky;
+  top: 0px;
+  margin-top: -24px;
+  padding-top: 4px;
+  z-index: 10;
+  margin-bottom: 10px;
+}
+
 #overview {
   display: flex;
   flex-direction: column;
@@ -239,7 +249,7 @@ body {
 }
 
 .product_sale_price {
-  color: red;
+  color: #B08401;
   font-weight: 700;
 }
 

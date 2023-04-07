@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import Overview from './components/overview/Overview.jsx'
-import QA from './components/qa/QA.jsx'
-import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx'
-import Reviews from './components/reviews/Reviews.jsx'
+import Header from './components/header/Header.jsx';
+import Overview from './components/overview/Overview.jsx';
+import QA from './components/qa/QA.jsx';
+import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
+import Reviews from './components/reviews/Reviews.jsx';
 import { ProductListInfo, OutfitListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
 
 const axios = require('axios');
@@ -102,6 +103,7 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct} myOutfit={myOutfit} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} inOutfit={inOutfit} setInOutfit={setInOutfit} reviewsRef={reviewsRef} />
       <RelatedProducts inOutfit={inOutfit} setInOutfit={setInOutfit} OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct}/>
       <QA productId={productId} productName={productName}/>
