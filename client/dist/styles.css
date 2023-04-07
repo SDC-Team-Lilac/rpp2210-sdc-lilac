@@ -873,6 +873,7 @@ button.sarah-right-arrow:hover {
 .reviews.newReviewItem.stars{
   padding-bottom: 5px;
   width: 25%;
+  cursor: pointer;
 }
 .reviews.newReviewItem.starRated{
   font-size: medium;
@@ -956,6 +957,7 @@ button.sarah-right-arrow:hover {
   font-family: 'Playfair Display', serif;
   color: #683B2B;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .reviews.sortDropdown:hover {
@@ -1019,6 +1021,7 @@ button.sarah-right-arrow:hover {
   font-family: 'Playfair Display', serif;
   color: #683B2B;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .reviews.moreReviewsButton:hover,
@@ -1083,6 +1086,7 @@ button.sarah-right-arrow:hover {
   justify-content: center;
   text-align: center;
   column-gap: 10px;
+  cursor: pointer;
 }
 .reviews.rightRatingBar{
   text-align: left;
@@ -1183,6 +1187,7 @@ button.sarah-right-arrow:hover {
 
 .reviews.fullRatingBar.selected {
   background-color: #d0c1b2;
+  cursor: pointer;
 }
 
 /* ----- */
