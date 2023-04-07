@@ -15,6 +15,9 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     var total = Number(reviewsMeta.recommended.false) + Number(reviewsMeta.recommended.true);
     var recommend = Number(reviewsMeta.recommended.true);
     var percent = Math.round(((recommend/total) * 100))
+    if (percent === NaN) {
+      return;
+    }
     setRecommended(percent)
   }
   const countReviews = () => {
@@ -110,7 +113,8 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
               <div className="reviews rightRatingBar">{reviewsMeta.ratings[1]}</div>
           </div>
         </div>
-      <div className="reviews recommendedTotal">{recommended}% recommendended</div>
+
+      { recommended ? <div className="reviews recommendedTotal">{recommended}% recommendended</div> : null }
       <ProductBreakdown characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/>
     </div>
   )
