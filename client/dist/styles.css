@@ -25,7 +25,30 @@ body {
   margin-top: -24px;
   padding-top: 4px;
   z-index: 10;
-  margin-bottom: 10px;
+  padding-bottom: 4px;
+}
+
+.light_dark_mode_toggle {
+  position: sticky;
+  left: 1340px;
+  background-color: #FAF6F2;
+  border: 0px;
+  opacity: .7;
+  border-radius: 50%;
+  /* border: 3px solid rgba(255, 255, 255, 0.762); */
+}
+
+.light_dark_mode_toggle:hover {
+  background-color: #ded1bdb6;
+}
+
+.dark_mode_button {
+  padding: 3px 0px 1px 0px;
+}
+
+.light_mode_button {
+  padding: 3px 0px 1px 0px;
+  filter: invert(100%);
 }
 
 #overview {
