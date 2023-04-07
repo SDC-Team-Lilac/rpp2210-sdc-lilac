@@ -31,7 +31,7 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
     }
   }
   if (indexLocalStorage < 0) {
-    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, updateFilePath);
   }
   currentOutfitList.splice(indexLocalStorage, 1);
   var newOutfit = myOutfit;
@@ -44,10 +44,10 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
   console.log('after: ', currentOutfitList);
   console.log('myOutfit After: ', newOutfit);
   if (currentOutfitList.length === 0) {
-    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, [], setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, [], setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, updateFilePath);
   } else {
     setMyOutfit(newOutfit);
-    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, newOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+    return OutfitListInfo(setOutfitCards, setProductId, currentProductId, newOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, updateFilePath);
     // return axios.get('/relatedProducts/info', {
     //   params: {
     //     relatedProducts: currentOutfitList,
@@ -82,7 +82,7 @@ const AddToOutfitList = (currentProductId, setMyOutfit, setOutfitCards, setProdu
     })
     .then((results) => {
       setMyOutfit(results.data);
-      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, updateFilePath);
     })
   } else if (currentOutfitList.indexOf(currentProductId) < 0) {
     currentOutfitList.push(currentProductId);
@@ -98,7 +98,7 @@ const AddToOutfitList = (currentProductId, setMyOutfit, setOutfitCards, setProdu
     })
     .then((results) => {
       setMyOutfit(results.data);
-      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+      return OutfitListInfo(setOutfitCards, setProductId, currentProductId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, updateFilePath);
     })
   } else {
     return;
@@ -127,9 +127,14 @@ const XButton = (props) => {
   )
 }
 
-const OnCardClick = (productId, setProductId, updateSelectedProduct) => {
+const OnCardClick = (productId, setProductId, updateSelectedProduct, updateFilePath) => {
+  console.log("Update File Path in OnCardClick? ", updateFilePath);
   setProductId(productId);
+  location.pathname=('/' + productId.toString());
+  console.log('location.pathname in OnCardClick: ', location.pathname);
   updateSelectedProduct(productId);
+  // ***************************
+  // updateFilePath(productId);
 }
 
 const StarButton = (currentProduct, clickedProduct, setRelatedProductId, clickedProductName, setRelatedProductName) => {
