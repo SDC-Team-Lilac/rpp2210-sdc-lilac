@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-// app.set('view engine', 'ejs');
 
 const cart_api = require('./api_handlers/cart');
 const interactions_api = require('./api_handlers/interactions');
@@ -9,28 +8,13 @@ const products_api = require('./api_handlers/products');
 const qa_api = require('./api_handlers/qa');
 const reviews_api = require('./api_handlers/reviews');
 const relatedChainHelper = require('./helperFunctions/relatedProductsChain.js');
-const expressStaticGzip = require('express-static-gzip');
-// const router = require('express').Router();
 
+const expressStaticGzip = require('express-static-gzip');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-// Make sure to comment this out when testing through Postman***
 app.use(expressStaticGzip(path.join(__dirname,'../client/dist'), {
   enableBrotli: true
 }));
-
-// app.set('view engine', 'ejs');
-// // Server URL
-// app.get('/', (req, res) => {
-//   console.log('productId: ', req.query.productId);
-//   res.render('index', { productId: req.query.productId || 71697 });
-// });
-
-// app.get('/', (req, res) => {
-//   console.log('productId: ', req.query.productId);
-//   // res.render('index');
-//   res.render('index', { productId: req.query.productId || 71697 });
-// });
 
 // PRODUCT ROUTES:
 
@@ -42,8 +26,8 @@ app.get('/:product_id', (req, res) => {
       // Client does not know we changed the id here
       console.log('Product ID URL Changed!');
     }
-  } )
-})
+  });
+});
 
 app.get('/products', (req, res) => {
   products_api.getAllProducts()
@@ -72,8 +56,6 @@ app.get('/products/:product_id/related', (req, res) => {
   var product_id = req.params.product_id;
   products_api.getRelated(product_id)
     .then((relatedProducts) => {
-      //console.log('Related Products Request: ', relatedProducts.data);
-      console.log('results of api get related products: ', relatedProducts.data);
       res.status(200).send(relatedProducts.data)
     })
     .catch((error) => {
@@ -94,7 +76,6 @@ app.get('/relatedProducts/info', (req, res) => {
 
 app.get('/products/:product_id/styles', (req, res) => {
   var product_id = req.params.product_id;
-  // console.log('THIS IS PRODUCT_ID: ', product_id);
   products_api.getStyles(product_id)
     .then((productStyles) => {
       res.status(200).send(productStyles.data)
@@ -285,5 +266,5 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 
 app.listen(3000, function(){
-  console.log('Connected to server on Port 3000!');
+  console.log('Connected to server on port 3000!');
 });

@@ -70,12 +70,8 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
     }
   }
 
-  // Sync with Sarah to see if we can import a function from cardButtons.jsx ***
   const handleAddToOutfitClick = (e) => {
     e.preventDefault();
-    console.log('Add to Outfit Clicked! Current product id: ', productDetails.id);
-    console.log('Determine Action: ', DetermineAction);
-    console.log('inOutfit? ', inOutfit);
     DetermineAction(productDetails.id, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit, myOutfit);
   }
 
@@ -96,7 +92,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
       <div className="addToCart_bottom">
         {selectedQuantity === 0 ? null : <button data-testid="addToCartButton" className="addToCartButton" onClick={handleAddToCartClick}>Add to Cart<span className="addToCartPlus">+</span></button>}
         <button data-testid="addToOutfitButton" className="addToOutfitButton" onClick={handleAddToOutfitClick}>
-        {/* <span className="notAddedToOutfit">&#9734;</span> */}
           {inOutfit ? <span className="addedToOutfit">&#9733;</span> : <span className="notAddedToOutfit">&#9734;</span>}
         </button>
       </div>

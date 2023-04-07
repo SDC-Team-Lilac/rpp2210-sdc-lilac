@@ -8,22 +8,21 @@ import CardStructure from './CardStructure.jsx';
 
 const server = 'http://localhost:3000'
 
-var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards, updateFilePath) => {
+var ProductListInfo = (relatedProducts = [], setRelatedProductFeatures, productFeatures, setRelatedProductName, setProductId, updateSelectedProduct, productId, setProductCards) => {
   const list = relatedProducts.map((product) => {
     product.rating = RatingCalculator(product.rating);
-    return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} updateFilePath={updateFilePath}/>
+    return <CardStructure product={product} setRelatedProductName={setRelatedProductName} setRelatedProductFeatures={setRelatedProductFeatures} listName={'product'} currentProductFeatures={productFeatures} relatedProductId={product.productId} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} />
   })
   setProductCards(list);
   return;
 }
 
-var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, outfitCards, updateFilePath) => {
-  console.log('Update File Path in OutfitListInfo? ', updateFilePath);
+var OutfitListInfo = (setOutfitCards, setProductId, productId, myOutfit, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit, outfitCards) => {
   const list = myOutfit.map((outfit) => {
     if (typeof outfit.rating === 'object') {
       outfit.rating = RatingCalculator(outfit.rating);
     }
-    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} myOutfit={myOutfit} updateFilePath={updateFilePath}/>
+    return <CardStructure product={outfit} listName={'outfit'} currentProductId={productId} setProductId={setProductId} setMyOutfit={setMyOutfit} updateSelectedProduct={updateSelectedProduct} setOutfitCards={setOutfitCards} OutfitListInfo={OutfitListInfo} inOutfit={inOutfit} setInOutfit={setInOutfit} myOutfit={myOutfit} />
   })
   setOutfitCards(list);
   return;

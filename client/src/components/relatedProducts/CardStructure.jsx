@@ -19,7 +19,7 @@ const CardStructure = (props) => {
         <div className='sarah-product-button-div' >
           {determine()}
         </div>
-        <div className="sarah-product-card-clickable" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct, props.updateFilePath);}}>
+        <div className="sarah-product-card-clickable" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
           <div className='sarah-product-image-div'>
             <img className='sarah-product-image' data-testid='card-image' src={props.product.image} alt={props.product.name} width='200px' height='225px'></img>
           </div>
