@@ -11,7 +11,6 @@ const Answer = (props) => {
   const [helpfulClicked, setHelpfulClicked] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState('')
-  console.log('selectedPhoto', selectedPhoto)
 
   const helpfulCountHandler = (e) =>{
     e.preventDefault();
@@ -19,7 +18,6 @@ const Answer = (props) => {
     setHelpfulCount(count);
     axios.put(`/qa/answers/${props.answer.answer_id}/helpful`)
     .then(()=> {
-      console.log('Helpful count for this answer has been updated!')
       setHelpfulClicked(true)
     })
     .catch(err=>{
@@ -31,7 +29,6 @@ const Answer = (props) => {
     e.preventDefault();
     axios.put(`/qa/answers/${props.answer.answer_id}/report`)
     .then(()=> {
-      console.log('This answer has been reported!');
       setReport('Reported')
     })
     .catch(err=>{
@@ -49,7 +46,6 @@ const Answer = (props) => {
   }
 
   const onClickHandler = (event) => {
-  console.log('event.target', event.target)
     setSelectedPhoto(event.target.src)
     setShowModal(true);
   }

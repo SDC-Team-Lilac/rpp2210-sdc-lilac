@@ -10,7 +10,6 @@ const ProductGallery = ( { productPhotos, productName, styleName } ) => {
   const [bottomThumbnailIndex, setBottomThumbnailIndex] = useState(7);
   const [showExpanded, setShowExpanded] = useState(false);
 
-  // Current bug -- this takes a noticeable amount of time to render to the page on initial page load
   useEffect(() => {
     setMainImage(productPhotos[mainImageIndex].url);
   }, [productPhotos]);

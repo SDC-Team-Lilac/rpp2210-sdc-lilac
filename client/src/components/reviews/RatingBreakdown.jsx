@@ -4,10 +4,6 @@ import StarRating from './StarRating.jsx'
 
 const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberReviews, totalNumberReviews, updateFilters, filters,  characteristicSelections}) => {
 
-  /*  This Component will:
-      1)
-   */
-
   const [recommended, setRecommended] = useState(null);
   const [mousedOver, setMousedOver] = useState(false);
 
@@ -43,8 +39,6 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     e.currentTarget.style.backgroundColor = null
   }
 
-
-
   const showBarSelection = (filters, star) => {
     if (filters.includes(star)) {
       return " selected"
@@ -62,10 +56,6 @@ const RatingBreakdown = ({ reviewsMeta, averageStarRating, updateTotalNumberRevi
     countReviews()
     percentRecommend()
   }, [reviewsMeta])
-
-  // useEffect(() => {
-  //   showBarSelection();
-  // }, [filters])
 
   return (
     <div data-testid='ratingBreakdown-1' className="reviews fullRatingBreakdown">

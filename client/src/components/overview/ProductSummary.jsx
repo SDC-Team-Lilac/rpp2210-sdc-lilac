@@ -19,9 +19,6 @@ const ProductSummary = ( { productDetails, selectedStyle, averageStarRating, tot
     reviewsRef.current.scrollIntoView({ behavior: "smooth" });
   }
 
-  // Checking for Reviews component bug - awaiting response from Christian
-  console.log('Total Number Reviews for Product Id ', productDetails.id, ' : ', totalNumberReviews);
-
   return (
     <div className="overview_product_summary">
       {totalNumberReviews > 0 ? <div className="overview_product_rating">

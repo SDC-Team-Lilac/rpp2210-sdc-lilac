@@ -2,10 +2,6 @@ import React, {useEffect, useState} from 'react';
 
 const BreakdownBar = ({characteristic, characteristicSelections, characteristicValue}) => {
 
-
-  /*  This Component will:
-      1)
-   */
   const [marginPercent, setMarginPercent] = useState('');
 
   const getMarginPercentage = () => {
