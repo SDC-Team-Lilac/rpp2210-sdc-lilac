@@ -5,18 +5,16 @@ TAN #DED1BD
 CREAM #FAF6F2
 BROWN 683B2B */
 
-body {
+/* body {
   background-color: #FAF6F2;
-}
+} */
 
-#light #root {
+#root {
   font-family: 'Playfair Display', serif;
-  /* color: #683B2B; */
   justify-content: center;
   width: 1330px;
   margin-left: 2%;
   margin-right: 2%;
-  /* background-color: #FAF6F2; */
 }
 
 #root #light{
@@ -90,7 +88,14 @@ body {
   flex-direction: row;
   width: inherit;
   height: 750px;
+}
+
+#light #overview_top {
   background-color: #d49d8d88;
+}
+
+#dark #overview_top {
+  background-color: #d49d8da7;
 }
 
 .gallery {

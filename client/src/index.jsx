@@ -13,6 +13,15 @@ const domNode = document.getElementById('root');
 const root = createRoot(domNode);
 const ThemeContext = createContext('light');
 
+const themes = {
+  light: {
+    foreground: '#3a2118',
+  },
+  dark: {
+    foreground: '#FAF6F2',
+  }
+}
+
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
@@ -105,7 +114,9 @@ const App = () => {
 
   const toggleTheme = (currentTheme) => {
     console.log('Toggling Theme! ', theme);
+    const body = document.getElementsByTagName("body");
     currentTheme === "light" ? setTheme("dark") : setTheme("light");
+    currentTheme === "light" ? body[0].style.backgroundColor = themes.light.foreground : body[0].style.backgroundColor = themes.dark.foreground;
   }
 
   return (
