@@ -9,23 +9,41 @@ body {
   background-color: #FAF6F2;
 }
 
-#root {
+#light #root {
   font-family: 'Playfair Display', serif;
-  color: #683B2B;
+  /* color: #683B2B; */
   justify-content: center;
   width: 1330px;
   margin-left: 2%;
   margin-right: 2%;
+  /* background-color: #FAF6F2; */
+}
+
+#root #light{
+  color: #683B2B;
+  background-color: #FAF6F2;
+}
+
+#root #dark {
+  color: #FAF6F2;
+  background-color: #3a2118;
 }
 
 #header {
-  background-color: #FAF6F2;
   position: sticky;
   top: 0px;
   margin-top: -24px;
   padding-top: 4px;
   z-index: 10;
   padding-bottom: 4px;
+}
+
+#light #header {
+  background-color: #FAF6F2;
+}
+
+#dark #header {
+  background-color: #3a2118;
 }
 
 .light_dark_mode_toggle {
@@ -35,11 +53,22 @@ body {
   border: 0px;
   opacity: .7;
   border-radius: 50%;
-  /* border: 3px solid rgba(255, 255, 255, 0.762); */
 }
 
-.light_dark_mode_toggle:hover {
+#light .light_dark_mode_toggle {
+  background-color: #FAF6F2;
+}
+
+#dark .light_dark_mode_toggle {
+  background-color: #3a2118;
+}
+
+#light .light_dark_mode_toggle:hover {
   background-color: #ded1bdb6;
+}
+
+#dark .light_dark_mode_toggle:hover {
+  background-color: #ded1bd46;
 }
 
 .dark_mode_button {
