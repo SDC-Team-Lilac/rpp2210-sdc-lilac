@@ -1,8 +1,8 @@
-// import * as React from 'react';
 import React, { useState, useEffect } from 'react';
 import ProductGallery from './ProductGallery.jsx';
 import ProductSelected from './ProductSelected.jsx';
 import ProductDetails from './ProductDetails.jsx';
+import useInteraction from '../../useInteraction.jsx';
 const axios = require('axios');
 
 const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, productFeatures, myOutfit, setMyOutfit, setOutfitCards, setProductId, updateSelectedProduct, inOutfit, setInOutfit, reviewsRef } ) => {
@@ -43,7 +43,7 @@ const Overview = ( { productId, styleId, averageStarRating, totalNumberReviews, 
   }
 
   return (
-    <div id="overview">
+    <div id="overview" onClick={(e)=>useInteraction(e, 'Overview')}>
       <div id="overview_top">
         <ProductGallery productPhotos={selectedStyle.photos} productName={productDetails.name} styleName={selectedStyle.name}/>
         <ProductSelected productDetails={productDetails} selectedStyle={selectedStyle} productStyles={productStyles} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} updateSelectedStyle={updateSelectedStyle} myOutfit={myOutfit} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} inOutfit={inOutfit} setInOutfit={setInOutfit} reviewsRef={reviewsRef} />
