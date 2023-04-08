@@ -18,16 +18,6 @@ app.use(expressStaticGzip(path.join(__dirname,'../client/dist'), {
 
 // PRODUCT ROUTES:
 
-app.get('/:product_id', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, '../client/dist') }, (err) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      // Client does not know we changed the id here
-      console.log('Product ID URL Changed!');
-    }
-  });
-});
 
 app.get('/products', (req, res) => {
   products_api.getAllProducts()
@@ -275,6 +265,16 @@ app.post('/interactions', (req, res)=> {
 
 // END QA ROUTES
 
+app.get('/:product_id', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, '../client/dist') }, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      // Client does not know we changed the id here
+      console.log('Product ID URL Changed!');
+    }
+  });
+});
 
 app.listen(3000, function(){
   console.log('Connected to server on port 3000!');
