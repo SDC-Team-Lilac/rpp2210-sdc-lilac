@@ -136,6 +136,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
       })
     }
     setPhotoURLs(newPhotoURLS);
+    alert('Succesfully Uploaded')
   }
 
   return (
@@ -184,7 +185,8 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem photos">
           <label className="reviews newReviewItem photosLabel">Upload Your Photos</label>
-          <input className="reviews newReviewItem photosOptions" name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input><button onClick={uploadFirebase}>Upload</button>
+          <input className="reviews newReviewItem photosOptions" name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input>
+          <button className="reviews newReviewItem photosOptions"onClick={uploadFirebase}>Upload</button>
         </div>
         <div className="reviews newReviewItem nickname">
           <label className="reviews newReviewItem nicknameLabel">What is your nickname?</label>

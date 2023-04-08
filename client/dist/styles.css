@@ -940,6 +940,14 @@ button.sarah-right-arrow:hover {
 .reviews.newReviewItem.photosLabel {
   width: 50%;
 }
+.reviews.newReviewItem.photosOptions {
+  width: 25%;
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 
 .reviews.newReviewItem.nickname{
   display: flex;
@@ -968,13 +976,21 @@ button.sarah-right-arrow:hover {
 
 .reviews.newReviewItem.emailMessage {
   margin-bottom: 10px;
+  align-self: center;
 }
 .reviews.newReviewItem.submit{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  column-gap: 10px;
 }
 
+.reviews.newReviewItem.submitOptions{
+  font-family: 'Playfair Display', serif;
+  color: #683B2B;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 
 
