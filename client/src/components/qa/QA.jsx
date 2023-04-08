@@ -38,6 +38,7 @@ const QA = (props) => {
   }, [props.productId]);
 
   return (
+    <div className='qa_parent'>
     <div className='qa_qa' onClick={(event)=>useInteraction(event, 'QA')} >
       {/* <div>
       <h3 data-testid='qaQa'> Questions & Answers </h3>
@@ -52,6 +53,7 @@ const QA = (props) => {
       <div>
       <AddQuestion productId={props.productId} productName={props.productName} setQuestionList={setQuestionList} getQuestionsForOneProduct={getQuestionsForOneProduct}/>
       </div>
+    </div>
     </div>
   )
 }
