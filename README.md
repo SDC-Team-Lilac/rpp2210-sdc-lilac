@@ -16,12 +16,21 @@ This release of the client-facing retail web-portal focused on providing the min
 
 Top features of this product include:
 A responsive image gallery which allows the user to examine their product of choice
+![](http://g.recordit.co/5G78jf2PAy.gif)
 
-- An add to cart section where users can select from sizes currently in stock, then add items to their cart
-- An "add to outfit" feature allowing users to save and remove different products
-- A dynamic question and answer space for users to receive and provide personalized information on a given product
-- An informative ratings and reviews section providing the user with key metrics regarding the selected product
-> Options for light and dark mode
+An add to cart section where users can select from sizes currently in stock, then add items to their cart
+![](http://g.recordit.co/f4DECKKZY2.gif)
+
+An "add to outfit" feature allowing users to save and remove different products
+> RELATED PRODUCTS GIF TO GO HERE
+
+A dynamic question and answer space for users to receive and provide personalized information on a given product
+> Q&A GIF TO GO HERE
+
+An informative ratings and reviews section providing the user with key metrics regarding the selected product
+> REVIEWS GIF TO GO HERE
+
+Options for light and dark mode
 ![](http://g.recordit.co/nvCQQMrXXJ.gif)
 
 ## Usage:
