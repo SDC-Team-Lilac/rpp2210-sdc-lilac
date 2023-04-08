@@ -15,11 +15,14 @@ This project updated an outdated client-facing retail web-portal in order to imp
 This release of the client-facing retail web-portal focused on providing the minimum viable product in which users can view product information, discover related products, compare details between products, save items to and remove items from their outfit, view and post questions and answers with pictures, view and post ratings and reviews with pictures, and add items to their cart.
 
 Top features of this product include:
-- A responsive image gallery which allows the user to examine their product of choice
+A responsive image gallery which allows the user to examine their product of choice
+
 - An add to cart section where users can select from sizes currently in stock, then add items to their cart
 - An "add to outfit" feature allowing users to save and remove different products
 - A dynamic question and answer space for users to receive and provide personalized information on a given product
 - An informative ratings and reviews section providing the user with key metrics regarding the selected product
+> Options for light and dark mode
+![](http://g.recordit.co/nvCQQMrXXJ.gif)
 
 ## Usage:
 This project would fit within existing system architecture as a product landing page, and a tool for users to discover additional products which may interest them.
