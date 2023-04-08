@@ -3,8 +3,9 @@ import { XButton, StarButton, OnCardClick } from './CardButtons.jsx';
 import StarRating from '../reviews/StarRating.jsx';
 
 const CardStructure = (props) => {
+  var price = '$' + props.product.price;
   if (props.product.image === null) {
-    props.product.image = 'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-16.jpg';
+    props.product.image = 'https://images.unsplash.com/photo-1556015048-4d3aa10df74c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c3VuZ2xhc3Nlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   }
   var determine = () => {
     if (props.listName === 'outfit') {
@@ -14,26 +15,49 @@ const CardStructure = (props) => {
     }
   }
   if (props.product !== undefined) {
-    return (
-      <div className='sarah-product-card' data-testid='card-action'>
-        <div className='sarah-product-button-div' >
-          {determine()}
-        </div>
-        <div className="sarah-product-card-clickable" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
-          <div className='sarah-product-image-div'>
-            <img className='sarah-product-image' data-testid='card-image' src={props.product.image} alt={props.product.name} width='200px' height='225px'></img>
+    if (props.listName === 'outfit') {
+      return (
+        <div className='sarah-product-card outfit' data-testid='card-action'>
+          <div className='sarah-product-button-div outfit' >
+            {determine()}
           </div>
-          <div className='sarah-product-details-container'>
-            <h4 className='sarah-product-category' data-testid='card-category' >{props.product.category}</h4>
-            <h4 className='sarah-product-name' data-testid='card-name' >{props.product.name}</h4>
-            <h4 className='sarah-product-price' data-testid='card-price' >{props.product.price}</h4>
-            <div className='sarah-product-ratings' data-testid='card-rating' >
-              <StarRating rating={props.product.rating}/>
+          <div className="sarah-product-card-clickable outfit" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
+            <div className='sarah-product-image-div outfit'>
+              <img className='sarah-product-image outfit' data-testid='card-image' src={props.product.image} alt={props.product.name} width='200px' height='225px'></img>
+            </div>
+            <div className='sarah-product-details-container outfit'>
+              <h4 className='sarah-product-category outfit' data-testid='card-category' >{props.product.category}</h4>
+              <h4 className='sarah-product-name outfit' data-testid='card-name' >{props.product.name}</h4>
+              <h4 className='sarah-product-price outfit' data-testid='card-price' >{price}</h4>
+              <div className='sarah-product-ratings outfit' data-testid='card-rating' >
+                <StarRating rating={props.product.rating}/>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className='sarah-product-card related' data-testid='card-action'>
+          <div className='sarah-product-button-div related' >
+            {determine()}
+          </div>
+          <div className="sarah-product-card-clickable related" onClick={() => {OnCardClick(props.product.productId, props.setProductId, props.updateSelectedProduct);}}>
+            <div className='sarah-product-image-div related'>
+              <img className='sarah-product-image related' data-testid='card-image' src={props.product.image} alt={props.product.name} width='200px' height='225px'></img>
+            </div>
+            <div className='sarah-product-details-container related'>
+              <h4 className='sarah-product-category related' data-testid='card-category' >{props.product.category}</h4>
+              <h4 className='sarah-product-name related' data-testid='card-name' >{props.product.name}</h4>
+              <h4 className='sarah-product-price related' data-testid='card-price' >{price}</h4>
+              <div className='sarah-product-ratings related' data-testid='card-rating' >
+                <StarRating rating={props.product.rating}/>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
