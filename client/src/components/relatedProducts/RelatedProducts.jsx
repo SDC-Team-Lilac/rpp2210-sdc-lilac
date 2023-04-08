@@ -5,10 +5,11 @@ import RelatedProductsRequests from './RelatedProductRequests.jsx';
 import { StarButton, XButton, OnCardClick, LeftArrow, RightArrow, PlusButton } from './CardButtons.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import RelatedProductsList from './RelatedProductsList.jsx';
+import useInteraction from '../../useInteraction.jsx';
 
 const RelatedProducts = (props) => {
   return (
-    <div className='sarah-big-related'>
+    <div className='sarah-big-related' onClick={(event) => useInteraction(event, 'relatedproducts')}>
       <RelatedProductsList relatedProductFeatures={props.relatedProductFeatures} productCards={props.productCards} currentProductFeatures={props.productFeatures} productName={props.productName} relatedProductName={props.relatedProductName} />
       <YourOutfit inOutfit={props.inOutfit} setInOutfit={props.setInOutfit} OutfitListInfo={props.OutfitListInfo} outfitCards={props.outfitCards} setMyOutfit={props.setMyOutfit} currentProductId={props.productId} currentProductId={props.productId} setProductId={props.setProductId} setOutfitCards={props.setOutfitCards} myOutfit={props.myOutfit}/>
       <div data-testid='product-list-overlay' className='sarah-overlay' id='sarah-overlay' onClick={() => {
