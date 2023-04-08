@@ -111,21 +111,22 @@ var mockReviews = {
 afterEach(() => {
   cleanup();
 })
-xdescribe('Characteristics Component', () => {
+
+describe('Characteristics Component', () => {
   it('Renders Characteristics component',  () => {
     render(<Characteristics />)
     const element = screen.getByTestId('characteristics-1');
     expect(element).toBeInTheDocument();
   })
 })
-xdescribe('KeyWordSearch Component', () => {
+describe('KeyWordSearch Component', () => {
   it('Renders KeyWordSearch component',  () => {
     render(<KeyWordSearch />)
     const element = screen.getByTestId('keyWordSearch-1');
     expect(element).toBeInTheDocument();
   })
 })
-xdescribe('NewReview Component', () => {
+describe('NewReview Component', () => {
   it('Renders NewReview component',  () => {
     render(<NewReview reviewsMeta={mockReviews}/>)
     const element = screen.getByTestId('newReview-1');
@@ -133,7 +134,7 @@ xdescribe('NewReview Component', () => {
   })
 })
 
-xdescribe('ProductBreakdown Component', () => {
+describe('ProductBreakdown Component', () => {
   it('Renders ProductBreakdown component',  () => {
     render(<ProductBreakdown />)
     const element = screen.getByTestId('productBreakdown-1');
@@ -141,7 +142,7 @@ xdescribe('ProductBreakdown Component', () => {
   })
 })
 
-xdescribe('RatingBreakdown Component', () => {
+describe('RatingBreakdown Component', () => {
   it('Renders RatingBreakdown component',  () => {
     render(<RatingBreakdown reviewsMeta={mockReviewsMeta}/>)
     const element = screen.getByTestId('ratingBreakdown-1');
@@ -149,7 +150,7 @@ xdescribe('RatingBreakdown Component', () => {
   })
 })
 
-xdescribe('ReviewList Component', () => {
+describe('ReviewList Component', () => {
   it('Renders ReviewList component',  () => {
     render(<ReviewList reviews={mockReviews}/>)
     const element = screen.getByTestId('reviewList-1');
@@ -157,7 +158,7 @@ xdescribe('ReviewList Component', () => {
   })
 })
 
-xdescribe('Reviews Component', () => {
+describe('Reviews Component', () => {
   it('Renders Reviews component', () => {
     render (<Reviews productId={71697}/>)
     const element = screen.getByTestId('reviews-1');
@@ -165,7 +166,7 @@ xdescribe('Reviews Component', () => {
   })
 })
 
-xdescribe('ReviewTile Component', () => {
+describe('ReviewTile Component', () => {
   it('Renders ReviewTile component',  () => {
     render(<ReviewTile review={mockReviews.results[0]}
     />)
@@ -174,7 +175,7 @@ xdescribe('ReviewTile Component', () => {
   })
 })
 
-xdescribe('SortOptions Component', () => {
+describe('SortOptions Component', () => {
   it('Renders SortOptions component',  () => {
     render(<SortOptions />)
     const element = screen.getByTestId('sortOptions-1');
@@ -182,7 +183,7 @@ xdescribe('SortOptions Component', () => {
   })
 })
 
-xdescribe('StarRating Component', () => {
+describe('StarRating Component', () => {
   it('Renders StarRating component',  () => {
     //render returns an object that are already bound to the base element
     const {getByTestId} = render(<StarRating />)

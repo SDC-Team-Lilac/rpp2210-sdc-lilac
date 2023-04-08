@@ -13,7 +13,7 @@ afterEach(() => {
   cleanup();
 });
 
-xdescribe('Product Gallery', () => {
+describe('Product Gallery', () => {
   it('Renders the Product Gallery component when passed product data', () => {
     const productPhotos = [
       {
@@ -45,7 +45,7 @@ xdescribe('Product Gallery', () => {
   });
 });
 
-xdescribe('Product Selected', () => {
+describe('Product Selected', () => {
   it('Renders the Product Selected component when passed product data', () => {
     const productDetails = {
       "id": 71697,
@@ -582,7 +582,7 @@ xdescribe('Product Selected', () => {
 
 });
 
-xdescribe('Product Details', () => {
+describe('Product Details', () => {
   it('Renders the Product Details component when passed product data with product details content', () => {
     const slogan = "Blend in to your crowd";
     const description = "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.";
