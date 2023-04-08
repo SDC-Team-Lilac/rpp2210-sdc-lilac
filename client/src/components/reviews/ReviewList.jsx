@@ -77,7 +77,7 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
         <button className="reviews addReviewButton" onClick={showModal}>Add Review +</button>
       </div>
       <Modal className="reviews reviewModal" isOpen={showNewReview} onRequestClose={hideModal}>
-        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/>
+        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onRequestClose={hideModal}/>
        </Modal>
 
     </div>

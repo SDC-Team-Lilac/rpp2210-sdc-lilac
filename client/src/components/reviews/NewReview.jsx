@@ -53,7 +53,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     axios.post('/reviews', fullReview)
     .then((success) => {console.log('Succesfully added new review')})
     .catch((err) => {console.log('ERROR adding new review', err)})
-    onClose();
+    alert('Succesfully Submitted New Review, you can now click out of the modal.')
   }
 
   const handleChange = (e) => {
@@ -139,6 +139,11 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     alert('Succesfully Uploaded')
   }
 
+  const submitClick = (e) => {
+    e.preventDefault();
+
+  }
+
   return (
     <div data-testid='newReview-1' className="reviews newReview" ref={modalRef}>
       <form onSubmit={handleSubmit} className="reviews newReviewForm">
@@ -201,7 +206,6 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
           <label className="reviews newReviewItem submitLabel">Submit Review</label>
           <input className="reviews newReviewItem submitOptions" type="submit"></input>
         </div>
-        {/* <button onClick={onClose}>Close</button> */}
       </form>
     </div>
   )
