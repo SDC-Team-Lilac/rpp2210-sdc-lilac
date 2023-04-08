@@ -81,7 +81,6 @@ const AddAnswer = (props) => {
       setImageUrls([]);
       props.getAnswersForOneQuestion(props.question.question_id)
       .then((result)=> {
-        console.log('new ansewer result --->>', result.data.results)
         props.setAnswerList(result.data.results);
       })
       .catch(err=>{

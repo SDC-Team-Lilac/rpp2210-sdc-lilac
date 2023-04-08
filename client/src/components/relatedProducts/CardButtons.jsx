@@ -13,10 +13,6 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
   var listDetails = JSON.parse(localStorage.getItem("outfitListDetails"));
   var indexOutfitList;
   var indexOutfitDetails;
-  console.log('before: ', currentOutfitList);
-  console.log('listDetails: ', listDetails);
-  console.log('product clicked: ', productId);
-  console.log('currentProductId: ', currentProductId);
   if (typeof productId === 'string') {
     productId = Number(productId);
   }
@@ -41,10 +37,6 @@ const DeleteFromOutfitList = (currentProductId, setMyOutfit, setOutfitCards, set
   localStorage.setItem("outfitListDetails", JSON.stringify(newOutfit));
   localStorage.removeItem("outfitList");
   localStorage.setItem("outfitList", JSON.stringify(currentOutfitList));
-  console.log('index: ', indexOutfitList);
-  console.log('listDetails Index: ', indexOutfitDetails);
-  console.log('after: ', currentOutfitList);
-  console.log('listDetails After: ', newOutfit);
   if (currentOutfitList.length === 0) {
     return OutfitListInfo(setOutfitCards, setProductId, currentProductId, [], setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
   } else {

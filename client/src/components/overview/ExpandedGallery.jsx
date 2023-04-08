@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 const ExpandedGallery = ( { mainImage, imageDescription, mainImageIndex, productPhotos, handleMainPreviousClick, handleMainNextClick, handleThumbnailClick, setShowExpanded } ) => {
 
-  // Refactor need -- take care of right and bottom whitespace on zoomed image ***
-
   const [isZoomed, setIsZoomed] = useState(false);
   const [transformOrigin, setTransformOrigin] = useState({});
   const [transform, setTransform] = useState('none');
@@ -35,7 +33,6 @@ const ExpandedGallery = ( { mainImage, imageDescription, mainImageIndex, product
     e.preventDefault();
     if (!isZoomed) {
       setTransform('scale(2.5)');
-      // Refactor need -- make this a - sign instead ***
       setCursor('zoom-out');
       setIsZoomed(true);
     } else {

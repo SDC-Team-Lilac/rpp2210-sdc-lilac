@@ -5,7 +5,6 @@ import { parseISO, formatDistanceToNow, format } from 'date-fns'
 
 const ReviewTile = ({ review, updateReviews }) => {
 
-
   const [markedHelpful, setMarkedHelpful] = useState(false);
 
   const renderImages = () => {
@@ -34,14 +33,14 @@ const ReviewTile = ({ review, updateReviews }) => {
     }
     setMarkedHelpful(true);
     axios.put('/reviews/helpful', {id: review.review_id})
-    .then((success) => {console.log('Marked Review as Helpful!'); updateReviews()})
+    .then((success) => {updateReviews()})
     .catch((err) => {console.log('ERROR marking Review as Helpful!', err)})
   }
 
   const handleReport = (e) => {
     e.preventDefault();
     axios.put('/reviews/report', {id: review.review_id})
-    .then((success) => {console.log('Reported Review!!'); updateReviews()})
+    .then((success) => {updateReviews()})
     .catch((err) => {console.log('ERROR reporting review!', err)})
   }
 

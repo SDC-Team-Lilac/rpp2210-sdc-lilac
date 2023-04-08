@@ -54,7 +54,6 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
   const updateReviews = () => {
     getReviews(count, page, sort)
     .then((result) => {
-      console.log('RESULT---', result)
       if (result.data.results.length === 0) {
         updateAverageRating(0)
       }

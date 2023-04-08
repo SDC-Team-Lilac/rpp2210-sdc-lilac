@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { createPortal } from 'react-dom';
 import ReviewTile from './ReviewTile.jsx';
 import KeywordSearch from './KeywordSearch.jsx';
 import SortOptions from './SortOptions.jsx';
@@ -64,7 +63,6 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
 
     <div data-testid='reviewList-1' className="reviews reviewList">
       <SortOptions sortReviews={sortReviews}/>
-      {/* <KeywordSearch /> */}
       <div className="reviews fullReviewList">
         {currentReviews.map((review) => {
           return (

@@ -24,7 +24,6 @@ const themes = {
 
 const App = () => {
 
-  // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
   const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
@@ -115,7 +114,6 @@ const App = () => {
   }
 
   const toggleTheme = (currentTheme) => {
-    console.log('Toggling Theme! ', theme);
     const body = document.getElementsByTagName("body");
     currentTheme === "light" ? setTheme("dark") : setTheme("light");
     currentTheme === "light" ? body[0].style.backgroundColor = themes.light.foreground : body[0].style.backgroundColor = themes.dark.foreground;

@@ -58,7 +58,7 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
           return axios.get('./cart');
         })
         .then(cartData => {
-          console.log('Cart data in addToCart: ', cartData.data);
+          console.log('Your Cart: ', cartData.data);
         })
         .catch(error => {
           console.error('Error adding product to cart!');

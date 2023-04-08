@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 
 const Characteristics = ({ characteristic, characteristicId, characteristicSelections, handleClick}) => {
 
-  /* This component will:
-    1) Receive characteristics from the reviews metadata in NewReview
-    2) Generate the 5 radio buttons
-  */
   const characteristicOption1 = characteristicSelections[characteristic][1] +"  (1)";
   const characteristicOption2 = characteristicSelections[characteristic][2] +"  (2)";
   const characteristicOption3 = characteristicSelections[characteristic][3] +"  (3)";
