@@ -19,7 +19,7 @@ A responsive image gallery which allows the user to examine their product of cho
 ![](http://g.recordit.co/5G78jf2PAy.gif)
 
 An add to cart section where users can select from sizes currently in stock, then add items to their cart
-![](http://g.recordit.co/f4DECKKZY2.gif)
+![](http://g.recordit.co/bIs2UdEaGc.gif)
 
 An "add to outfit" feature allowing users to save and remove different products
 > RELATED PRODUCTS GIF TO GO HERE
