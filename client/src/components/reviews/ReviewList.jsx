@@ -76,12 +76,8 @@ const ReviewsList = ( { reviews, sortReviews, updateReviews, reviewsMeta, update
         {showMoreButton ? <button className="reviews moreReviewsButton" onClick={addReviews}>More Reviews</button>  : null}
         <button className="reviews addReviewButton" onClick={showModal}>Add Review +</button>
       </div>
-      {/* {showNewReview && createPortal(
-        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onClose={hideModal}/>,
-        document.body
-      )} */}
       <Modal className="reviews reviewModal" isOpen={showNewReview} onRequestClose={hideModal}>
-        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName}/>
+        <NewReview reviewsMeta={reviewsMeta} characteristicSelections={characteristicSelections} productName={productName} onRequestClose={hideModal}/>
        </Modal>
 
     </div>
