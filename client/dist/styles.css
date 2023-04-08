@@ -1,14 +1,3 @@
-/* COLOR PALETTE
-GOLD #B08401
-PINK #D49E8D
-TAN #DED1BD
-CREAM #FAF6F2
-BROWN 683B2B */
-
-/* body {
-  background-color: #FAF6F2;
-} */
-
 #root {
   font-family: 'Playfair Display', serif;
   justify-content: center;
@@ -27,6 +16,7 @@ BROWN 683B2B */
   background-color: #3a2118;
 }
 
+/* --- HEADER --- */
 #header {
   position: sticky;
   top: 0px;
@@ -77,6 +67,8 @@ BROWN 683B2B */
   padding: 3px 0px 1px 0px;
   filter: invert(100%);
 }
+
+/* --- OVERVIEW --- */
 
 #overview {
   display: flex;
@@ -306,8 +298,15 @@ BROWN 683B2B */
 }
 
 .product_sale_price {
-  color: #B08401;
   font-weight: 700;
+}
+
+#light .product_sale_price {
+  color: #B08401;
+}
+
+#dark .product_sale_price{
+  color: #c69501
 }
 
 .overview_style_selector {
@@ -351,9 +350,16 @@ BROWN 683B2B */
 }
 
 .size_selector_alert, .successful_add_alert {
-  color: #683B2B;
   padding-bottom: 4px;
   min-height: 21px;
+}
+
+#light .size_selector_alert, #light .successful_add_alert {
+  color: #683B2B;
+}
+
+#dark .size_selector_alert, #dark .successful_add_alert {
+  color: #FAF6F2;
 }
 
 .addToCart_top {
@@ -363,9 +369,23 @@ BROWN 683B2B */
   width: 516px;
 }
 
-.size_selector_dropdown, .quantity_selector_dropdown, .addToCartButton, .addToOutfitButton {
+  /* border:2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px; */
+
+#light .size_selector_dropdown, #light .quantity_selector_dropdown, #light .addToCartButton, #light .addToOutfitButton {
   background-color: #FAF6F2;
-  border: 1px solid #683B2B;
+  border: 2px solid #B08401;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
+}
+
+#dark .size_selector_dropdown, #dark .quantity_selector_dropdown, #dark .addToCartButton, #dark .addToOutfitButton {
+  background-color: #683b2bc3;
+  color: #FAF6F2;
+  border: 2px solid #faf6f29e;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 6px;
 }
 
 .size_selector_dropdown:focus, .quantity_selector_dropdown:focus {
@@ -444,17 +464,28 @@ BROWN 683B2B */
   color: #D49E8D;
 }
 
-.addToCartButton:hover, .addToOutfitButton:hover, .size_selector_dropdown:hover, .quantity_selector_dropdown:hover {
+#light .addToCartButton:hover, #light .addToOutfitButton:hover, #light .size_selector_dropdown:hover, #light .quantity_selector_dropdown:hover {
   background-color: #683b2b08;
+}
+
+#dark .addToCartButton:hover, #dark .addToOutfitButton:hover, #dark .size_selector_dropdown:hover, #dark .quantity_selector_dropdown:hover {
+  background-color: #faf6f220;
 }
 
 .overview_product_details {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-  background-color: #ded1bdb6;
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+#light .overview_product_details {
+  background-color: #ded1bdb6;
+}
+
+#dark .overview_product_details {
+  background-color: #775f3ca3;
 }
 
 .overview_product_information {
@@ -504,8 +535,18 @@ BROWN 683B2B */
 .feature_checkmark {
   height: 26px;
   padding-right: 3px;
+}
+
+#light .feature_checkmark {
   opacity: .6;
 }
+
+#dark .feature_checkmark {
+  filter: invert(100%);
+  opacity: .8;
+}
+
+/* --- RELATED PRODUCTS --- */
 
 #sarah-modal {
   position: fixed;
@@ -591,16 +632,6 @@ tr:nth-child(odd) {
   font-family: 'Playfair Display', serif;
 }
 
-body {
-  overflow: auto;
-  font-family: 'Playfair Display', serif;
-}
-
-/* body.active {
-  overflow-y: hidden;
-  font-family: 'Playfair Display', serif;
-} */
-
 .sarah-product-cards-container {
   display: flex;
   justify-content: center;
@@ -645,14 +676,11 @@ body {
   border: 2px solid #B08401;
   border-radius: 6px;
   background-color: #DED1BD;
-  height: 325px;
+  height: 335px;
   font-family: 'Playfair Display', serif;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
 }
 .sarah-product-details-container {
-  /* border-bottom: 0.5px solid black;
-  border-left: 0.5px solid black;
-  border-right: 0.5px solid black; */
   height: 44px;
 }
 
@@ -672,7 +700,7 @@ body {
 
 .sarah-product-image-div .related{
   position: relative;
-  top: -39px;
+  top: -42px;
   height: 225px;
   font-family: 'Playfair Display', serif;
 }
@@ -740,8 +768,15 @@ body {
 }
 
 .sarah-outfit-list {
-  background-color: #d49d8d88;
   height: 423px;
+}
+
+#light .sarah-outfit-list {
+  background-color: #d49d8d88;
+}
+
+#dark .sarah-outfit-list {
+  background-color: #d49d8da7;
 }
 
 .sarah-outfit-card-container {
@@ -751,7 +786,7 @@ body {
 }
 
 .sarah-plus-button {
-  height: 327px;
+  height: 339px;
   width: 201px;
   background-color: #DED1B8;
   font-family: 'Playfair Display', serif;
@@ -777,6 +812,7 @@ body {
   font-weight: bolder;
   font-family: 'Playfair Display', serif;
   color: #683b2B;
+  margin-top: 16px;
 }
 
 .sarah-left-arrow-text {
@@ -833,27 +869,43 @@ button.sarah-right-arrow:hover {
   font-family: 'Playfair Display', serif;
 }
 
+.sarah-big-related {
+  margin-top: 10px;
+}
+
 .sarah-products-list {
   width: 100%;
   font-family: 'Playfair Display', serif;
+  height: 410px;
+}
+
+#light .sarah-products-list {
   background-color: #DED1B8;
-  height: 423px;
+}
+
+#dark .sarah-products-list {
+  background-color: #9f875b;
 }
 
 .sarah-products-list-title {
-  color: #683b2B;
-  font-family: 'Playfair Display', serif;
-  left: 10px;
+  left: 40px;
   top: 7px;
   position: relative;
+  margin-block-start: 0px;
+  margin-block-end: 10px;
+}
+
+.sarah-outfit-list {
+  margin-top: 10px;
+  height: 410px;
 }
 
 .sarah-outfit-list-title {
-  color: #683b2B;
-  font-family: 'Playfair Display', serif;
-  left: 10px;
+  left: 40px;
   top: 7px;
   position: relative;
+  margin-block-start: 0px;
+  margin-block-end: 10px;
 }
 
 .sarah-x-button:hover {
@@ -861,8 +913,7 @@ button.sarah-right-arrow:hover {
   font-family: 'Playfair Display', serif;
 }
 
-/* Begin Reviews CSS*/
-
+/* --- REVIEWS --- */
 
 /* MAIN COMPONENT */
 .reviewsMain{
@@ -872,12 +923,8 @@ button.sarah-right-arrow:hover {
   margin: 10px;
   align-self: center;
 }
-/* ---- */
-
 
 /* REVIEW LIST (RIGHT HAND SIDE} */
-
-
 .reviewList {
   display: flex;
   flex-direction: column;
@@ -915,6 +962,7 @@ button.sarah-right-arrow:hover {
   outline: 1px solid #DED1B8;
   border-radius: 6px;
 }
+
 /* ADD NEW REVIEW */
 .newReview {
   display: flex;
@@ -922,7 +970,6 @@ button.sarah-right-arrow:hover {
   align-items: center;
   z-index: 99;
 }
-
 
 .reviewModal {
   font-size: 120%;
@@ -941,10 +988,6 @@ button.sarah-right-arrow:hover {
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
   z-index: 99
 }
-/* .ReactModalPortal {
-
-} */
-
 
 .reviews.newReviewForm{
   display: flex;
@@ -974,7 +1017,6 @@ button.sarah-right-arrow:hover {
   width:25%
 }
 
-
 .reviews.newReviewItem.recommend{
   display: flex;
   align-items: center;
@@ -996,9 +1038,11 @@ button.sarah-right-arrow:hover {
   align-items: center;
   justify-content: space-between;
 }
+
 .reviews.newReviewItem.summaryLabel{
   width:50%;
 }
+
 .reviews.newReviewItem.summaryOptions{
   width:50%;
 }
@@ -1008,13 +1052,16 @@ button.sarah-right-arrow:hover {
   align-items: center;
   justify-content: space-between;
 }
+
 .reviews.newReviewItem.bodyLabel{
   width:50%
 }
+
 .reviews.newReviewItem.bodyOptions{
   resize: none;
   width:50%
 }
+
 .reviews.newReviewItem.photos{
   display: flex;
   align-items: center;
@@ -1039,9 +1086,6 @@ button.sarah-right-arrow:hover {
   justify-content: space-between;
 }
 
-
-
-
 .reviews.sortDropdown {
   border: transparent;
   border-bottom: #683B2B solid 1px;
@@ -1056,7 +1100,6 @@ button.sarah-right-arrow:hover {
 }
 
 /* Review Tile */
-
 .reviewTile.fullTile {
   border-bottom: solid #B08401 1px;
 }
@@ -1064,7 +1107,6 @@ button.sarah-right-arrow:hover {
 .reviewTile.topRow {
   display: flex;
   justify-content:space-between;
-  /* align-content: center; */
   align-items: center;
   font-size: smaller;
 }
@@ -1117,9 +1159,6 @@ button.sarah-right-arrow:hover {
 .reviews.addReviewButton:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
-
-/* ---- */
-
 
 /* RATINGS & REVIEWS (LEFT HAND SIDE) */
 .reviews.fullRatingBreakdown {
@@ -1285,23 +1324,31 @@ button.sarah-right-arrow:hover {
 .starRatings {
   display: inline-block;
   position: relative;
-  color: #B08401;
   font-size: 30px;
 }
 
 .newReviewStars,
 .fullStars {
   position: absolute;
-  color: #B08401;
   overflow: hidden;
   font-size: 30px;
 }
-/* ----- */
 
-/* End Reviews CSS */
+#light .reviews.newReviewItem.stars,
+#light .starRatings,
+#light .newReviewStars,
+#light .fullStars {
+  color: #B08401;
+}
 
+#dark .reviews.newReviewItem.stars,
+#dark .starRatings,
+#dark .newReviewStars,
+#dark .fullStars {
+  color: #c69501;
+}
 
-/* STARS QA CSS */
+/* --- QA --- */
 
 .qa_left {
   /* display: inline-block; */

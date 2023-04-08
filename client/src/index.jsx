@@ -54,6 +54,8 @@ const App = () => {
       let newProductId = Number(location.pathname.slice(1));
       updateSelectedProduct(newProductId);
     }
+    const body = document.getElementsByTagName("body");
+    body[0].style.backgroundColor = themes.dark.foreground;
   }, []);
 
   const updateSelectedProduct = (product_id) => {
@@ -95,7 +97,6 @@ const App = () => {
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
         var outfitList = JSON.parse(localStorage.getItem("outfitListDetails"));
-        //set my outfit?
         if (outfitList.length !== 0) {
           return OutfitListInfo(setOutfitCards, setProductId, productId, outfitList, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
         }
