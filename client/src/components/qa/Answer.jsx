@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import Modal from 'react-modal'
+
+Modal.setAppElement('#root');
 
 const Answer = (props) => {
 
   const [helpfulCount, setHelpfulCount] = useState(props.answer.helpfulness);
   const [report, setReport] = useState('Report')
+  const [helpfulClicked, setHelpfulClicked] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [selectedPhoto, setSelectedPhoto] = useState('')
+  console.log('selectedPhoto', selectedPhoto)
 
   const helpfulCountHandler = (e) =>{
     e.preventDefault();
@@ -13,6 +20,7 @@ const Answer = (props) => {
     axios.put(`/qa/answers/${props.answer.answer_id}/helpful`)
     .then(()=> {
       console.log('Helpful count for this answer has been updated!')
+      setHelpfulClicked(true)
     })
     .catch(err=>{
       console.log(err)
@@ -40,6 +48,16 @@ const Answer = (props) => {
     return formattedDate;
   }
 
+  const onClickHandler = (event) => {
+  console.log('event.target', event.target)
+    setSelectedPhoto(event.target.src)
+    setShowModal(true);
+  }
+
+  const handleClose = () => {
+    setShowModal(false);
+  }
+
 
   return (
     <div className='qa_answer'>
@@ -48,15 +66,19 @@ const Answer = (props) => {
       </div>
       <div>
         {props.answer.photos.map(photo=>(
-          <a target="_blank" href={photo.url} key={photo.id} ><img className='qa_img' src={photo.url}></img></a>
+          <img onClick={onClickHandler} className='qa_img' src={photo.url}></img>
         ))}
       </div>
+
      <div className='qa_answerer'>
 
         <span>{'by '+ props.answer.answerer_name + ', '}</span><span>{dateConverter(props.answer.date)}</span>
-        <span data-testid='answer'>&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;Helpful?&nbsp;</span><a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a><span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>{report === 'Report'?<a href='' onClick={reportHandler}>{report}</a>:<span>{report}</span>}
+        <span data-testid='answer'>&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;Helpful?&nbsp;</span>{helpfulClicked? <span>Yes({helpfulCount})</span>:<a href='' onClick={helpfulCountHandler}>Yes({helpfulCount})</a>}<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>{report === 'Report'?<a href='' onClick={reportHandler}>{report}</a>:<span>{report}</span>}
 
     </div>
+    <Modal isOpen={showModal} onRequestClose={handleClose} className='qa_imgModal'>
+    <img src={selectedPhoto}></img>
+    </Modal>
   </div>
   )
 }
