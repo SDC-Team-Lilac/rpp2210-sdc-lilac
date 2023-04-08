@@ -14,7 +14,7 @@ const root = createRoot(domNode);
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71697);
+  const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -29,19 +29,21 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [inOutfit, setInOutfit] = useState(false);
 
-  // REF FOR OVERVIEW/REVIEWS COMMS
   const reviewsRef = useRef(null);
 
   useEffect(() => {
-    // localStorage.removeItem("outfitList");
-    // localStorage.setItem("outfitList", JSON.stringify([]));
     if (localStorage.getItem("outfitList") === undefined || localStorage.getItem("outfitList") === null) {
       localStorage.setItem("outfitList", JSON.stringify([]));
+      localStorage.setItem("outfitListDetails", JSON.stringify([]));
     }
-    updateSelectedProduct(productId);
+    if (location.pathname === '/') {
+      updateSelectedProduct(71697);
+    } else {
+      let newProductId = Number(location.pathname.slice(1));
+      updateSelectedProduct(newProductId);
+    }
   }, []);
 
-  // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
   const updateSelectedProduct = (product_id) => {
     axios.get(`/products/${product_id}`, {
       params: {
@@ -80,21 +82,10 @@ const App = () => {
       })
       .then(productStyles => {
         setStyleId(productStyles.data.results[0].style_id);
-        var outfitList = JSON.parse(localStorage.getItem("outfitList"))
+        var outfitList = JSON.parse(localStorage.getItem("outfitListDetails"));
+        //set my outfit?
         if (outfitList.length !== 0) {
-          return axios.get('/relatedProducts/info', {
-            params: {
-              relatedProducts: outfitList,
-              productId: productId,
-              listName: 'outfit'
-            }
-          })
-        }
-      })
-      .then((results) => {
-        if (results !== undefined) {
-          setMyOutfit(results.data);
-          return OutfitListInfo(setOutfitCards, setProductId, productId, results.data, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
+          return OutfitListInfo(setOutfitCards, setProductId, productId, outfitList, setMyOutfit, updateSelectedProduct, inOutfit, setInOutfit);
         }
       })
       .catch(error => {
@@ -113,7 +104,7 @@ const App = () => {
   return (
     <div>
       <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct} myOutfit={myOutfit} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} inOutfit={inOutfit} setInOutfit={setInOutfit} reviewsRef={reviewsRef} />
-      <RelatedProducts inOutfit={inOutfit} setInOutfit={setInOutfit} OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct}/>
+      <RelatedProducts inOutfit={inOutfit} setInOutfit={setInOutfit} OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct} />
       <QA productId={productId} productName={productName}/>
       <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating} reviewsRef={reviewsRef}/>
     </div>
