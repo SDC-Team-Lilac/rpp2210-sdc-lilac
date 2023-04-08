@@ -1,15 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
-import Overview from './components/overview/Overview.jsx'
-import QA from './components/qa/QA.jsx'
-import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx'
-import Reviews from './components/reviews/Reviews.jsx'
+import Header from './components/header/Header.jsx';
+import Overview from './components/overview/Overview.jsx';
+import QA from './components/qa/QA.jsx';
+import RelatedProducts from './components/relatedProducts/RelatedProducts.jsx';
+import Reviews from './components/reviews/Reviews.jsx';
 import { ProductListInfo, OutfitListInfo } from './components/relatedProducts/RelatedProductRequests.jsx';
 
 const axios = require('axios');
 
 const domNode = document.getElementById('root');
 const root = createRoot(domNode);
+const ThemeContext = createContext('light');
+
+const themes = {
+  light: {
+    foreground: '#3a2118',
+  },
+  dark: {
+    foreground: '#FAF6F2',
+  }
+}
 
 const App = () => {
 
@@ -28,6 +39,7 @@ const App = () => {
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [relatedProductName, setRelatedProductName] = useState('');
   const [inOutfit, setInOutfit] = useState(false);
+  const [theme, setTheme] = useState("light");
 
   const reviewsRef = useRef(null);
 
@@ -101,13 +113,23 @@ const App = () => {
     setTotalNumberReviews(count);
   }
 
+  const toggleTheme = (currentTheme) => {
+    console.log('Toggling Theme! ', theme);
+    const body = document.getElementsByTagName("body");
+    currentTheme === "light" ? setTheme("dark") : setTheme("light");
+    currentTheme === "light" ? body[0].style.backgroundColor = themes.light.foreground : body[0].style.backgroundColor = themes.dark.foreground;
+  }
+
   return (
-    <div>
-      <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct} myOutfit={myOutfit} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} inOutfit={inOutfit} setInOutfit={setInOutfit} reviewsRef={reviewsRef} />
-      <RelatedProducts inOutfit={inOutfit} setInOutfit={setInOutfit} OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct} />
-      <QA productId={productId} productName={productName}/>
-      <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating} reviewsRef={reviewsRef}/>
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div id={theme}>
+        <Header theme={theme} toggleTheme={toggleTheme}/>
+        <Overview productId={productId} styleId={styleId} averageStarRating={averageStarRating} totalNumberReviews={totalNumberReviews} productFeatures={productFeatures} updateSelectedProduct={updateSelectedProduct} myOutfit={myOutfit} setMyOutfit={setMyOutfit} setOutfitCards={setOutfitCards} setProductId={setProductId} updateSelectedProduct={updateSelectedProduct} inOutfit={inOutfit} setInOutfit={setInOutfit} reviewsRef={reviewsRef} />
+        <RelatedProducts inOutfit={inOutfit} setInOutfit={setInOutfit} OutfitListInfo={OutfitListInfo} productId={productId} relatedProductFeatures={relatedProductFeatures} productFeatures={productFeatures} myOutfit={myOutfit} productCards={productCards} setMyOutfit={setMyOutfit} outfitCards={outfitCards} productName={productName} relatedProductName={relatedProductName} setProductId={setProductId} setOutfitCards={setOutfitCards} updateSelectedProduct={updateSelectedProduct}/>
+        <QA productId={productId} productName={productName}/>
+        <Reviews updateSelectedProduct={updateSelectedProduct} productId={productId} productName={productName} totalNumberReviews={totalNumberReviews} updateTotalNumberReviews={updateTotalNumberReviews} updateAverageRating={updateAverageRating} averageStarRating={averageStarRating} reviewsRef={reviewsRef}/>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
