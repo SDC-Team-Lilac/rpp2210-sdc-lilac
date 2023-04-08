@@ -64,7 +64,7 @@ const AddQuestion = (props) => {
   };
 
   return (
-    <span className='qa_addQuestion'>
+    <div className='qa_addQuestion'>
     <div data-testid='AddQuestion'> <strong>Didn't find the question you were looking for? Ask your question!</strong> </div>
     <button className='qa_button3' onClick={handleClick}> ADD A QUESTION <FontAwesomeIcon icon={faPlus} /></button>
 
@@ -93,7 +93,7 @@ const AddQuestion = (props) => {
         </form>
         </div>
     </Modal>
-    </span>
+    </div>
   )
 }
 
