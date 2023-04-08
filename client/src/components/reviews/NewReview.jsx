@@ -53,7 +53,7 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
     axios.post('/reviews', fullReview)
     .then((success) => {console.log('Succesfully added new review')})
     .catch((err) => {console.log('ERROR adding new review', err)})
-    onClose();
+    alert('Succesfully Submitted New Review, you can now click out of the modal.')
   }
 
   const handleChange = (e) => {
@@ -136,6 +136,12 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
       })
     }
     setPhotoURLs(newPhotoURLS);
+    alert('Succesfully Uploaded')
+  }
+
+  const submitClick = (e) => {
+    e.preventDefault();
+
   }
 
   return (
@@ -171,8 +177,8 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem characteristic">
           {/* <Characteristics characteristics={reviewsMeta.characteristics} characteristicSelections={characteristicSelections}/> */}
-          Please rate the following Characteristics!
-          {loadCharacteristics()}
+          Please rate the following Characteristics:
+          <div style={{whiteSpace:"nowrap"}}>{loadCharacteristics()}</div>
         </div>
         <div className="reviews newReviewItem summary">
           <label className="reviews newReviewItem summaryLabel">Review Summary</label>
@@ -184,7 +190,8 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
         </div>
         <div className="reviews newReviewItem photos">
           <label className="reviews newReviewItem photosLabel">Upload Your Photos</label>
-          <input className="reviews newReviewItem photosOptions" name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input><button onClick={uploadFirebase}>Upload</button>
+          <input className="reviews newReviewItem photosOptions" name="photos" type="file" accept="image/*" multiple onChange={handleChange}></input>
+          <button className="reviews newReviewItem photosOptions"onClick={uploadFirebase}>Upload</button>
         </div>
         <div className="reviews newReviewItem nickname">
           <label className="reviews newReviewItem nicknameLabel">What is your nickname?</label>
@@ -199,7 +206,6 @@ const NewReview = ({reviewsMeta, onClose, characteristicSelections, productName 
           <label className="reviews newReviewItem submitLabel">Submit Review</label>
           <input className="reviews newReviewItem submitOptions" type="submit"></input>
         </div>
-        {/* <button onClick={onClose}>Close</button> */}
       </form>
     </div>
   )
