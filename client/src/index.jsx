@@ -25,7 +25,7 @@ const themes = {
 const App = () => {
 
   // Change this later to no longer hard-code starting productId || VERTICAL, FRIENDLY: 71697, 71699, 71702 || HORIZONTAL, PROBLEMATIC: 71701
-  const [productId, setProductId] = useState(71697);
+  const [productId, setProductId] = useState(null);
   const [productName, setProductName] = useState('');
   const [styleId, setStyleId] = useState(null);
   const [averageStarRating, setAverageStarRating] = useState(null);
@@ -41,20 +41,21 @@ const App = () => {
   const [inOutfit, setInOutfit] = useState(false);
   const [theme, setTheme] = useState("light");
 
-  // REF FOR OVERVIEW/REVIEWS COMMS
   const reviewsRef = useRef(null);
 
   useEffect(() => {
-    // localStorage.removeItem("outfitList");
-    // localStorage.setItem("outfitList", JSON.stringify([]));
     if (localStorage.getItem("outfitList") === undefined || localStorage.getItem("outfitList") === null) {
       localStorage.setItem("outfitList", JSON.stringify([]));
       localStorage.setItem("outfitListDetails", JSON.stringify([]));
     }
-    updateSelectedProduct(productId);
+    if (location.pathname === '/') {
+      updateSelectedProduct(71697);
+    } else {
+      let newProductId = Number(location.pathname.slice(1));
+      updateSelectedProduct(newProductId);
+    }
   }, []);
 
-  // To-Do: Add function to start initial rendering of app in real-time - Likely will involve useEffect ***
   const updateSelectedProduct = (product_id) => {
     axios.get(`/products/${product_id}`, {
       params: {
