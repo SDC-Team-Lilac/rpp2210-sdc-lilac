@@ -17,7 +17,6 @@ const AddToCart = ( { productDetails, selectedStyle, productStyles, myOutfit, se
   let possibleQuantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   useEffect(() => {
-    console.log('In Outfit in AddToCart useEffect: ', inOutfit);
     if (alertSuccessfulAdd) {
       setTimeout(() => setAlertSuccessfulAdd(false), 2000);
     }
