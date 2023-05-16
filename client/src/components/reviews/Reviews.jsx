@@ -48,7 +48,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
       var averageRating = RatingCalculator(result.data.ratings)
       updateAverageRating(averageRating)
     })
-    .catch((err) => {console.log('Trouble getting reviews meta from client', err)});
+    .catch((err) => {console.log('Trouble getting reviews meta from client')});
   }
 
   const updateReviews = () => {
@@ -59,7 +59,7 @@ const Reviews = ({ updateSelectedProduct, productId, productName, updateAverageR
       }
       setReviews(result.data.results);
     })
-    .catch((err) => {console.log('Trouble getting reviews from client', err)});
+    .catch((err) => {console.log('Trouble getting reviews from client')});
   }
 
 

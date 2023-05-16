@@ -32,8 +32,8 @@ const QA = (props) => {
     .then(result=>{
       setQuestionList(result.data.results)
     })
-    .catch(err=>{
-      console.log(err)
+    .catch(()=>{
+      console.log('err in qa')
     })
   }, [props.productId]);
 

@@ -9,21 +9,34 @@ const newAPIHostURL = process.env.HOST;
   // page (INT) -- slects page of results to return, defaulted to 1
   // count (INT) -- specifies how many results per page to return, defaulted to 5
 const getAllProducts = () => {
-  return axios.get(`${newAPIHostURL}/products`);
-}
+  return axios.get(`${APIHostURL}/products`, {
+    //optional key/values of page/pageNumber and count/countNumber
+    headers: {
+      Authorization: APIKey
+    }
+  });}
 
 const getOneProduct = (product_id) => {
-  console.log('---------------------------',product_id)
-  return axios.get(`${newAPIHostURL}/products/${product_id}`)
+  return axios.get(`${APIHostURL}/products/${product_id}`, {
+    headers: {
+      Authorization: APIKey
+    }
+  })
 }
 
 const getStyles = (product_id) => {
-  return axios.get(`${newAPIHostURL}/products/${product_id}/styles`)
-}
+  return axios.get(`${APIHostURL}/products/${product_id}/styles`, {
+    headers: {
+      Authorization: APIKey
+    }
+  })}
 
 const getRelated = (product_id) => {
-  return axios.get(`${newAPIHostURL}/products/${product_id}/related`)
-}
+  return axios.get(`${APIHostURL}/products/${product_id}/related`, {
+    headers: {
+      Authorization: APIKey
+    }
+  })}
 
 module.exports.getAllProducts = getAllProducts;
 module.exports.getOneProduct = getOneProduct;
