@@ -18,7 +18,9 @@ const getProductQuestions = (product_id, page=1, count=10) => {
         page,
         count
     },
-
+    headers: {
+      Authorization: APIKey
+    }
   });
 };
 // /qa/questions/:question_id/answers <-- GET answers for a given question
@@ -33,7 +35,9 @@ const getProductAnswers = (question_id, page=1, count=10) => {
         page,
         count
     },
-
+    headers: {
+      Authorization: APIKey
+    }
   });
 };
 
@@ -53,7 +57,11 @@ const AddProductQuestion = (questionData) => {
       email: questionData.email,
       product_id: questionData.product_id
     },
-);
+    {
+      headers: {
+      Authorization: APIKey,
+    }
+  });
 };
 
 
@@ -73,7 +81,11 @@ const AddProductAnswer = (question_id, answerData) => {
       email: answerData.email,
       photos: answerData.photos
     },
-);
+    {
+      headers: {
+      Authorization: APIKey
+    }
+  });
 };
 
 
@@ -81,21 +93,33 @@ const AddProductAnswer = (question_id, answerData) => {
   // params:
     // question_id (INT) -- required id of question to update
     const updateQuestionHelpful = (question_id) => {
-      return axios.put(`${APIHostURL}/qa/questions/${question_id}/helpful`, null);
+      return axios.put(`${APIHostURL}/qa/questions/${question_id}/helpful`, null, {
+        headers: {
+          Authorization: APIKey
+        }
+      });
     }
 
 // /qa/questions/:question_id/report <-- PUT
   // params:
     // question_id (INT) -- required id of question to update
     const updateQuestionReport = (question_id) => {
-      return axios.put(`${APIHostURL}/qa/questions/${question_id}/report`, null);
+      return axios.put(`${APIHostURL}/qa/questions/${question_id}/report`, null, {
+        headers: {
+          Authorization: APIKey
+        }
+      });
     }
 
 // /qa/answers/:answer_id/helpful <-- PUT to update an answer to show it was helpful
   // params:
     // answer_id (INT) -- required id of answer to update
     const updateAnswerHelpful = (answer_id) => {
-      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/helpful`, null);
+      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/helpful`, null, {
+        headers: {
+          Authorization: APIKey
+        }
+      });
     }
 
 // /qa/answers/:answer_id/report <-- PUT to update an answer to show it has been reported, will not delete an answer, but answer will not be returned in above GET request
@@ -103,7 +127,11 @@ const AddProductAnswer = (question_id, answerData) => {
     // answer_id (INT) -- required id of answer to update
 
     const updateAnswerReport = (answer_id) => {
-      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/report`, null);
+      return axios.put(`${APIHostURL}/qa/answers/${answer_id}/report`, null, {
+        headers: {
+          Authorization: APIKey
+        }
+      });
     }
 
 module.exports.getProductQuestions = getProductQuestions;
